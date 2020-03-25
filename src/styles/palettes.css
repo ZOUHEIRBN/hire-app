@@ -1,0 +1,7 @@
+badge {
+    --default: var(--secondary-color);
+    --jobtype: var(--secondary-color);
+    --match: #b31045;
+    --fav: #fbc02d;
+
+}

@@ -1,0 +1,130 @@
+/* Badges */
+badge, badge span{
+  transition: all .2s ease!important;
+  cursor: default;
+}
+
+
+badge {
+    border: .2vmin solid var(--default);
+    list-style-type: circle;
+    border-radius: 12pt;
+    margin-left: 2pt;
+    padding: .5pt 2pt .5pt 5pt;
+    font-weight: 500;
+    font-size: 12pt;
+    float: right;
+}
+badge:hover, badge[expand=true] {
+  padding: .5pt 2pt .5pt 5pt;
+  background-color: var(--default);
+  border-color: transparent;
+}
+badge span{
+  color: var(--default);
+}
+badge:hover span, badge[expand=true] span{
+  color: #fff!important;
+}
+badge:hover::after, badge[expand=true]::after{
+  background-color: #fff!important;
+}
+badge::after, badge::before{
+  content: "";
+  display: inline-block;
+  border-radius: 100%;
+  position: relative;
+  height: 9pt;
+  width: 9pt;
+}
+badge[expand=false]::after, badge[expand=true]::before{
+  transform: scale(1);
+}
+badge[expand=true]::after, badge[expand=false]::before{
+  transform: scale(.0);
+}
+badge::before{
+  margin-left: 0vmin;
+  margin-right: 1vmin;
+  background-color: hsla(0, 0%, 80%, 1);
+  mix-blend-mode: screen;
+}
+badge::after{
+  background-color: var(--default);
+    margin-left: 1vmin;
+    margin-right: 0vmin;
+}
+
+badge[expand=false]::before{
+  background-color: hsla(0, 0%, 50%, .0);
+}
+
+
+
+/* Special Badges */
+badge[category=jobtype]{
+  border-color: var(--jobtype);
+}
+badge[category=jobtype] span{
+  color: var(--jobtype);
+}
+badge[category=jobtype]::after{
+  background-color: var(--jobtype);
+}
+badge[category=jobtype]:hover, badge[category=jobtype][expand=true]{
+  background-color: var(--jobtype);
+}
+
+badge[category=fav]{
+  color: var(--fav);
+  border-color: var(--fav);
+}
+badge[category=fav] span{
+  color: var(--fav);
+}
+badge[category=fav]::after{
+  background-color: var(--fav);
+}
+badge[category=fav]:hover, badge[category=fav][expand=true]{
+  background-color: var(--fav);
+}
+
+badge[category=match]{
+  color: var(--match);
+  border-color: var(--match);
+}
+badge[category=match] span{
+  color: var(--match);
+}
+badge[category=match]::after{
+  background-color: var(--match);
+}
+badge[category=match]:hover, badge[category=match][expand=true]{
+  background-color: var(--match);
+}
+
+
+
+/* Badge Mobile */
+@media (orientation: portrait) {
+  badge {
+    float: right;
+    padding: 1.5pt 4pt 0.5pt 0pt;
+    display: inline-flex;
+    font-size: 9pt;
+    margin-left: 0vmin;
+    margin-right: 1vmin;
+  }
+  badge:hover {
+    padding: .5pt 2pt .5pt 5pt;
+  }
+  badge>span {
+    max-width: 0vh;
+    overflow: hidden;
+    display: block;
+    white-space: nowrap;
+  }
+  badge:hover>span {
+    max-width: 33vh;
+  }
+}

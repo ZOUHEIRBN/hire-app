@@ -1,0 +1,21 @@
+{"offers":
+  [{
+    "id":1,
+    "title": "Caissier",
+    "salary": 3000,
+    "workhours": 10,
+    "workdays": 5,
+    "description": "lorem ipsum",
+    "badges": [{"category":"fav","name":"Favorite"}, {"category":"jobtype","name":"Recruitment"}, {"category":"match","name":"High Match"}],
+    "imageUrl": "https://source.unsplash.com/1600x900/?product"
+  },{
+    "id":2,
+    "title": "Livreur",
+    "salary": 4500,
+    "workhours": 10,
+    "workdays": 5,
+    "description": "lorem ipsum",
+    "badges": [{"category":"fav","name":"Favorite"}, {"category":"jobtype","name":"Stage"}, {"category":"match","name":"Watchout"}],
+    "imageUrl": "https://source.unsplash.com/1600x900/?product"
+  }]
+}

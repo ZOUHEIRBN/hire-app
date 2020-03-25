@@ -1,0 +1,79 @@
+mat-toolbar{
+  height: var(--menu-height);
+  position: fixed;
+  z-index: 2;
+  top: 0;
+}
+mat-toolbar h1{
+  display: block;
+  width: 100%;
+}
+mat-toolbar button[action=MenuSwitch]{
+  border: .5pt solid #fff;
+  margin-right: 5vw;
+  display: none;
+}
+.buttonBars{
+  display: flex;
+}
+div.buttonBar{
+  float: right;
+  position: relative;
+  right: 0;
+  max-width: 50%;
+}
+
+@media(orientation: portrait) {
+  mat-toolbar button[action=MenuSwitch]{
+    display: block;
+  }
+  div.buttonBar{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    width: 100%;
+  }
+  div.buttonBar button{
+    width: 100%;
+    display: block;
+  }
+
+  div.buttonBar button[current]{
+    color: #fff;
+    background-color: var(--primary-color);
+  }
+
+  .buttonBars{
+    display: flex;
+  }
+  .buttonBars {
+    position: fixed;
+    top: var(--menu-height);
+    left: -50vw;
+    height: calc(100vh - var(--menu-height));
+    width: 50vw;
+    background-color: #fff;
+    color: var(--primary-color);
+    display: flex;
+    flex-direction: column;
+    transition: all .7s ease-in-out;
+  }
+  .buttonBars::after{
+    content: " ";
+    z-index: -1;
+    mix-blend-mode: overlay;
+    position: absolute;
+    left: -50vw;
+    width: 100vw;
+    height: calc(100vh - var(--menu-height));
+    background-color: #424242;
+    opacity: .0;
+  }
+  .buttonBars.showMenu{
+    left: 0vw;
+  }
+  .buttonBars.showMenu::after{
+    left: 0vw;
+    opacity: .6;
+  }
+}

@@ -1,0 +1,16 @@
+/* Badges */
+mat-card-badges {
+  float: right;
+  width: 100%;
+}
+
+/* Badge Mobile */
+@media (orientation: portrait) {
+  mat-card-badges {
+    width: 100%;
+    float: left;
+  }
+  div.mat-card-header-text{
+    width: 100%;
+  }
+}
