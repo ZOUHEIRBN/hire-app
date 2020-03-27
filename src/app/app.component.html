@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="user">
   <button mat-button action="MenuSwitch" (click)="toggleMenu()">Menu</button>
   <h1>
     My Angular Store
@@ -11,7 +11,7 @@
     <div class="buttonBar">
 
       <button mat-button (click)="toggleSelector($event)" routerLink="/">Settings</button>
-      <button mat-button (click)="toggleSelector($event)" routerLink="/about">Log out</button>
+      <button mat-button (click)="disconnect()" routerLink="/login">Log out</button>
     </div>
   </div>
 

@@ -3,6 +3,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { OfferComponent } from './offer/offer.component';
@@ -18,6 +19,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { BadgeComponent } from './badge/badge.component';
+import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -25,10 +29,13 @@ import { BadgeComponent } from './badge/badge.component';
     OfferComponent,
     AboutComponent,
     OfferDetailsComponent,
-    BadgeComponent
+    BadgeComponent,
+    LoginComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -39,7 +46,7 @@ import { BadgeComponent } from './badge/badge.component';
     MatProgressSpinnerModule,
 
   ],
-  providers: [],
+  providers: [ UserService, OfferComponent],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })

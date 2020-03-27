@@ -17,5 +17,13 @@
     "description": "lorem ipsum",
     "badges": [{"category":"fav","name":"Favorite"}, {"category":"jobtype","name":"Stage"}, {"category":"match","name":"Watchout"}],
     "imageUrl": "https://source.unsplash.com/1600x900/?product"
+  }],
+  "users":
+  [{
+    "login":"Zouheir",
+    "password":"banou"
+  },{
+    "login":"Imad",
+    "password":"leo"
   }]
 }

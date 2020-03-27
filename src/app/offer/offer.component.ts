@@ -1,5 +1,5 @@
 import { Component, OnInit, NgModule } from '@angular/core';
-import { ApiService } from "../api.service";
+import { OfferService } from "../services/offer.service";
 import { Offer } from './offer';
 
 @Component({
@@ -16,7 +16,7 @@ export class OfferComponent implements OnInit {
   loading_state = true
 
 
-  constructor(private apiService:ApiService) {}
+  constructor(private apiService:OfferService) {}
 
   ngOnInit(): void {
     this.loading_state = true;

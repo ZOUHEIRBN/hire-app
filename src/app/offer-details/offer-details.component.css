@@ -137,7 +137,7 @@ p{
 @media (orientation: portrait) {
   mat-card img{
     width:100%;
-    height: auto;
+    height: auto!important;
   }
   div.Image::after {
     font-size: 24pt;

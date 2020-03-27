@@ -2,7 +2,7 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: "Helvetica Neue", sans-serif; background-color: #ddd;}
-*::after, *::before{
+*, *::after, *::before{
   transition: all .5s ease;
   cursor: default;
 }
@@ -12,11 +12,11 @@ body { margin: 0; font-family: "Helvetica Neue", sans-serif; background-color: #
 }
 
 /* Buttons */
-mat-card-actions button{
+mat-card-actions button, .mat-card-actions button{
   background-color: #eee!important;
   color: var(--primary-color)!important;
 }
-mat-card-actions button:first-child{
+mat-card-actions button:first-child, .mat-card-actions button:first-child{
   background-color: var(--primary-color)!important;
   color: #fff!important;
 }

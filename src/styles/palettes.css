@@ -3,5 +3,8 @@ badge {
     --jobtype: var(--secondary-color);
     --match: #b31045;
     --fav: #fbc02d;
-
+}
+*{
+  --primary-color-light: #0AC9AF;
+  --secondary-color-light: #00adf8;
 }
