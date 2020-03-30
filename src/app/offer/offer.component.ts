@@ -1,6 +1,6 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { OfferService } from "../services/offer.service";
-import { Offer } from './offer';
+import { Offer } from '../post/post';
 
 @Component({
   selector: 'app-home',

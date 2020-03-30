@@ -20,8 +20,11 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { OfferDetailsComponent } from './offer-details/offer-details.component';
 import { BadgeComponent } from './badge/badge.component';
 import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
+import { UserThumbnailComponent } from './user-thumbnail/user-thumbnail.component';
 import { UserService } from './services/user.service';
+import { ProfilesComponent } from './profiles/profiles.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { UserService } from './services/user.service';
     OfferDetailsComponent,
     BadgeComponent,
     LoginComponent,
-    UserComponent
+    UserThumbnailComponent,
+    ProfilesComponent,
+    UserProfileComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

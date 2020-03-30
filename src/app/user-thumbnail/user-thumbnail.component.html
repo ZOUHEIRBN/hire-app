@@ -1,0 +1,38 @@
+<mat-card style="margin-top:10px;" [ngClass]="{'embedded': embedded}">
+  <mat-card-content>
+    <mat-card-info>
+      <div class="Image" [attr.focus]="false">
+        <img src="../../assets/svg/logo.svg"/>
+      </div>
+
+      <mat-card-contents>
+        <mat-card-header>
+          <mat-card-title>
+            {{user.first_name}} {{user.last_name}} <a class="address">@{{user.login}}</a>
+          </mat-card-title>
+
+          <mat-card-subtitle>
+            <span>Some info here&nbsp;</span>
+
+            <mat-card-badges>
+              <post-badge class="{{ badge.category }}" *ngFor="let badge of user.badges" [badge]="badge"></post-badge>
+            </mat-card-badges>
+
+          </mat-card-subtitle>
+
+        </mat-card-header>
+        <p [attr.shrink_text]="true">
+          <span>
+            <!-- {{user.bio}}<br> -->
+          </span>
+        </p>
+
+      </mat-card-contents>
+    </mat-card-info>
+    <mat-card-actions *ngIf="!embedded">
+      <button mat-button routerLink="#">Consulter</button>
+      <!-- <button mat-button>Ajouter aux favoris</button> -->
+    </mat-card-actions>
+  </mat-card-content>
+
+</mat-card>

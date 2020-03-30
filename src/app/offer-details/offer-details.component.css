@@ -104,23 +104,12 @@ div.Image[focus=true]{
     background-color: hsla(100,100%,0%,.77);
 }
 div.Image[focus=true]:hover img {
-  transform: translate(-50%, -50%) scale(1.1);
+  transform: translate(-50%, -50%) scale(.99);
 }
 mat-card-contents{
   display: inline-block;
   width: 90%;
 
-}
-mat-card-actions{
-  position: relative;
-  display: block;
-  margin-bottom: 10px!important;
-
-  bottom: 10px;
-  width: 100%;
-}
-mat-card-actions>button{
-  float: right;
 }
 
 

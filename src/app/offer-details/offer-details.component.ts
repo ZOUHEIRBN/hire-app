@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Offer } from '../offer/offer';
+import { Offer } from '../post/post';
 import { Badge } from '../badge/badge';
 
 

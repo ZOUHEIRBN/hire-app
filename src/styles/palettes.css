@@ -4,7 +4,12 @@ badge {
     --match: #b31045;
     --fav: #fbc02d;
 }
-*{
+:root{
+  --primary-color: #188076; /* #7b1fa2; */
+  --secondary-color: #106CB3; /* #7b1fa2; */
+  --third-color: #B31410; /* #7b1fa2; */
+
+
   --primary-color-light: #0AC9AF;
   --secondary-color-light: #00adf8;
 }

@@ -10,7 +10,10 @@ body { margin: 0; font-family: "Helvetica Neue", sans-serif; background-color: #
 *{
   --menu-height: 64px;
 }
-
+app-about>*:first-child, app-user>*:first-child, user-profile>*:first-child{
+  top: var(--menu-height);
+    position: relative;
+}
 /* Buttons */
 mat-card-actions button, .mat-card-actions button{
   background-color: #eee!important;
@@ -19,4 +22,18 @@ mat-card-actions button, .mat-card-actions button{
 mat-card-actions button:first-child, .mat-card-actions button:first-child{
   background-color: var(--primary-color)!important;
   color: #fff!important;
+}
+mat-card, mat-card *, mat-card *::before, mat-card *::after{
+  transition: all .5s ease;
+}
+mat-card-actions{
+  position: relative;
+  display: block;
+  margin-bottom: 10px!important;
+
+  bottom: 10px;
+  width: 100%;
+}
+mat-card-actions>button{
+  float: right;
 }

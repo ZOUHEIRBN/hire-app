@@ -1,0 +1,11 @@
+div, badge, mat-card, mat-card-header, mat-card-contents p{
+  border: 1px solid black!important;
+}
+img{
+  /* display: contents!important; */
+  background-color: white!important;
+}
+*{
+  color: white!important;
+  background-color: white!important;
+}

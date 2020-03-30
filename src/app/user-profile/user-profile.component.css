@@ -1,0 +1,26 @@
+mat-card{
+  background:#fff;
+  color:#424242;
+}
+mat-card-content{
+  display: flex;
+  flex-direction: row;
+}
+.mat-card-subtitle {
+    color: var(--secondary-color);
+    width: 100%;
+}
+
+.mat-card-header {
+    display: block;
+    flex-direction: row;
+}
+user-details + div.mat-card-info{
+  padding: 1%;
+}
+@media only screen and (max-width: 960px){
+  mat-card-content{
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { User, USERS } from '../user/user';
+import { User, USERS } from '../user-thumbnail/user';
 import { SERVER_URL } from './offer.service'
 import { Subject } from 'rxjs';
-
+import { map } from 'rxjs/operators'
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +14,10 @@ export class UserService {
   _loginLetPass$ = this._loginLetPass.asObservable();
 
   constructor(private httpClient:HttpClient) { }
+
+  public getUsers(){
+		return this.httpClient.get(SERVER_URL+"users");
+  }
 
   registerUser(User){
     return true;

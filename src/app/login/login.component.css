@@ -38,7 +38,7 @@ div.layout form {
   align-content: space-between;
 }
 div.layout input{
-    font-size: 20pt;
+    font-size: calc(20pt - 1.5vmin)!important;
     margin: 3% 0%;
     padding: 2vmin;
     text-align: center;

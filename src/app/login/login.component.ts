@@ -1,9 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AppComponent } from '../app.component';
 import { UserService } from '../services/user.service'
-import { OfferService } from "../services/offer.service";
-import { User } from '../user/user';
-import { InvokeFunctionExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',

@@ -1,17 +1,18 @@
-<mat-toolbar color="primary" *ngIf="user">
+<mat-toolbar color="primary">
   <button mat-button action="MenuSwitch" (click)="toggleMenu()">Menu</button>
   <h1>
-    My Angular Store
+    {{ title }}
   </h1>
   <div class="buttonBars" [ngClass]="{'showMenu': showMenu}">
-    <div class="buttonBar">
-      <button mat-button (click)="toggleSelector($event)" current routerLink="/">Home</button>
+    <div class="buttonBar" *ngIf="user">
+      <button mat-button (click)="toggleSelector($event)" current routerLink="/offers">Offers</button>
+      <button mat-button (click)="toggleSelector($event)" routerLink="/users">Users</button>
       <button mat-button (click)="toggleSelector($event)" routerLink="/about">About</button>
     </div>
     <div class="buttonBar">
 
-      <button mat-button (click)="toggleSelector($event)" routerLink="/">Settings</button>
-      <button mat-button (click)="disconnect()" routerLink="/login">Log out</button>
+      <button mat-button (click)="toggleSelector($event)" routerLink="/user/1">My profile</button>
+      <button mat-button (click)="disconnect()" routerLink="/login">{{ user ? 'Log out':'Log in'}}</button>
     </div>
   </div>
 

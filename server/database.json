@@ -20,10 +20,22 @@
   }],
   "users":
   [{
-    "login":"Zouheir",
-    "password":"banou"
+    "login": "ZouheirBN",
+    "password":"banou",
+    "first_name":"Zouheir",
+    "last_name":"Banou",
+    "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Chercheur"}]
   },{
-    "login":"Imad",
-    "password":"leo"
+    "login":"ImadHR",
+    "password":"leo",
+    "first_name":"Imad",
+    "last_name":"Herchy",
+    "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Stagiaire"}]
+  },{
+    "login":"AliRA",
+    "password":"leo",
+    "first_name":"Imad",
+    "last_name":"Herchy",
+    "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Stagiaire"}]
   }]
 }
