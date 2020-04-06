@@ -9,9 +9,10 @@ user-details {
 
 @media only screen and (min-width: 768px) and (orientation: landscape){
   user-details {
-    flex-basis: 32.2%;
+    flex-basis: 48.9%;
   }
   user-details:last-child {
     flex-grow: 0;
   }
 }
+

@@ -1,20 +1,55 @@
 <mat-toolbar color="primary">
-  <button mat-button action="MenuSwitch" (click)="toggleMenu()">Menu</button>
+  <button mat-button action="MenuSwitch" (click)="toggleMenu()">
+    <i class="material-icons">menu</i>
+  </button>
   <h1>
     {{ title }}
   </h1>
-  <div class="buttonBars" [ngClass]="{'showMenu': showMenu}">
-    <div class="buttonBar" *ngIf="user">
-      <button mat-button (click)="toggleSelector($event)" current routerLink="/offers">Offers</button>
-      <button mat-button (click)="toggleSelector($event)" routerLink="/users">Users</button>
-      <button mat-button (click)="toggleSelector($event)" routerLink="/about">About</button>
+  <div class="buttonBars" [ngClass]="{'showMenu': showMenu}" *ngIf="user || true">
+    <div class="buttonBar userprofile" *ngIf="user">
+      <div class="profileImage">
+        <img src="{{ user['imageUrl'] }}"/>
+      </div>
+      <span style="border-left: 1px solid #fff;
+      padding-left: 10px;">{{ user.login }}</span>
     </div>
-    <div class="buttonBar">
-
-      <button mat-button (click)="toggleSelector($event)" routerLink="/user/1">My profile</button>
-      <button mat-button (click)="disconnect()" routerLink="/login">{{ user ? 'Log out':'Log in'}}</button>
+    <div class="buttonBar" *ngIf="user">
+      <button mat-button (click)="toggleSelector($event)" current routerLink="/offers">
+        <i class="material-icons">assistant_photo</i>
+        Offers
+      </button>
+      <button mat-button (click)="toggleSelector($event)" routerLink="/users">
+        <i class="material-icons">people</i>
+        Users
+      </button>
+      <button mat-button (click)="toggleSelector($event)" routerLink="/about">
+        <i class="material-icons">info</i>
+        About
+      </button>
+      <button mat-button (click)="toggleSelector($event)" routerLink="/user/1">
+        <i class="material-icons">account_box</i>
+        My profile
+      </button>
     </div>
   </div>
-
+  <div class="buttonBar horizontal">
+    <button mat-button [ngClass]="{'current': rightPanelContent === 'notifications'}" (click)="toggleRightPanel('notifications')" >
+      <i class="material-icons">notifications</i>
+    </button>
+    <button mat-button [ngClass]="{'current': rightPanelContent === 'notifications'}" (click)="toggleRightPanel('messages')" value=2>
+      <i class="material-icons">message</i>
+      <b>12</b>
+    </button>
+    <button mat-button (click)="disconnect()" routerLink="/login">
+      <i class="material-icons">{{ user ? 'exit_to_app':'exit_to_app'}}</i>
+    </button>
+  </div>
 </mat-toolbar>
 <router-outlet></router-outlet>
+<div #rightPanel [attr.content]="rightPanelContent" class="rightPanel">
+  <div *ngIf="rightPanelContent === 'notifications'">
+    <notification  *ngFor="let notification of userNotifications" [notification]="notification"></notification>
+  </div>
+
+</div>
+

@@ -1,6 +1,9 @@
-{"offers":
+{"posts":
   [{
     "id":1,
+    "type":"offer",
+    "ownerId":1,
+    "ownerType":"user",
     "title": "Caissier",
     "salary": 3000,
     "workhours": 10,
@@ -10,6 +13,21 @@
     "imageUrl": "https://source.unsplash.com/1600x900/?product"
   },{
     "id":2,
+    "type":"demand",
+    "ownerId":1,
+    "ownerType":"user",
+    "title": "Livreur",
+    "salary": 4500,
+    "workhours": 10,
+    "workdays": 5,
+    "description": "lorem ipsum",
+    "badges": [{"category":"fav","name":"Favorite"}, {"category":"jobtype","name":"Stage"}, {"category":"match","name":"Watchout"}],
+    "imageUrl": "https://source.unsplash.com/1600x900/?product"
+  },{
+    "id":3,
+    "type":"offer",
+    "ownerId":1,
+    "ownerType":"company",
     "title": "Livreur",
     "salary": 4500,
     "workhours": 10,
@@ -20,22 +38,58 @@
   }],
   "users":
   [{
+    "id":1,
     "login": "ZouheirBN",
     "password":"banou",
     "first_name":"Zouheir",
     "last_name":"Banou",
+    "imageUrl": "https://source.unsplash.com/1600x900/?product",
     "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Chercheur"}]
   },{
+    "id":2,
     "login":"ImadHR",
     "password":"leo",
     "first_name":"Imad",
-    "last_name":"Herchy",
+    "last_name":"HR",
+    "imageUrl": "https://source.unsplash.com/1600x900/?product",
     "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Stagiaire"}]
   },{
+    "id":3,
     "login":"AliRA",
     "password":"leo",
+    "first_name":"Ali",
+    "last_name":"RA",
+    "imageUrl": "https://source.unsplash.com/1600x900/?product",
+    "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Stagiaire"}]
+  }],
+  "companies":
+  [{
+    "id":1,
+    "login": "ABCInfo",
+    "password":"banou",
+    "first_name":"Zouheir",
+    "last_name":"Banou",
+    "address":{
+      "latitude":33.6084139,
+      "longitude":-7.534395
+    },
+    "imageUrl": "https://source.unsplash.com/1600x900/?product",
+    "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Chercheur"}]
+  },{
+    "id":2,
+    "login":"ImadHR",
+    "password":"leo",
     "first_name":"Imad",
-    "last_name":"Herchy",
+    "last_name":"HR",
+    "imageUrl": "https://source.unsplash.com/1600x900/?product",
+    "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Stagiaire"}]
+  },{
+    "id":3,
+    "login":"AliRA",
+    "password":"leo",
+    "first_name":"Ali",
+    "last_name":"RA",
+    "imageUrl": "https://source.unsplash.com/1600x900/?product",
     "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Stagiaire"}]
   }]
 }

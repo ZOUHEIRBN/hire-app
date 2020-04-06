@@ -6,7 +6,7 @@ mat-toolbar{
 }
 mat-toolbar h1{
   display: block;
-  width: 100%;
+  margin-right: 5%!important;
 }
 mat-toolbar button[action=MenuSwitch]{
   border: .5pt solid #fff;
@@ -15,32 +15,164 @@ mat-toolbar button[action=MenuSwitch]{
 }
 .buttonBars{
   display: flex;
+  width: 100%;
+  flex-grow: 1;
+  flex-direction: row-reverse;
 }
+
 div.buttonBar{
   float: right;
   position: relative;
   right: 0;
-  max-width: 50%;
+  max-width: 100%;
+  display: flex;
+  flex: 1 1 10%;
+  justify-content: center;
+  align-items: center;
+}
+div.userprofile{
+  flex-direction: row-reverse;
+  flex-grow: 0;
+  margin: 0 1%;
+}
+div.buttonBar:not(.horizontal) button{
+  flex-grow: 1;
+}
+div.profileImage {
+  border-radius: calc(var(--menu-height));
+    height: calc(var(--menu-height));
+    width: calc(var(--menu-height));
+    background-color: #fff;
+    border: 2pt solid var(--primary-color-light);
+    /* margin: 5%; */
+    padding: 1%;
+    /* left: 50%;
+    top: 50%; */
+    position: relative;
+    transform: translate(-0%, -0%) scale(0.65);
+}
+div.profileImage img {
+  position: relative;
+    height: 85%;
+    margin: 2.5%;
+    top: 5%;
+    left: 2%;
 }
 
-@media(orientation: portrait) {
+div.horizontal button {
+  border-radius: 100%;
+  padding: 0;
+  width: 64px;
+  height: 64px;
+  transform: scale(0.6);
+  flex-grow: 0;
+}
+div.horizontal button.current
+{
+  border: 5px solid #fff;
+  transition: all .5s ease;
+}
+div.horizontal button[value]:not([value='0']) {
+  color: var(--primary-color);
+  background-color: #fff;
+}
+div.buttonBar button[current]{
+  border-bottom: 2px solid #fff;
+  border-radius: 0;
+}
+div.buttonBar b{
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+/* Notification & Messages side panel */
+div.rightPanel {
+  height: calc(100vh - (var(--menu-height) * 1));
+  width: 50vw;
+  color: #fff;
+  background-color: var(--primary-color-light);
+  opacity: 0.95;
+  z-index: 2;
+  position: fixed;
+  top: calc(var(--menu-height) * 1);
+  transition: all .5s cubic-bezier(0.175, 0.885, 0.32, 1.0);
+  padding: calc(var(--menu-height) * .1) calc(var(--menu-height) * .1);
+  overflow-x: hidden;
+  overflow-y: auto;
+  right: 0vw;
+  float: right;
+}
+div.rightPanel[content=none] {
+  right: -150vw;
+}
+notification {
+  width: 95%;
+  display: block;
+}
+
+div.rightPanel>div {
+  width: 96%;
+  left: 2%;
+  position: relative;
+}
+
+@media only screen and (orientation: portrait), only screen and (orientation: landscape) and (max-width: 960px) {
   mat-toolbar button[action=MenuSwitch]{
     display: block;
+    flex-grow: 0;
   }
   div.buttonBar{
     display: flex;
     flex-wrap: wrap;
+    flex: 0 0 10%;
     max-width: 100%;
     width: 100%;
   }
-  div.buttonBar button{
+  div.horizontal button
+  {
+    border-radius: 0;
+    border-bottom: 0px solid #fff;
+
+    flex: 1 1 0%;
+    height: 84px;
+    /* width: 84px; */
+    margin: 0;
+    padding-bottom: 2%;
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(5px) scale(.6);
+    /* font-size: 0vmin; */
+    position: relative;
+  }
+  div.horizontal button.current
+  {
+    border: 0px solid #fff;
+    border-bottom: 5px solid #fff;
+  }
+  div.buttonBar:first-child{
+    flex-direction: row;
+  }
+  div.buttonBar:first-child span{
+    flex-grow: 1;
+  }
+  div.profileImage {
+    left: 0%;
+    top: 0%;
+    transform: translate(0%, 0%) scale(0.85);
+  }
+  div.buttonBar:not(.horizontal) button{
     width: 100%;
     display: block;
   }
-
+  div.buttonBar.horizontal{
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex: 1 0 10%;
+  }
   div.buttonBar button[current]{
     color: #fff;
     background-color: var(--primary-color);
+    border-bottom: 1pt solid #fff;
   }
 
   .buttonBars{
@@ -57,6 +189,7 @@ div.buttonBar{
     display: flex;
     flex-direction: column;
     transition: all .7s ease-in-out;
+    flex: 0 0 10%;
   }
   .buttonBars::after{
     content: " ";
@@ -76,4 +209,21 @@ div.buttonBar{
     left: 0vw;
     opacity: .6;
   }
+
+  /* Notification & Messages side panel */
+  div.rightPanel {
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  div.rightPanel>div {
+    width: 95%;
+  }
 }
+
+@media only screen and (orientation: landscape) and (max-width: 960px) {
+  div.rightPanel>div {
+    width: 98%;
+  }
+}
+
+

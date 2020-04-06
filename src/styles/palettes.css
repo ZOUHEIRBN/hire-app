@@ -1,15 +1,17 @@
-badge {
-    --default: var(--secondary-color);
-    --jobtype: var(--secondary-color);
-    --match: #b31045;
-    --fav: #fbc02d;
-}
 :root{
-  --primary-color: #188076; /* #7b1fa2; */
-  --secondary-color: #106CB3; /* #7b1fa2; */
-  --third-color: #B31410; /* #7b1fa2; */
+  --primary-color: #106CB3; /* #7b1fa2; */
+  --secondary-color: #38B307; /* #188076; */
+  --third-color: #B322A5; /* #B31410; */
+  --fourth-color: #B37922;
+  --fifth-color: #2274B3;
+  --primary-color-light: #00adf8;
+  --secondary-color-light: #0AC9AF;
 
-
-  --primary-color-light: #0AC9AF;
-  --secondary-color-light: #00adf8;
 }
+badge {
+    --default: var(--primary-color);
+    --jobtype: var(--secondary-color);
+    --match: var(--third-color); /* #b31045; */
+    --fav: var(--fourth-color); /* #fbc02d */
+}
+

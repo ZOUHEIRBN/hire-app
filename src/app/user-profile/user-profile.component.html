@@ -1,125 +1,23 @@
 <mat-card style="margin-top:10px;">
+  <post-filter></post-filter>
+
   <mat-card-content>
-    <!-- <mat-card-info>
-      <div class="Image" [attr.focus]="false">
-        <img src="../../assets/svg/logo.svg"/>
-      </div>
-
-      <mat-card-contents>
-        <mat-card-header>
-          <mat-card-title>
-            {{user.first_name}} {{user.last_name}} <a class="address">@{{user.login}}</a>
-          </mat-card-title>
-
-          <mat-card-subtitle>
-            <span>Some info here&nbsp;</span>
-
-            <mat-card-badges>
-              <post-badge class="{{ badge.category }}" *ngFor="let badge of user.badges" [badge]="badge"></post-badge>
-            </mat-card-badges>
-
-          </mat-card-subtitle>
-
-        </mat-card-header>
-      </mat-card-contents>
-    </mat-card-info> -->
-    <user-details [user]="user" [embedded]="true"></user-details>
-    <div class="mat-card-info">
-      <mat-card-info>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat laboriosam, modi quaerat laudantium ab mollitia recusandae sed veniam voluptates amet, cupiditate animi possimus libero cum molestias? Exercitationem sint asperiores aliquam?
-          </span>
-        </p>
-      </mat-card-info>
+    <div class="panel-1" @developDown>
+      <user-details *ngIf="usertype === 'user'" [user]="user" [embedded]="true"></user-details>
+      <company-details *ngIf="usertype === 'company'" [company]="user" [embedded]="true"></company-details>
     </div>
 
+    <div class="mat-card-info">
+        <div *ngFor="let post of userposts">
+          <offer-details [offer]="post" *ngIf="post.type === 'offer' && this.filter.doSatisfy(post)"></offer-details>
+          <post [post]="post" *ngIf="post.type !== 'offer' && this.filter.doSatisfy(post)"></post>
+        </div>
+        <div class="mat-spinner"  *ngIf="loading_state" [ngClass]="{'bottom': this.userposts !== [] }">
+          <mat-spinner></mat-spinner>
+        </div>
+    </div>
 
   </mat-card-content>
+
 
 </mat-card>

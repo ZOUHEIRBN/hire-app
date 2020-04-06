@@ -1,0 +1,179 @@
+mat-card{
+  background:#fff;
+  color:#424242;
+}
+
+.mat-card-subtitle {
+    color: var(--secondary-color);
+    width: 100%;
+}
+
+.mat-card-header {
+    display: block;
+    flex-direction: row;
+}
+
+mat-card-info{
+  display: flex;
+  flex-direction: column-reverse;
+  min-height: 20vmin;
+}
+div.Image{
+  padding-top: 25%;
+  padding-left: 0%;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height : 20vh;
+}
+
+
+mat-card img{
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height:auto;
+  width: 100%;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+div.Image::before {
+  content: "";
+  width: 100%;
+  background-color: var(--primary-color);
+  mix-blend-mode: luminosity;
+  opacity: 0.2;
+  height: 100%;
+  position: absolute;
+  top: 0;
+}
+div.Image::after {
+  content: "";
+    font-size: 2vw;
+    width: 100%;
+    background-color: #2b2b2b;
+    color: hsl(360, 100%, 100%);
+    opacity: 0;
+    mix-blend-mode: hard-light;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0vh;
+    transform: translateY(100%);
+    text-align: center;
+    padding: calc(100% - 8vw) 0%;
+}
+div.Image:hover::after {
+  opacity: 1;
+  transform: translateY(0%);
+  bottom: 0vh;
+}
+div.Image:hover img {
+  transform: translate(-50%, -50%) scale(1.25);
+}
+div.Image[focus=true]{
+  position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsla(100,100%,0%,.77);
+}
+div.Image[focus=true] img{
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.85);
+    z-index: 2;
+    height: 90vmin;
+    width: auto;
+}
+div.Image[focus=true]:hover img {
+  transform: translate(-50%, -50%) scale(.855);
+}
+mat-card-contents{
+  display: inline-block;
+  width: 100%;
+
+}
+
+
+/* description field */
+p{
+  margin: 0;
+  padding: 7pt 1rem;
+
+  --lh: 12pt;
+  font-size: var(--lh);
+  position: relative;
+
+}
+
+@media (orientation: portrait) {
+  div.Image {
+    width: 100%;
+    height : 20vh;
+    padding: 10vh 0%;
+    margin: 5% 0%;
+  }
+  mat-card-info {
+    flex-direction: column-reverse;
+  }
+  mat-card-subtitle {
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+  }
+
+  mat-card img{
+    width: auto;
+    height : 100%;
+  }
+  div.Image::after {
+    font-size: 24pt;
+    padding: calc(20vh - 14pt) 0%;
+  }
+  p{
+    --lh: 12pt;
+    --max-lines: 3;
+    max-height: calc(var(--lh) *  var(--max-lines));
+    overflow: hidden;
+  }
+  p::after {
+    position: absolute;
+      content: "Read more";
+      width: 30%;
+      border-radius: var(--lh);
+      max-height: calc(1.5*var(--lh));
+      text-align: center;
+
+      transform: translate(-50%, calc(0.2*var(--lh)));
+      left: 50%;
+      bottom: calc(0*var(--lh));
+      opacity: 0;
+      background: #000;
+      color: white;
+      box-shadow: 0px 2px 3pt 0px #424242;
+      mix-blend-mode: normal;
+
+      transition: all .5s ease;
+  }
+  p:hover::after {
+      bottom: calc(0.5*var(--lh));
+      opacity: 1;
+  }
+
+  p[shrink_text=false]{
+    max-height: calc(var(--lh) * 100 * var(--max-lines));
+  }
+  p[shrink_text=false]::after{
+    content: "Read less";
+  }
+  div.Image[focus=true] img{
+    height: auto;
+    width: 95vw;
+  }
+}

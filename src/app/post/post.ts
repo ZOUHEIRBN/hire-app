@@ -1,6 +1,8 @@
 import { Badge } from '../badge/badge'
 export interface Post{
   id:number,
+  type?:string,
+  ownerId:number,
   title: string,
   description: string,
   badges: Badge[],

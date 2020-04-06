@@ -2,8 +2,11 @@
 top: var(--menu-height);
 position: absolute;
 width: calc(100% - 20px);">
-  <div class="container">
-    <user-details *ngFor="let profile of profiles" [user]="profile"></user-details>
+  <post-filter #filter></post-filter>
+  <div class="container">  <!-- [@staggeredDevelop]="profiles.length"> -->
+    <div *ngFor="let profile of profiles" style="display: contents;">
+      <user-details *ngIf="this.filter.doSatisfy(profile)" @develop [user]="profile"></user-details>
+    </div>
   </div>
 
 

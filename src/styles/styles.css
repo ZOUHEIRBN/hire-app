@@ -1,18 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: "Helvetica Neue", sans-serif; background-color: #ddd;}
+body { margin: 0; font-family: "Helvetica Neue", sans-serif; background-color: #ddd; overflow-y: scroll;}
 *, *::after, *::before{
   transition: all .5s ease;
   cursor: default;
 }
-/* Global variables */
-*{
-  --menu-height: 64px;
+mat-card, mat-card *, mat-card *::before, mat-card *::after{
+  transition: all .5s ease;
 }
+
 app-about>*:first-child, app-user>*:first-child, user-profile>*:first-child{
   top: var(--menu-height);
     position: relative;
+}
+app-login {
+  z-index: 4;
+  position: absolute;
+}
+/* Global variables */
+*{
+  --menu-height: 64px;
 }
 /* Buttons */
 mat-card-actions button, .mat-card-actions button{
@@ -29,11 +37,38 @@ mat-card, mat-card *, mat-card *::before, mat-card *::after{
 mat-card-actions{
   position: relative;
   display: block;
-  margin-bottom: 10px!important;
+  margin: 10px 0px!important;
 
   bottom: 10px;
   width: 100%;
 }
 mat-card-actions>button{
   float: right;
+}
+
+/* Scrollbar CSS */
+
+/* width */
+*::-webkit-scrollbar {
+  width: 5px;
+  opacity: 0;
+}
+*:hover::-webkit-scrollbar {
+  opacity: .7;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ddd;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color-light);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
 }

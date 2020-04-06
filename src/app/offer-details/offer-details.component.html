@@ -1,4 +1,4 @@
-<mat-card style="margin-top:10px;">
+<mat-card style="margin-top:10px;" @develop>
   <mat-card-content>
     <mat-card-info>
       <div class="Image" [attr.focus]="false" (click)="toggleFocus($event)">
@@ -15,7 +15,7 @@
             <span>{{offer.salary}} $/ {{offer.workhours}} heures par jour / {{offer.workdays}}&nbsp;</span>
 
             <mat-card-badges>
-              <post-badge class="{{ badge.category }}" *ngFor="let badge of offer.badges" [badge]="badge"></post-badge>
+              <post-badge [ngClass]="badge.category" *ngFor="let badge of offer.badges" [badge]="badge"></post-badge>
             </mat-card-badges>
 
           </mat-card-subtitle>

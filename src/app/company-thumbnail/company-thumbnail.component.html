@@ -1,0 +1,51 @@
+<mat-card style="margin-top:10px;" [ngClass]="{'embedded': embedded}">
+  <mat-card-content  *ngIf="company">
+    <mat-card-info>
+      <div class="Image" [attr.focus]="false">
+
+        <div>
+          <agm-map
+            #gmap
+            [longitude]="-7"
+            [latitude]="33"
+            [zoom]="6" id="gmap"
+            style="width:100%;height:100%;position: absolute;">
+          </agm-map>
+        </div>
+      </div>
+
+      <mat-card-contents>
+        <div class="Image pdp"
+        [attr.focus]="false">
+          <img [src]="company.imageUrl"/>
+        </div>
+        <mat-card-header>
+          <mat-card-title *ngIf="company">
+            {{ company.first_name }} {{company.last_name}} <a class="address">@{{company.id}}</a>
+          </mat-card-title>
+
+          <mat-card-subtitle>
+            <span>Some info here&nbsp;</span>
+
+            <mat-card-badges>
+              <post-badge class="{{ badge.category }}" *ngFor="let badge of company.badges" [badge]="badge"></post-badge>
+            </mat-card-badges>
+
+          </mat-card-subtitle>
+
+        </mat-card-header>
+        <p [attr.shrink_text]="true">
+          <span>
+            <!-- {{user.bio}}<br> -->
+          </span>
+        </p>
+
+      </mat-card-contents>
+    </mat-card-info>
+    <mat-card-actions *ngIf="!embedded">
+      <button mat-button routerLink="{{ '/company/' + company.id }}">Consulter</button>
+      <!-- <button mat-button>Ajouter aux favoris</button> -->
+    </mat-card-actions>
+  </mat-card-content>
+
+</mat-card>

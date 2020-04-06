@@ -6,12 +6,12 @@
         </div>
         <form action="">
           <h2>Login</h2>
-          <input autocomplete [(ngModel)]="login" type="text" name="login" placeholder="Login"/>
-          <input autocomplete [(ngModel)]="password" type="password" name="password" placeholder="Password"/>
+          <input mat-input autocomplete [(ngModel)]="login" type="text" name="login" placeholder="Login"/>
+          <input mat-input autocomplete [(ngModel)]="password" type="password" name="password" placeholder="Password"/>
           <div style="display: contents;">
             <div class="mat-card-actions">
               <button mat-button (click)="this.loginUser($event)">Connexion</button>
-              <button mat-button>Inscription</button>
+              <button mat-button (click)="this.gotoRegister()">Inscription</button>
             </div>
             <a href="offers">Forgot password?</a>
           </div>

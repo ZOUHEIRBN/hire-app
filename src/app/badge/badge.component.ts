@@ -13,15 +13,18 @@ import { Badge } from './badge';
 // }
 export class BadgeComponent implements OnInit {
   @Input() badge: Badge;
-  expand = false;
+  @Input() activate = false;
+  @Input() expand = false;
   constructor() { }
 
   ngOnInit(): void {
 
   }
 
-  toggleExpand(){
-    this.expand = !this.expand;
+  toggleButton(){
+    if(this.expand){
+      this.activate = !this.activate;
+    }
   }
 
 }

@@ -1,8 +1,8 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation, ViewChild } from '@angular/core';
 import { UserLogin } from './user-thumbnail/user';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
-
+import { notifications } from './notification/notifications';
 
 @Component({
   selector: 'app-root',
@@ -13,16 +13,46 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
   @Input() title = 'Hire';
+  @ViewChild('rightPanel') rightPanel;
+  @ViewChild('notificationButton') notificationButton;
+  rightPanelContent = 'none';
   showMenu = false;
   user:UserLogin = null;
-
+  userNotifications = [];
   constructor(private _userService:UserService, private router:Router){
     if(!this.user){
-      // router.navigate(['/login']);
+      //router.navigate(['/login']);
       // alert('You must connect to access this page')
     }
    }
 
+
+  toggleRightPanel(content){
+
+    if(this.rightPanelContent+'' !== content+''){
+      this.rightPanelContent = 'none';
+      this.userNotifications = [];
+      setTimeout(() => {
+        this.rightPanelContent = content;
+
+        //if notifications
+        this.getUserNotifications()
+      }, 400);
+    }
+    else{
+      this.rightPanelContent = 'none'
+    }
+  }
+  getUserNotifications(){
+    let i = 0;
+      let interval = setInterval(() => {
+        this.userNotifications.push(notifications[i]);
+        i++;
+        if(i >= notifications.length){
+          clearInterval(interval);
+        }
+      }, 100);
+  }
   toggleMenu(){
     this.showMenu = !this.showMenu;
   }
@@ -51,16 +81,15 @@ export class AppComponent {
   }
 
   ngOnInit(){
-    this._userService._loginLetPass$
+    this._userService._user$
       .subscribe(
         response => {
-          if(response !== null){
-            if(response["login"] !== null && response["password"] !== null){
+          if(response !== null && response["login"] !== null && response["password"] !== null){
               this.user = {"login":response["login"], "password":response["password"]};
               this.router.navigate(['/offers']);
             }
           }
-        }
+
       )
   }
   ngOnDestroy(){

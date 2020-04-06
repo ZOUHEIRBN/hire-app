@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../user-thumbnail/user';
 import { UserService } from '../services/user.service';
-import { interval } from 'rxjs';
+import { staggeredDevelop, develop } from '../app-animations';
+import { PostFilterComponent } from '../post-filter/post-filter.component';
+
 
 
 @Component({
   selector: 'app-profiles',
   templateUrl: './profiles.component.html',
-  styleUrls: ['./profiles.component.css']
+  styleUrls: ['./profiles.component.css'],
+  animations:[staggeredDevelop, develop]
 })
 export class ProfilesComponent implements OnInit {
   profiles: User[] = [];
+  @ViewChild('filter') filter:PostFilterComponent;
   loading_state = true
 
 
@@ -22,16 +26,12 @@ export class ProfilesComponent implements OnInit {
   }
   async load(){
     this.loading_state = true;
-    this.apiService.getUsers().subscribe({
-      next: (data:User[]) => {
-        this.profiles = data;
-      }
-    });
-    setTimeout(() => {
+    this.apiService.getAllUsers()
+    .then((response) => {this.profiles = response})
+    .then(() => setTimeout(() => {
+      this.filter.refreshProfileFilters(this.profiles)
       this.loading_state = false;
-    }, 1000);
-
-
+    }, 1000));
   }
 
 }

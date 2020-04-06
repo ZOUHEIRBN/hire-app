@@ -15,7 +15,22 @@ mat-card-info{
   display: flex;
 }
 div.Image{
-  width: 25%;
+  width: 15vmax;
+  height: 10vmax;
+  padding-top: 0%;
+  padding-left: 0%;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+}
+div.Image img{
+  display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: auto;
+    transform: translate(-50%, -50%) scale(1);
 }
 a.address {
   font-weight: lighter;
@@ -27,28 +42,70 @@ a.address:hover {
 mat-card-contents{
   width: 100%;
 }
-
+user-details{
+  width: 30%;
+}
 .embedded{
   position: sticky;
   top: calc(var(--menu-height) + 10px + 16px);
 }
 .embedded div.Image{
-  width: 100%;
+  width: 26vmax;
+  height: 26vmax;
+  overflow: hidden;
+  margin-bottom: 5%;
+}
+.embedded div.Image img{
+  height: 100%;
+}
+.embedded mat-card-badges{
+  display: none;
 }
 .embedded mat-card-info {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-@media only screen and (max-width: 1000px){
-  .embedded div.Image{
-    width: 25%;
+@media only screen and (max-width: 1000px), only screen and (orientation: portrait){
+  div.Image{
+    width: 18vmax;
+    height: 15vmax;
   }
   .embedded mat-card-info {
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
+  }
+  .embedded div.Image{
+    height: 50vmin;
+    width: 50vmin;
+    border-radius: 45vmin;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    margin-bottom: 2%;
+    padding-left: 0%;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+  }
+  .embedded div.Image img{
+    transform: translate(-50%, -50%);
+    height: 100%;
+  }
+}
+@media only screen and (max-height: 800px) and (max-width: 1000px) and (orientation: landscape){
+  .embedded mat-card-info {
+    flex-direction: row;
+  }
+  .embedded div.Image{
+    height: 25vmin;
+    width: 25vmin;
+    border-radius: 45vmin;
+    left: 0%;
+    transform: translate(0%, 0%);
+
   }
   .embedded mat-card-contents{
-    width: 100%;
+    width: auto;
   }
+
 }

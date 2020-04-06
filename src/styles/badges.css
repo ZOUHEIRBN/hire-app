@@ -13,4 +13,8 @@ mat-card-badges {
   div.mat-card-header-text{
     width: 100%;
   }
+
+  post-badge {
+    flex: 0 0 17%;
+  }
 }

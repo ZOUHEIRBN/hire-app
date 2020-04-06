@@ -1,42 +1,60 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { User, USERS } from '../user-thumbnail/user';
-import { SERVER_URL } from './offer.service'
+import { SERVER_URL } from './post.service'
 import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators'
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class UserService {
 
-  private _loginLetPass = new Subject<User>();
-  _loginLetPass$ = this._loginLetPass.asObservable();
+  private _user = new Subject<User>();
+  _user$ = this._user.asObservable();
 
   constructor(private httpClient:HttpClient) { }
+  public async getUser(id){
+    var fetchedData = await fetch(SERVER_URL+"users");
+    var fetchedDataJSON = await fetchedData.json();
+    fetchedDataJSON = fetchedDataJSON.filter(element => element['id']+"" === id)
+    return fetchedDataJSON;
 
-  public getUsers(){
-		return this.httpClient.get(SERVER_URL+"users");
+  }
+  public async getUserByLogin(login){
+    var fetchedData = await fetch(SERVER_URL+"users/"+login);
+    var fetchedDataJSON = await fetchedData.json();
+    fetchedDataJSON = fetchedDataJSON.filter(element => element['login']+"" === login)
+    return fetchedDataJSON;
+
+  }
+  public async getAllUsers(){
+    var fetchedData = await fetch(SERVER_URL+"users");
+    var fetchedDataJSON = await fetchedData.json();
+    return fetchedDataJSON;
+  }
+  public async getUserByMeta(user){
+    var str = '?'
+    for(let key in user){
+      str = str + key + "=" + user[key].replace(' ','%20') + "&"
+    }
+
+    var fetchedData = await fetch(SERVER_URL+"users/"+str);
+    var fetchedDataJSON = await fetchedData.json();
+    return fetchedDataJSON;
   }
 
   registerUser(User){
     return true;
   }
-
   loginUser(user){
-    var users;
-    this.httpClient.get(SERVER_URL+"users").subscribe(data=>{
-      users = data;
-      function findUser(loop_user){
-        return loop_user.login === user.login && loop_user.password === user.password;
-      }
-      var find = users.filter(findUser);
-
-      //if the user is in the database
-      if(find.length > 0)
+    var fetcheduser;
+    this.getUserByMeta(user)
+    .then((response) => {
+      if(response.length > 0)
       {
-        this._loginLetPass.next(user);
+        this._user.next(response[0])
       }
-   });
+    })
   }
 }

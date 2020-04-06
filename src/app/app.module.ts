@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { OfferComponent } from './offer/offer.component';
+import { OfferListComponent } from './offer-list/offer-list.component';
 import { AboutComponent } from './about/about.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,11 +25,17 @@ import { UserService } from './services/user.service';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { PostComponent } from './post/post.component';
+import { RegisterComponent } from './register/register.component';
+import { PostFilterComponent } from './post-filter/post-filter.component';
+import { CompanyThumbnailComponent } from './company-thumbnail/company-thumbnail.component';
 
+import { GoogleMapsModule } from '@angular/google-maps'
+import { AgmCoreModule } from '@agm/core';
+import { NotificationComponent } from './notification/notification.component'
 @NgModule({
   declarations: [
     AppComponent,
-    OfferComponent,
+    OfferListComponent,
     AboutComponent,
     OfferDetailsComponent,
     BadgeComponent,
@@ -37,7 +43,11 @@ import { PostComponent } from './post/post.component';
     UserThumbnailComponent,
     ProfilesComponent,
     UserProfileComponent,
-    PostComponent
+    PostComponent,
+    RegisterComponent,
+    PostFilterComponent,
+    CompanyThumbnailComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +60,13 @@ import { PostComponent } from './post/post.component';
     MatCardModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    GoogleMapsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC2pCpXrCKOgMJNl_qyHapgyfVRN2Rc6_Y'
+    })
 
   ],
-  providers: [ UserService, OfferComponent],
+  providers: [ UserService, OfferListComponent],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })

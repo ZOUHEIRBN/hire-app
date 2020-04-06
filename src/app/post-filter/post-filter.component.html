@@ -1,0 +1,15 @@
+<mat-card [ngClass]="{'collapse':!this.show_filter_switches}" class="badges collapse">
+  <h1 class="toggleSwitch" (click)="this.show_filter_switches = !this.show_filter_switches">
+    <i class="material-icons">filter_list</i>
+  </h1>
+  <div class="stretch" *ngIf="this.show_filter_switches" @stretchH>
+    <h2>Filters</h2>
+    <div>
+      <mat-card-badges *ngFor="let badgeCat of this.filters">
+        <h3>{{ badgeCat.category }}</h3>
+        <post-badge (click)="this.setFilter($event)" class="{{ badge.category }}" *ngFor="let badge of badgeCat.badges" [badge]="badge" [expand]="true"></post-badge>
+      </mat-card-badges>
+    </div>
+  </div>
+
+</mat-card>

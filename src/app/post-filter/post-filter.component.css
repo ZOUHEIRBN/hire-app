@@ -1,0 +1,59 @@
+.badges mat-card-badges {
+  display: flex;
+  flex: 1 0 19%;
+  flex-flow: column;
+}
+mat-card.badges {
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: calc(var(--menu-height));
+  z-index: 2;
+  background-color: #fff!important;
+  color: #424242;
+}
+div.stretch{
+  overflow: hidden;
+}
+.stretch div {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.badges * {
+  transition: all .5s ease-in-out;
+}
+.badges.collapse {
+  position: fixed;
+  width: 12pt;
+  height: 12pt;
+  top: calc(var(--menu-height) + 10px + 16px);
+  right: calc(10px + 16px);
+  display: block;
+  overflow: hidden;
+}
+.badges h1.toggleSwitch {
+  transform: translate(-125%, 25%) rotate(-180deg);
+  top: 0%;
+  right: 0%;
+  position: absolute;
+  transition: all .5s ease;
+}
+.badges.collapse h1.toggleSwitch {
+  transform: translate(50%, -50%) rotate(0);
+  top: 50%;
+  right: 50%;
+  position: absolute;
+}
+/* Mobile */
+@media (orientation: portrait) and (max-width: 768px) {
+  mat-card-badges {
+    flex-wrap: wrap;
+  }
+  .badges mat-card-badges {
+    display: flex;
+    flex: 0 1 50%;
+    flex-flow: column;
+  }
+
+}

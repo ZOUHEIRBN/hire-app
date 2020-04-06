@@ -2,6 +2,7 @@ mat-card{
   background:#fff;
   color:#424242;
 }
+
 .mat-card-subtitle {
     color: var(--secondary-color);
     width: 100%;
@@ -11,9 +12,7 @@ mat-card{
     display: block;
     flex-direction: row;
 }
-mat-card, mat-card *, mat-card *::before, mat-card *::after{
-  transition: all .5s ease;
-}
+
 mat-card-info{
   display: flex;
   min-height: 20vmin;
@@ -27,30 +26,8 @@ div.Image{
   display: flex;
   overflow: hidden;
 }
-div.Image[focus=true] img{
-  position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    z-index: 2;
-    height: 90vh;
-}
-@media (orientation: portrait) {
-  div.Image {
-    width: 100%;
-    height: 20vh;
-    padding: 10vh 0%;
-    margin: 5% 0%;
-  }
-  mat-card-info {
-    flex-direction: column-reverse;
-  }
-  mat-card-subtitle {
-    flex-direction: column;
-    width: 100%;
-    display: flex;
-  }
-}
+
+
 
 mat-card img{
   display: block;
@@ -61,6 +38,7 @@ mat-card img{
   width: auto;
   transform: translate(-50%, -50%) scale(1);
 }
+
 div.Image::before {
   content: "";
   width: 100%;
@@ -72,23 +50,24 @@ div.Image::before {
   top: 0;
 }
 div.Image::after {
-  content: "Click to find out!";
-    font-size: 3vw;
+  content: "";
+    font-size: 2vw;
     width: 100%;
     background-color: #2b2b2b;
     color: hsl(360, 100%, 100%);
     opacity: 0;
     mix-blend-mode: hard-light;
-    /* height: 11vh; */
     width: 100%;
     position: absolute;
     left: 0;
-    bottom: -50vh;
+    bottom: 0vh;
+    transform: translateY(100%);
     text-align: center;
-    padding: calc(25vh - 3vw) 0%;
+    padding: calc(100% - 8vw) 0%;
 }
 div.Image:hover::after {
   opacity: 1;
+  transform: translateY(0%);
   bottom: 0vh;
 }
 div.Image:hover img {
@@ -103,8 +82,17 @@ div.Image[focus=true]{
     height: 100vh;
     background-color: hsla(100,100%,0%,.77);
 }
+div.Image[focus=true] img{
+  position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(.85);
+    z-index: 2;
+    height: 90vmin;
+    width: auto;
+}
 div.Image[focus=true]:hover img {
-  transform: translate(-50%, -50%) scale(.99);
+  transform: translate(-50%, -50%) scale(.855);
 }
 mat-card-contents{
   display: inline-block;
@@ -123,10 +111,26 @@ p{
   position: relative;
 
 }
+
 @media (orientation: portrait) {
+  div.Image {
+    width: 100%;
+    height : 20vh;
+    padding: 10vh 0%;
+    margin: 5% 0%;
+  }
+  mat-card-info {
+    flex-direction: column-reverse;
+  }
+  mat-card-subtitle {
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+  }
+
   mat-card img{
-    width:100%;
-    height: auto!important;
+    width: auto;
+    height : 100%;
   }
   div.Image::after {
     font-size: 24pt;
@@ -167,5 +171,9 @@ p{
   }
   p[shrink_text=false]::after{
     content: "Read less";
+  }
+  div.Image[focus=true] img{
+    height: auto;
+    width: 95vw;
   }
 }

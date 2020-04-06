@@ -1,14 +1,14 @@
 <mat-card style="margin-top:10px;" [ngClass]="{'embedded': embedded}">
-  <mat-card-content>
+  <mat-card-content  *ngIf="user">
     <mat-card-info>
       <div class="Image" [attr.focus]="false">
-        <img src="../../assets/svg/logo.svg"/>
+        <img [src]="user.imageUrl"/>
       </div>
 
       <mat-card-contents>
         <mat-card-header>
-          <mat-card-title>
-            {{user.first_name}} {{user.last_name}} <a class="address">@{{user.login}}</a>
+          <mat-card-title *ngIf="user">
+            {{ user.first_name }} {{user.last_name}} <a class="address">@{{user.login}}</a>
           </mat-card-title>
 
           <mat-card-subtitle>
@@ -30,7 +30,7 @@
       </mat-card-contents>
     </mat-card-info>
     <mat-card-actions *ngIf="!embedded">
-      <button mat-button routerLink="#">Consulter</button>
+      <button mat-button routerLink="{{ '/user/' + user.id }}">Consulter</button>
       <!-- <button mat-button>Ajouter aux favoris</button> -->
     </mat-card-actions>
   </mat-card-content>

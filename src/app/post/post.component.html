@@ -1,1 +1,38 @@
-<p>post works!</p>
+<mat-card style="margin-top:10px;" @develop>
+  <mat-card-content>
+    <mat-card-info>
+      <div class="Image" [attr.focus]="false" (click)="toggleFocus($event)">
+        <img src="{{ post.imageUrl }}"/>
+      </div>
+
+      <mat-card-contents>
+        <mat-card-header>
+          <mat-card-title>
+            {{post.title}}
+          </mat-card-title>
+
+          <mat-card-subtitle>
+            <span>&nbsp;</span>
+
+            <mat-card-badges>
+              <post-badge class="{{ badge.category }}" *ngFor="let badge of post.badges" [badge]="badge"></post-badge>
+            </mat-card-badges>
+
+          </mat-card-subtitle>
+
+        </mat-card-header>
+        <p (click)="readMore($event)" [attr.shrink_text]="true">
+          <span>
+            {{post.description}}<br>
+          </span>
+        </p>
+
+      </mat-card-contents>
+    </mat-card-info>
+    <mat-card-actions>
+      <button mat-button>Liker</button>
+      <!-- <button mat-button>Ajouter aux favoris</button> -->
+    </mat-card-actions>
+  </mat-card-content>
+
+</mat-card>
