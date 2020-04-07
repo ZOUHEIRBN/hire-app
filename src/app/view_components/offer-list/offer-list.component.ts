@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Offer } from '../post/post';
-import { PostService } from '../services/post.service';
+import { Offer } from '../../interfaces/post';
+import { PostService } from '../../services/post.service';
 
 
 

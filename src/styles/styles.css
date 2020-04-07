@@ -23,6 +23,13 @@ app-login {
   --menu-height: 64px;
 }
 /* Buttons */
+
+button div{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  display: flex;
+}
 mat-card-actions button, .mat-card-actions button{
   background-color: #eee!important;
   color: var(--primary-color)!important;

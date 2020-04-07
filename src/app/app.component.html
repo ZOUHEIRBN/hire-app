@@ -18,10 +18,18 @@
         <i class="material-icons">assistant_photo</i>
         Offers
       </button>
-      <button mat-button (click)="toggleSelector($event)" routerLink="/users">
-        <i class="material-icons">people</i>
-        Users
-      </button>
+      <div class="menuButton">
+        <button #exploreMenuButton mat-button (click)="toggleSelector($event)">
+          <i class="material-icons">search</i>
+          Explore
+        </button>
+        <mat-menu>
+          <button mat-button mat-menu-item routerLink="/users" (click)="clearMenuCurrent($event)">
+            <i class="material-icons">people</i>
+            Users
+          </button>
+        </mat-menu>
+      </div>
       <button mat-button (click)="toggleSelector($event)" routerLink="/about">
         <i class="material-icons">info</i>
         About
@@ -30,6 +38,9 @@
         <i class="material-icons">account_box</i>
         My profile
       </button>
+
+
+
     </div>
   </div>
   <div class="buttonBar horizontal">

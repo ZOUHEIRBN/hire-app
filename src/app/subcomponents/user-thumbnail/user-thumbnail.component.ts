@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from './user';
+import { User } from '../../interfaces/user';
 import { Router } from '@angular/router';
-import { developUp, developDown } from '../app-animations';
+import { developUp, developDown } from '../../app-animations';
 
 @Component({
   selector: 'user-details',

@@ -1,7 +1,7 @@
 /// <reference types="@types/googlemaps" />
 import { Component, OnInit, Input, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Company } from './company';
+import { Company } from '../../interfaces/company';
 
 @Component({
   selector: 'company-details',

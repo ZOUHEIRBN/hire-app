@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { User, USERS } from '../user-thumbnail/user';
+import { User, USERS } from '../interfaces/user';
 import { SERVER_URL } from './post.service'
 import { Subject } from 'rxjs';
 

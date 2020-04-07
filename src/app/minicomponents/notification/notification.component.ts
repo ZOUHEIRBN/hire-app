@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Notification } from './notifications'
-import { develop } from '../app-animations';
+import { Notification } from '../../interfaces/notifications'
+import { develop } from '../../app-animations';
 
 @Component({
   selector: 'notification',

@@ -1,4 +1,4 @@
-import { Badge } from '../badge/badge'
+import { Badge } from './badge'
 export interface Post{
   id:number,
   type?:string,

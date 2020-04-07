@@ -1,8 +1,8 @@
 import { Component, Input, ViewEncapsulation, ViewChild } from '@angular/core';
-import { UserLogin } from './user-thumbnail/user';
+import { UserLogin } from './interfaces/user';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
-import { notifications } from './notification/notifications';
+import { notifications } from './interfaces/notifications';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +15,7 @@ export class AppComponent {
   @Input() title = 'Hire';
   @ViewChild('rightPanel') rightPanel;
   @ViewChild('notificationButton') notificationButton;
+  @ViewChild('exploreSubmenu') exploreSubmenu;
   rightPanelContent = 'none';
   showMenu = false;
   user:UserLogin = null;
@@ -25,7 +26,6 @@ export class AppComponent {
       // alert('You must connect to access this page')
     }
    }
-
 
   toggleRightPanel(content){
 
@@ -56,7 +56,6 @@ export class AppComponent {
   toggleMenu(){
     this.showMenu = !this.showMenu;
   }
-
   toggleSelector(event: any){
     var target = event.target;
     while(target.tagName !== "BUTTON"){
@@ -74,12 +73,20 @@ export class AppComponent {
        //Set new current
        target.setAttribute("current", "");
        this.showMenu = !this.showMenu;
-
     }
-
-
   }
+  clearMenuCurrent(event: any){
+    var target = event.target;
 
+    if(true)
+    {
+      // Look for the one with current=true
+       var old_current = document.querySelector('.menuButton button[current]');
+       if(old_current !== null){
+         old_current.removeAttribute("current");
+       }
+    }
+  }
   setCurrentUser(userData){
     this.user = userData;
   }
@@ -100,7 +107,6 @@ export class AppComponent {
       //
     }
   }
-
   disconnect(){
     this.showMenu = false;
     this.user = null;

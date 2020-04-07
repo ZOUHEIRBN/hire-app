@@ -1,11 +1,11 @@
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
-import { User } from '../user-thumbnail/user';
-import { UserService } from '../services/user.service';
-import { Post } from '../post/post';
-import { PostService } from '../services/post.service';
-import { developUp, developDown } from '../app-animations';
-import { PostFilterComponent } from '../post-filter/post-filter.component';
+import { User } from '../../interfaces/user';
+import { UserService } from '../../services/user.service';
+import { Post } from '../../interfaces/post';
+import { PostService } from '../../services/post.service';
+import { developUp, developDown } from '../../app-animations';
+import { PostFilterComponent } from '../../minicomponents/post-filter/post-filter.component';
 import { Observable } from 'rxjs';
 
 

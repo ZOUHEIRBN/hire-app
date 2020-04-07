@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { stretch, staggeredDevelop, developDown } from '../app-animations';
+import { stretch, staggeredDevelop, developDown } from '../../app-animations';
 
 @Component({
   selector: 'post-filter',

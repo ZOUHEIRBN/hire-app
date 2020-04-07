@@ -1,4 +1,4 @@
-import { Badge } from '../badge/badge';
+import { Badge } from './badge';
 
 export const USERS: UserLogin[] = [
   {"id":"Zouheir", "password":"banou"}

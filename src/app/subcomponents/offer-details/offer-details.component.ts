@@ -1,20 +1,21 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Post } from './post';
-import { develop } from '../app-animations';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { Offer } from '../../interfaces/post';
+import { develop, developUp, developDown } from '../../app-animations';
 
 @Component({
-  selector: 'post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css'],
-  animations:[develop]
+  selector: 'offer-details',
+  templateUrl: './offer-details.component.html',
+  styleUrls: ['./offer-details.component.css'],
+  animations:[developDown, develop]
 })
-export class PostComponent implements OnInit {
-  @Input() post:Post;
+export class OfferDetailsComponent implements OnInit {
+  @Input() offer: Offer;
+  @Output() filter:any[];
   constructor() { }
 
   ngOnInit(): void {
-
   }
+
   toggleFocus(event: any){
     var target = event.target;
     while(target.tagName !== "DIV"){
