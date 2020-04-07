@@ -15,18 +15,14 @@ export class UserService {
 
   constructor(private httpClient:HttpClient) { }
   public async getUser(id){
-    var fetchedData = await fetch(SERVER_URL+"users");
+    var fetchedData = await fetch(SERVER_URL+"users?id="+id);
     var fetchedDataJSON = await fetchedData.json();
-    fetchedDataJSON = fetchedDataJSON.filter(element => element['id']+"" === id)
     return fetchedDataJSON;
-
   }
-  public async getUserByLogin(login){
-    var fetchedData = await fetch(SERVER_URL+"users/"+login);
+  public async getCompany(id){
+    var fetchedData = await fetch(SERVER_URL+"companies?id="+id);
     var fetchedDataJSON = await fetchedData.json();
-    fetchedDataJSON = fetchedDataJSON.filter(element => element['login']+"" === login)
     return fetchedDataJSON;
-
   }
   public async getAllUsers(){
     var fetchedData = await fetch(SERVER_URL+"users");
@@ -48,7 +44,6 @@ export class UserService {
     return true;
   }
   loginUser(user){
-    var fetcheduser;
     this.getUserByMeta(user)
     .then((response) => {
       if(response.length > 0)

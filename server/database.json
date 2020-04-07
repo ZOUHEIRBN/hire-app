@@ -2,8 +2,7 @@
   [{
     "id":1,
     "type":"offer",
-    "ownerId":1,
-    "ownerType":"user",
+    "ownerId":"ZouheirBN",
     "title": "Caissier",
     "salary": 3000,
     "workhours": 10,
@@ -14,8 +13,7 @@
   },{
     "id":2,
     "type":"demand",
-    "ownerId":1,
-    "ownerType":"user",
+    "ownerId":"ZouheirBN",
     "title": "Livreur",
     "salary": 4500,
     "workhours": 10,
@@ -26,8 +24,7 @@
   },{
     "id":3,
     "type":"offer",
-    "ownerId":1,
-    "ownerType":"company",
+    "ownerId":"ABCInfo",
     "title": "Livreur",
     "salary": 4500,
     "workhours": 10,
@@ -38,24 +35,21 @@
   }],
   "users":
   [{
-    "id":1,
-    "login": "ZouheirBN",
+    "id": "ZouheirBN",
     "password":"banou",
     "first_name":"Zouheir",
     "last_name":"Banou",
     "imageUrl": "https://source.unsplash.com/1600x900/?product",
     "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Chercheur"}]
   },{
-    "id":2,
-    "login":"ImadHR",
+    "id":"ImadHR",
     "password":"leo",
     "first_name":"Imad",
     "last_name":"HR",
     "imageUrl": "https://source.unsplash.com/1600x900/?product",
     "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Stagiaire"}]
   },{
-    "id":3,
-    "login":"AliRA",
+    "id":"AliRA",
     "password":"leo",
     "first_name":"Ali",
     "last_name":"RA",
@@ -64,8 +58,7 @@
   }],
   "companies":
   [{
-    "id":1,
-    "login": "ABCInfo",
+    "id":"ABCInfo",
     "password":"banou",
     "first_name":"Zouheir",
     "last_name":"Banou",
@@ -75,21 +68,5 @@
     },
     "imageUrl": "https://source.unsplash.com/1600x900/?product",
     "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Chercheur"}]
-  },{
-    "id":2,
-    "login":"ImadHR",
-    "password":"leo",
-    "first_name":"Imad",
-    "last_name":"HR",
-    "imageUrl": "https://source.unsplash.com/1600x900/?product",
-    "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Stagiaire"}]
-  },{
-    "id":3,
-    "login":"AliRA",
-    "password":"leo",
-    "first_name":"Ali",
-    "last_name":"RA",
-    "imageUrl": "https://source.unsplash.com/1600x900/?product",
-    "badges":[{"category":"social","name":"Friends"}, {"category":"jobtype","name":"Stagiaire"}]
   }]
 }

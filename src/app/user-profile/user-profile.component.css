@@ -9,6 +9,7 @@ mat-card-content{
 mat-card-content>*:first-child{
   flex-grow: 1;
   width: 30%;
+  height: 100%;
 }
 .mat-card-subtitle {
     color: var(--secondary-color);

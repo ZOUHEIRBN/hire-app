@@ -80,12 +80,15 @@ export class AppComponent {
 
   }
 
+  setCurrentUser(userData){
+    this.user = userData;
+  }
   ngOnInit(){
     this._userService._user$
       .subscribe(
         response => {
-          if(response !== null && response["login"] !== null && response["password"] !== null){
-              this.user = {"login":response["login"], "password":response["password"]};
+          if(response !== null && response["id"] !== null && response["password"] !== null){
+              this.user = {"id":response["id"], "password":response["password"]};
               this.router.navigate(['/offers']);
             }
           }

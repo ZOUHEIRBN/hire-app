@@ -2,7 +2,7 @@ import { Badge } from '../badge/badge'
 export interface Post{
   id:number,
   type?:string,
-  ownerId:number,
+  ownerId:number|string,
   title: string,
   description: string,
   badges: Badge[],

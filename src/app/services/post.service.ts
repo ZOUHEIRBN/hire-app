@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Subject } from 'rxjs';
+import { Post } from '../post/post';
+import 'rxjs/operators'
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
+  // private _postlist = new Subject<Post[]>();
+  // _postlist$ = this._postlist.asObservable();
 
   constructor(private httpClient:HttpClient) { }
 
@@ -13,25 +18,20 @@ export class PostService {
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
-  public async getPostsByType(type){
-		var fetchedData = await fetch(SERVER_URL+"posts");
-    var fetchedDataJSON = await fetchedData.json();
-    fetchedDataJSON = fetchedDataJSON.filter(element => element['type']+"" === type+"");
-    return fetchedDataJSON;
+  public getPostsByType(type){
+		return this.httpClient.get(SERVER_URL+"posts?type="+type).pipe(map(response => {
+      return response;
+    }));
   }
-  public async getUserPosts(id){
-    var fetchedData = await fetch(SERVER_URL+"posts");
-    var fetchedDataJSON = await fetchedData.json();
-    fetchedDataJSON = fetchedDataJSON.filter(element => element['ownerId']+"" === id+"" && element['ownerType']+"" === "user");
-    return fetchedDataJSON;
-
+  public getUserPosts(id){
+    return this.httpClient.get(SERVER_URL+"posts?ownerId="+id).pipe(map(response => {
+      return response;
+    }));
   }
   public async getCompanyPosts(id){
-    var fetchedData = await fetch(SERVER_URL+"posts");
-    var fetchedDataJSON = await fetchedData.json();
-    fetchedDataJSON = fetchedDataJSON.filter(element => element['ownerId']+"" === id+"" && element['ownerType']+"" === "company");
-    return fetchedDataJSON;
-
+    return this.httpClient.get(SERVER_URL+"posts?ownerId="+id).pipe(map(response => {
+      return response;
+    }));
   }
 }
 

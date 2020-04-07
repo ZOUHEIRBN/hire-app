@@ -14,17 +14,23 @@ import { PostService } from '../services/post.service';
 
 
 export class OfferListComponent implements OnInit {
-  offers: Offer[] = [];
+  offers: any = [];
   loading_state = true
 
 
   constructor(private _postService:PostService) {}
 
   ngOnInit(): void {
-    this.loading_state = true;
-    this._postService.getPostsByType('offer')
-    .then((response) => {this.offers = response})
-    .then(() => setTimeout(() => {this.loading_state = false;}, 1000))
-
+    this.loadData()
   }
+  async loadData(){
+    this.loading_state = true;
+    this._postService.getPostsByType('offer').subscribe((data) => {
+      this.offers = data
+      setTimeout(() => {this.loading_state = false}, 1000)
+    })
+  }
+
+
+
 }

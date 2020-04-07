@@ -84,7 +84,13 @@ div.buttonBar b{
   font-size: 20pt;
   font-weight: bold;
 }
-
+mat-menu, mat-menu *{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 100%;
+    flex-direction: column;
+}
 /* Notification & Messages side panel */
 div.rightPanel {
   height: calc(100vh - (var(--menu-height) * 1));

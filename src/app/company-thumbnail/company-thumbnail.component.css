@@ -45,7 +45,7 @@ a.address:hover {
 }
 mat-card-contents{
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
     display: flex;
 }
 user-details{
@@ -62,10 +62,13 @@ user-details{
   top: calc(var(--menu-height) + 10px + 16px);
 }
 .embedded div.Image{
-  width: 26vmax;
-  height: 26vmax;
   overflow: hidden;
   margin-bottom: 5%;
+}
+.embedded div.Image,.embedded div.Map{
+  width: 100%;
+  height: 26vmax;
+  position: relative;
 }
 .embedded div.Image img{
   height: 100%;
@@ -111,9 +114,6 @@ user-details{
   }
 }
 @media only screen and (max-height: 800px) and (max-width: 1000px) and (orientation: landscape){
-  .embedded mat-card-info {
-    flex-direction: row;
-  }
   .embedded div.Image{
     height: 25vmin;
     width: 25vmin;
@@ -130,6 +130,7 @@ user-details{
   }
   .embedded mat-card-contents{
     width: auto;
+    flex-direction: row;
   }
 
 }

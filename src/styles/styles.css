@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
+html, body { height: auto; }
 body { margin: 0; font-family: "Helvetica Neue", sans-serif; background-color: #ddd; overflow-y: scroll;}
 *, *::after, *::before{
   transition: all .5s ease;
@@ -45,7 +45,6 @@ mat-card-actions{
 mat-card-actions>button{
   float: right;
 }
-
 /* Scrollbar CSS */
 
 /* width */

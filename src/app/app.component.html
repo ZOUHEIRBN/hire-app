@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" (userLogin)="setCurrentUser($event)">
   <button mat-button action="MenuSwitch" (click)="toggleMenu()">
     <i class="material-icons">menu</i>
   </button>
@@ -11,7 +11,7 @@
         <img src="{{ user['imageUrl'] }}"/>
       </div>
       <span style="border-left: 1px solid #fff;
-      padding-left: 10px;">{{ user.login }}</span>
+      padding-left: 10px;">{{ user.id }}</span>
     </div>
     <div class="buttonBar" *ngIf="user">
       <button mat-button (click)="toggleSelector($event)" current routerLink="/offers">
@@ -26,7 +26,7 @@
         <i class="material-icons">info</i>
         About
       </button>
-      <button mat-button (click)="toggleSelector($event)" routerLink="/user/1">
+      <button mat-button (click)="toggleSelector($event)" routerLink="{{ '/user/'+user.id }}">
         <i class="material-icons">account_box</i>
         My profile
       </button>

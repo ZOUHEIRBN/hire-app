@@ -1,21 +1,8 @@
 <mat-card style="margin-top:10px;" [ngClass]="{'embedded': embedded}">
   <mat-card-content  *ngIf="company">
     <mat-card-info>
-      <div class="Image" [attr.focus]="false">
-
-        <div>
-          <agm-map
-            #gmap
-            [longitude]="-7"
-            [latitude]="33"
-            [zoom]="6" id="gmap"
-            style="width:100%;height:100%;position: absolute;">
-          </agm-map>
-        </div>
-      </div>
-
       <mat-card-contents>
-        <div class="Image pdp"
+        <div class="Image"
         [attr.focus]="false">
           <img [src]="company.imageUrl"/>
         </div>
@@ -41,6 +28,17 @@
         </p>
 
       </mat-card-contents>
+      <div class="Map" [attr.focus]="false">
+        <div>
+          <agm-map
+            #gmap
+            [longitude]="-7"
+            [latitude]="33"
+            [zoom]="6" id="gmap"
+            style="width:100%;height:100%;position: absolute;">
+          </agm-map>
+        </div>
+      </div>
     </mat-card-info>
     <mat-card-actions *ngIf="!embedded">
       <button mat-button routerLink="{{ '/company/' + company.id }}">Consulter</button>
