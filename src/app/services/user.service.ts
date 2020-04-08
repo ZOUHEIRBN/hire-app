@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { User, USERS } from '../interfaces/user';
-import { SERVER_URL } from './post.service'
+import { SERVER_URL, httpOptions } from './post.service'
 import { Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,11 @@ export class UserService {
   constructor(private httpClient:HttpClient) { }
   public async getUser(id){
     var fetchedData = await fetch(SERVER_URL+"users?id="+id);
+    var fetchedDataJSON = await fetchedData.json();
+    return fetchedDataJSON;
+  }
+  public async getUserByEmail(email){
+    var fetchedData = await fetch(SERVER_URL+"users?email="+email);
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
@@ -35,10 +40,11 @@ export class UserService {
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
-
-  registerUser(User){
-    return true;
+  registerUser(user){
+    return this.httpClient.post<User>(SERVER_URL+"users", user, httpOptions)
   }
+
+
   loginUser(user){
     this.getUserByMeta(user)
     .then((response) => {

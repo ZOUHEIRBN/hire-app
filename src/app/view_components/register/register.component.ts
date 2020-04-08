@@ -9,14 +9,23 @@ import { User } from '../../interfaces/user';
 })
 export class RegisterComponent implements OnInit {
 
-  @Input() user:User;
+  @Input() user = {};
 
   constructor(private _userService:UserService) {
 
   }
+  updateField(event){
+    var target = event.target;
+    let key = target.name
+    let value = target.value
+    this.user[key] = value
+  }
   registerUser(event){
     event.preventDefault();
-    this._userService.registerUser(this.user);
+    this._userService.registerUser(this.user).subscribe((data) => {
+      console.log(data)
+    });
+    //this._userService.loginUser(this.user)
   }
   loginUser(event){
     event.preventDefault();

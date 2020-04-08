@@ -26,7 +26,6 @@ export class CompanyThumbnailComponent implements OnInit, AfterViewInit {
       this.lat = this.company.address.latitude;
       this.lng = this.company.address.longitude;
     }
-
   }
   ngAfterViewInit(){
     if(this.showMap){

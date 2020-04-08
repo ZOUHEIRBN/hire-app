@@ -3,9 +3,9 @@ import { Badge } from './badge';
 
 export interface Company {
   id?:number,
-  first_name: string,
-  last_name: string,
+  title:string,
   email?:string,
+  ownerId: string,
   imageUrl?:string,
   address?:{latitude:number, longitude:number},
   badges: Badge[]

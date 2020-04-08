@@ -18,15 +18,15 @@ export class LoginComponent implements OnInit {
   }
   loginUser(event){
     event.preventDefault();
-    this._userService.loginUser({"id":this.login, "password":this.password});
+    this._userService.loginUser({"email":this.login, "password":this.password});
     if(this._userService._user$){
       this.userLogin.emit(this._userService._user$)
     }
   }
   gotoRegister(){
-    var user = {"id":"", "password":""};
+    var user = {"email":"", "password":""};
     if(this.login && this.login !== ""){
-      user["id"] = this.login;
+      user["email"] = this.login;
     }
     if(this.password && this.password !== ""){
       user["password"] = this.password;

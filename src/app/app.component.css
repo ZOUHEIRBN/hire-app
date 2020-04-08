@@ -11,7 +11,7 @@ mat-toolbar h1{
 }
 mat-toolbar button[action=MenuSwitch]{
   border: .5pt solid #fff;
-  margin-right: 5vw;
+  margin-right: 1vw;
   display: none;
 }
 .buttonBars{
@@ -27,7 +27,7 @@ div.buttonBar{
   max-width: 100%;
   display: flex;
   flex: 1 1 10%;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 }
 .menuButton mat-menu {
@@ -38,7 +38,29 @@ div.buttonBar{
   flex-direction: column;
   max-height: 0vh;
   overflow: hidden;
+  border-radius: .5vmin;
 }
+.search{
+  padding-left: 5vmin;
+  flex-flow: row-reverse;
+}
+.search input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  background-color: #111;
+  border: none;
+  padding: 2.5pt 0pt;
+  text-align: center;
+  font-size: 15pt;
+  border-bottom: 2px solid #fff;
+  color: #fff;
+  mix-blend-mode: screen;
+}
+.search.current input{
+  padding: 2.5pt 2.5pt;
+}
+
 .menuButton button:hover+mat-menu, .menuButton button:focus+mat-menu {
   max-height: 35vh;
 }
@@ -54,6 +76,7 @@ div.buttonBar{
 .menuButton mat-menu button {
   background-color: var(--primary-color-light);
   color: #fff;
+  border-radius: 0vmin;
 }
 div.userprofile{
   flex-direction: row-reverse;
@@ -94,13 +117,15 @@ div.horizontal button {
   transform: scale(0.6);
   flex-grow: 0;
 }
-div.horizontal button.current
-{
-  border: 5px solid #fff;
-}
 div.horizontal button[value]:not([value='0']) {
   color: var(--primary-color);
   background-color: #fff;
+}
+div.horizontal button.current, div.horizontal button[value]:not([value='0']).current
+{
+  border: 1px solid #fff;
+  background-color: var(--primary-color-light);
+  color: #fff;
 }
 div.buttonBar button[current]{
   border-bottom: 2px solid #fff;
@@ -113,8 +138,8 @@ div.buttonBar b{
 
 /* Notification & Messages side panel */
 div.rightPanel {
-  height: calc(100vh - (var(--menu-height) * 1));
-  width: 50vw;
+  height: calc(100vh - (var(--menu-height) * .9));
+  width: 100vw;
   color: #fff;
   background-color: var(--primary-color-light);
   opacity: 0.95;
@@ -142,7 +167,11 @@ div.rightPanel>div {
   position: relative;
 }
 
-@media only screen and (orientation: portrait), only screen and (orientation: landscape) and (max-width: 960px) {
+@media only screen and (orientation: portrait), only screen and (orientation: landscape) and (max-width: 1920px) {
+  mat-toolbar h1{
+    margin-right: 0%!important;
+    flex-grow: 1;
+  }
   mat-toolbar button[action=MenuSwitch]{
     display: block;
     flex-grow: 0;
@@ -153,27 +182,6 @@ div.rightPanel>div {
     flex: 0 0 10%;
     max-width: 100%;
     width: 100%;
-  }
-  div.horizontal button
-  {
-    border-radius: 0;
-    border-bottom: 0px solid #fff;
-
-    flex: 1 1 0%;
-    height: 84px;
-    /* width: 84px; */
-    margin: 0;
-    padding-bottom: 2%;
-    background-color: var(--primary-color);
-    color: #fff;
-    transform: translateY(2.5px) scale(.6);
-    /* font-size: 0vmin; */
-    position: relative;
-  }
-  div.horizontal button.current
-  {
-    border: 0px solid #fff;
-    border-bottom: 5px solid #fff;
   }
   div.buttonBar:first-child{
     flex-direction: row;
@@ -193,7 +201,7 @@ div.rightPanel>div {
   div.buttonBar.horizontal{
     flex-direction: row;
     flex-wrap: nowrap;
-    flex: 1 0 10%;
+    flex: 0 0 10%;
   }
   div.buttonBar button[current]{
     color: #fff;
@@ -222,7 +230,7 @@ div.rightPanel>div {
     z-index: -1;
     mix-blend-mode: overlay;
     position: absolute;
-    left: -50vw;
+    left: -100vw;
     width: 100vw;
     height: calc(100vh - var(--menu-height));
     background-color: #424242;
@@ -233,7 +241,7 @@ div.rightPanel>div {
   }
   .buttonBars.showMenu::after{
     left: 0vw;
-    opacity: .6;
+    opacity: .16;
   }
   /* Submenus */
   .menuButton mat-menu {
@@ -255,20 +263,61 @@ div.rightPanel>div {
   .menuButton button, .menuButton button *{
     transition: all .3s ease-in-out;
   }
+
+  /* Searchbar */
+  .search{
+    flex: 0 1 0%!important;
+    width: 0%!important;
+    padding-left: 0vmin;
+  }
+  .search.current{
+    flex: 1 0 50%!important;
+    width: 100%;
+    padding-left: 5vmin;
+  }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 1280px) {
   /* Notification & Messages side panel */
   div.rightPanel {
-    width: 100vw;
-    overflow-x: hidden;
+    width: 50vw;
   }
-  div.rightPanel>div {
-    width: 95%;
+  .search{
+    flex: 1 0 50%;
+    width: 0%;
+    padding-left: 5vmin;
   }
 }
 
 @media only screen and (orientation: landscape) and (max-width: 960px) {
+  mat-toolbar h1{
+    flex-grow: 0;
+  }
+  /* Notification & Messages side panel */
+  div.rightPanel {
+    width: 100vw;
+    right: 0vw;
+    overflow-x: hidden;
+  }
+  div.rightPanel[content=none] {
+    right: -150vw;
+  }
   div.rightPanel>div {
     width: 98%;
   }
+
+
+
+  div.buttonBar.horizontal{
+    flex: 1 0 10%;
+  }
+  .search {
+    padding-left: 0vmin;
+  }
+  .search.current {
+    padding-left: 5vmin;
+  }
+
 }
 
 

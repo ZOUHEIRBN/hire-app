@@ -8,7 +8,7 @@
         </div>
         <mat-card-header>
           <mat-card-title *ngIf="company">
-            {{ company.first_name }} {{company.last_name}} <a class="address">@{{company.id}}</a>
+            {{company.title}} <a class="address">@{{company.id}}</a>
           </mat-card-title>
 
           <mat-card-subtitle>
@@ -21,21 +21,22 @@
           </mat-card-subtitle>
 
         </mat-card-header>
-        <p [attr.shrink_text]="true">
-          <span>
-            <!-- {{user.bio}}<br> -->
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio laborum dolorum omnis enim iusto ullam hic reprehenderit necessitatibus quis explicabo. Voluptatibus totam odit sint perspiciatis exercitationem eius vitae maxime dolore.
-          </span>
-        </p>
+
 
       </mat-card-contents>
+      <p [attr.shrink_text]="true">
+        <span>
+          <!-- {{user.bio}}<br> -->
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio laborum dolorum omnis enim iusto ullam hic reprehenderit necessitatibus quis explicabo. Voluptatibus totam odit sint perspiciatis exercitationem eius vitae maxime dolore.
+        </span>
+      </p>
       <div class="Map" [attr.focus]="false">
         <div *ngIf="showMap">
           <agm-map
             #gmap
-            [longitude]="-7"
-            [latitude]="33"
-            [zoom]="6" id="gmap"
+            [longitude]="-7.534395"
+            [latitude]="33.570754"
+            [zoom]="16" id="gmap"
             style="width:100%;height:100%;position: absolute;">
           </agm-map>
         </div>

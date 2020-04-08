@@ -14,6 +14,7 @@ mat-card{
 }
 mat-card-info{
   display: flex;
+  flex-direction: column;
 }
 div.Image{
   width: 15vmax;
@@ -49,7 +50,7 @@ mat-card-contents{
   width: 100%;
   flex-direction: row;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 user-details{
   width: 30%;

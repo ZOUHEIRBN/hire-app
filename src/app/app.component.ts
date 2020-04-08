@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation, ViewChild } from '@angular/core';
-import { UserLogin } from './interfaces/user';
+import { User } from './interfaces/user';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
 import { notifications } from './interfaces/notifications';
@@ -12,13 +12,15 @@ import { notifications } from './interfaces/notifications';
 })
 
 export class AppComponent {
-  @Input() title = 'Hire';
+  title = 'Hire';
+  @Input() searchbarValue:string = "";
   @ViewChild('rightPanel') rightPanel;
   @ViewChild('notificationButton') notificationButton;
   @ViewChild('exploreSubmenu') exploreSubmenu;
   rightPanelContent = 'none';
+  searchPanel = false;
   showMenu = false;
-  user:UserLogin = null;
+  user:User = null;
   userNotifications = [];
   constructor(private _userService:UserService, private router:Router){
     if(!this.user){
@@ -26,7 +28,9 @@ export class AppComponent {
       // alert('You must connect to access this page')
     }
    }
-
+  toggleSearchPanel(){
+    this.searchPanel = !this.searchPanel;
+  }
   toggleRightPanel(content){
     this.showMenu = false;
     if(this.rightPanelContent+'' !== content+''){
@@ -121,6 +125,9 @@ export class AppComponent {
   }
   setCurrentUser(userData){
     this.user = userData;
+  }
+  search(){
+    //HTTP Get 'localhost:3000?q='+this.searchbarValue
   }
   ngOnInit(){
     this._userService._user$

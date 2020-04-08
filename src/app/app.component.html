@@ -11,7 +11,7 @@
         <img src="{{ user['imageUrl'] }}"/>
       </div>
       <span style="border-left: 1px solid #fff;
-      padding-left: 10px;">{{ user.id }}</span>
+      padding-left: 10px;">{{ user.email }}</span>
     </div>
     <div class="buttonBar" *ngIf="user">
       <button mat-button (click)="toggleSelector($event)" routerLink="/offers" current>
@@ -65,13 +65,19 @@
 
     </div>
   </div>
+  <div class="buttonBar horizontal search" [ngClass]="{'current': searchPanel}">
+    <input matInput>
+  </div>
   <div class="buttonBar horizontal">
+    <button mat-button [ngClass]="{'current': searchPanel}" (click)="toggleSearchPanel()" >
+      <i class="material-icons">search</i>
+    </button>
     <button mat-button [ngClass]="{'current': rightPanelContent === 'notifications'}" (click)="toggleRightPanel('notifications')" >
       <i class="material-icons">notifications</i>
     </button>
-    <button mat-button [ngClass]="{'current': rightPanelContent === 'notifications'}" (click)="toggleRightPanel('messages')" value=2>
+    <button mat-button [ngClass]="{'current': rightPanelContent === 'messages'}" (click)="toggleRightPanel('messages')" value=2>
       <i class="material-icons">message</i>
-      <b>12</b>
+      <b>2</b>
     </button>
     <button mat-button (click)="disconnect()" routerLink="/login">
       <i class="material-icons">{{ user ? 'exit_to_app':'exit_to_app'}}</i>

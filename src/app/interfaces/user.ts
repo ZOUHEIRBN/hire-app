@@ -13,6 +13,6 @@ export interface UserLogin{
 export interface User extends UserLogin{
   first_name: string,
   last_name: string,
-  email?:string,
+  email:string,
   badges: Badge[]
 }
