@@ -1,12 +1,10 @@
-import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
-import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
-import { User } from '../../interfaces/user';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
-import { Post } from '../../interfaces/post';
 import { PostService } from '../../services/post.service';
-import { developUp, developDown } from '../../app-animations';
+import { develop, developDown } from '../../app-animations';
 import { PostFilterComponent } from '../../minicomponents/post-filter/post-filter.component';
-import { Observable } from 'rxjs';
+import { CompanyService } from 'src/app/services/company.service';
 
 
 
@@ -14,7 +12,7 @@ import { Observable } from 'rxjs';
   selector: 'user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css'],
-  animations:[developUp, developDown]
+  animations:[develop, developDown]
 })
 export class UserProfileComponent implements OnInit {
   user;
@@ -23,7 +21,7 @@ export class UserProfileComponent implements OnInit {
   @ViewChild(PostFilterComponent)
   filter:PostFilterComponent;
   loading_state = false;
-  constructor(private route: ActivatedRoute,private _userService:UserService, private _postService:PostService) {
+  constructor(private route: ActivatedRoute, private _userService:UserService, private _companyService:CompanyService, private _postService:PostService) {
 
   }
 
@@ -41,7 +39,7 @@ export class UserProfileComponent implements OnInit {
         promise = this._userService.getUser(params.id)
       }
       else if(params.usertype === 'company'){
-        promise = this._userService.getCompany(params.id)
+        promise = this._companyService.getCompany(params.id)
       }
       promise.then(response => {this.user = response[0]})
       .then(() => {this.refreshData();})

@@ -28,7 +28,7 @@ export class AppComponent {
    }
 
   toggleRightPanel(content){
-
+    this.showMenu = false;
     if(this.rightPanelContent+'' !== content+''){
       this.rightPanelContent = 'none';
       this.userNotifications = [];
@@ -54,6 +54,7 @@ export class AppComponent {
       }, 100);
   }
   toggleMenu(){
+    this.rightPanelContent = 'none';
     this.showMenu = !this.showMenu;
   }
   toggleSelector(event: any){
@@ -67,24 +68,55 @@ export class AppComponent {
       // Look for the one with current=true
        var old_current = document.querySelector('[current]');
        if(old_current !== null){
-         old_current.removeAttribute("current");
+        old_current.removeAttribute("current");
+        old_current.removeAttribute("currentWrapper");
        }
 
        //Set new current
-       target.setAttribute("current", "");
-       this.showMenu = !this.showMenu;
+       setTimeout(() => {
+        target.setAttribute("current", "");
+       }, 100);
+       if(target.parentNode.className !== 'menuButton'){
+        this.showMenu = !this.showMenu;
+       }
     }
   }
   clearMenuCurrent(event: any){
     var target = event.target;
 
-    if(true)
+    while(target.tagName !== "BUTTON"){
+      target = target.parentNode;
+    }
+    var target_current = target.getAttribute('currentWrapper');
+    if(target_current !== null){
+      target.removeAttribute("currentWrapper");
+    }
+    else if(target_current !== "true")
     {
+      // Look for the one with currentWrapper=true
+      var old_current_wrp = document.querySelector('[currentWrapper]');
+      if(old_current_wrp !== null){
+        old_current_wrp.removeAttribute("currentWrapper");
+      }
+
       // Look for the one with current=true
-       var old_current = document.querySelector('.menuButton button[current]');
-       if(old_current !== null){
-         old_current.removeAttribute("current");
+      var old_current = document.querySelector('[current]');
+      if(old_current !== null){
+        old_current.removeAttribute("current");
+      }
+
+      if(target.parentNode.className !== 'menuButton'){
+        this.showMenu = !this.showMenu;
        }
+
+      //Set new currentWrapper
+      target.setAttribute("currentWrapper", "");
+       //Set new current
+      target = event.target;
+      while(target.parentNode.className !== "menuButton"){
+        target = target.parentNode;
+      }
+      target.setAttribute("current", "");
     }
   }
   setCurrentUser(userData){
@@ -95,7 +127,7 @@ export class AppComponent {
       .subscribe(
         response => {
           if(response !== null && response["id"] !== null && response["password"] !== null){
-              this.user = {"id":response["id"], "password":response["password"]};
+              this.user = response;
               this.router.navigate(['/offers']);
             }
           }

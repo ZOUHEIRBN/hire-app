@@ -24,12 +24,13 @@
         <p [attr.shrink_text]="true">
           <span>
             <!-- {{user.bio}}<br> -->
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio laborum dolorum omnis enim iusto ullam hic reprehenderit necessitatibus quis explicabo. Voluptatibus totam odit sint perspiciatis exercitationem eius vitae maxime dolore.
           </span>
         </p>
 
       </mat-card-contents>
       <div class="Map" [attr.focus]="false">
-        <div>
+        <div *ngIf="showMap">
           <agm-map
             #gmap
             [longitude]="-7"

@@ -14,19 +14,41 @@
       padding-left: 10px;">{{ user.id }}</span>
     </div>
     <div class="buttonBar" *ngIf="user">
-      <button mat-button (click)="toggleSelector($event)" current routerLink="/offers">
-        <i class="material-icons">assistant_photo</i>
-        Offers
+      <button mat-button (click)="toggleSelector($event)" routerLink="/offers" current>
+        <i class="material-icons">home</i>
+        Home
       </button>
       <div class="menuButton">
-        <button #exploreMenuButton mat-button (click)="toggleSelector($event)">
+        <button #discoverMenuButton mat-button (click)="clearMenuCurrent($event)">
+          <i class="material-icons">work</i>
+          Jobs
+        </button>
+        <mat-menu>
+          <button mat-button mat-menu-item (click)="toggleMenu()" routerLink="/offers">
+            <i class="material-icons">assistant_photo</i>
+            Offers
+          </button>
+          <button mat-button mat-menu-item (click)="toggleMenu()" routerLink="/offers">
+            <i class="material-icons">assistant_photo</i>
+            Demands
+          </button>
+        </mat-menu>
+      </div>
+
+
+      <div class="menuButton">
+        <button #exploreMenuButton mat-button (click)="clearMenuCurrent($event)">
           <i class="material-icons">search</i>
           Explore
         </button>
         <mat-menu>
-          <button mat-button mat-menu-item routerLink="/users" (click)="clearMenuCurrent($event)">
+          <button mat-button mat-menu-item (click)="toggleMenu()" routerLink="/users">
             <i class="material-icons">people</i>
             Users
+          </button>
+          <button mat-button mat-menu-item (click)="toggleMenu()" routerLink="/companies">
+            <i class="material-icons">work</i>
+            Companies
           </button>
         </mat-menu>
       </div>
@@ -61,6 +83,5 @@
   <div *ngIf="rightPanelContent === 'notifications'">
     <notification  *ngFor="let notification of userNotifications" [notification]="notification"></notification>
   </div>
-
 </div>
 

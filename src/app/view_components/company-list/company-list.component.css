@@ -1,0 +1,18 @@
+.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+company-details {
+  flex: 1 0 98%;
+  margin: .5vw;
+}
+
+@media only screen and (min-width: 768px) and (orientation: landscape){
+  company-details {
+    flex-basis: 48.9%;
+  }
+  company-details:last-child {
+    flex-grow: 0;
+  }
+}
+

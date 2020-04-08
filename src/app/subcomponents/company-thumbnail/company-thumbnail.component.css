@@ -10,6 +10,7 @@ mat-card{
 .mat-card-header {
     display: block;
     flex-direction: row;
+    flex-grow: 1;
 }
 mat-card-info{
   display: flex;
@@ -17,6 +18,7 @@ mat-card-info{
 div.Image{
   width: 15vmax;
   height: 10vmax;
+  border-radius: 45vmin;
   padding-top: 0%;
   padding-left: 0%;
   position: relative;
@@ -45,8 +47,9 @@ a.address:hover {
 }
 mat-card-contents{
   width: 100%;
-  flex-direction: column;
-    display: flex;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
 }
 user-details{
   width: 30%;
@@ -64,10 +67,12 @@ user-details{
 .embedded div.Image{
   overflow: hidden;
   margin-bottom: 5%;
+  border-radius: 0vmin;
 }
 .embedded div.Image,.embedded div.Map{
   width: 100%;
   height: 26vmax;
+  border-radius: 0vmin;
   position: relative;
 }
 .embedded div.Image img{
@@ -80,6 +85,9 @@ user-details{
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+.embedded mat-card-contents{
+  flex-direction: column;
 }
 @media only screen and (max-width: 1000px), only screen and (orientation: portrait){
   div.Image{

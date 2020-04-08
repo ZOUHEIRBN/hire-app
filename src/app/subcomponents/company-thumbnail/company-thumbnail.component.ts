@@ -11,6 +11,7 @@ import { Company } from '../../interfaces/company';
 export class CompanyThumbnailComponent implements OnInit, AfterViewInit {
   @Input() company: Company;
   @Input() embedded = false;
+  @Input() showMap = true;
   @ViewChild('gmap', {static: false}) gmapElement: any;
   map: google.maps.Map;
   mapData;
@@ -28,11 +29,12 @@ export class CompanyThumbnailComponent implements OnInit, AfterViewInit {
 
   }
   ngAfterViewInit(){
-    this.mapData = {
-      center: new google.maps.LatLng(this.lng, this.lat),
-      zoom: 12
-    };
-    this.map = new google.maps.Map(this.gmapElement, this.mapData);
-
+    if(this.showMap){
+      this.mapData = {
+        center: new google.maps.LatLng(this.lng, this.lat),
+        zoom: 12
+      };
+      this.map = new google.maps.Map(this.gmapElement, this.mapData);
+    }
   }
 }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { User, USERS } from '../interfaces/user';
 import { SERVER_URL } from './post.service'
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,15 +20,10 @@ export class UserService {
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
-  public async getCompany(id){
-    var fetchedData = await fetch(SERVER_URL+"companies?id="+id);
-    var fetchedDataJSON = await fetchedData.json();
-    return fetchedDataJSON;
-  }
-  public async getAllUsers(){
-    var fetchedData = await fetch(SERVER_URL+"users");
-    var fetchedDataJSON = await fetchedData.json();
-    return fetchedDataJSON;
+  public getAllUsers(){
+    return this.httpClient.get(SERVER_URL+"users").pipe(map(response => {
+      return response;
+    }));
   }
   public async getUserByMeta(user){
     var str = '?'

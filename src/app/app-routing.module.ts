@@ -8,6 +8,7 @@ import { UserProfileComponent } from './view_components/user-profile/user-profil
 import { PostComponent } from './subcomponents/post/post.component';
 import { RegisterComponent } from './view_components/register/register.component';
 import { CompanyThumbnailComponent } from './subcomponents/company-thumbnail/company-thumbnail.component';
+import { CompanyListComponent } from './view_components/company-list/company-list.component';
 
 
 export var routes: Routes = [
@@ -18,7 +19,8 @@ export var routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: ':usertype/:id', component: UserProfileComponent },
   { path: 'post/:id', component: PostComponent },
-  { path: 'users', component: ProfilesComponent }
+  { path: 'users', component: ProfilesComponent },
+  { path: 'companies', component: CompanyListComponent }
 ];
 
 @NgModule({

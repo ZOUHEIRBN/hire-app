@@ -2,7 +2,7 @@ mat-toolbar{
   background-color: var(--primary-color)!important;
   height: var(--menu-height);
   position: fixed;
-  z-index: 2;
+  z-index: 4;
   top: 0;
 }
 mat-toolbar h1{
@@ -33,27 +33,27 @@ div.buttonBar{
 .menuButton mat-menu {
   position: absolute;
   top: 48px;
-  width: 50%;
+  min-width: 30%;
   display: flex;
   flex-direction: column;
   max-height: 0vh;
   overflow: hidden;
 }
-.menuButton button[current]+mat-menu {
-  max-height: 10vh;
+.menuButton button:hover+mat-menu, .menuButton button:focus+mat-menu {
+  max-height: 35vh;
 }
 .menuButton mat-menu::before {
   content: "";
   border: 10px solid transparent;
-  border-bottom-color:#fff;
+  border-bottom-color:var(--primary-color-light);
   width: 0;
   position: relative;
   left: 25%;
   transform: translateX(calc(-100% - 10px));
 }
 .menuButton mat-menu button {
-  color: var(--primary-color);
-  background-color: #fff;
+  background-color: var(--primary-color-light);
+  color: #fff;
 }
 div.userprofile{
   flex-direction: row-reverse;
@@ -62,6 +62,7 @@ div.userprofile{
 }
 div.buttonBar:not(.horizontal) button, div.buttonBar:not(.horizontal) div.menuButton{
   flex-grow: 1;
+  width: 100%;
 }
 div.buttonBar:not(.horizontal) div.menuButton>button{
   width: 100%;
@@ -71,20 +72,18 @@ div.profileImage {
     height: calc(var(--menu-height));
     width: calc(var(--menu-height));
     background-color: #fff;
-    border: 2pt solid var(--primary-color-light);
-    /* margin: 5%; */
-    padding: 1%;
-    /* left: 50%;
-    top: 50%; */
+    border: 1pt solid var(--primary-color-light);
+    padding: .5%;
+    overflow: hidden;
     position: relative;
     transform: translate(-0%, -0%) scale(0.65);
 }
 div.profileImage img {
-  position: relative;
-    height: 85%;
-    margin: 2.5%;
-    top: 5%;
-    left: 2%;
+  position: absolute;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
 }
 
 div.horizontal button {
@@ -98,7 +97,6 @@ div.horizontal button {
 div.horizontal button.current
 {
   border: 5px solid #fff;
-  transition: all .5s ease;
 }
 div.horizontal button[value]:not([value='0']) {
   color: var(--primary-color);
@@ -168,7 +166,7 @@ div.rightPanel>div {
     padding-bottom: 2%;
     background-color: var(--primary-color);
     color: #fff;
-    transform: translateY(5px) scale(.6);
+    transform: translateY(2.5px) scale(.6);
     /* font-size: 0vmin; */
     position: relative;
   }
@@ -190,7 +188,7 @@ div.rightPanel>div {
   }
   div.buttonBar:not(.horizontal) button{
     width: 100%;
-    display: block;
+    display: flex;
   }
   div.buttonBar.horizontal{
     flex-direction: row;
@@ -203,20 +201,20 @@ div.rightPanel>div {
     border-bottom: 1pt solid #fff;
   }
 
-  .buttonBars{
-    display: flex;
+
+  .buttonBars, .buttonBars *{
+    transition: all .7s ease-in-out;
   }
   .buttonBars {
     position: fixed;
     top: var(--menu-height);
-    left: -50vw;
+    left: -33vmax;
     height: calc(100vh - var(--menu-height));
-    width: 50vw;
+    width: 33vmax;
     background-color: #fff;
     color: var(--primary-color);
     display: flex;
     flex-direction: column;
-    transition: all .7s ease-in-out;
     flex: 0 0 10%;
   }
   .buttonBars::after{
@@ -237,7 +235,26 @@ div.rightPanel>div {
     left: 0vw;
     opacity: .6;
   }
-
+  /* Submenus */
+  .menuButton mat-menu {
+    background-color: var(--primary-color);
+    color: #fff;
+    position: inherit;
+    top: 0;
+    width: 100%;
+  }
+  .menuButton mat-menu::before {
+    border: 0px solid transparent;
+  }
+  .menuButton button[currentWrapper]+mat-menu {
+    max-height: 100vh;
+  }
+  div.buttonBar:not(.horizontal) div.menuButton{
+    width: 100%;
+  }
+  .menuButton button, .menuButton button *{
+    transition: all .3s ease-in-out;
+  }
   /* Notification & Messages side panel */
   div.rightPanel {
     width: 100vw;

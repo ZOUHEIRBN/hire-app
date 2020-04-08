@@ -13,25 +13,26 @@ import { PostFilterComponent } from '../../minicomponents/post-filter/post-filte
   animations:[staggeredDevelop, develop]
 })
 export class ProfilesComponent implements OnInit {
-  profiles: User[] = [];
+  profiles: any = [];
   @ViewChild('filter') filter:PostFilterComponent;
   loading_state = true
 
 
-  constructor(private apiService:UserService) {}
+  constructor(private _userService:UserService) {}
 
   ngOnInit(): void {
     this.load()
 
   }
-  async load(){
+  load(){
     this.loading_state = true;
-    this.apiService.getAllUsers()
-    .then((response) => {this.profiles = response})
-    .then(() => setTimeout(() => {
-      this.filter.refreshProfileFilters(this.profiles)
-      this.loading_state = false;
-    }, 1000));
+    this._userService.getAllUsers().subscribe((data) => {
+      this.profiles = data
+      setTimeout(() => {
+        this.filter.refreshProfileFilters(this.profiles)
+        this.loading_state = false;
+      }, 1000)
+    })
   }
 
 }

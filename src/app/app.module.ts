@@ -32,7 +32,8 @@ import { RegisterComponent } from './view_components/register/register.component
 import { PostFilterComponent } from './minicomponents/post-filter/post-filter.component';
 import { CompanyThumbnailComponent } from './subcomponents/company-thumbnail/company-thumbnail.component';
 
-import { NotificationComponent } from './minicomponents/notification/notification.component'
+import { NotificationComponent } from './minicomponents/notification/notification.component';
+import { CompanyListComponent } from './view_components/company-list/company-list.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { NotificationComponent } from './minicomponents/notification/notificatio
     RegisterComponent,
     PostFilterComponent,
     CompanyThumbnailComponent,
-    NotificationComponent
+    NotificationComponent,
+    CompanyListComponent
   ],
   imports: [
 
