@@ -1,5 +1,5 @@
 /* Badges */
-badge, badge span{
+badge, badge div{
   transition: all .4s ease!important;
   cursor: default;
 }
@@ -13,9 +13,8 @@ badge {
     font-weight: 500;
     float: right;
     flex: 1 0 50%;
-
+  font-size: 10pt;
   display: inline-flex;
-  font-size: 9pt;
   margin-left: 0vmin;
   margin-right: 1vmin;
 }
@@ -24,17 +23,25 @@ badge:hover, badge[activate=true] {
   background-color: var(--default);
   border-color: transparent;
 }
-badge span{
+badge div{
   color: var(--default);
-  max-width: calc(100vw);
   overflow: hidden;
   display: block;
   white-space: nowrap;
+  align-items: center;
+  display: flex;
+}
+badge span{
+  max-width: calc(100vw);
+}
+badge mat-icon{
+  font-size: 12pt;
+  height: 12pt;
 }
 badge:hover span{
   max-width: calc(100vw);
 }
-badge:hover span, badge[activate=true] span{
+badge:hover div, badge[activate=true] div{
   color: #fff!important;
 }
 badge:hover::after, badge[activate=true]::after{
@@ -47,6 +54,7 @@ badge::after, badge::before{
   position: relative;
   height: 9pt;
   width: 9pt;
+  align-self: center;
 }
 badge[activate=false]::after, badge[activate=true]::before{
   transform: scale(1);
@@ -76,7 +84,7 @@ badge[activate=false]::before{
 badge[category=jobtype]{
   border-color: var(--jobtype);
 }
-badge[category=jobtype] span{
+badge[category=jobtype] div{
   color: var(--jobtype);
 }
 badge[category=jobtype]::after{
@@ -90,7 +98,7 @@ badge[category=fav]{
   color: var(--fav);
   border-color: var(--fav);
 }
-badge[category=fav] span{
+badge[category=fav] div{
   color: var(--fav);
 }
 badge[category=fav]::after{
@@ -104,7 +112,7 @@ badge[category=match]{
   color: var(--match);
   border-color: var(--match);
 }
-badge[category=match] span{
+badge[category=match] div{
   color: var(--match);
 }
 badge[category=match]::after{

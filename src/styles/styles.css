@@ -22,8 +22,20 @@ app-login {
 *{
   --menu-height: 64px;
 }
-/* Buttons */
+/* Cards */
 
+/* Buttons */
+mat-card-actions {
+  display: inline-flex!important;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  /* margin: 0; */
+
+  position: relative;
+  margin: 0px!important;
+  padding: 0px!important;
+  width: 100%;
+}
 button div{
   justify-content: center;
   align-items: center;
@@ -33,6 +45,7 @@ button div{
 mat-card-actions button, .mat-card-actions button{
   background-color: #eee!important;
   color: var(--primary-color)!important;
+  margin-right: 1%;
 }
 mat-card-actions button:first-child, .mat-card-actions button:first-child{
   background-color: var(--primary-color)!important;
@@ -40,14 +53,6 @@ mat-card-actions button:first-child, .mat-card-actions button:first-child{
 }
 mat-card, mat-card *, mat-card *::before, mat-card *::after{
   transition: all .5s ease;
-}
-mat-card-actions{
-  position: relative;
-  display: block;
-  margin: 10px 0px!important;
-
-  bottom: 10px;
-  width: 100%;
 }
 mat-card-actions>button{
   float: right;

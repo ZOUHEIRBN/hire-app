@@ -33,7 +33,8 @@ import { PostFilterComponent } from './minicomponents/post-filter/post-filter.co
 import { CompanyThumbnailComponent } from './subcomponents/company-thumbnail/company-thumbnail.component';
 
 import { NotificationComponent } from './minicomponents/notification/notification.component';
-import { CompanyListComponent } from './view_components/company-list/company-list.component'
+import { CompanyListComponent } from './view_components/company-list/company-list.component';
+import { SearchResultsComponent } from './view_components/search-results/search-results.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +51,8 @@ import { CompanyListComponent } from './view_components/company-list/company-lis
     PostFilterComponent,
     CompanyThumbnailComponent,
     NotificationComponent,
-    CompanyListComponent
+    CompanyListComponent,
+    SearchResultsComponent
   ],
   imports: [
 

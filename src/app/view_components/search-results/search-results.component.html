@@ -1,0 +1,23 @@
+<div class="rootContainer">
+  <div class="container" *ngIf="searchResults">
+    <div *ngIf="searchResults['companies']">
+      <h1 *ngIf="searchResults['companies'].length > 0">Companies</h1>
+      <company-details *ngFor="let result of searchResults['companies']" [company]="result" [showMap]="false"></company-details>
+    </div>
+    <div *ngIf="searchResults['users']">
+      <h1 *ngIf="searchResults['users'].length > 0">Users</h1>
+      <user-details *ngFor="let result of searchResults['users']" [user]="result"></user-details>
+    </div>
+    <div *ngIf="searchResults['posts']">
+      <h1 *ngIf="searchResults['posts'].length > 0">Posts</h1>
+      <post *ngFor="let result of searchResults['posts']" [post]="result"></post>
+    </div>
+
+  </div>
+
+
+  <div class="mat-spinner"  *ngIf="loading_state" [ngClass]="{'bottom': searchResults.length !== 0 }">
+    <mat-spinner></mat-spinner>
+  </div>
+
+</div>

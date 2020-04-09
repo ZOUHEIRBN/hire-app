@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { User, USERS } from '../interfaces/user';
 import { SERVER_URL, httpOptions } from './post.service'
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -11,10 +11,13 @@ import { map, catchError } from 'rxjs/operators';
 
 export class UserService {
 
-  private _user = new Subject<User>();
+  private _user = new BehaviorSubject<User>(null);
   _user$ = this._user.asObservable();
 
   constructor(private httpClient:HttpClient) { }
+  public getCurrentUser(){
+    return this._user.value
+  }
   public async getUser(id){
     var fetchedData = await fetch(SERVER_URL+"users?id="+id);
     var fetchedDataJSON = await fetchedData.json();
@@ -40,11 +43,12 @@ export class UserService {
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
+
+
+  // Special methods
   registerUser(user){
     return this.httpClient.post<User>(SERVER_URL+"users", user, httpOptions)
   }
-
-
   loginUser(user){
     this.getUserByMeta(user)
     .then((response) => {

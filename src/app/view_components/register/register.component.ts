@@ -9,7 +9,7 @@ import { User } from '../../interfaces/user';
 })
 export class RegisterComponent implements OnInit {
 
-  @Input() user = {};
+  @Input() user = {"badges":[]};
 
   constructor(private _userService:UserService) {
 
@@ -20,12 +20,26 @@ export class RegisterComponent implements OnInit {
     let value = target.value
     this.user[key] = value
   }
+  fileSelect(event){
+    const reader = new FileReader();
+    reader.onload = e => this.user['imageUrl'] = reader.result;
+    reader.readAsDataURL(event.target.files[0]);
+    console.log(this.user['imageUrl'])
+
+  }
+  private validate(){
+    console.log(this.user)
+    return true
+  }
   registerUser(event){
     event.preventDefault();
-    this._userService.registerUser(this.user).subscribe((data) => {
-      console.log(data)
-    });
-    //this._userService.loginUser(this.user)
+    if(this.validate()){
+      this._userService.registerUser(this.user).subscribe((data) => {
+        console.log(data)
+      });
+      //this._userService.loginUser(this.user)
+    }
+
   }
   loginUser(event){
     event.preventDefault();

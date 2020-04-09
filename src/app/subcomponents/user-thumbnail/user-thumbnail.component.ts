@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { Router } from '@angular/router';
 import { developUp, developDown } from '../../app-animations';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'user-details',
@@ -12,6 +13,8 @@ import { developUp, developDown } from '../../app-animations';
 export class UserThumbnailComponent implements OnInit {
   @Input() user: User;
   @Input() embedded = false;
+  @Input() showsettings = false;
+  currentUserId: string;
   constructor(private router:Router) { }
   gotoUserPage(){
     this.router.navigate(['/user/'+this.user.id])

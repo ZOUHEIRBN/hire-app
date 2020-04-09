@@ -80,7 +80,7 @@ user-details{
   height: 100%;
 }
 .embedded mat-card-badges{
-  display: none;
+  display: block;
 }
 .embedded mat-card-info {
   display: flex;
@@ -140,6 +140,7 @@ user-details{
   .embedded mat-card-contents{
     width: auto;
     flex-direction: row;
+    flex-grow: 1;
   }
 
 }

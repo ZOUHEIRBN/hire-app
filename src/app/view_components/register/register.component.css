@@ -20,8 +20,8 @@ div.layout {
 form.flex{
   display: flex;
   align-self: center;
-  flex-flow: row;
-  flex-direction: row;
+  flex-flow: column;
+  flex-direction: column;
   position: relative;
     top: 50%;
     left: 0;
@@ -34,12 +34,35 @@ form.flex>.col2{
 }
 div.layout .col2 {
   display: flex;
-  flex-direction: column;
-  align-content: space-between;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: wrap;
+}
+div.layout div.col2.header{
+  height: 0px;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+div.layout div.col2.header>*{
+  flex: 1 1 0%;
+}
+div.layout div.col2.header>i{
+  flex-grow: 0;
+  display: block;
+  padding: 2vmin;
+  font-size: 30pt;
+  color: #fff8;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--primary-color-light);
+  border-radius: 10vmin;
+}
+div.layout div.col2.header:hover>i{
+  color: #fff;
 }
 div.layout input{
     font-size: calc(20pt - 1.5vmin)!important;
-    margin: 3% 0%;
+    margin: 3%;
     padding: 2vmin;
     text-align: center;
     outline: none;
@@ -47,6 +70,7 @@ div.layout input{
     background-color: white;
     border: .1vmin solid white;
     color: var(--primary-color)!important;
+    flex: 1 0 20%;
     transition: all .2s ease-out;
 }
 div.layout input:focus{
@@ -54,11 +78,6 @@ div.layout input:focus{
     padding: 1.6vmin;
     color: var(--primary-color)!important;
     background-color: white;
-}
-
-div.col1{
-    width: 100%;
-    padding: 1%;
 }
 
 div.mat-card-actions{
@@ -69,12 +88,18 @@ div.mat-card-actions{
 .mat-card-actions button {
   width: 100%;
 }
+div.mat-card-actions, div.mat-card-actions~*{
+  flex-grow: 1;
+}
 div.mat-card-actions + a, div.mat-card-actions + a:visited {
   color: var(--primary-color);
   font-weight: lighter;
   text-align: center;
 }
 @media(orientation: portrait){
+  div.container{
+    z-index: 4;
+  }
   div.layout{
     width: 35vmax;
     height: 75vmax;
@@ -90,11 +115,16 @@ div.mat-card-actions + a, div.mat-card-actions + a:visited {
     width: 100%;
   }
   form.flex>*:not(.mat-card-actions){
-    height: 30%;
+    height: 100%;
   }
-  div.col1{
-    width: 80%;
-    padding: 10%;
+}
+@media only screen and (orientation: landscape) and (max-height: 720px){
+  div.container{
+    z-index: 4;
   }
-
+  div.layout input{
+    margin: 1%;
+    width: 0%;
+    flex: 1 0 40%;
+  }
 }

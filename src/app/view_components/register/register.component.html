@@ -1,17 +1,22 @@
 <div class="container">
   <div class="layout">
-    <h2 style="margin: 0;">Login</h2>
+
     <form class="flex" action="/users" method="POST">
-      <div class="col2">
-        <input mat-input type="text" name="first_name" (change)="updateField($event)" placeholder="First Name"/>
-        <input mat-input type="email" name="email" (change)="updateField($event)" placeholder="Email"/>
-        <input mat-input type="password" name="password" (change)="updateField($event)" placeholder="Password"/>
+      <div class="col2 header">
+        <h2 style="margin: 0;">Login</h2>
+        <input (change)="this.fileSelect($event)" mat-button hidden type="file" name="imageUrl" #imageFile>
+        <i (click)="imageFile.click()"
+          [style]="'background-image: url(' + this.user['imageUrl'] + ');'"
+         class="material-icons">image</i>
       </div>
       <div class="col2">
-        <input mat-input type="text" name="last_name" (change)="updateField($event)" placeholder="Last Name"/>
-        <input mat-input type="email" name="email" placeholder="Confirm Email"/>
-        <input mat-input type="password" name="password" placeholder="Confirm Password"/>
-        <div style="display: contents;">
+        <input mat-input required type="text" name="first_name" (change)="updateField($event)" placeholder="First Name"/>
+        <input mat-input required type="text" name="last_name" (change)="updateField($event)" placeholder="Last Name"/>
+        <input mat-input required type="email" name="email" (change)="updateField($event)" placeholder="Email"/>
+        <input mat-input required type="email" name="email" placeholder="Confirm Email"/>
+        <input mat-input required type="password" name="password" (change)="updateField($event)" placeholder="Password"/>
+        <input mat-input required type="password" name="password" placeholder="Confirm Password"/>
+        <div style="display: flex; flex-grow: 1; align-items: center;">
           <div class="mat-card-actions">
             <button mat-button (click)="this.registerUser($event)">Inscription</button>
           </div>

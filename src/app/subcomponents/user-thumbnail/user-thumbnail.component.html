@@ -8,7 +8,10 @@
       <mat-card-contents>
         <mat-card-header>
           <mat-card-title *ngIf="user">
-            {{ user.first_name }} {{user.last_name}} <a class="address">@{{user.email}}</a>
+            <span>
+              {{ user.first_name }} {{user.last_name}}
+              <a class="address">@{{user.email}}</a>
+            </span>
           </mat-card-title>
 
           <mat-card-subtitle>
@@ -30,8 +33,14 @@
       </mat-card-contents>
     </mat-card-info>
     <mat-card-actions *ngIf="!embedded">
-      <button mat-button routerLink="{{ '/user/' + user.id }}">Consulter</button>
+      <button mat-button routerLink="{{ '/profile/user/' + user.id }}">Consulter</button>
       <!-- <button mat-button>Ajouter aux favoris</button> -->
+      <button mat-icon-button aria-label="Like">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Settings" *ngIf="this.showsettings">
+        <mat-icon>settings</mat-icon>
+      </button>
     </mat-card-actions>
   </mat-card-content>
 

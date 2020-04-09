@@ -9,6 +9,8 @@ import { PostComponent } from './subcomponents/post/post.component';
 import { RegisterComponent } from './view_components/register/register.component';
 import { CompanyThumbnailComponent } from './subcomponents/company-thumbnail/company-thumbnail.component';
 import { CompanyListComponent } from './view_components/company-list/company-list.component';
+import { SearchResultsComponent } from './view_components/search-results/search-results.component';
+import { SearchService } from './services/search.service';
 
 
 export var routes: Routes = [
@@ -17,10 +19,11 @@ export var routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: ':usertype/:id', component: UserProfileComponent },
+  { path: 'profile/:usertype/:id', component: UserProfileComponent },
   { path: 'post/:id', component: PostComponent },
   { path: 'users', component: ProfilesComponent },
-  { path: 'companies', component: CompanyListComponent }
+  { path: 'companies', component: CompanyListComponent },
+  { path: 'search/:q', component: SearchResultsComponent}
 ];
 
 @NgModule({

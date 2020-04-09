@@ -3,6 +3,7 @@ import { User } from './interfaces/user';
 import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
 import { notifications } from './interfaces/notifications';
+import { SearchService } from './services/search.service';
 
 @Component({
   selector: 'app-root',
@@ -22,14 +23,22 @@ export class AppComponent {
   showMenu = false;
   user:User = null;
   userNotifications = [];
-  constructor(private _userService:UserService, private router:Router){
+  constructor(private _userService:UserService, private router:Router, private _searchEngine:SearchService){
     if(!this.user){
       //router.navigate(['/login']);
       // alert('You must connect to access this page')
     }
    }
   toggleSearchPanel(){
-    this.searchPanel = !this.searchPanel;
+    if(!this.searchPanel){
+      this.searchPanel = !this.searchPanel;
+    }
+    else if(this.searchbarValue === ''){
+      this.searchPanel = !this.searchPanel;
+    }
+    else{
+      this.search();
+    }
   }
   toggleRightPanel(content){
     this.showMenu = false;
@@ -128,6 +137,7 @@ export class AppComponent {
   }
   search(){
     //HTTP Get 'localhost:3000?q='+this.searchbarValue
+    this.router.navigate(['/search/'+this.searchbarValue])
   }
   ngOnInit(){
     this._userService._user$

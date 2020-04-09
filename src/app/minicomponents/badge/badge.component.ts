@@ -15,12 +15,27 @@ export class BadgeComponent implements OnInit {
   @Input() badge: Badge;
   @Input() activate = false;
   @Input() expand = false;
+  icon;
   constructor() { }
 
   ngOnInit(): void {
-
+    this.icon = this.getIcon()
   }
-
+  getIcon(){
+    if(this.badge.category === 'jobtype'){
+      return 'work'
+    }
+    else if(this.badge.category === 'match'){
+      return 'whatshot'
+    }
+    else if(this.badge.category === 'fav'){
+      return 'star'
+    }
+    else if(this.badge.category === 'posttype'){
+      return 'assistant_photo'
+    }
+    return 'person'
+  }
   toggleButton(){
     if(this.expand){
       this.activate = !this.activate;

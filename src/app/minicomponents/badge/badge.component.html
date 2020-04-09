@@ -1,3 +1,6 @@
 <badge [attr.category]=" badge.category" [attr.name]="badge.name" [attr.activate]="activate" [attr.expand]="expand" (click)="toggleButton()">
+  <div>
+    <mat-icon aria-hidden="false" aria-label="{{ badge.name }}">{{ icon }}</mat-icon>
   <span>{{ badge.name }}</span>
+  </div>
 </badge>

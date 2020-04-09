@@ -1,0 +1,8 @@
+.rootContainer{
+  z-index: 2;
+  width: 98vw;
+  height: calc(100vh - var(--menu-height));
+  top: var(--menu-height);
+  left: 1vw;
+  position: absolute;
+}
