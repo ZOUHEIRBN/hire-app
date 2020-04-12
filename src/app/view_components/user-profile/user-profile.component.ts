@@ -41,7 +41,7 @@ export class UserProfileComponent implements OnInit {
       else if(params.usertype === 'company'){
         promise = this._companyService.getCompany(params.id)
       }
-      promise.then(response => {this.user = response[0]})
+      promise.then(response => {this.user = response})
       .then(() => {this.refreshData();})
 
     });

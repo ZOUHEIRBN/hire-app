@@ -1,24 +1,40 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Post } from '../../interfaces/post';
-import { develop } from '../../app-animations';
-import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
+import { ActivatedRoute } from '@angular/router';
+import { Post } from 'src/app/interfaces/post';
+import { developDown } from 'src/app/app-animations';
 
 @Component({
-  selector: 'post',
-  templateUrl: './post.component.html',
-  styleUrls: ['./post.component.css'],
-  animations:[develop]
+  selector: 'app-post-page',
+  templateUrl: './post-page.component.html',
+  styleUrls: ['./post-page.component.css'],
+  animations:[developDown]
 })
-export class PostComponent implements OnInit {
+export class PostPageComponent implements OnInit {
   @Input() post:Post;
   @Input() embed = false;
-  constructor(private router:Router) {
-  }
+  post_id;
+  constructor(private route:ActivatedRoute, private _postService:PostService) { }
 
   ngOnInit(): void {
-
+    this.loadPost()
   }
+  async loadPost(){
+    this.route.params.subscribe(params => {
+      if(params.post_id)
+      {
+        this.post_id = params.post_id;
+
+        let promise = this._postService.getPost(this.post_id)
+        promise.then(response => {
+          this.post = response
+        })
+      }
+      //else Goto Homepage
+    });
+  }
+
+
   toggleFocus(event: any){
     var target = event.target;
     while(target.tagName !== "DIV"){
@@ -34,9 +50,6 @@ export class PostComponent implements OnInit {
     {
       target.setAttribute("focus", "true");
     }
-  }
-  goto(){
-    this.router.navigate(['/post/'+this.post.id])
   }
   readMore(event: any){
     var target = event.target;
@@ -54,4 +67,5 @@ export class PostComponent implements OnInit {
       target.setAttribute("shrink_text", "true");
     }
   }
+
 }

@@ -18,10 +18,13 @@ export class LoginComponent implements OnInit {
   }
   loginUser(event){
     event.preventDefault();
-    this._userService.loginUser({"email":this.login, "password":this.password});
-    if(this._userService._user$){
-      this.userLogin.emit(this._userService._user$)
-    }
+    this._userService.loginUser({"email":this.login, "password":this.password})
+    .then(_ => {
+      if(this._userService._user$){
+        this.userLogin.emit(this._userService._user$)
+      }
+    })
+
   }
   gotoRegister(){
     var user = {"email":"", "password":""};

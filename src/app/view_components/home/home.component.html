@@ -1,0 +1,33 @@
+<div style="padding: 10px;
+width: calc(100% - 20px);">
+
+  <div class="publisher">
+    <mat-card>
+      <div class="Image">
+        <img src="https://source.unsplash.com/1600x900/?product">
+      </div>
+      <form class="createPost">
+        <h4 style="margin: 0">What's on your mind?</h4>
+        <textarea mat-text-area placeholder="Write something here."></textarea>
+        <mat-card-actions>
+          <button mat-button>Post</button>
+          <button mat-icon-button aria-label="Add image">
+            <mat-icon>add_photo_alternate</mat-icon>
+          </button>
+          <button mat-icon-button aria-label="Schedule">
+            <mat-icon>schedule</mat-icon>
+          </button>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+
+  <post *ngFor="let offer of posts" [post]="offer"></post>
+
+
+
+  <div class="mat-spinner"  *ngIf="loading_state" [ngClass]="{'bottom': posts.length !== 0 }">
+    <mat-spinner></mat-spinner>
+  </div>
+
+</div>

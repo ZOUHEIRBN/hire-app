@@ -1,0 +1,55 @@
+mat-card{
+  background:#fff;
+  color:#424242;
+  display: flex;
+}
+div.Image{
+  width: 10vmax;
+  height: 10vmax;
+  border-radius: 10vmax;
+  padding-top: 0%;
+  padding-left: 0%;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+div.Image img{
+  display: block;
+  position: absolute;
+  top: 10pt;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+form.createPost{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  padding: 10pt;
+  justify-content: flex-start;
+}
+form.createPost textarea{
+  resize: vertical;
+  width: 100%;
+  max-width: 90%;
+  padding: 1% 5%;
+  margin: 1% 0%;
+  outline: none;
+  border: none;
+  background-color: #ddd5;
+  border-radius: 3vmin;
+  font-size: xx-large;
+  font-family: "Helvetica";
+
+}
+@media (orientation:portrait){
+  div.Image{
+    width: 5vmax;
+    height: 5vmax;
+  }
+}

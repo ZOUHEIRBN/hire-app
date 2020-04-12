@@ -7,20 +7,21 @@ import { ProfilesComponent } from './view_components/profiles/profiles.component
 import { UserProfileComponent } from './view_components/user-profile/user-profile.component';
 import { PostComponent } from './subcomponents/post/post.component';
 import { RegisterComponent } from './view_components/register/register.component';
-import { CompanyThumbnailComponent } from './subcomponents/company-thumbnail/company-thumbnail.component';
 import { CompanyListComponent } from './view_components/company-list/company-list.component';
 import { SearchResultsComponent } from './view_components/search-results/search-results.component';
-import { SearchService } from './services/search.service';
+import { HomeComponent } from './view_components/home/home.component';
+import { PostPageComponent } from './view_components/post-page/post-page.component';
 
 
 export var routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'home', component: HomeComponent },
   { path: 'offers', component: OfferListComponent },
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile/:usertype/:id', component: UserProfileComponent },
-  { path: 'post/:id', component: PostComponent },
+  { path: 'post/:post_id', component: PostPageComponent },
   { path: 'users', component: ProfilesComponent },
   { path: 'companies', component: CompanyListComponent },
   { path: 'search/:q', component: SearchResultsComponent}

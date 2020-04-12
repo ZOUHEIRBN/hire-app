@@ -10,13 +10,22 @@ mat-card, mat-card *, mat-card *::before, mat-card *::after{
   transition: all .5s ease;
 }
 
-app-about>*:first-child, app-user>*:first-child, user-profile>*:first-child{
+router-outlet+*:not(app-login)>*:first-child, app-about>*:first-child, app-user>*:first-child, user-profile>*:first-child{
   top: var(--menu-height);
     position: relative;
+}
+@media only screen and (orientation: landscape) and (min-width: 960px) {
+  router-outlet+*{
+    position: absolute;
+    width: 98%;
+    left: 1%;
+  }
 }
 app-login {
   z-index: 4;
   position: absolute;
+  width: 0%;
+  left: 0%;
 }
 /* Global variables */
 *{
@@ -29,11 +38,10 @@ mat-card-actions {
   display: inline-flex!important;
   flex-direction: row-reverse;
   flex-wrap: nowrap;
-  /* margin: 0; */
-
   position: relative;
-  margin: 0px!important;
   padding: 0px!important;
+  margin: 8px 0px!important;
+
   width: 100%;
 }
 button div{

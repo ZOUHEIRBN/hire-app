@@ -10,7 +10,7 @@
     <div class="mat-card-info">
         <div *ngFor="let post of userposts">
           <offer-details [offer]="post" *ngIf="post.type === 'offer' && this.filter.doSatisfy(post)"></offer-details>
-          <post [post]="post" *ngIf="post.type !== 'offer' && this.filter.doSatisfy(post)"></post>
+          <post [embed]="true" [post]="post" *ngIf="post.type !== 'offer' && this.filter.doSatisfy(post)"></post>
         </div>
         <div class="mat-spinner" [ngClass]="{'bottom': this.userposts !== [] }">
           <mat-spinner *ngIf="loading_state"></mat-spinner>

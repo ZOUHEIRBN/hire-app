@@ -10,13 +10,13 @@ export class CompanyService {
 
   constructor(private httpClient:HttpClient) { }
   public async getCompany(id){
-    var fetchedData = await fetch(SERVER_URL+"companies?id="+id);
+    var fetchedData = await fetch(SERVER_URL+"companies/"+id);
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
   public getAllCompanies(){
-    return this.httpClient.get(SERVER_URL+"companies").pipe(map(response => {
-      return response;
+    return this.httpClient.get(SERVER_URL+"companies/").pipe(map(response => {
+      return response['body'];
     }));
   }
 

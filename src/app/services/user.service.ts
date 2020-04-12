@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { User, USERS } from '../interfaces/user';
 import { SERVER_URL, httpOptions } from './post.service'
 import { Subject, BehaviorSubject } from 'rxjs';
@@ -19,7 +19,7 @@ export class UserService {
     return this._user.value
   }
   public async getUser(id){
-    var fetchedData = await fetch(SERVER_URL+"users?id="+id);
+    var fetchedData = await fetch(SERVER_URL+"users/"+id);
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
@@ -30,32 +30,31 @@ export class UserService {
   }
   public getAllUsers(){
     return this.httpClient.get(SERVER_URL+"users").pipe(map(response => {
-      return response;
+      return response['body'];
     }));
   }
-  public async getUserByMeta(user){
-    var str = '?'
-    for(let key in user){
-      str = str + key + "=" + user[key].replace(' ','%20') + "&"
-    }
 
-    var fetchedData = await fetch(SERVER_URL+"users/"+str);
+  public async getUserByCredentials(user){
+    var fetchedData = await fetch(SERVER_URL+"users/credentials/"+user.email+"/"+user.password);
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
 
-
   // Special methods
   registerUser(user){
-    return this.httpClient.post<User>(SERVER_URL+"users", user, httpOptions)
+    return this.httpClient.post<User>(SERVER_URL+"users/", user, httpOptions)
   }
-  loginUser(user){
-    this.getUserByMeta(user)
+  async loginUser(user){
+    this.getUserByCredentials(user)
     .then((response) => {
-      if(response.length > 0)
+      if(JSON.stringify(response) !== '{}')
       {
-        this._user.next(response[0])
+        this._user.next(response);
       }
     })
+    return this._user.value
+  }
+  disconnect(){
+    this._user.next(null)
   }
 }

@@ -29,18 +29,14 @@ div.Image{
 }
 
 
-mat-card div.img{
+mat-card img{
+  display: block;
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.0);
-
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-origin: padding-box;
+  height:auto;
+  width: 100%;
+  transform: translate(-50%, -50%) scale(1);
 }
 
 div.Image::before {
@@ -74,7 +70,7 @@ div.Image:hover::after {
   transform: translateY(0%);
   bottom: 0vh;
 }
-div.Image:hover div.img {
+div.Image:hover img {
   transform: translate(-50%, -50%) scale(1.25);
 }
 div.Image[focus=true]{
@@ -86,7 +82,7 @@ div.Image[focus=true]{
     height: 100vh;
     background-color: hsla(100,100%,0%,.77);
 }
-div.Image[focus=true] div.img{
+div.Image[focus=true] img{
   position: fixed;
     top: 50%;
     left: 50%;
@@ -95,7 +91,7 @@ div.Image[focus=true] div.img{
     height: 90vmin;
     width: auto;
 }
-div.Image[focus=true]:hover div.img {
+div.Image[focus=true]:hover img {
   transform: translate(-50%, -50%) scale(.855);
 }
 /* Offer meta-data */
@@ -105,38 +101,27 @@ mat-card-contents ul{
 mat-card-contents ul>li>h2{
   margin-bottom: 0;
 }
-/* No-embed mode */
-.noEmbed div.Image{
-  width: 25%;
-    height: 100%;
-    padding-top: 25%;
-    padding-left: 0%;
-    position: relative;
-    display: flex;
-    overflow: hidden;
-}
-.noEmbed mat-card-contents{
-  width: unset;
-  flex-grow: 1;
-}
-.noEmbed mat-card-info{
+
+mat-card-info{
   flex-wrap: wrap;
   flex-direction: row;
 }
-.noEmbed p{
-  width: 100%;
-}
+
 mat-card-contents{
   display: inline-block;
   width: 100%;
 
+  width: unset;
+  flex-grow: 1;
 }
+
 
 
 /* description field */
 p{
   margin: 0;
   padding: 7pt 1rem;
+  width: 100%;
 
   --lh: 12pt;
   font-size: var(--lh);
@@ -160,7 +145,7 @@ p{
     display: flex;
   }
 
-  mat-card div.img{
+  mat-card img{
     width: auto;
     height : 100%;
   }
@@ -204,7 +189,7 @@ p{
   p[shrink_text=false]::after{
     content: "Read less";
   }
-  div.Image[focus=true] div.img{
+  div.Image[focus=true] img{
     height: auto;
     width: 95vw;
   }

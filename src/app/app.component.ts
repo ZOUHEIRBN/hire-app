@@ -145,7 +145,7 @@ export class AppComponent {
         response => {
           if(response !== null && response["id"] !== null && response["password"] !== null){
               this.user = response;
-              this.router.navigate(['/offers']);
+              this.router.navigate(['/home']);
             }
           }
 
@@ -159,6 +159,7 @@ export class AppComponent {
   disconnect(){
     this.showMenu = false;
     this.user = null;
+    this._userService.disconnect()
     this.router.navigate(['/login']);
   }
 }

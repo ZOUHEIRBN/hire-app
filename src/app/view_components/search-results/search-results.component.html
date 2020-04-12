@@ -10,7 +10,7 @@
     </div>
     <div *ngIf="searchResults['posts']">
       <h1 *ngIf="searchResults['posts'].length > 0">Posts</h1>
-      <post *ngFor="let result of searchResults['posts']" [post]="result"></post>
+      <post [embed]="true" *ngFor="let result of searchResults['posts']" [post]="result"></post>
     </div>
 
   </div>
