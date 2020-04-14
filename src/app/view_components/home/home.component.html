@@ -8,10 +8,14 @@ width: calc(100% - 20px);">
       </div>
       <form class="createPost">
         <h4 style="margin: 0">What's on your mind?</h4>
-        <textarea mat-text-area placeholder="Write something here."></textarea>
+        <input [(ngModel)]="newPost.title" name="title" mat-input>
+        <textarea [(ngModel)]="newPost.description" name="description" mat-text-area placeholder="Write something here."></textarea>
+        <input type="file" hidden #imageFile (change)="this.fileSelect($event)">
         <mat-card-actions>
-          <button mat-button>Post</button>
-          <button mat-icon-button aria-label="Add image">
+          <button mat-button (click)="this.createPost()">
+            Post
+          </button>
+          <button mat-icon-button aria-label="Add image" (click)="imageFile.click()">
             <mat-icon>add_photo_alternate</mat-icon>
           </button>
           <button mat-icon-button aria-label="Schedule">
@@ -22,7 +26,7 @@ width: calc(100% - 20px);">
     </mat-card>
   </div>
 
-  <post *ngFor="let offer of posts" [post]="offer"></post>
+  <post *ngFor="let post of posts" [post]="post"></post>
 
 
 

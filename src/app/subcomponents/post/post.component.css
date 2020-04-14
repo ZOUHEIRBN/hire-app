@@ -9,7 +9,7 @@ mat-card{
 }
 
 .mat-card-header {
-    display: block;
+    display: flex;
     flex-direction: row;
 }
 
@@ -94,6 +94,7 @@ div.Image[focus=true] div.img{
     z-index: 2;
     height: 90vmin;
     width: auto;
+
 }
 div.Image[focus=true]:hover div.img {
   transform: translate(-50%, -50%) scale(.855);
@@ -106,26 +107,6 @@ mat-card-contents ul>li>h2{
   margin-bottom: 0;
 }
 /* No-embed mode */
-.noEmbed div.Image{
-  width: 25%;
-    height: 100%;
-    padding-top: 25%;
-    padding-left: 0%;
-    position: relative;
-    display: flex;
-    overflow: hidden;
-}
-.noEmbed mat-card-contents{
-  width: unset;
-  flex-grow: 1;
-}
-.noEmbed mat-card-info{
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-.noEmbed p{
-  width: 100%;
-}
 mat-card-contents{
   display: inline-block;
   width: 100%;
@@ -144,6 +125,48 @@ p{
 
 }
 
+/* User data field */
+div.userData{
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1vmin;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+div.userData .profileImage{
+  transform: scale(.7);
+  border: 1px solid #ddd;
+}
+div.userData .profileImage+div>*{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.userData .profileImage+div>h1{
+  font-size: 16pt;
+}
+div.userData .profileImage+div>h4{
+  color: #424242;
+  font-weight: normal;
+  font-size: 8pt;
+}
+@media only screen and (orientation:landscape) and (min-width: 960px){
+  div.Image{
+    width: 25%;
+    height: 100%;
+    flex-shrink: 0;
+  }
+  mat-card-contents{
+    width: unset;
+    flex-shrink: 1;
+  }
+  mat-card-info{
+
+    flex-direction: row;
+  }
+  p{
+    width: 100%;
+  }
+}
 @media (orientation: portrait) {
   div.Image {
     width: 100%;
@@ -160,10 +183,6 @@ p{
     display: flex;
   }
 
-  mat-card div.img{
-    width: auto;
-    height : 100%;
-  }
   div.Image::after {
     font-size: 24pt;
     padding: calc(20vh - 14pt) 0%;

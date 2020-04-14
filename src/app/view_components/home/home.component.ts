@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
+import { Post, def_post } from 'src/app/interfaces/post';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
   posts: any = [];
   loading_state = true
 
-
+  @Input() newPost:Post = def_post;
   constructor(private _postService:PostService) {}
 
   ngOnInit(): void {
@@ -25,5 +26,15 @@ export class HomeComponent implements OnInit {
       setTimeout(() => {this.loading_state = false}, 1000)
     })
   }
+  fileSelect(event){
+    const reader = new FileReader();
+    reader.onload = _ => this.newPost['imageUrl'] = reader.result;
+    reader.readAsDataURL(event.target.files[0]);
+  }
+  createPost(){
 
+    this._postService.createPost(this.newPost).subscribe(_ => {
+      this.posts.unshift(this.newPost)
+    })
+  }
 }

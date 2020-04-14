@@ -19,10 +19,11 @@ export class PostService {
   }
   public async getPosts(){
 		return this.httpClient.get(SERVER_URL+"posts/").pipe(map(response => {
+      console.log(response['body'])
       return response['body'];
     }));
   }
-  public getPostsById(id){
+  public getPostById(id){
 		return this.httpClient.get(SERVER_URL+"posts/"+id).pipe(map(response => {
       console.log(response)
       return response['body'];
@@ -42,6 +43,10 @@ export class PostService {
     return this.httpClient.get(SERVER_URL+"posts?ownerId="+id).pipe(map(response => {
       return response;
     }));
+  }
+
+  createPost(post){
+    return this.httpClient.post<Post>(SERVER_URL+"posts/", post, httpOptions)
   }
 }
 

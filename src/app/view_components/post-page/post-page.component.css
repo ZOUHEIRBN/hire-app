@@ -2,15 +2,16 @@ mat-card{
   background:#fff;
   color:#424242;
 }
-
 .mat-card-subtitle {
     color: var(--secondary-color);
     width: 100%;
 }
 
 .mat-card-header {
-    display: block;
-    flex-direction: row;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  position: relative;
 }
 
 mat-card-info{
@@ -29,14 +30,18 @@ div.Image{
 }
 
 
-mat-card img{
-  display: block;
+mat-card div.img{
   position: absolute;
+  width: 100%;
+  height: 100%;
   top: 50%;
   left: 50%;
-  height:auto;
-  width: 100%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1.0);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-origin: padding-box;
 }
 
 div.Image::before {
@@ -70,7 +75,7 @@ div.Image:hover::after {
   transform: translateY(0%);
   bottom: 0vh;
 }
-div.Image:hover img {
+div.Image:hover div.img {
   transform: translate(-50%, -50%) scale(1.25);
 }
 div.Image[focus=true]{
@@ -82,16 +87,17 @@ div.Image[focus=true]{
     height: 100vh;
     background-color: hsla(100,100%,0%,.77);
 }
-div.Image[focus=true] img{
+div.Image[focus=true] div.img{
   position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(.85);
-    z-index: 2;
-    height: 90vmin;
-    width: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(.85);
+  z-index: 2;
+  height: 90vh;
+  width: 90vw;
+  background-size: contain;
 }
-div.Image[focus=true]:hover img {
+div.Image[focus=true]:hover div.img {
   transform: translate(-50%, -50%) scale(.855);
 }
 /* Offer meta-data */
@@ -110,6 +116,7 @@ mat-card-info{
 mat-card-contents{
   display: inline-block;
   width: 100%;
+  margin: 2% 0%;
 
   width: unset;
   flex-grow: 1;
@@ -130,6 +137,9 @@ p{
 }
 
 @media (orientation: portrait) {
+  mat-card{
+    width: 90%;
+  }
   div.Image {
     width: 100%;
     height : 20vh;
@@ -145,8 +155,7 @@ p{
     display: flex;
   }
 
-  mat-card img{
-    width: auto;
+  mat-card div.img{
     height : 100%;
   }
   div.Image::after {
@@ -157,6 +166,7 @@ p{
     --lh: 12pt;
     --max-lines: 3;
     max-height: calc(var(--lh) *  var(--max-lines));
+    width: 90%;
     overflow: hidden;
   }
   p::after {
@@ -189,8 +199,7 @@ p{
   p[shrink_text=false]::after{
     content: "Read less";
   }
-  div.Image[focus=true] img{
-    height: auto;
+  div.Image[focus=true] div.img{
     width: 95vw;
   }
 }

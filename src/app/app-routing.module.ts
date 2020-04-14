@@ -20,7 +20,7 @@ export var routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile/:usertype/:id', component: UserProfileComponent },
+  { path: 'profile/:usertype/:email', component: UserProfileComponent },
   { path: 'post/:post_id', component: PostPageComponent },
   { path: 'users', component: ProfilesComponent },
   { path: 'companies', component: CompanyListComponent },

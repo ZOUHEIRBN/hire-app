@@ -9,12 +9,17 @@ mat-card-badges {
   mat-card-badges {
     width: 100%;
     float: left;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
   }
   div.mat-card-header-text{
-    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 0 1vw;
   }
 
   post-badge {
-    flex: 0 0 17%;
+    flex: 0 1 17%;
   }
 }

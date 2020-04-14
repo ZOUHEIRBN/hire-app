@@ -74,9 +74,7 @@ export class PostFilterComponent implements OnInit {
   }
   refreshFilters(source){
     source.forEach(element => {
-      let type = element.type
-      type = type.charAt(0).toUpperCase() + type.substr(1).toLowerCase();
-      element.badges.push({"category":"posttype","name":type})
+
       if(!this.filters){
         this.filters = {}
       }

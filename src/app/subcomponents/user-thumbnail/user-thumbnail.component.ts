@@ -13,7 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class UserThumbnailComponent implements OnInit {
   @Input() user: User;
   @Input() embedded = false;
-  @Input() showsettings = false;
+  @Input() iscurrentuser = false;
   currentUserId: string;
   constructor(private router:Router) { }
   gotoUserPage(){

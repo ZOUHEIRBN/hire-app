@@ -20,7 +20,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { OfferDetailsComponent } from './subcomponents/offer-details/offer-details.component';
 import { BadgeComponent } from './minicomponents/badge/badge.component';
 import { LoginComponent } from './view_components/login/login.component';
 import { UserThumbnailComponent } from './subcomponents/user-thumbnail/user-thumbnail.component';
@@ -42,7 +41,6 @@ import { PostPageComponent } from './view_components/post-page/post-page.compone
     AppComponent,
     OfferListComponent,
     AboutComponent,
-    OfferDetailsComponent,
     BadgeComponent,
     LoginComponent,
     UserThumbnailComponent,

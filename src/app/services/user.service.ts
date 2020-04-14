@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { User, USERS } from '../interfaces/user';
+import { User } from '../interfaces/user';
 import { SERVER_URL, httpOptions } from './post.service'
 import { Subject, BehaviorSubject } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -24,12 +24,12 @@ export class UserService {
     return fetchedDataJSON;
   }
   public async getUserByEmail(email){
-    var fetchedData = await fetch(SERVER_URL+"users?email="+email);
+    var fetchedData = await fetch(SERVER_URL+"users/email/"+email);
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
   public getAllUsers(){
-    return this.httpClient.get(SERVER_URL+"users").pipe(map(response => {
+    return this.httpClient.get(SERVER_URL+"users/?current_user="+this._user.getValue().email).pipe(map(response => {
       return response['body'];
     }));
   }

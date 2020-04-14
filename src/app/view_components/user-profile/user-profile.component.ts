@@ -21,6 +21,7 @@ export class UserProfileComponent implements OnInit {
   @ViewChild(PostFilterComponent)
   filter:PostFilterComponent;
   loading_state = false;
+  currentUserId:string = ''
   constructor(private route: ActivatedRoute, private _userService:UserService, private _companyService:CompanyService, private _postService:PostService) {
 
   }
@@ -29,6 +30,9 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     //Getting user posts
+    if(this._userService.getCurrentUser()){
+      this.currentUserId = this._userService.getCurrentUser().id
+    }
     this.getProfileOwner();
   }
   async getProfileOwner(){
@@ -36,7 +40,7 @@ export class UserProfileComponent implements OnInit {
       this.usertype = params.usertype;
       let promise;
       if(params.usertype === 'user'){
-        promise = this._userService.getUser(params.id)
+        promise = this._userService.getUserByEmail(params.email)
       }
       else if(params.usertype === 'company'){
         promise = this._companyService.getCompany(params.id)
@@ -47,7 +51,7 @@ export class UserProfileComponent implements OnInit {
     });
   }
   async refreshData(){
-    this._postService.getUserPosts(this.user.id).subscribe((data) => {
+    this._postService.getUserPosts(this.user.email).subscribe((data) => {
       this.userposts = data
       setTimeout(() => {this.filter.refreshFilters(this.userposts)}, 1000)
     })

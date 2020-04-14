@@ -1,52 +1,32 @@
-<mat-card style="margin-top:10px;" @developDown>
+<mat-card style="margin-top:10px;" @developDown [ngClass]="{'noEmbed' : !embed}">
   <mat-card-content>
     <mat-card-info>
-
+      <div class="Image" [attr.focus]="false" (click)="toggleFocus($event)" *ngIf="post.imageUrl && post.imageUrl.toString() !== ''">
+        <div class="img" [ngStyle]="{'background-image': 'url(' + post.imageUrl + ')'}"></div>
+      </div>
 
       <mat-card-contents>
         <mat-card-header>
+
           <mat-card-title>
             {{post.title}}
           </mat-card-title>
 
+          <mat-card-badges>
+            <post-badge class="{{ badge.category }}" *ngFor="let badge of post.badges" [badge]="badge"></post-badge>
+          </mat-card-badges>
+
           <mat-card-subtitle>
-            <span>&nbsp;</span>
-            <mat-card-badges>
-              <post-badge class="{{ badge.category }}" *ngFor="let badge of post.badges" [badge]="badge"></post-badge>
-            </mat-card-badges>
+            <span>Hello&nbsp;</span>
           </mat-card-subtitle>
-
         </mat-card-header>
-        <ul *ngIf="post.type === 'offer' && !embed">
-          <li>
-            <h2>
-              Work days:
-              {{ post['workdays'] }}
-            </h2>
-          </li>
-          <li>
-            <h2>
-              Work hours:
-              {{ post['workhours'] }}
-            </h2>
-          </li>
-          <li>
-            <h2>
-              Salary:
-              {{ post['salary'] }}
-            </h2>
-          </li>
-        </ul>
-
+        <p [attr.shrink_text]="false">
+          <span>
+            {{post.description}}<br>
+          </span>
+        </p>
       </mat-card-contents>
-      <p (click)="readMore($event)" [attr.shrink_text]="true">
-        <span>
-          {{post.description}}<br>
-        </span>
-      </p>
-      <div class="Image" [attr.focus]="false" (click)="toggleFocus($event)">
-        <img src="{{ post.imageUrl }}"/>
-      </div>
+
     </mat-card-info>
     <mat-card-actions>
       <button mat-button>Liker</button>

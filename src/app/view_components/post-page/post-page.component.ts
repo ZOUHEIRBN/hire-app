@@ -5,13 +5,13 @@ import { Post } from 'src/app/interfaces/post';
 import { developDown } from 'src/app/app-animations';
 
 @Component({
-  selector: 'app-post-page',
+  selector: 'post-page',
   templateUrl: './post-page.component.html',
   styleUrls: ['./post-page.component.css'],
   animations:[developDown]
 })
 export class PostPageComponent implements OnInit {
-  @Input() post:Post;
+  @Input() post;
   @Input() embed = false;
   post_id;
   constructor(private route:ActivatedRoute, private _postService:PostService) { }
@@ -49,22 +49,6 @@ export class PostPageComponent implements OnInit {
     else
     {
       target.setAttribute("focus", "true");
-    }
-  }
-  readMore(event: any){
-    var target = event.target;
-    while(target.tagName !== "P"){
-      target = target.parentNode;
-    }
-    var shtxt = target.getAttribute('shrink_text');
-
-    if(shtxt === "true")
-    {
-      target.setAttribute("shrink_text", "false");
-    }
-    else
-    {
-      target.setAttribute("shrink_text", "true");
     }
   }
 

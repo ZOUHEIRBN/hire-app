@@ -2,7 +2,7 @@
   <mat-card-content  *ngIf="user">
     <mat-card-info>
       <div class="Image" [attr.focus]="false">
-        <img [src]="user.imageUrl"/>
+        <div class="img" [ngStyle]="{'background-image': 'url(' + user.imageUrl + ')'}"></div>
       </div>
 
       <mat-card-contents>
@@ -33,12 +33,15 @@
       </mat-card-contents>
     </mat-card-info>
     <mat-card-actions>
-      <button *ngIf="!embedded" mat-button routerLink="{{ '/profile/user/' + user.id }}">Consulter</button>
       <!-- <button mat-button>Ajouter aux favoris</button> -->
-      <button mat-icon-button aria-label="Like">
-        <mat-icon>favorite</mat-icon>
+      <button *ngIf="!embedded" mat-button routerLink="{{ '/profile/user/' + user.email }}"
+       mat-icon-button aria-label="Visit profile">
+        <mat-icon>person</mat-icon>
       </button>
-      <button mat-icon-button aria-label="Settings" *ngIf="this.showsettings">
+      <button mat-icon-button aria-label="Like" *ngIf="!this.iscurrentuser">
+        <mat-icon>star</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Settings" *ngIf="this.iscurrentuser">
         <mat-icon>settings</mat-icon>
       </button>
     </mat-card-actions>

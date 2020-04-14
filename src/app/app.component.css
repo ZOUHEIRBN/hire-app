@@ -10,7 +10,7 @@ mat-toolbar h1{
   margin-right: 5%!important;
 }
 mat-toolbar button[action=MenuSwitch]{
-  border: .5pt solid #fff;
+  border: 0pt solid #fff;
   margin-right: 1vw;
   display: none;
 }
@@ -175,6 +175,9 @@ div.rightPanel>div {
   mat-toolbar button[action=MenuSwitch]{
     display: block;
     flex-grow: 0;
+    /* width: -webkit-fill-available; */
+    flex-shrink: 1;
+    min-width: 32px;
   }
   div.buttonBar{
     display: flex;

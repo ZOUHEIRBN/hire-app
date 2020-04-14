@@ -14,7 +14,7 @@ import { PostService } from '../../services/post.service';
 
 
 export class OfferListComponent implements OnInit {
-  offers: any = [];
+  offers: Offer[] = [];
   loading_state = true
 
 

@@ -5,7 +5,7 @@ width: calc(100% - 20px);">
   <post-filter #filter></post-filter>
   <div class="container">  <!-- [@staggeredDevelop]="profiles.length"> -->
     <div *ngFor="let profile of profiles" style="display: contents;">
-      <user-details [showsettings]="profile.id === this.currentUserId" *ngIf="this.filter.doSatisfy(profile)" @develop [user]="profile"></user-details>
+      <user-details [iscurrentuser]="profile.id === this.currentUserId" *ngIf="this.filter.doSatisfy(profile)" @develop [user]="profile"></user-details>
     </div>
   </div>
 

@@ -23,14 +23,18 @@ div.Image{
   display: flex;
   overflow: hidden;
 }
-div.Image img{
-  display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 100%;
-    width: auto;
-    transform: translate(-50%, -50%) scale(1);
+div.Image div.img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.0);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-origin: padding-box;
 }
 a.address {
   font-weight: lighter;
@@ -55,7 +59,7 @@ user-details{
   overflow: hidden;
   margin-bottom: 5%;
 }
-.embedded div.Image img{
+.embedded div.Image div.img{
   height: 100%;
 }
 .embedded mat-card-badges{
@@ -87,7 +91,7 @@ user-details{
     display: flex;
     overflow: hidden;
   }
-  .embedded div.Image img{
+  .embedded div.Image div.img{
     transform: translate(-50%, -50%);
     height: 100%;
   }
