@@ -6,7 +6,8 @@ import { AgmCoreModule } from '@agm/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { OfferListComponent } from './view_components/offer-list/offer-list.component';
@@ -19,6 +20,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from "@angular/material/input";
+
 
 import { BadgeComponent } from './minicomponents/badge/badge.component';
 import { LoginComponent } from './view_components/login/login.component';
@@ -67,6 +72,9 @@ import { PostPageComponent } from './view_components/post-page/post-page.compone
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     MatProgressSpinnerModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({
@@ -74,7 +82,7 @@ import { PostPageComponent } from './view_components/post-page/post-page.compone
     })
 
   ],
-  providers: [ UserService, OfferListComponent],
+  providers: [ UserService, OfferListComponent, {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })

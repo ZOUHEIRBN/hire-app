@@ -15,6 +15,7 @@ export const def_post:Post = {
 export interface Post{
   id:number,
   type?:string,
+  subject?:string,
   ownerId:number|string,
   owner?: User|Company,
   title?: string,
@@ -27,3 +28,5 @@ export interface Offer extends Post{
   workhours: number,
   workdays: number,
 }
+
+export const posttypes = {"types":["Offer", "Demand"], "subjects": ["Job", "Formation", "Internship"]}

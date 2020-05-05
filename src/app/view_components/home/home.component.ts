@@ -1,17 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
-import { Post, def_post } from 'src/app/interfaces/post';
-
+import { Post, def_post, posttypes } from 'src/app/interfaces/post';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   posts: any = [];
   loading_state = true
-
+  posttypes = posttypes;
   @Input() newPost:Post = def_post;
   constructor(private _postService:PostService) {}
 

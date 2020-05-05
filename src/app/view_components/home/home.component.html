@@ -7,9 +7,33 @@ width: calc(100% - 20px);">
         <img src="https://source.unsplash.com/1600x900/?product">
       </div>
       <form class="createPost">
-        <h4 style="margin: 0">What's on your mind?</h4>
-        <input [(ngModel)]="newPost.title" name="title" mat-input>
-        <textarea [(ngModel)]="newPost.description" name="description" mat-text-area placeholder="Write something here."></textarea>
+        <h1 style="margin: 0">
+          What's on your mind?
+        </h1>
+        <div>
+
+          <mat-form-field>
+            <mat-label>Subject</mat-label>
+            <mat-select [(value)]="newPost.type">
+              <mat-option *ngFor="let subj of posttypes['subjects']" value="{{subj}}">
+                {{subj}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Post type</mat-label>
+            <mat-select [(value)]="newPost.subject">
+              <mat-option *ngFor="let subj of posttypes['types']" value="{{subj}}">
+                {{subj}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="newPost">
+          <input [(ngModel)]="newPost.title" name="title" mat-input placeholder="Post title">
+          <textarea [(ngModel)]="newPost.description" name="description" mat-text-area placeholder="Write something here."></textarea>
+
+        </div>
         <input type="file" hidden #imageFile (change)="this.fileSelect($event)">
         <mat-card-actions>
           <button mat-button (click)="this.createPost()">
