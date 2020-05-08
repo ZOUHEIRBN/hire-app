@@ -11,6 +11,7 @@ import { CompanyListComponent } from './view_components/company-list/company-lis
 import { SearchResultsComponent } from './view_components/search-results/search-results.component';
 import { HomeComponent } from './view_components/home/home.component';
 import { PostPageComponent } from './view_components/post-page/post-page.component';
+import { CompanyProfileComponent } from './view_components/company-profile/company-profile.component';
 
 
 export var routes: Routes = [
@@ -20,7 +21,8 @@ export var routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'profile/:usertype/:email', component: UserProfileComponent },
+  { path: 'user/:email', component: UserProfileComponent },
+  { path: 'company/:id', component: CompanyProfileComponent },
   { path: 'post/:post_id', component: PostPageComponent },
   { path: 'users', component: ProfilesComponent },
   { path: 'companies', component: CompanyListComponent },

@@ -10,30 +10,67 @@ width: calc(100% - 20px);">
         <h1 style="margin: 0">
           What's on your mind?
         </h1>
-        <div>
-
-          <mat-form-field>
+        <section class="header" [ngStyle]="{'flex-wrap': !newPost.type || !newPost.subject ? 'wrap':'unset'}">
+          <h3 *ngIf="!newPost.type || !newPost.subject" @developDown>Choose post type</h3>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
             <mat-label>Subject</mat-label>
             <mat-select [(value)]="newPost.type">
+              <mat-option>None</mat-option>
               <mat-option *ngFor="let subj of posttypes['subjects']" value="{{subj}}">
                 {{subj}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
             <mat-label>Post type</mat-label>
             <mat-select [(value)]="newPost.subject">
+              <mat-option>None</mat-option>
               <mat-option *ngFor="let subj of posttypes['types']" value="{{subj}}">
                 {{subj}}
               </mat-option>
             </mat-select>
           </mat-form-field>
-        </div>
-        <div class="newPost">
-          <input [(ngModel)]="newPost.title" name="title" mat-input placeholder="Post title">
-          <textarea [(ngModel)]="newPost.description" name="description" mat-text-area placeholder="Write something here."></textarea>
+        </section>
+        <section class="newPost" *ngIf="newPost.type && newPost.subject" @developDown>
+          <h3>Write your post</h3>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Title</mat-label>
+            <input [(ngModel)]="newPost.title" name="title" matInput placeholder="Post title">
+          </mat-form-field>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Body</mat-label>
+            <textarea [(ngModel)]="newPost.description" name="description" matInput placeholder="Write something here."></textarea>
+          </mat-form-field>
+          <div style="display: flex;">
+            <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+              <mat-label>Working days</mat-label>
+              <mat-select [(value)]="newPost.workdays" multiple>
+                <mat-option value="Mon">Monday</mat-option>
+                <mat-option value="Tue">Tuesday</mat-option>
+                <mat-option value="Wed">Wednesday</mat-option>
+                <mat-option value="Thu">Thursday</mat-option>
+                <mat-option value="Fri">Friday</mat-option>
+                <mat-option value="Sat">Saturday</mat-option>
+                <mat-option value="Sun">Sunday</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div style="display: flex; flex-direction: column;">
+              <mat-label>Working hours</mat-label>
+              <mat-slider
+                  class="example-margin"
+                  [disabled]="false"
+                  [invert]="false"
+                  [max]="12"
+                  [min]="0"
+                  [thumbLabel]="true"
+                  [tickInterval]="12"
+                  [(ngModel)]="newPost.workhours"
+                  [vertical]="false">
+              </mat-slider>
+            </div>
 
-        </div>
+          </div>
+        </section>
         <input type="file" hidden #imageFile (change)="this.fileSelect($event)">
         <mat-card-actions>
           <button mat-button (click)="this.createPost()">

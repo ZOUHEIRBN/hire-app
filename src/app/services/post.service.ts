@@ -40,7 +40,9 @@ export class PostService {
     }));
   }
   public async getCompanyPosts(id){
-    return this.httpClient.get(SERVER_URL+"posts?ownerId="+id).pipe(map(response => {
+    return this.httpClient.get(SERVER_URL+"posts/ownerId/"+id).pipe(map(response => {
+      console.log(response);
+
       return response;
     }));
   }

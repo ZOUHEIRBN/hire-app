@@ -3,20 +3,18 @@
 
   <mat-card-content>
     <div class="panel-1" @developDown>
-      <user-details [user]="user" [iscurrentuser]="user.id === this.currentUserId" [embedded]="true"></user-details>
+      <company-details [company]="company" [embedded]="true"></company-details>
     </div>
 
     <mat-tab-group>
-      <mat-tab label="Resume">
-        <user-resume [user]="this.user"></user-resume>
-      </mat-tab>
+
 
       <mat-tab label="Posts">
         <div class="mat-card-info">
-          <div *ngFor="let post of userposts">
+          <div *ngFor="let post of companyposts">
             <post [embed]="true" [post]="post" *ngIf="this.filter.doSatisfy(post)"></post>
           </div>
-          <div *ngIf="loading_state" class="mat-spinner" [ngClass]="{'bottom': this.userposts !== [] }">
+          <div *ngIf="loading_state" class="mat-spinner" [ngClass]="{'bottom': this.companyposts !== [] }">
             <mat-spinner></mat-spinner>
           </div>
           <span *ngIf="!loading_state" style="    text-align: center;

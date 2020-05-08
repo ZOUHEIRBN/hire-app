@@ -16,7 +16,6 @@ import { CompanyService } from 'src/app/services/company.service';
 })
 export class UserProfileComponent implements OnInit {
   user;
-  usertype;
   userposts: any;
   @ViewChild(PostFilterComponent)
   filter:PostFilterComponent;
@@ -37,14 +36,9 @@ export class UserProfileComponent implements OnInit {
   }
   async getProfileOwner(){
     this.route.params.subscribe(params => {
-      this.usertype = params.usertype;
+
       let promise;
-      if(params.usertype === 'user'){
-        promise = this._userService.getUserByEmail(params.email)
-      }
-      else if(params.usertype === 'company'){
-        promise = this._companyService.getCompany(params.id)
-      }
+      promise = this._userService.getUserByEmail(params.email)
       promise.then(response => {this.user = response})
       .then(() => {this.refreshData();})
 

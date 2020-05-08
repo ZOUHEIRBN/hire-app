@@ -22,11 +22,9 @@ export interface Post{
   description: string,
   badges: Badge[],
   imageUrl: string |ArrayBuffer
-}
-export interface Offer extends Post{
-  salary: number,
-  workhours: number,
-  workdays: number,
+  salary?: number,
+  workhours?: number,
+  workdays?: any[],
 }
 
 export const posttypes = {"types":["Offer", "Demand"], "subjects": ["Job", "Formation", "Internship"]}

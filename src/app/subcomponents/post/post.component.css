@@ -164,7 +164,7 @@ div.userData .profileImage+div>h4{
     flex-direction: row;
   }
   p{
-    width: 100%;
+    width: calc(100% -2rem);
   }
 }
 @media (orientation: portrait) {

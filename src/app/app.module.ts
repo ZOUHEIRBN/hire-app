@@ -23,7 +23,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from "@angular/material/input";
-
+import { MatSliderModule } from '@angular/material/slider';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatTreeModule } from '@angular/material/tree';
 
 import { BadgeComponent } from './minicomponents/badge/badge.component';
 import { LoginComponent } from './view_components/login/login.component';
@@ -40,7 +46,10 @@ import { NotificationComponent } from './minicomponents/notification/notificatio
 import { CompanyListComponent } from './view_components/company-list/company-list.component';
 import { SearchResultsComponent } from './view_components/search-results/search-results.component';
 import { HomeComponent } from './view_components/home/home.component';
-import { PostPageComponent } from './view_components/post-page/post-page.component'
+import { PostPageComponent } from './view_components/post-page/post-page.component';
+import { ResumeComponent } from './subcomponents/resume/resume.component';
+import { CompanyProfileComponent } from './view_components/company-profile/company-profile.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,12 +68,15 @@ import { PostPageComponent } from './view_components/post-page/post-page.compone
     CompanyListComponent,
     SearchResultsComponent,
     HomeComponent,
-    PostPageComponent
+    PostPageComponent,
+    ResumeComponent,
+    CompanyProfileComponent
   ],
   imports: [
 
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -75,6 +87,12 @@ import { PostPageComponent } from './view_components/post-page/post-page.compone
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatSliderModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatListModule,
+    MatTreeModule,
     MatProgressSpinnerModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({

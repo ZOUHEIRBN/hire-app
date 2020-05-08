@@ -1,0 +1,33 @@
+mat-list-item {
+  margin-bottom: 2%;
+  height: unset!important;
+  display: flex;
+}
+div.item-content{
+  flex-direction: row;
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+div.item-content>div{
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+div.item-content>div div{
+  display: block;
+}
+.mat-card-title{
+  color: var(--primary-color);
+}
+.mat-card-subtitle{
+  color: var(--secondary-color);
+}
+.mat-expansion-panel-header-description {
+  flex-grow: 0;
+}
+.ultra-wide{
+  width: 100%;
+}
+mat-list-item mat-list{
+  width: 100%;
+}

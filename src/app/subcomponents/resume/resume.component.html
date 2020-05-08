@@ -1,0 +1,392 @@
+<mat-card>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Personal data
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>person</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field>
+        <mat-label>First name</mat-label>
+        <input matInput [disabled]="viewMode" [value]="this.user.first_name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput type="number" min="1" [disabled]="viewMode">
+      </mat-form-field>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Academic cursus
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>school</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-list>
+          <mat-list-item *ngFor="let _ of ['a', 'b']">
+            <div class="item-content">
+
+              <mat-card-header style="transform: translateX(-16px); width: 100%;">
+                <mat-card-title>
+                  <span>
+                    Intitulé du diplôme
+                  </span>
+                </mat-card-title>
+
+                <mat-card-subtitle>
+                  <span>Nom de l'école&nbsp;</span>
+                </mat-card-subtitle>
+
+              </mat-card-header>
+
+              <mat-form-field>
+                <mat-label>Degree</mat-label>
+                <input matInput [disabled]="viewMode" [value]="'Master 2'">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Mention</mat-label>
+                <input matInput [disabled]="viewMode" [value]="'Bien'">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>From</mat-label>
+                <input matInput [matDatepicker]="picker1" [formControl]="date" [readonly]="viewMode">
+                <mat-datepicker-toggle matSuffix [for]="picker1">
+                  <mat-icon matDatepickerToggleIcon>event</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>To</mat-label>
+                <input matInput [matDatepicker]="picker1" [formControl]="date" [readonly]="viewMode">
+                <mat-datepicker-toggle matSuffix [for]="picker1">
+                  <mat-icon matDatepickerToggleIcon>event</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+            </div>
+
+
+            <br>
+            <mat-divider [inset]="true"></mat-divider>
+          </mat-list-item>
+
+      </mat-list>
+
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Professionnal cursus
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>work</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-list>
+          <mat-list-item *ngFor="let _ of ['a', 'b']">
+            <div class="item-content">
+              <mat-card-header style="transform: translateX(-16px); width: 100%;">
+                <mat-card-title>
+                  <span>
+                    Intitulé du poste
+                  </span>
+                </mat-card-title>
+
+                <mat-card-subtitle>
+                  <span>
+                    Nom de l'entreprise&nbsp;<br>
+                  </span>
+                </mat-card-subtitle>
+
+              </mat-card-header>
+
+              <mat-form-field class="ultra-wide">
+                <mat-label>Entreprise's address</mat-label>
+                <input matInput [disabled]="viewMode" [value]="'Master 2'">
+              </mat-form-field>
+
+              <mat-form-field class="ultra-wide">
+                <mat-label>Description</mat-label>
+                <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'Master 2'"></textarea>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Sector</mat-label>
+                <mat-select [disabled]="viewMode" [value]="'IT'">
+                  <mat-option value="IT">IT</mat-option>
+                  <mat-option value="Agriculture">Agriculture</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>From</mat-label>
+                <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="viewMode">
+                <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
+                  <mat-icon matDatepickerToggleIcon>event</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #xppicker_begin></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>To</mat-label>
+                <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="viewMode">
+                <mat-datepicker-toggle matSuffix [for]="xppicker_end">
+                  <mat-icon matDatepickerToggleIcon>event</mat-icon>
+                </mat-datepicker-toggle>
+                <mat-datepicker #xppicker_end></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field class="ultra-wide">
+                <mat-label>Added values</mat-label>
+                <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'Done this and this and that...'"></textarea>
+              </mat-form-field>
+            </div>
+
+
+
+            <br>
+            <mat-divider [inset]="true"></mat-divider>
+          </mat-list-item>
+
+      </mat-list>
+
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Academic projects
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>done</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-list>
+        <mat-list-item *ngFor="let _ of ['a', 'b']">
+          <div class="item-content">
+            <mat-form-field class="ultra-wide">
+              <mat-label>Project description</mat-label>
+              <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'Describe your project here...'"></textarea>
+            </mat-form-field>
+
+            <mat-form-field class="ultra-wide">
+              <mat-label>Actions</mat-label>
+              <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'Done this and this and that...'"></textarea>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>From</mat-label>
+              <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="viewMode">
+              <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
+                <mat-icon matDatepickerToggleIcon>event</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #xppicker_begin></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>To</mat-label>
+              <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="viewMode">
+              <mat-datepicker-toggle matSuffix [for]="xppicker_end">
+                <mat-icon matDatepickerToggleIcon>event</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #xppicker_end></mat-datepicker>
+            </mat-form-field>
+          </div>
+
+          <br>
+          <mat-divider [inset]="true"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Languages
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>language</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-list>
+        <mat-list-item *ngFor="let _ of ['a', 'b']">
+          <div class="item-content">
+
+
+            <mat-form-field>
+              <mat-label>Language</mat-label>
+              <mat-select [disabled]="viewMode" [value]="'--'">
+                <mat-option value="Arabic">Arabic</mat-option>
+                <mat-option value="French">French</mat-option>
+                <mat-option value="English">English</mat-option>
+                <mat-option value="Spanish">Spanish</mat-option>
+                <mat-option value="German">German</mat-option>
+                <mat-option value="Portuguese">Portuguese</mat-option>
+                <mat-option value="Italian">Italian</mat-option>
+                <mat-option value="Russian">Russian</mat-option>
+                <mat-option value="Chinese">Chinese</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div>
+              <mat-label>Level</mat-label>
+              <mat-slider
+                  class="example-margin"
+                  [disabled]="viewMode"
+                  [max]="10"
+                  [min]="0"
+                  [step]="1"
+                  [value]="5"
+                  [thumbLabel]="true">
+                </mat-slider>
+
+            </div>
+          </div>
+
+          <br>
+          <mat-divider [inset]="true"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Skills
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>emoji_objects</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-list>
+        <mat-list-item *ngFor="let _ of ['a', 'b']">
+          <div class="item-content">
+
+
+            <mat-form-field>
+              <mat-label>Skill</mat-label>
+              <input matInput [disabled]="viewMode" [value]="'Python'">
+            </mat-form-field>
+
+            <div>
+              <mat-label>Level</mat-label>
+              <mat-slider
+                  class="example-margin"
+                  [disabled]="viewMode"
+                  [max]="10"
+                  [min]="0"
+                  [step]="1"
+                  [value]="5"
+                  [thumbLabel]="true">
+                </mat-slider>
+
+            </div>
+          </div>
+
+          <br>
+          <mat-divider [inset]="true"></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Leisure
+        </mat-panel-title>
+        <mat-panel-description>
+          <mat-icon>terrain</mat-icon>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <mat-list>
+        <div mat-subheader>Associative activity</div>
+        <mat-list-item>
+          <mat-list>
+            <mat-list-item *ngFor="let _ of ['a', 'b']">
+              <div class="item-content">
+                <mat-form-field>
+                  <mat-label>Role</mat-label>
+                  <input matInput [disabled]="viewMode" [value]="'President'">
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>Club/Association name</mat-label>
+                  <input matInput [disabled]="viewMode" [value]="'Photography fans'">
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>From</mat-label>
+                  <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="viewMode">
+                  <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
+                    <mat-icon matDatepickerToggleIcon>event</mat-icon>
+                  </mat-datepicker-toggle>
+                  <mat-datepicker #xppicker_begin></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field>
+                  <mat-label>To</mat-label>
+                  <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="viewMode">
+                  <mat-datepicker-toggle matSuffix [for]="xppicker_end">
+                    <mat-icon matDatepickerToggleIcon>event</mat-icon>
+                  </mat-datepicker-toggle>
+                  <mat-datepicker #xppicker_end></mat-datepicker>
+                </mat-form-field>
+
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-list-item>
+
+        <div mat-subheader>Hobbies</div>
+        <mat-list-item>
+          <mat-list>
+            <mat-list-item *ngFor="let _ of ['a', 'b']">
+              <div class="item-content">
+                <mat-form-field>
+                  <mat-label>Hobby</mat-label>
+                  <input matInput [disabled]="viewMode" [value]="'Photography'">
+                </mat-form-field>
+
+                <mat-form-field class="ultra-wide">
+                  <mat-label>Description/Achievements</mat-label>
+                  <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'What you like about photography'"></textarea>
+                </mat-form-field>
+
+              </div>
+            </mat-list-item>
+          </mat-list>
+        </mat-list-item>
+
+      </mat-list>
+
+
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</mat-card>

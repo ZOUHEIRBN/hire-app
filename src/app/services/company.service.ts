@@ -10,6 +10,8 @@ export class CompanyService {
 
   constructor(private httpClient:HttpClient) { }
   public async getCompany(id){
+    console.log(id);
+
     var fetchedData = await fetch(SERVER_URL+"companies/"+id);
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;

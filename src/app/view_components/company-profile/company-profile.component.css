@@ -4,7 +4,6 @@ mat-card{
 }
 mat-card.mother-card{
   margin-top: 10px;
-  height: calc(100vh - 108px);
   overflow: hidden;
 }
 mat-card-content{
@@ -13,7 +12,7 @@ mat-card-content{
 }
 mat-card-content>*:first-child{
   flex-grow: 0;
-  width: 30%;
+  width: 50%;
   height: 100%;
 }
 .mat-card-subtitle {
@@ -31,7 +30,7 @@ mat-tab-group{
   margin-left: 10px;
   flex-grow: 1;
   position: sticky;
-  top: 100px;
+  top: 0px;
   overflow: hidden;
   height: 90vh;
 }

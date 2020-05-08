@@ -44,6 +44,9 @@ post-page{
     height: 100vh;
     left: .5%;
 }
+div.mat-tab-body-wrapper{
+  margin-bottom: calc(.4*var(--menu-height));
+}
 /* Buttons */
 
 mat-card-actions{
@@ -62,7 +65,7 @@ button div{
   align-content: center;
   display: flex;
 }
-mat-card-actions button, .mat-card-actions button, mat-card-actions mat-form-field, .mat-card-actions mat-form-field{
+mat-card-actions button, .mat-card-actions button, mat-form-field{
   margin-right: 1%;
 }
 mat-card-actions button, .mat-card-actions button{
@@ -105,3 +108,6 @@ mat-card-actions>button{
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

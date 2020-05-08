@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Offer } from '../../interfaces/post';
+import { Post } from '../../interfaces/post';
 import { PostService } from '../../services/post.service';
 
 
@@ -14,7 +14,7 @@ import { PostService } from '../../services/post.service';
 
 
 export class OfferListComponent implements OnInit {
-  offers: Offer[] = [];
+  offers: Post[] = [];
   loading_state = true
 
 

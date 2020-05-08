@@ -34,7 +34,7 @@
     </mat-card-info>
     <mat-card-actions>
       <!-- <button mat-button>Ajouter aux favoris</button> -->
-      <button *ngIf="!embedded" mat-button routerLink="{{ '/profile/user/' + user.email }}"
+      <button *ngIf="!embedded" mat-button routerLink="{{ '/user/' + user.email }}"
        mat-icon-button aria-label="Visit profile">
         <mat-icon>person</mat-icon>
       </button>
