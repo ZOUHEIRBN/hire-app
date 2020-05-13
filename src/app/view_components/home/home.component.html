@@ -2,94 +2,13 @@
 width: calc(100% - 20px);">
 
   <div class="publisher">
-    <mat-card>
-      <div class="Image">
-        <img src="https://source.unsplash.com/1600x900/?product">
-      </div>
-      <form class="createPost">
-        <h1 style="margin: 0">
-          What's on your mind?
-        </h1>
-        <section class="header" [ngStyle]="{'flex-wrap': !newPost.type || !newPost.subject ? 'wrap':'unset'}">
-          <h3 *ngIf="!newPost.type || !newPost.subject" @developDown>Choose post type</h3>
-          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
-            <mat-label>Subject</mat-label>
-            <mat-select [(value)]="newPost.type">
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let subj of posttypes['subjects']" value="{{subj}}">
-                {{subj}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
-            <mat-label>Post type</mat-label>
-            <mat-select [(value)]="newPost.subject">
-              <mat-option>None</mat-option>
-              <mat-option *ngFor="let subj of posttypes['types']" value="{{subj}}">
-                {{subj}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        </section>
-        <section class="newPost" *ngIf="newPost.type && newPost.subject" @developDown>
-          <h3>Write your post</h3>
-          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
-            <mat-label>Title</mat-label>
-            <input [(ngModel)]="newPost.title" name="title" matInput placeholder="Post title">
-          </mat-form-field>
-          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
-            <mat-label>Body</mat-label>
-            <textarea [(ngModel)]="newPost.description" name="description" matInput placeholder="Write something here."></textarea>
-          </mat-form-field>
-          <div style="display: flex;">
-            <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
-              <mat-label>Working days</mat-label>
-              <mat-select [(value)]="newPost.workdays" multiple>
-                <mat-option value="Mon">Monday</mat-option>
-                <mat-option value="Tue">Tuesday</mat-option>
-                <mat-option value="Wed">Wednesday</mat-option>
-                <mat-option value="Thu">Thursday</mat-option>
-                <mat-option value="Fri">Friday</mat-option>
-                <mat-option value="Sat">Saturday</mat-option>
-                <mat-option value="Sun">Sunday</mat-option>
-              </mat-select>
-            </mat-form-field>
-            <div style="display: flex; flex-direction: column;">
-              <mat-label>Working hours</mat-label>
-              <mat-slider
-                  class="example-margin"
-                  [disabled]="false"
-                  [invert]="false"
-                  [max]="12"
-                  [min]="0"
-                  [thumbLabel]="true"
-                  [tickInterval]="12"
-                  [(ngModel)]="newPost.workhours"
-                  [vertical]="false">
-              </mat-slider>
-            </div>
-
-          </div>
-        </section>
-        <input type="file" hidden #imageFile (change)="this.fileSelect($event)">
-        <mat-card-actions>
-          <button mat-button (click)="this.createPost()">
-            Post
-          </button>
-          <button mat-icon-button aria-label="Add image" (click)="imageFile.click()">
-            <mat-icon>add_photo_alternate</mat-icon>
-          </button>
-          <button mat-icon-button aria-label="Schedule">
-            <mat-icon>schedule</mat-icon>
-          </button>
-        </mat-card-actions>
-      </form>
-    </mat-card>
+    <new-post-panel></new-post-panel>
   </div>
 
+
+
+
   <post *ngFor="let post of posts" [post]="post"></post>
-
-
 
   <div class="mat-spinner"  *ngIf="loading_state" [ngClass]="{'bottom': posts.length !== 0 }">
     <mat-spinner></mat-spinner>

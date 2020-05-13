@@ -4,11 +4,13 @@ import { ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { CompanyService } from 'src/app/services/company.service';
 import { PostService } from 'src/app/services/post.service';
+import { developDown } from 'src/app/app-animations';
 
 @Component({
   selector: 'app-company-profile',
   templateUrl: './company-profile.component.html',
-  styleUrls: ['./company-profile.component.css']
+  styleUrls: ['./company-profile.component.css'],
+  animations: [developDown]
 })
 export class CompanyProfileComponent implements OnInit {
   company;
@@ -16,6 +18,7 @@ export class CompanyProfileComponent implements OnInit {
   @ViewChild(PostFilterComponent)
   filter:PostFilterComponent;
   loading_state = false;
+  address = {long: 0, lat: 0}
   currentUserId:string = ''
   constructor(private route: ActivatedRoute, private _userService:UserService, private _companyService:CompanyService, private _postService:PostService) {
 
@@ -34,13 +37,21 @@ export class CompanyProfileComponent implements OnInit {
     this.route.params.subscribe(params => {
       let promise;
       promise = this._companyService.getCompany(params.id)
-      promise.then(response => {this.company = response})
+      promise.then(response => {
+        this.company = response
+        this.address['longitude'] = response.address['longitude']
+        this.address['latitude'] = response.address['latitude']
+      })
       .then(() => {this.refreshData();})
 
     });
   }
   async refreshData(){
     this._postService.getUserPosts(this.company.id).subscribe((data) => {
+      for(let e in data){
+        console.log(data[e]['badges'])
+      }
+
       this.companyposts = data
       setTimeout(() => {this.filter.refreshFilters(this.companyposts)}, 1000)
     })

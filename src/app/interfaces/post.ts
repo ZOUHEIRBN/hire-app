@@ -5,7 +5,6 @@ import { Company } from './company';
 export const def_post:Post = {
   'id':0,
   'title':'',
-  'type':'post',
   'ownerId':0,
   'description': '',
   'badges': [],
@@ -21,10 +20,17 @@ export interface Post{
   title?: string,
   description: string,
   badges: Badge[],
-  imageUrl: string |ArrayBuffer
+  imageUrl: string|ArrayBuffer,
   salary?: number,
   workhours?: number,
   workdays?: any[],
 }
 
-export const posttypes = {"types":["Offer", "Demand"], "subjects": ["Job", "Formation", "Internship"]}
+export const posttypes = {
+  "types":["Offer", "Demand", "Event"],
+  "subjects": {
+    "Offer": ["Job", "Internship"],
+    "Demand": ["Job", "Internship"],
+    "Event": ["Formation", "Webinar"]
+  }
+}

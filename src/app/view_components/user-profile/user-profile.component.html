@@ -1,17 +1,18 @@
 <mat-card class="mother-card">
-  <post-filter #filter></post-filter>
+
 
   <mat-card-content>
     <div class="panel-1" @developDown>
-      <user-details [user]="user" [iscurrentuser]="user.id === this.currentUserId" [embedded]="true"></user-details>
+      <user-details [editmode]="!viewmode" [user]="user" [iscurrentuser]="user.id === this.currentUserId" [embedded]="true"></user-details>
     </div>
 
     <mat-tab-group>
       <mat-tab label="Resume">
-        <user-resume [user]="this.user"></user-resume>
+        <user-resume [viewmode]="viewmode" [user]="this.user"></user-resume>
       </mat-tab>
 
       <mat-tab label="Posts">
+        <post-filter #filter></post-filter>
         <div class="mat-card-info">
           <div *ngFor="let post of userposts">
             <post [embed]="true" [post]="post" *ngIf="this.filter.doSatisfy(post)"></post>
@@ -28,6 +29,13 @@
 
       </mat-tab>
 
+
+      <mat-tab label="Companies">
+        <post-filter #companyfilter></post-filter>
+        <div *ngFor="let company of usercompanies" style="display: contents;">
+          <company-details *ngIf="this.companyfilter.doSatisfy(company)" @develop [company]="company" [showMap]="false"></company-details>
+        </div>
+      </mat-tab>
       <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
     </mat-tab-group>
 

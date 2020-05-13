@@ -29,6 +29,7 @@ div.Image{
 mat-card-contents>div.Image{
   width: 10vmax;
   height: 10vmax;
+  flex-shrink: 0;
 }
 div.Image img{
   display: block;
@@ -90,6 +91,12 @@ user-details{
 .embedded mat-card-contents{
   flex-direction: column;
 }
+mat-card-header p{
+  margin-left: 2%;
+}
+.embedded mat-card-header p{
+  margin-left: 16px;
+}
 @media only screen and (max-width: 1000px), only screen and (orientation: portrait){
   div.Image{
     width: 18vmax;
@@ -111,6 +118,9 @@ user-details{
     display: flex;
     overflow: hidden;
   }
+  .embedded mat-card-header p{
+    margin-left: 2%;
+  }
   .embedded div.Image img{
     transform: translate(-50%, -50%);
     height: 100%;
@@ -129,6 +139,7 @@ user-details{
     border-radius: 45vmin;
     left: 0%;
     transform: translate(0%, 0%);
+    flex-shrink: 0;
 
   }
   .pdp{

@@ -13,9 +13,7 @@ import { UserService } from 'src/app/services/user.service';
 export class HomeComponent implements OnInit {
   posts: any = [];
   loading_state = true
-  posttypes = posttypes;
-  floatLabelControl = new FormControl('auto')
-  @Input() newPost:Post = def_post;
+
   constructor(private _postService:PostService, private _userService:UserService) {}
 
   ngOnInit(): void {
@@ -29,16 +27,5 @@ export class HomeComponent implements OnInit {
       setTimeout(() => {this.loading_state = false}, 1000)
     })
   }
-  fileSelect(event){
-    const reader = new FileReader();
-    reader.onload = _ => this.newPost['imageUrl'] = reader.result;
-    reader.readAsDataURL(event.target.files[0]);
-  }
-  createPost(){
-    this.newPost.ownerId = this._userService.getCurrentUser().email;
 
-    this._postService.createPost(this.newPost).subscribe(_ => {
-      //this.posts.unshift(this.newPost)
-    })
-  }
 }

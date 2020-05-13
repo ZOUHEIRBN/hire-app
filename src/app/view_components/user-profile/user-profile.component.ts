@@ -17,10 +17,13 @@ import { CompanyService } from 'src/app/services/company.service';
 export class UserProfileComponent implements OnInit {
   user;
   userposts: any;
+  usercompanies: any[];
   @ViewChild(PostFilterComponent)
-  filter:PostFilterComponent;
+  postfilter:PostFilterComponent;
+  companyfilter:PostFilterComponent;
   loading_state = false;
   currentUserId:string = ''
+  viewmode = true;
   constructor(private route: ActivatedRoute, private _userService:UserService, private _companyService:CompanyService, private _postService:PostService) {
 
   }
@@ -47,7 +50,11 @@ export class UserProfileComponent implements OnInit {
   async refreshData(){
     this._postService.getUserPosts(this.user.email).subscribe((data) => {
       this.userposts = data
-      setTimeout(() => {this.filter.refreshFilters(this.userposts)}, 1000)
+      setTimeout(() => {this.postfilter.refreshFilters(this.userposts)}, 1000)
+    })
+    this._companyService.getUserCompanies(this.user.email).subscribe((data) => {
+      this.usercompanies = data
+      setTimeout(() => {this.companyfilter.refreshFilters(this.usercompanies)}, 1000)
     })
   }
 

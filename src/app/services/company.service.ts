@@ -10,14 +10,18 @@ export class CompanyService {
 
   constructor(private httpClient:HttpClient) { }
   public async getCompany(id){
-    console.log(id);
-
     var fetchedData = await fetch(SERVER_URL+"companies/"+id);
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
   public getAllCompanies(){
     return this.httpClient.get(SERVER_URL+"companies/").pipe(map(response => {
+      return response['body'];
+    }));
+  }
+
+  public getUserCompanies(ownerId){
+    return this.httpClient.get(SERVER_URL+"companies/ownerId/"+ownerId).pipe(map(response => {
       return response['body'];
     }));
   }

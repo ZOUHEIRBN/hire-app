@@ -8,7 +8,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./resume.component.css']
 })
 export class ResumeComponent implements OnInit {
-  viewMode = true;
+  @Input() viewMode = true;
   date = new FormControl(new Date());
   @Input() user:User;
   constructor() { }

@@ -7,7 +7,7 @@ mat-card.badges {
   display: flex;
   flex-direction: column;
   position: sticky;
-  top: calc(var(--menu-height));
+  top: calc(0*var(--menu-height));
   z-index: 2;
   background-color: #fff!important;
   color: #424242;

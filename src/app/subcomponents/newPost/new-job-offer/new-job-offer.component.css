@@ -1,0 +1,7 @@
+div.container{
+  display: flex;
+  flex-wrap: wrap;
+}
+mat-form-field, div.mat-form-slider{
+  flex: 50% 1 1;
+}

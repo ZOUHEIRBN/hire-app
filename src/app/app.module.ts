@@ -49,6 +49,10 @@ import { HomeComponent } from './view_components/home/home.component';
 import { PostPageComponent } from './view_components/post-page/post-page.component';
 import { ResumeComponent } from './subcomponents/resume/resume.component';
 import { CompanyProfileComponent } from './view_components/company-profile/company-profile.component';
+import { GoogleMapComponent } from './minicomponents/google-map/google-map.component';
+import { NewPostPanelComponent } from './subcomponents/newPost/new-post-panel/new-post-panel.component';
+import { NewJobOfferComponent } from './subcomponents/newPost/new-job-offer/new-job-offer.component';
+import { NewJobDemandComponent } from './subcomponents/newPost/new-job-demand/new-job-demand.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { CompanyProfileComponent } from './view_components/company-profile/compa
     HomeComponent,
     PostPageComponent,
     ResumeComponent,
-    CompanyProfileComponent
+    CompanyProfileComponent,
+    GoogleMapComponent,
+    NewPostPanelComponent,
+    NewJobOfferComponent,
+    NewJobDemandComponent
   ],
   imports: [
 

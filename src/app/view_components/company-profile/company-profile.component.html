@@ -1,5 +1,5 @@
 <mat-card class="mother-card">
-  <post-filter #filter></post-filter>
+
 
   <mat-card-content>
     <div class="panel-1" @developDown>
@@ -10,6 +10,7 @@
 
 
       <mat-tab label="Posts">
+        <post-filter #filter></post-filter>
         <div class="mat-card-info">
           <div *ngFor="let post of companyposts">
             <post [embed]="true" [post]="post" *ngIf="this.filter.doSatisfy(post)"></post>
@@ -26,7 +27,13 @@
 
       </mat-tab>
 
-      <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
+      <mat-tab label="Access Map">
+        <hire-google-map
+      [longitude]="address['longitude']"
+      [latitude]="address['latitude']"
+      [zoom]="16"
+      ></hire-google-map>
+      </mat-tab>
     </mat-tab-group>
 
 

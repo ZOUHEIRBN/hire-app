@@ -1,0 +1,11 @@
+<div class="Map" [attr.focus]="false">
+  <div *ngIf="showMap">
+    <agm-map
+      #gmap
+      [longitude]="longitude"
+      [latitude]="latitude"
+      [zoom]="zoom" id="gmap"
+      style="width:100%;height:100%;position: absolute;">
+    </agm-map>
+  </div>
+</div>
