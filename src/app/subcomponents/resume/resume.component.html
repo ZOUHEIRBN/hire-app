@@ -12,12 +12,22 @@
 
       <mat-form-field>
         <mat-label>First name</mat-label>
-        <input matInput [disabled]="viewMode" [value]="this.user.first_name">
+        <input matInput [disabled]="!editMode" [value]="this.user.first_name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Last name</mat-label>
+        <input matInput [disabled]="!editMode" [value]="this.user.last_name">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput [disabled]="!editMode" [value]="this.user.email">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Age</mat-label>
-        <input matInput type="number" min="1" [disabled]="viewMode">
+        <input matInput type="number" min="1" [disabled]="!editMode">
       </mat-form-field>
     </mat-expansion-panel>
 
@@ -52,16 +62,16 @@
 
               <mat-form-field>
                 <mat-label>Degree</mat-label>
-                <input matInput [disabled]="viewMode" [value]="'Master 2'">
+                <input matInput [disabled]="!editMode" [value]="'Master 2'">
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Mention</mat-label>
-                <input matInput [disabled]="viewMode" [value]="'Bien'">
+                <input matInput [disabled]="!editMode" [value]="'Bien'">
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>From</mat-label>
-                <input matInput [matDatepicker]="picker1" [formControl]="date" [readonly]="viewMode">
+                <input matInput [matDatepicker]="picker1" [formControl]="date" [readonly]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="picker1">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
@@ -70,7 +80,7 @@
 
               <mat-form-field>
                 <mat-label>To</mat-label>
-                <input matInput [matDatepicker]="picker1" [formControl]="date" [readonly]="viewMode">
+                <input matInput [matDatepicker]="picker1" [formControl]="date" [readonly]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="picker1">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
@@ -120,17 +130,17 @@
 
               <mat-form-field class="ultra-wide">
                 <mat-label>Entreprise's address</mat-label>
-                <input matInput [disabled]="viewMode" [value]="'Master 2'">
+                <input matInput [disabled]="!editMode" [value]="'Master 2'">
               </mat-form-field>
 
               <mat-form-field class="ultra-wide">
                 <mat-label>Description</mat-label>
-                <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'Master 2'"></textarea>
+                <textarea matInput [disabled]="!editMode" class="example-full-width" [value]="'Master 2'"></textarea>
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>Sector</mat-label>
-                <mat-select [disabled]="viewMode" [value]="'IT'">
+                <mat-select [disabled]="!editMode" [value]="'IT'">
                   <mat-option value="IT">IT</mat-option>
                   <mat-option value="Agriculture">Agriculture</mat-option>
                 </mat-select>
@@ -138,7 +148,7 @@
 
               <mat-form-field>
                 <mat-label>From</mat-label>
-                <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="viewMode">
+                <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
@@ -146,7 +156,7 @@
               </mat-form-field>
               <mat-form-field>
                 <mat-label>To</mat-label>
-                <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="viewMode">
+                <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="xppicker_end">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
@@ -154,7 +164,7 @@
               </mat-form-field>
               <mat-form-field class="ultra-wide">
                 <mat-label>Added values</mat-label>
-                <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'Done this and this and that...'"></textarea>
+                <textarea matInput [disabled]="!editMode" class="example-full-width" [value]="'Done this and this and that...'"></textarea>
               </mat-form-field>
             </div>
 
@@ -185,17 +195,17 @@
           <div class="item-content">
             <mat-form-field class="ultra-wide">
               <mat-label>Project description</mat-label>
-              <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'Describe your project here...'"></textarea>
+              <textarea matInput [disabled]="!editMode" class="example-full-width" [value]="'Describe your project here...'"></textarea>
             </mat-form-field>
 
             <mat-form-field class="ultra-wide">
               <mat-label>Actions</mat-label>
-              <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'Done this and this and that...'"></textarea>
+              <textarea matInput [disabled]="!editMode" class="example-full-width" [value]="'Done this and this and that...'"></textarea>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>From</mat-label>
-              <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="viewMode">
+              <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="!editMode">
               <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
                 <mat-icon matDatepickerToggleIcon>event</mat-icon>
               </mat-datepicker-toggle>
@@ -204,7 +214,7 @@
 
             <mat-form-field>
               <mat-label>To</mat-label>
-              <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="viewMode">
+              <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="!editMode">
               <mat-datepicker-toggle matSuffix [for]="xppicker_end">
                 <mat-icon matDatepickerToggleIcon>event</mat-icon>
               </mat-datepicker-toggle>
@@ -236,7 +246,7 @@
 
             <mat-form-field>
               <mat-label>Language</mat-label>
-              <mat-select [disabled]="viewMode" [value]="'--'">
+              <mat-select [disabled]="!editMode" [value]="'--'">
                 <mat-option value="Arabic">Arabic</mat-option>
                 <mat-option value="French">French</mat-option>
                 <mat-option value="English">English</mat-option>
@@ -253,7 +263,7 @@
               <mat-label>Level</mat-label>
               <mat-slider
                   class="example-margin"
-                  [disabled]="viewMode"
+                  [disabled]="!editMode"
                   [max]="10"
                   [min]="0"
                   [step]="1"
@@ -288,14 +298,14 @@
 
             <mat-form-field>
               <mat-label>Skill</mat-label>
-              <input matInput [disabled]="viewMode" [value]="'Python'">
+              <input matInput [disabled]="!editMode" [value]="'Python'">
             </mat-form-field>
 
             <div>
               <mat-label>Level</mat-label>
               <mat-slider
                   class="example-margin"
-                  [disabled]="viewMode"
+                  [disabled]="!editMode"
                   [max]="10"
                   [min]="0"
                   [step]="1"
@@ -331,17 +341,17 @@
               <div class="item-content">
                 <mat-form-field>
                   <mat-label>Role</mat-label>
-                  <input matInput [disabled]="viewMode" [value]="'President'">
+                  <input matInput [disabled]="!editMode" [value]="'President'">
                 </mat-form-field>
 
                 <mat-form-field>
                   <mat-label>Club/Association name</mat-label>
-                  <input matInput [disabled]="viewMode" [value]="'Photography fans'">
+                  <input matInput [disabled]="!editMode" [value]="'Photography fans'">
                 </mat-form-field>
 
                 <mat-form-field>
                   <mat-label>From</mat-label>
-                  <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="viewMode">
+                  <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="!editMode">
                   <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
                     <mat-icon matDatepickerToggleIcon>event</mat-icon>
                   </mat-datepicker-toggle>
@@ -350,7 +360,7 @@
 
                 <mat-form-field>
                   <mat-label>To</mat-label>
-                  <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="viewMode">
+                  <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="!editMode">
                   <mat-datepicker-toggle matSuffix [for]="xppicker_end">
                     <mat-icon matDatepickerToggleIcon>event</mat-icon>
                   </mat-datepicker-toggle>
@@ -369,12 +379,12 @@
               <div class="item-content">
                 <mat-form-field>
                   <mat-label>Hobby</mat-label>
-                  <input matInput [disabled]="viewMode" [value]="'Photography'">
+                  <input matInput [disabled]="!editMode" [value]="'Photography'">
                 </mat-form-field>
 
                 <mat-form-field class="ultra-wide">
                   <mat-label>Description/Achievements</mat-label>
-                  <textarea matInput [disabled]="viewMode" class="example-full-width" [value]="'What you like about photography'"></textarea>
+                  <textarea matInput [disabled]="!editMode" class="example-full-width" [value]="'What you like about photography'"></textarea>
                 </mat-form-field>
 
               </div>

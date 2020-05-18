@@ -1,6 +1,18 @@
-<badge [attr.category]=" badge.category" [attr.name]="badge.name" [attr.activate]="activate" [attr.expand]="expand" (click)="toggleButton()">
+<!-- <badge [attr.category]=" badge.category" [attr.name]="badge.name" [attr.activate]="activate" [attr.expand]="expand" (click)="toggleButton()">
   <div>
     <mat-icon aria-hidden="false" aria-label="{{ badge.name }}">{{ icon }}</mat-icon>
   <span>{{ badge.name }}</span>
+
   </div>
-</badge>
+</badge> -->
+<mat-chip
+  matBadge="{{ badge.value }}"
+  matBadgePosition="above after"
+  matBadgeColor="{{ this.color }}"
+  matTooltip="{{ badge.name }}">
+  <mat-icon
+    aria-hidden="false"
+    aria-label="{{ badge.name }}">
+    {{ icon }}
+  </mat-icon>
+</mat-chip>

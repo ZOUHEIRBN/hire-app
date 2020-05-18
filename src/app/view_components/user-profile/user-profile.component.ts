@@ -5,6 +5,7 @@ import { PostService } from '../../services/post.service';
 import { develop, developDown } from '../../app-animations';
 import { PostFilterComponent } from '../../minicomponents/post-filter/post-filter.component';
 import { CompanyService } from 'src/app/services/company.service';
+import { ResumeService } from 'src/app/services/resume.service';
 
 
 
@@ -23,10 +24,13 @@ export class UserProfileComponent implements OnInit {
   companyfilter:PostFilterComponent;
   loading_state = false;
   currentUserId:string = ''
-  viewmode = true;
-  constructor(private route: ActivatedRoute, private _userService:UserService, private _companyService:CompanyService, private _postService:PostService) {
 
-  }
+  constructor(private route: ActivatedRoute,
+      private _userService:UserService,
+      private _companyService:CompanyService,
+      private _postService:PostService,
+      private _resumeService:ResumeService
+    ) {  }
 
 
 
@@ -57,7 +61,9 @@ export class UserProfileComponent implements OnInit {
       setTimeout(() => {this.companyfilter.refreshFilters(this.usercompanies)}, 1000)
     })
   }
-
+  editAndSave(target){
+    target.editMode = !target.editMode
+  }
 
   /* @HostListener("window:scroll", [])
   onScroll(): void {

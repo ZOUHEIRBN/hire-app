@@ -1,40 +1,126 @@
 <div class="container">
-  <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
-    <mat-label>Title</mat-label>
-    <input [(ngModel)]="newPost.title" name="title" matInput placeholder="Post title">
-  </mat-form-field>
-  <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
-    <mat-label>Body</mat-label>
-    <textarea [(ngModel)]="newPost.description" name="description" matInput placeholder="Write something here."></textarea>
-  </mat-form-field>
-  <div style="display: flex; width: 100%;">
-    <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
-      <mat-label>Working days</mat-label>
-      <mat-select [(value)]="newPost.workdays" multiple>
-        <mat-option value="Mon">Monday</mat-option>
-        <mat-option value="Tue">Tuesday</mat-option>
-        <mat-option value="Wed">Wednesday</mat-option>
-        <mat-option value="Thu">Thursday</mat-option>
-        <mat-option value="Fri">Friday</mat-option>
-        <mat-option value="Sat">Saturday</mat-option>
-        <mat-option value="Sun">Sunday</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <div style="display: flex; flex-direction: column;" class="mat-form-slider">
-      <mat-label>Working hours</mat-label>
-      <mat-slider
-          class="example-margin"
-          name="workhours"
-          [disabled]="false"
-          [invert]="false"
-          [max]="12"
-          [min]="0"
-          [thumbLabel]="true"
-          [tickInterval]="12"
-          [(ngModel)]="newPost.workhours"
-          [vertical]="false">
-      </mat-slider>
-    </div>
+  <mat-vertical-stepper [linear]="true" #stepper>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Post main information</ng-template>
+        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+          <mat-label>Title</mat-label>
+          <input [(ngModel)]="newPost.title" name="title" matInput placeholder="Post title">
+        </mat-form-field>
+        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+          <mat-label>Body</mat-label>
+          <textarea [(ngModel)]="newPost.description" name="description" matInput placeholder="Write something here."></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
 
-  </div>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Contract Informations</ng-template>
+        <div class="flexFormFields">
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Salary range</mat-label>
+            <mat-select [(value)]="newPost.salary_range">
+              <mat-option value="{{ {'min':0, 'max':3000} }}">Less than 3000</mat-option>
+              <mat-option value="{{ {'min':3000, 'max':5000} }}">Between 3000 and 5000</mat-option>
+              <mat-option value="{{ {'min':5000, 'max':7000} }}">Between 5000 and 7000</mat-option>
+              <mat-option value="{{ {'min':7000, 'max':9000} }}">Between 7000 and 9000</mat-option>
+              <mat-option value="{{ {'min':9000} }}">Over 9000</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Desired contract type</mat-label>
+            <mat-select [(value)]="newPost.contractType">
+              <mat-option value="CDD">CDD</mat-option>
+              <mat-option value="CDI">CDI</mat-option>
+              <mat-option value="Intérim">Intérim</mat-option>
+              <mat-option value="Freelance">Freelance</mat-option>
+               <mat-option value="Stage">Stage</mat-option>
+              <mat-option value="Alternance">Alternance</mat-option>
+              <mat-option value="Statutaire">Statutaire</mat-option>
+              <mat-option value="Temps partiel">Temps partiel</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Constraints</ng-template>
+        <div class="flexFormFields">
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Working days</mat-label>
+            <mat-select [(value)]="newPost.workdays" multiple>
+              <mat-option value="Mon">Monday</mat-option>
+              <mat-option value="Tue">Tuesday</mat-option>
+              <mat-option value="Wed">Wednesday</mat-option>
+              <mat-option value="Thu">Thursday</mat-option>
+              <mat-option value="Fri">Friday</mat-option>
+              <mat-option value="Sat">Saturday</mat-option>
+              <mat-option value="Sun">Sunday</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="mat-form-slider">
+            <mat-label>Working hours</mat-label>
+            <mat-slider
+                class="example-margin"
+                name="workhours"
+                [disabled]="false"
+                [invert]="false"
+                [max]="12"
+                [min]="0"
+                [thumbLabel]="true"
+                [tickInterval]="12"
+                [(ngModel)]="newPost.workhours"
+                [vertical]="false">
+            </mat-slider>
+          </div>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Business travels (national)</mat-label>
+            <mat-select [(value)]="newPost.businessTravels_national">
+              <mat-option value="None">None</mat-option>
+              <mat-option value="Rarely">Rarely</mat-option>
+              <mat-option value="Frequently">Frequently</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Business travels (international)</mat-label>
+            <mat-select [(value)]="newPost.businessTravels_international">
+              <mat-option value="None">None</mat-option>
+              <mat-option value="Rarely">Rarely</mat-option>
+              <mat-option value="Frequently">Frequently</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="this.createPost()">Post</button>
+      </div>
+    </mat-step>
+
+  </mat-vertical-stepper>
+
+
+
+
 </div>

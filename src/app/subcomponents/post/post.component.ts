@@ -3,6 +3,8 @@ import { Post } from '../../interfaces/post';
 import { develop } from '../../app-animations';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PostService } from 'src/app/services/post.service';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
+import { CommentSectionComponent } from 'src/app/minicomponents/comment-section/comment-section.component';
 
 @Component({
   selector: 'post',
@@ -12,12 +14,16 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostComponent implements OnInit {
   @Input() post:Post;
+  bg_image;
   @Input() embed = false;
-  constructor(private router:Router) {
+  constructor(
+    private router:Router,
+    private _bottomSheet: MatBottomSheet
+  ) {
   }
 
   ngOnInit(): void {
-
+    this.bg_image = this.post.imageUrl
   }
   toggleFocus(event: any){
     var target = event.target;
@@ -53,5 +59,8 @@ export class PostComponent implements OnInit {
     {
       target.setAttribute("shrink_text", "true");
     }
+  }
+  openComments(){
+    this._bottomSheet.open(CommentSectionComponent);
   }
 }

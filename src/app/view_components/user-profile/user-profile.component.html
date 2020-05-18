@@ -3,12 +3,16 @@
 
   <mat-card-content>
     <div class="panel-1" @developDown>
-      <user-details [editmode]="!viewmode" [user]="user" [iscurrentuser]="user.id === this.currentUserId" [embedded]="true"></user-details>
+      <user-details
+      [user]="user"
+      [iscurrentuser]="user.id === this.currentUserId"
+      [embedded]="true"
+      (cogButtonClick)="editAndSave(resume)"></user-details>
     </div>
 
     <mat-tab-group>
       <mat-tab label="Resume">
-        <user-resume [viewmode]="viewmode" [user]="this.user"></user-resume>
+        <user-resume #resume [user]="this.user"></user-resume>
       </mat-tab>
 
       <mat-tab label="Posts">

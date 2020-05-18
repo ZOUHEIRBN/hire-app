@@ -1,4 +1,5 @@
 export interface Badge{
+  category: string,
   name: string,
-  category: string
+  value?:number,
 }

@@ -39,6 +39,7 @@ form.createPost{
 form.createPost section.header {
   display: flex;
   padding: 0% 2%;
+  flex-wrap: wrap;
 }
 
 form.createPost section.newPost{
@@ -61,5 +62,8 @@ form.createPost section>h3{
   div.Image{
     width: 5vmax;
     height: 5vmax;
+  }
+  form.createPost section.header {
+    flex-wrap: wrap;
   }
 }

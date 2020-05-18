@@ -15,23 +15,22 @@
   </div>
 
   <mat-card-content>
-    <mat-card-info (click)="goto()">
+    <mat-card-info>
       <div class="Image" [attr.focus]="false" (click)="toggleFocus($event)" *ngIf="post.imageUrl && post.imageUrl.toString() !== ''">
-        <div class="img" [ngStyle]="{'background-image': 'url(' + post.imageUrl + ')'}"></div>
+        <div class="img" [ngStyle]="{'background-image': 'url(' + bg_image + ')'}"></div>
       </div>
 
       <mat-card-contents>
-        <mat-card-header>
-          <mat-card-badges>
+        <mat-card-header style="display: flex;">
+          <mat-chip-list>
             <post-badge class="{{ badge.category }}" *ngFor="let badge of post.badges" [badge]="badge"></post-badge>
-          </mat-card-badges>
+          </mat-chip-list>
           <mat-card-title>
             {{post.title}}
           </mat-card-title>
 
-          <mat-card-subtitle>
+          <mat-card-subtitle *ngIf="false">
             <span>&nbsp;</span>
-
           </mat-card-subtitle>
 
         </mat-card-header>
@@ -51,7 +50,7 @@
       <button mat-icon-button aria-label="Like">
         <mat-icon>star</mat-icon>
       </button>
-      <button mat-icon-button aria-label="Comment">
+      <button mat-icon-button aria-label="Comment" (click)="openComments()">
         <mat-icon>comment</mat-icon>
       </button>
       <button mat-icon-button aria-label="Settings">

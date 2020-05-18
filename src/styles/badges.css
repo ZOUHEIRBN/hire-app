@@ -1,12 +1,20 @@
 /* Badges */
-mat-card-badges {
+mat-card-badges, mat-chip-list {
   float: right;
+}
+mat-card-badges{
   width: 100%;
+}
+mat-chip-list {
+  flex-grow: 1;
+  flex-direction: row-reverse;
+  display: inline-flex;
+  height: 100%;
 }
 
 /* Badge Mobile */
 @media (orientation: portrait) {
-  mat-card-badges {
+  mat-card-badges, mat-chip-list {
     width: 100%;
     float: left;
     display: flex;

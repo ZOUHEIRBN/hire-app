@@ -2,6 +2,34 @@ div.container{
   display: flex;
   flex-wrap: wrap;
 }
+mat-vertical-stepper{
+  width: 100%;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
 mat-form-field, div.mat-form-slider{
-  flex: 50% 1 1;
+  flex: 50% 1 0;
+}
+div.mat-form-slider{
+  display: flex;
+  flex-direction: column;
+}
+.flexFormFields{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+.flexFormFields mat-form-field, .flexFormFields div.mat-form-slider{
+  flex: 49% 0 0;
+}
+mat-vertical-stepper button:last-child{
+  background-color: var(--primary-color);
+  color: #fff;
+}
+mat-vertical-stepper button:last-child:not([matStepperNext]){
+  background-color: var(--secondary-color);
+  color: #fff;
 }

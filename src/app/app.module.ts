@@ -15,12 +15,14 @@ import { AboutComponent } from './view_components/about/about.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from "@angular/material/input";
 import { MatSliderModule } from '@angular/material/slider';
@@ -30,6 +32,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTreeModule } from '@angular/material/tree';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+
 
 import { BadgeComponent } from './minicomponents/badge/badge.component';
 import { LoginComponent } from './view_components/login/login.component';
@@ -53,6 +61,7 @@ import { GoogleMapComponent } from './minicomponents/google-map/google-map.compo
 import { NewPostPanelComponent } from './subcomponents/newPost/new-post-panel/new-post-panel.component';
 import { NewJobOfferComponent } from './subcomponents/newPost/new-job-offer/new-job-offer.component';
 import { NewJobDemandComponent } from './subcomponents/newPost/new-job-demand/new-job-demand.component';
+import { CommentSectionComponent } from './minicomponents/comment-section/comment-section.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +87,8 @@ import { NewJobDemandComponent } from './subcomponents/newPost/new-job-demand/ne
     GoogleMapComponent,
     NewPostPanelComponent,
     NewJobOfferComponent,
-    NewJobDemandComponent
+    NewJobDemandComponent,
+    CommentSectionComponent
   ],
   imports: [
 
@@ -93,6 +103,7 @@ import { NewJobDemandComponent } from './subcomponents/newPost/new-job-demand/ne
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
+    MatAutocompleteModule,
     MatInputModule,
     MatSelectModule,
     MatSliderModule,
@@ -101,6 +112,11 @@ import { NewJobDemandComponent } from './subcomponents/newPost/new-job-demand/ne
     MatDividerModule,
     MatListModule,
     MatTreeModule,
+    MatStepperModule,
+    MatChipsModule,
+    MatBadgeModule,
+    MatTooltipModule,
+    MatBottomSheetModule,
     MatProgressSpinnerModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({

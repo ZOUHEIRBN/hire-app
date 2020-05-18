@@ -1,0 +1,15 @@
+mat-nav-list{
+  display: flex;
+  flex-direction: column-reverse;
+  height: 75vh;
+}
+mat-form-field{
+  flex-grow: 1;
+}
+abbr{
+  color: var(--secondary-color-light);
+}
+div.comment-list{
+  flex-grow: 1;
+  overflow-y: auto;
+}

@@ -1,0 +1,22 @@
+<mat-nav-list>
+  <div style="display: flex;">
+    <mat-form-field mat-list-item>
+      <mat-label>Leave a comment</mat-label>
+      <textarea [(ngModel)]="newComment.value" name="value" matInput placeholder="Ex. It makes me feel..."></textarea>
+    </mat-form-field>
+    <button mat-mini-fab color="primary" [disabled]="newComment.value == ''" mat-icon-button aria-label="Comment" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="comment-list">
+    <a *ngFor="let item of [1, 2, 3, 4, 5, 6, 7, 8, 9]" mat-list-item (click)="like($event)">
+      <span mat-line>
+        <b>
+          Google Keep
+        </b>
+        <abbr>1 day</abbr>
+      </span>
+      <span mat-line>Add to a note</span>
+    </a>
+  </div>
+</mat-nav-list>

@@ -13,13 +13,13 @@ import { Badge } from '../../interfaces/badge';
 // }
 export class BadgeComponent implements OnInit {
   @Input() badge: Badge;
-  @Input() activate = false;
-  @Input() expand = false;
   icon;
+  color;
   constructor() { }
 
   ngOnInit(): void {
     this.icon = this.getIcon()
+    this.color = this.getColor()
   }
   getIcon(){
     if(this.badge.category === 'jobtype'){
@@ -36,10 +36,17 @@ export class BadgeComponent implements OnInit {
     }
     return 'person'
   }
-  toggleButton(){
-    if(this.expand){
-      this.activate = !this.activate;
+  getColor(){
+    if(this.badge.category === 'jobtype'){
+      return 'primary'
     }
-  }
+    else if(this.badge.category === 'match'){
+      return 'warn'
+    }
+    else if(this.badge.category === 'fav'){
+      return 'undefined'
+    }
 
+    return 'secondary'
+  }
 }

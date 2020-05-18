@@ -6,7 +6,7 @@
     <h1 style="margin: 0">
       What's on your mind?
     </h1>
-    <section class="header" [ngStyle]="{'flex-wrap': !newPost.type || !newPost.subject ? 'wrap':'unset'}">
+    <section class="header">
       <h3 *ngIf="!newPost.type || !newPost.subject">Choose post type</h3>
 
       <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
@@ -30,15 +30,25 @@
     </section>
     <section class="newPost" *ngIf="newPost.type && newPost.subject" @developDown>
       <h3>Write your post</h3>
-      <new-job-offer *ngIf="newPost.subject == 'Offer' && ['Job', 'Internship'].includes(newPost.type)" [newPost]="newPost"></new-job-offer>
-      <new-job-demand *ngIf="newPost.subject == 'Demand' && ['Job', 'Internship'].includes(newPost.type)" [newPost]="newPost"></new-job-demand>
+      <new-job-offer
+        *ngIf="newPost.subject == 'Offer' && ['Job', 'Internship'].includes(newPost.type)"
+        [newPost]="newPost"
+        [type]="newPost.type"
+      >
+      </new-job-offer>
+      <new-job-demand
+        *ngIf="newPost.subject == 'Demand' && ['Job', 'Internship'].includes(newPost.type)"
+        [newPost]="newPost"
+        [type]="newPost.type"
+      >
+      </new-job-demand>
 
     </section>
     <input type="file" hidden #imageFile (change)="this.fileSelect($event)">
     <mat-card-actions>
-      <button mat-button (click)="this.createPost()">
+      <!-- <button mat-button (click)="this.createPost()">
         Post
-      </button>
+      </button> -->
       <button mat-icon-button aria-label="Add image" (click)="imageFile.click()">
         <mat-icon>add_photo_alternate</mat-icon>
       </button>
