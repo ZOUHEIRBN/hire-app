@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 import { FormControl } from '@angular/forms';
-import { Resume } from 'src/app/interfaces/resume';
+import { Resume, default_resume } from 'src/app/interfaces/resume';
 import { ResumeService } from 'src/app/services/resume.service';
 
 @Component({
@@ -13,12 +13,14 @@ export class ResumeComponent implements OnInit {
   @Input() editMode = false;
   date = new FormControl(new Date());
   @Input() user:User;
-  resume:any;
+  resume:Resume = default_resume;
 
   constructor(private _resumeService:ResumeService) { }
 
   ngOnInit(): void {
-    this.resume = this._resumeService.getResume()
+    this._resumeService.getResume(this.user.id).subscribe(response => {
+      this.resume =  response
+    })
   }
 
 }

@@ -1,4 +1,5 @@
 import { Badge } from './badge';
+import { Resume } from './resume';
 
 export interface UserLogin{
   id: string,
@@ -11,4 +12,5 @@ export interface User extends UserLogin{
   last_name: string,
   email:string,
   badges: Badge[]
+  resume:Resume
 }

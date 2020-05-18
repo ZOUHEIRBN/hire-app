@@ -12,17 +12,17 @@
 
       <mat-form-field>
         <mat-label>First name</mat-label>
-        <input matInput [disabled]="!editMode" [value]="this.user.first_name">
+        <input matInput [disabled]="!editMode" [(ngModel)]="this.user.first_name">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Last name</mat-label>
-        <input matInput [disabled]="!editMode" [value]="this.user.last_name">
+        <input matInput [disabled]="!editMode" [(ngModel)]="this.user.last_name">
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Email</mat-label>
-        <input matInput [disabled]="!editMode" [value]="this.user.email">
+        <input matInput [disabled]="!editMode" [(ngModel)]="this.user.email">
       </mat-form-field>
 
       <mat-form-field>
@@ -44,34 +44,41 @@
 
 
       <mat-list>
-          <mat-list-item *ngFor="let _ of ['a', 'b']">
+          <mat-list-item *ngFor="let ac of this.resume.academic_cursus">
             <div class="item-content">
 
-              <mat-card-header style="transform: translateX(-16px); width: 100%;">
+              <mat-card-header *ngIf="!editMode" style="transform: translateX(-16px); width: 100%;">
                 <mat-card-title>
                   <span>
-                    Intitulé du diplôme
+                    {{ ac.title }}
                   </span>
                 </mat-card-title>
 
                 <mat-card-subtitle>
-                  <span>Nom de l'école&nbsp;</span>
+                  <span>{{ ac.school }}&nbsp;</span>
                 </mat-card-subtitle>
 
               </mat-card-header>
-
+              <mat-form-field *ngIf="editMode">
+                <mat-label>Title</mat-label>
+                <input matInput [disabled]="!editMode" [(ngModel)]="ac.title">
+              </mat-form-field>
+              <mat-form-field *ngIf="editMode">
+                <mat-label>School</mat-label>
+                <input matInput [disabled]="!editMode" [(ngModel)]="ac.school">
+              </mat-form-field>
               <mat-form-field>
                 <mat-label>Degree</mat-label>
-                <input matInput [disabled]="!editMode" [value]="'Master 2'">
+                <input matInput [disabled]="!editMode" [(ngModel)]="ac.degree">
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Mention</mat-label>
-                <input matInput [disabled]="!editMode" [value]="'Bien'">
+                <input matInput [disabled]="!editMode" [(ngModel)]="ac.grade">
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>From</mat-label>
-                <input matInput [matDatepicker]="picker1" [formControl]="date" [readonly]="!editMode">
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="ac.begin_date" [readonly]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="picker1">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
@@ -80,7 +87,7 @@
 
               <mat-form-field>
                 <mat-label>To</mat-label>
-                <input matInput [matDatepicker]="picker1" [formControl]="date" [readonly]="!editMode">
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="ac.end_date" [readonly]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="picker1">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
@@ -111,36 +118,45 @@
 
 
       <mat-list>
-          <mat-list-item *ngFor="let _ of ['a', 'b']">
+          <mat-list-item *ngFor="let pro of resume.professionnal_cursus">
             <div class="item-content">
-              <mat-card-header style="transform: translateX(-16px); width: 100%;">
+              <mat-card-header *ngIf="!editMode" style="transform: translateX(-16px); width: 100%;">
                 <mat-card-title>
                   <span>
-                    Intitulé du poste
+                    {{ pro.title }}
                   </span>
                 </mat-card-title>
 
                 <mat-card-subtitle>
                   <span>
-                    Nom de l'entreprise&nbsp;<br>
+                    {{ pro.organization }}&nbsp;<br>
                   </span>
                 </mat-card-subtitle>
 
               </mat-card-header>
 
+              <mat-form-field *ngIf="editMode">
+                <mat-label>Title</mat-label>
+                <input matInput [disabled]="!editMode" [(ngModel)]="pro.title">
+              </mat-form-field>
+              <mat-form-field *ngIf="editMode">
+                <mat-label>Organization</mat-label>
+                <input matInput [disabled]="!editMode" [(ngModel)]="pro.organization">
+              </mat-form-field>
+
               <mat-form-field class="ultra-wide">
                 <mat-label>Entreprise's address</mat-label>
-                <input matInput [disabled]="!editMode" [value]="'Master 2'">
+                <textarea matInput [disabled]="!editMode" class="example-full-width" [(ngModel)]="pro.organization_address"></textarea>
               </mat-form-field>
 
               <mat-form-field class="ultra-wide">
                 <mat-label>Description</mat-label>
-                <textarea matInput [disabled]="!editMode" class="example-full-width" [value]="'Master 2'"></textarea>
+                <textarea matInput [disabled]="!editMode" class="example-full-width" [(ngModel)]="pro.description"></textarea>
               </mat-form-field>
 
               <mat-form-field>
                 <mat-label>Sector</mat-label>
-                <mat-select [disabled]="!editMode" [value]="'IT'">
+                <mat-select [disabled]="!editMode" [(ngModel)]="pro.sector">
                   <mat-option value="IT">IT</mat-option>
                   <mat-option value="Agriculture">Agriculture</mat-option>
                 </mat-select>
@@ -148,7 +164,7 @@
 
               <mat-form-field>
                 <mat-label>From</mat-label>
-                <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="!editMode">
+                <input matInput [matDatepicker]="xppicker_begin" [(ngModel)]="pro.begin_date" [readonly]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
@@ -156,7 +172,7 @@
               </mat-form-field>
               <mat-form-field>
                 <mat-label>To</mat-label>
-                <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="!editMode">
+                <input matInput [matDatepicker]="xppicker_end" [(ngModel)]="pro.end_date" [readonly]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="xppicker_end">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
@@ -164,7 +180,7 @@
               </mat-form-field>
               <mat-form-field class="ultra-wide">
                 <mat-label>Added values</mat-label>
-                <textarea matInput [disabled]="!editMode" class="example-full-width" [value]="'Done this and this and that...'"></textarea>
+                <textarea matInput [disabled]="!editMode" class="example-full-width" [(ngModel)]="pro.added_values"></textarea>
               </mat-form-field>
             </div>
 
@@ -191,21 +207,40 @@
 
 
       <mat-list>
-        <mat-list-item *ngFor="let _ of ['a', 'b']">
+        <mat-list-item *ngFor="let prj of resume.academic_projects">
           <div class="item-content">
+            <mat-card-header *ngIf="!editMode" style="transform: translateX(-16px); width: 100%;">
+              <mat-card-title>
+                <span>
+                  {{ prj.title }}
+                </span>
+              </mat-card-title>
+
+              <mat-card-subtitle>
+                <span>
+                  &nbsp;<br>
+                </span>
+              </mat-card-subtitle>
+
+            </mat-card-header>
+            <mat-form-field *ngIf="editMode">
+              <mat-label>Title</mat-label>
+              <input matInput [disabled]="!editMode" [(ngModel)]="prj.title">
+            </mat-form-field>
+
             <mat-form-field class="ultra-wide">
               <mat-label>Project description</mat-label>
-              <textarea matInput [disabled]="!editMode" class="example-full-width" [value]="'Describe your project here...'"></textarea>
+              <textarea matInput [disabled]="!editMode" class="example-full-width" [(ngModel)]="prj.description"></textarea>
             </mat-form-field>
 
             <mat-form-field class="ultra-wide">
               <mat-label>Actions</mat-label>
-              <textarea matInput [disabled]="!editMode" class="example-full-width" [value]="'Done this and this and that...'"></textarea>
+              <textarea matInput [disabled]="!editMode" class="example-full-width" [(ngModel)]="prj.actions"></textarea>
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>From</mat-label>
-              <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="!editMode">
+              <input matInput [matDatepicker]="xppicker_begin" [(ngModel)]="prj.begin_date" [readonly]="!editMode">
               <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
                 <mat-icon matDatepickerToggleIcon>event</mat-icon>
               </mat-datepicker-toggle>
@@ -214,7 +249,7 @@
 
             <mat-form-field>
               <mat-label>To</mat-label>
-              <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="!editMode">
+              <input matInput [matDatepicker]="xppicker_end" [(ngModel)]="prj.end_date" [readonly]="!editMode">
               <mat-datepicker-toggle matSuffix [for]="xppicker_end">
                 <mat-icon matDatepickerToggleIcon>event</mat-icon>
               </mat-datepicker-toggle>
@@ -240,13 +275,13 @@
 
 
       <mat-list>
-        <mat-list-item *ngFor="let _ of ['a', 'b']">
-          <div class="item-content">
+        <mat-list-item *ngFor="let lang of resume.languages">
+          <div class="item-content stretch">
 
 
             <mat-form-field>
               <mat-label>Language</mat-label>
-              <mat-select [disabled]="!editMode" [value]="'--'">
+              <mat-select [disabled]="!editMode" [(ngModel)]="lang.lang">
                 <mat-option value="Arabic">Arabic</mat-option>
                 <mat-option value="French">French</mat-option>
                 <mat-option value="English">English</mat-option>
@@ -267,7 +302,7 @@
                   [max]="10"
                   [min]="0"
                   [step]="1"
-                  [value]="5"
+                  [value]="lang.level? lang.level: 5"
                   [thumbLabel]="true">
                 </mat-slider>
 
@@ -292,13 +327,13 @@
 
 
       <mat-list>
-        <mat-list-item *ngFor="let _ of ['a', 'b']">
-          <div class="item-content">
+        <mat-list-item *ngFor="let skill of resume.skills">
+          <div class="item-content stretch">
 
 
             <mat-form-field>
               <mat-label>Skill</mat-label>
-              <input matInput [disabled]="!editMode" [value]="'Python'">
+              <input matInput [disabled]="!editMode" [(ngModel)]="skill.skill">
             </mat-form-field>
 
             <div>
@@ -309,7 +344,7 @@
                   [max]="10"
                   [min]="0"
                   [step]="1"
-                  [value]="5"
+                  [value]="skill.level? skill.level: 5"
                   [thumbLabel]="true">
                 </mat-slider>
 

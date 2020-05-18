@@ -3,6 +3,9 @@ mat-list-item {
   height: unset!important;
   display: flex;
 }
+mat-form-field{
+  flex-grow: .33;
+}
 div.item-content{
   flex-direction: row;
     display: flex;
@@ -30,4 +33,7 @@ div.item-content>div div{
 }
 mat-list-item mat-list{
   width: 100%;
+}
+.item-content.stretch>*{
+  flex-grow: 1;
 }

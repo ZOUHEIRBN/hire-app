@@ -50,8 +50,14 @@
       <button mat-icon-button aria-label="Like">
         <mat-icon>star</mat-icon>
       </button>
-      <button mat-icon-button aria-label="Comment" (click)="openComments()">
-        <mat-icon>comment</mat-icon>
+      <button
+       mat-icon-button
+       aria-label="Comment"
+       (click)="openComments()">
+        <mat-icon
+          matBadge="{{ post.comments.length }}"
+          matBadgePosition="above after"
+          matBadgeColor="accent">comment</mat-icon>
       </button>
       <button mat-icon-button aria-label="Settings">
         <mat-icon>edit</mat-icon>

@@ -9,7 +9,8 @@ export const def_post:Post = {
   'ownerId':0,
   'description': '',
   'badges': [],
-  'imageUrl': ''
+  'imageUrl': '',
+  'comments': []
 }
 
 export const posttypes = {
@@ -31,10 +32,10 @@ export class Post{
   description: string;
   badges: Badge[];
   imageUrl: string|ArrayBuffer;
+  comments:Comment[]
 }
 export class Comment{
-  related_post;
-  value:string = '';
+  text:string = '';
   timestamp;
   commenting_user;
 }

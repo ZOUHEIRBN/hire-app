@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Subject } from 'rxjs';
 import { Post } from '../interfaces/post';
-import 'rxjs/operators'
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -49,6 +47,9 @@ export class PostService {
 
   createPost(post){
     return this.httpClient.post<Post>(SERVER_URL+"posts/", post, httpOptions)
+  }
+  addComment(post_id, comment){
+    return this.httpClient.post<Post>(SERVER_URL+"posts/"+post_id+"/comment/", comment, httpOptions)
   }
 }
 

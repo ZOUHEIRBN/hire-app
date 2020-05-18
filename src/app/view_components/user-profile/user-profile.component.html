@@ -1,25 +1,25 @@
 <mat-card class="mother-card">
 
 
-  <mat-card-content>
+  <mat-card-content *ngIf="this.user">
     <div class="panel-1" @developDown>
       <user-details
-      [user]="user"
+      [user]="this.user"
       [iscurrentuser]="user.id === this.currentUserId"
       [embedded]="true"
       (cogButtonClick)="editAndSave(resume)"></user-details>
     </div>
 
     <mat-tab-group>
-      <mat-tab label="Resume">
+      <mat-tab label="Resume" *ngIf="this.user.resume">
         <user-resume #resume [user]="this.user"></user-resume>
       </mat-tab>
 
       <mat-tab label="Posts">
-        <post-filter #filter></post-filter>
+        <post-filter #postfilter></post-filter>
         <div class="mat-card-info">
           <div *ngFor="let post of userposts">
-            <post [embed]="true" [post]="post" *ngIf="this.filter.doSatisfy(post)"></post>
+            <post [embed]="true" [post]="post" *ngIf="this.postfilter.doSatisfy(post)"></post>
           </div>
           <div *ngIf="loading_state" class="mat-spinner" [ngClass]="{'bottom': this.userposts !== [] }">
             <mat-spinner></mat-spinner>

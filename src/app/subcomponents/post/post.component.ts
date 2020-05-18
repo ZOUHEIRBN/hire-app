@@ -61,6 +61,8 @@ export class PostComponent implements OnInit {
     }
   }
   openComments(){
-    this._bottomSheet.open(CommentSectionComponent);
+    this._bottomSheet.open(CommentSectionComponent, {
+      data: { comments: this.post.comments, post_id: this.post.id },
+    });
   }
 }

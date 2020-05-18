@@ -6,6 +6,7 @@ import { develop, developDown } from '../../app-animations';
 import { PostFilterComponent } from '../../minicomponents/post-filter/post-filter.component';
 import { CompanyService } from 'src/app/services/company.service';
 import { ResumeService } from 'src/app/services/resume.service';
+import { User } from 'src/app/interfaces/user';
 
 
 
@@ -16,11 +17,12 @@ import { ResumeService } from 'src/app/services/resume.service';
   animations:[develop, developDown]
 })
 export class UserProfileComponent implements OnInit {
-  user;
+  user:User;
   userposts: any;
   usercompanies: any[];
   @ViewChild(PostFilterComponent)
   postfilter:PostFilterComponent;
+  @ViewChild(PostFilterComponent)
   companyfilter:PostFilterComponent;
   loading_state = false;
   currentUserId:string = ''
@@ -62,7 +64,12 @@ export class UserProfileComponent implements OnInit {
     })
   }
   editAndSave(target){
+    if(target.editMode){
+      console.log(target.resume)
+      this._resumeService.putResume(this.user.id, target.resume)
+    }
     target.editMode = !target.editMode
+
   }
 
   /* @HostListener("window:scroll", [])
