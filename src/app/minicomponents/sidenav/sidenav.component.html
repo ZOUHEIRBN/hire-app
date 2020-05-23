@@ -1,0 +1,60 @@
+<mat-nav-list *ngIf="user">
+  <mat-list-item (click)="goto('/user/'+user.email)">
+    <img matListAvatar src="{{user.imageUrl}}" alt="...">
+    <h1 matLine> {{user.email}} </h1>
+    <button mat-icon-button>
+        <mat-icon>account_box</mat-icon>
+    </button>
+  </mat-list-item>
+
+  <mat-list-item (click)="goto('/home')">
+    <a matLine>Home</a>
+    <button mat-icon-button>
+       <mat-icon>home</mat-icon>
+    </button>
+  </mat-list-item>
+
+  <mat-divider [inset]="false"></mat-divider>
+  <h3 matSubheader>Get Hired!</h3>
+
+  <mat-list-item (click)="goto('/offers')">
+    <a matLine>Offers</a>
+    <button mat-icon-button>
+      <mat-icon>assistant_photo</mat-icon>
+    </button>
+  </mat-list-item>
+
+  <mat-list-item (click)="goto('/companies')">
+    <a matLine>Companies</a>
+    <button mat-icon-button>
+      <mat-icon>apartment</mat-icon>
+    </button>
+  </mat-list-item>
+
+  <mat-divider [inset]="false"></mat-divider>
+  <h3 matSubheader>Hire & Seek</h3>
+
+  <mat-list-item (click)="goto('/offers')">
+    <a matLine>Demands</a>
+    <button mat-icon-button>
+      <mat-icon>announcement</mat-icon>
+    </button>
+  </mat-list-item>
+
+  <mat-list-item (click)="goto('/users')">
+    <a matLine>Users</a>
+    <button mat-icon-button>
+      <mat-icon>person</mat-icon>
+    </button>
+  </mat-list-item>
+
+
+
+  <mat-list-item (click)="goto('/about')">
+    <a matLine>About us</a>
+    <button mat-icon-button>
+      <mat-icon>info</mat-icon>
+    </button>
+  </mat-list-item>
+
+</mat-nav-list>
