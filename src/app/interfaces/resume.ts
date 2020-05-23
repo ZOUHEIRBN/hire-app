@@ -93,7 +93,7 @@ export interface Criterion{
   // toVector():number[]
   // compare(criterion: Criterion):number
 }
-class AcademicDiploma implements Criterion{
+export class AcademicDiploma implements Criterion{
   title:string = "Master recherche en Data Science"
   degree:string =  "Master"
   school:string =  "FSBM"
@@ -102,7 +102,7 @@ class AcademicDiploma implements Criterion{
   grade?:string =  "A. Bien"
 
 }
-class ProfessionnalExperience implements Criterion{
+export class ProfessionnalExperience implements Criterion{
   title:string = "Développeur Full-stack"
   organization:string =  "ABCInfographics"
   organization_address:string = "92, ABCInfographics"
@@ -112,7 +112,7 @@ class ProfessionnalExperience implements Criterion{
   end_date?:Date =  new Date()
   added_values:string =  "Lorem ipsum dolor sit amet"
 }
-class AcademicProject implements Criterion{
+export class AcademicProject implements Criterion{
   title:string = "Projet en JEE"
   description:string =  "Lorem ipsum dolor sit amet"
   begin_date:Date =  new Date()

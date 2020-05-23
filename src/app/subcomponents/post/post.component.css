@@ -132,6 +132,10 @@ div.userData{
 }
 div.userData .profileImage{
   transform: scale(.7);
+  border-radius: 10vmin;
+  width: 10vmin;
+  height: 10vmin;
+  overflow: hidden;
   border: 1px solid #ddd;
 }
 div.userData .profileImage+div>*{

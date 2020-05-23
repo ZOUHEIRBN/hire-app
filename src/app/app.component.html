@@ -1,93 +1,43 @@
 <mat-toolbar color="primary" (userLogin)="setCurrentUser($event)">
-  <button mat-button action="MenuSwitch" (click)="toggleMenu()">
+  <button mat-button action="MenuSwitch" (click)="menu_sidenav_drawer.toggle()">
     <i class="material-icons">menu</i>
   </button>
-  <h1>
+  <h1 class="title">
     {{ title }}
   </h1>
-  <div class="buttonBars" [ngClass]="{'showMenu': showMenu}" *ngIf="user || true">
-    <div class="buttonBar userprofile" *ngIf="user">
-      <div class="profileImage">
-        <img src="{{ user['imageUrl'] }}"/>
-      </div>
-      <span style="border-left: 1px solid #fff;
-      padding-left: 10px;">{{ user.email }}</span>
-    </div>
-    <div class="buttonBar" *ngIf="user">
-      <button mat-button (click)="toggleSelector($event)" routerLink="/home" current>
-        <i class="material-icons">home</i>
-        Home
-      </button>
-      <div class="menuButton">
-        <button #discoverMenuButton mat-button (click)="clearMenuCurrent($event)">
-          <i class="material-icons">work</i>
-          Jobs
-        </button>
-        <mat-menu>
-          <button mat-button mat-menu-item (click)="toggleMenu()" routerLink="/offers">
-            <i class="material-icons">assistant_photo</i>
-            Offers
-          </button>
-          <button mat-button mat-menu-item (click)="toggleMenu()" routerLink="/offers">
-            <i class="material-icons">assistant_photo</i>
-            Demands
-          </button>
-        </mat-menu>
-      </div>
 
-
-      <div class="menuButton">
-        <button #exploreMenuButton mat-button (click)="clearMenuCurrent($event)">
-          <i class="material-icons">search</i>
-          Explore
-        </button>
-        <mat-menu>
-          <button mat-button mat-menu-item (click)="toggleMenu()" routerLink="/users">
-            <i class="material-icons">people</i>
-            Users
-          </button>
-          <button mat-button mat-menu-item (click)="toggleMenu()" routerLink="/companies">
-            <i class="material-icons">work</i>
-            Companies
-          </button>
-        </mat-menu>
-      </div>
-      <button mat-button (click)="toggleSelector($event)" routerLink="/about">
-        <i class="material-icons">info</i>
-        About
-      </button>
-      <button mat-button (click)="toggleSelector($event)" routerLink="{{ '/user/'+user.email }}">
-        <i class="material-icons">account_box</i>
-        My profile
-      </button>
-
-
-
-    </div>
-  </div>
-  <div class="buttonBar horizontal search" [ngClass]="{'current': searchPanel}">
+  <div class="buttonBar horizontal search" [ngClass]="{'current': searchPanel}" [ngStyle]="{'z-index': user?'unset':'1'}">
     <input matInput [(ngModel)]="searchbarValue">
   </div>
   <div class="buttonBar horizontal">
-    <button mat-button [ngClass]="{'current': searchPanel}" (click)="toggleSearchPanel()" >
-      <i class="material-icons">search</i>
+    <button mat-icon-button (click)="toggleSearchPanel()" >
+      <mat-icon>search</mat-icon>
     </button>
-    <button mat-button [ngClass]="{'current': rightPanelContent === 'notifications'}" (click)="toggleRightPanel('notifications')" >
-      <i class="material-icons">notifications</i>
-    </button>
-    <button mat-button [ngClass]="{'current': rightPanelContent === 'messages'}" (click)="toggleRightPanel('messages')" value=2>
-      <i class="material-icons">message</i>
-      <b>2</b>
-    </button>
-    <button mat-button (click)="disconnect()" routerLink="/login">
-      <i class="material-icons">{{ user ? 'exit_to_app':'how_to_reg'}}</i>
+    <button mat-icon-button (click)="notification_sidenav_drawer.toggle()" >
+      <mat-icon matBadge="{{ this.userNotifications.length }}"
+      matBadgePosition="above after"
+      matBadgeColor="white">notifications</mat-icon>
     </button>
   </div>
 </mat-toolbar>
-<router-outlet></router-outlet>
+
+<mat-drawer-container class="example-container" [hasBackdrop]="true">
+  <mat-drawer #menu_sidenav_drawer class="menu-sidenav" mode="push">
+    <hire-sidenav [user]="this.user" (itemClick)="menu_sidenav_drawer.toggle()" (userLogged)="menu_sidenav_drawer.toggle()"></hire-sidenav>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <router-outlet></router-outlet>
+  </div>
+  <mat-drawer #notification_sidenav_drawer class="notification-sidenav" mode="over" position="end">
+    <h1>Notifications</h1>
+    <notification  *ngFor="let notification of userNotifications" [notification]="notification"></notification>
+  </mat-drawer>
+</mat-drawer-container>
+<!--
 <div #rightPanel [attr.content]="rightPanelContent" class="rightPanel">
   <div *ngIf="rightPanelContent === 'notifications'">
     <notification  *ngFor="let notification of userNotifications" [notification]="notification"></notification>
   </div>
-</div>
+</div> -->
 

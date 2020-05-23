@@ -1,0 +1,73 @@
+div.flex{
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  position: relative;
+    top: 0%;
+    left: 0;
+    transform: translate(0%, 0%);
+
+}
+div.flex>form{
+  width: 100%;
+  padding: 3%;
+  display: flex;
+  /* flex-wrap: wrap; */
+  flex-direction: column;
+  align-content: space-between;
+}
+mat-form-field{
+  flex-grow: 1;
+}
+div.logo{
+  width: 100%;
+  padding: 1%;
+}
+div.logo svg, div.logo .svg{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  position: relative;
+  width: 100%;
+  border-radius: 3vmax;
+
+  background-blend-mode: overlay;
+  background-image: linear-gradient(40deg, var(--primary-color-light), var(--secondary-color-light), var(--primary-color-light));
+  background-size: 250%;
+  background-position-x: 0%;
+}
+div.logo svg:hover, div.logo .svg:hover{
+  background-position-x: 100%;
+}
+div.mat-card-actions{
+  display: flex;
+  flex-flow: row;
+  margin: 3%;
+}
+.mat-card-actions button {
+  width: 100%;
+}
+div.mat-card-actions + a, div.mat-card-actions + a:visited {
+  color: var(--primary-color);
+  font-weight: lighter;
+  text-align: center;
+}
+@media(orientation: portrait){
+  div.flex{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    flex-flow: column;
+    flex-direction: column;
+  }
+  div.flex>form{
+    width: 100%;
+  }
+  div.flex>*:not(.mat-card-actions){
+    height: 30%;
+  }
+  div.logo{
+    width: 80%;
+    padding: 10%;
+  }
+}

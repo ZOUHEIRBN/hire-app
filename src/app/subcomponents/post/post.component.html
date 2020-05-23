@@ -2,14 +2,14 @@
 
   <div class="userData" *ngIf="!embed">
     <div class="profileImage">
-      <div class="img" [ngStyle]="{'background-image': 'url(' + post.owner.imageUrl + ')'}"></div>
+      <div class="img" [ngStyle]="{'background-image': 'url(' + post.owner['imageUrl'].toString() + ')'}"></div>
     </div>
     <div>
       <h1>
         {{ post.owner['email'] || post.owner['title'] }}
       </h1>
       <h4>
-        0000000000000000
+        {{ post.timestamp }}
       </h4>
     </div>
   </div>

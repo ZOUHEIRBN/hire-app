@@ -1,18 +1,11 @@
-mat-card{
-  width: 100%;
-  display: flex;
-  position: relative;
-  margin-bottom: 1%;
-  color: #424242;
-  background-color: #fff;
-}
-mat-card>div{
+
+div.container{
   height: 15vmin;
   display: flex;
   flex-grow: 1;
   flex-direction: row;
 }
-mat-card div.Image{
+div.Image{
   height: 10vmin;
   width: 10vmin;
   border-radius: 10vmin;
@@ -20,17 +13,17 @@ mat-card div.Image{
   flex-shrink: 0;
   overflow: hidden;
 }
-mat-card div.Image img{
+div.Image img{
   height: 100%;
   width: auto;
 }
-mat-card div.content{
+div.content{
   height: 100%;
   padding: 0 2vmin;
   flex-grow: 1;
   flex-direction: column;
 }
-mat-card div.content p{
+div.content p{
   /* flex-grow: 1;
   flex-direction: column; */
   margin-top: 0;
@@ -42,17 +35,17 @@ mat-card div.content p{
   overflow: hidden;
   text-overflow: ellipsis;
 }
-mat-card div.content span{
+div.content span{
   margin-top: 0;
   display: flex;
 }
-mat-card div.content span>*{
+div.content span>*{
   margin-top: 0;
   margin-bottom: 0;
   flex: 1 0 90%
 }
 @media only screen and (orientation: portrait), only screen and (orientation: landscape) and (max-width: 960px) {
-  mat-card div.content p{
+  div.content p{
     -webkit-line-clamp: 2;
   }
 }

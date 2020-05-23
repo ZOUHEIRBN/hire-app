@@ -1,0 +1,53 @@
+div.userprofile{
+  flex-direction: row-reverse;
+  flex-grow: 0;
+  margin: 0 1%;
+}
+
+div.profileImage {
+  border-radius: calc(var(--menu-height));
+    height: calc(var(--menu-height));
+    width: calc(var(--menu-height));
+    background-color: #fff;
+    border: 1pt solid var(--primary-color-light);
+    padding: .5%;
+    overflow: hidden;
+    position: relative;
+    transform: translate(-0%, -0%) scale(0.65);
+}
+div.profileImage img {
+  position: absolute;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+
+/* If user is disconnected */
+div.easy-connect {
+  width: 100%;
+  height: 100%;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+connection-panel{
+  width: 100%;
+  height: unset;
+  padding: 5% 10%;
+}
+@media(max-width: 599px){
+  connection-panel{
+    width: 100%;
+    height: unset;
+  }
+}
+@media(min-width: 599px) and (max-width: 768px){
+  connection-panel{
+    width: 60%;
+    height: unset;
+  }
+}

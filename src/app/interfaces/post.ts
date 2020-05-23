@@ -6,6 +6,7 @@ import { Skill, Language } from './resume';
 export const def_post:Post = {
   'id':0,
   'title':'',
+  'timestamp': 0,
   'ownerId':0,
   'description': '',
   'badges': [],
@@ -24,6 +25,7 @@ export const posttypes = {
 
 export class Post{
   id:number;
+  timestamp:any;
   type?:string;
   subject?:string;
   ownerId:number|string;

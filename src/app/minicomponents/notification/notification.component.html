@@ -1,5 +1,5 @@
-<mat-card @develop>
-  <div>
+<mat-card matRipple matRippleColor="primary" class="notification">
+  <div class="container">
     <div class="Image">
       <img *ngIf="notification.imageUrl" src="{{ notification.imageUrl }}">
       <img *ngIf="!notification.imageUrl" src="../../assets/svg/Gradient.png">
@@ -12,7 +12,6 @@
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis nulla beatae veniam. Omnis vel nam amet! Odit dicta blanditiis dolor illum nostrum a nemo laborum neque? Quasi, ullam eveniet!
       </p>
-
     </div>
   </div>
 </mat-card>

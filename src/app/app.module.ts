@@ -30,12 +30,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 
 
@@ -62,6 +66,8 @@ import { NewPostPanelComponent } from './subcomponents/newPost/new-post-panel/ne
 import { NewJobOfferComponent } from './subcomponents/newPost/new-job-offer/new-job-offer.component';
 import { NewJobDemandComponent } from './subcomponents/newPost/new-job-demand/new-job-demand.component';
 import { CommentSectionComponent } from './minicomponents/comment-section/comment-section.component';
+import { SidenavComponent } from './minicomponents/sidenav/sidenav.component';
+import { ConnectionPanelComponent } from './minicomponents/connection-panel/connection-panel.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +94,9 @@ import { CommentSectionComponent } from './minicomponents/comment-section/commen
     NewPostPanelComponent,
     NewJobOfferComponent,
     NewJobDemandComponent,
-    CommentSectionComponent
+    CommentSectionComponent,
+    SidenavComponent,
+    ConnectionPanelComponent
   ],
   imports: [
 
@@ -111,11 +119,15 @@ import { CommentSectionComponent } from './minicomponents/comment-section/commen
     MatExpansionModule,
     MatDividerModule,
     MatListModule,
+    MatMenuModule,
+    MatSidenavModule,
     MatTreeModule,
     MatStepperModule,
     MatChipsModule,
     MatBadgeModule,
     MatTooltipModule,
+    MatRippleModule,
+    MatDialogModule,
     MatBottomSheetModule,
     MatProgressSpinnerModule,
     GoogleMapsModule,

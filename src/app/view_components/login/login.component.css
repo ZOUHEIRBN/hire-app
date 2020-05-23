@@ -3,6 +3,8 @@ div.container {
   width: 100vw;
   height: 100vh;
   position: fixed;
+  top: 0;
+  z-index: 7;
 }
 div.layout {
   background-color: whitesmoke;
@@ -14,102 +16,16 @@ div.layout {
     left: 50%;
     position: absolute;
     flex-direction: column;
-    display: block;
+    display: flex;
     align-items: center;
 }
-div.flex{
+connection-panel{
   display: flex;
-  align-self: center;
-  flex-flow: row;
-  flex-direction: row;
-  position: relative;
-    top: 50%;
-    left: 0;
-    transform: translate(0%, -50%);
-
-}
-div.flex>form{
-  width: 100%;
-  padding: 3%;
-}
-div.layout form {
-  display: flex;
-  flex-direction: column;
-  align-content: space-between;
-}
-div.layout input{
-    font-size: calc(20pt - 1.5vmin)!important;
-    margin: 3% 0%;
-    padding: 2vmin;
-    text-align: center;
-    outline: none;
-    border-radius: 10pt;
-    background-color: white;
-    border: .1vmin solid white;
-    color: var(--primary-color)!important;
-    transition: all .2s ease-out;
-}
-div.layout input:focus{
-    border:  .5vmin solid var(--primary-color);
-    padding: 1.6vmin;
-    color: var(--primary-color)!important;
-    background-color: white;
-}
-
-div.logo{
-    width: 100%;
-    padding: 1%;
-}
-div.logo svg, div.logo .svg{
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: relative;
-  width: 100%;
-  border-radius: 3vmax;
-
-    background-blend-mode: overlay;
-  background-image: linear-gradient(40deg, var(--primary-color-light), var(--secondary-color-light), var(--primary-color-light));
-    background-size: 250%;
-    background-position-x: 0%;
-}
-div.logo svg:hover, div.logo .svg:hover{
-    background-position-x: 100%;
-}
-div.mat-card-actions{
-  display: flex;
-  flex-flow: row;
-  margin: 3%;
-}
-.mat-card-actions button {
-  width: 100%;
-}
-div.mat-card-actions + a, div.mat-card-actions + a:visited {
-  color: var(--primary-color);
-  font-weight: lighter;
-  text-align: center;
+  height: 100%
 }
 @media(orientation: portrait){
   div.layout{
     width: 35vmax;
     height: 75vmax;
   }
-  div.flex{
-    width: 100%;
-    height: 85%;
-    align-items: center;
-    flex-flow: column;
-  flex-direction: column;
-  }
-  div.flex>form{
-    width: 100%;
-  }
-  div.flex>*:not(.mat-card-actions){
-    height: 30%;
-  }
-  div.logo{
-    width: 80%;
-    padding: 10%;
-  }
-
 }

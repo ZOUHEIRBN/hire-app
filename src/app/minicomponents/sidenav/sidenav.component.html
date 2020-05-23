@@ -7,6 +7,13 @@
     </button>
   </mat-list-item>
 
+  <mat-list-item (click)="disconnect()">
+    <a matLine>Disconnect</a>
+    <button mat-icon-button>
+       <mat-icon>perm_identity</mat-icon>
+    </button>
+  </mat-list-item>
+
   <mat-list-item (click)="goto('/home')">
     <a matLine>Home</a>
     <button mat-icon-button>
@@ -58,3 +65,9 @@
   </mat-list-item>
 
 </mat-nav-list>
+
+<div class="easy-connect" *ngIf="!user">
+
+    <connection-panel (userLogin)="userLogged.emit()"></connection-panel>
+
+</div>

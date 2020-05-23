@@ -15,14 +15,13 @@ import { SearchService } from './services/search.service';
 export class AppComponent {
   title = 'Hire';
   @Input() searchbarValue:string = "";
-  @ViewChild('rightPanel') rightPanel;
-  @ViewChild('notificationButton') notificationButton;
-  @ViewChild('exploreSubmenu') exploreSubmenu;
+  @ViewChild('sidenav_drawer') menu_sidenav_drawer;
+  @ViewChild('notification_sidenav_drawer') notification_sidenav_drawer;
+
   rightPanelContent = 'none';
   searchPanel = false;
-  showMenu = false;
   user:User = null;
-  userNotifications = [];
+  userNotifications: any[] = [];
   constructor(private _userService:UserService, private router:Router, private _searchEngine:SearchService){
     if(!this.user){
       //router.navigate(['/login']);
@@ -41,7 +40,7 @@ export class AppComponent {
     }
   }
   toggleRightPanel(content){
-    this.showMenu = false;
+    //this.showMenu = false;
     if(this.rightPanelContent+'' !== content+''){
       this.rightPanelContent = 'none';
       this.userNotifications = [];
@@ -66,72 +65,7 @@ export class AppComponent {
         }
       }, 100);
   }
-  toggleMenu(){
-    this.rightPanelContent = 'none';
-    this.showMenu = !this.showMenu;
-  }
-  toggleSelector(event: any){
-    var target = event.target;
-    while(target.tagName !== "BUTTON"){
-      target = target.parentNode;
-    }
-    var target_current = target.getAttribute('current');
-    if(target_current !== "true")
-    {
-      // Look for the one with current=true
-       var old_current = document.querySelector('[current]');
-       if(old_current !== null){
-        old_current.removeAttribute("current");
-        old_current.removeAttribute("currentWrapper");
-       }
 
-       //Set new current
-       setTimeout(() => {
-        target.setAttribute("current", "");
-       }, 100);
-       if(target.parentNode.className !== 'menuButton'){
-        this.showMenu = !this.showMenu;
-       }
-    }
-  }
-  clearMenuCurrent(event: any){
-    var target = event.target;
-
-    while(target.tagName !== "BUTTON"){
-      target = target.parentNode;
-    }
-    var target_current = target.getAttribute('currentWrapper');
-    if(target_current !== null){
-      target.removeAttribute("currentWrapper");
-    }
-    else if(target_current !== "true")
-    {
-      // Look for the one with currentWrapper=true
-      var old_current_wrp = document.querySelector('[currentWrapper]');
-      if(old_current_wrp !== null){
-        old_current_wrp.removeAttribute("currentWrapper");
-      }
-
-      // Look for the one with current=true
-      var old_current = document.querySelector('[current]');
-      if(old_current !== null){
-        old_current.removeAttribute("current");
-      }
-
-      if(target.parentNode.className !== 'menuButton'){
-        this.showMenu = !this.showMenu;
-       }
-
-      //Set new currentWrapper
-      target.setAttribute("currentWrapper", "");
-       //Set new current
-      target = event.target;
-      while(target.parentNode.className !== "menuButton"){
-        target = target.parentNode;
-      }
-      target.setAttribute("current", "");
-    }
-  }
   setCurrentUser(userData){
     this.user = userData;
   }
@@ -140,11 +74,13 @@ export class AppComponent {
     this.router.navigate(['/search/'+this.searchbarValue])
   }
   ngOnInit(){
+    this.getUserNotifications()
     this._userService._user$
       .subscribe(
         response => {
           if(response !== null && response["id"] !== null && response["password"] !== null){
               this.user = response;
+              this.getUserNotifications()
               this.router.navigate(['/home']);
             }
           }
@@ -157,7 +93,7 @@ export class AppComponent {
     }
   }
   disconnect(){
-    this.showMenu = false;
+    //this.showMenu = false;
     this.user = null;
     this._userService.disconnect()
     this.router.navigate(['/login']);

@@ -1,26 +1,5 @@
 <div class="container">
     <div class="layout">
-      <div class="flex">
-        <div class="logo">
-          <img class="svg" src="../../assets/svg/Logo white.svg" />
-        </div>
-        <form action="">
-          <h2>Login</h2>
-          <input mat-input autocomplete [(ngModel)]="login" type="text" name="login" placeholder="Login"/>
-          <input mat-input autocomplete [(ngModel)]="password" type="password" name="password" placeholder="Password"/>
-          <div style="display: contents;">
-            <div class="mat-card-actions">
-              <button mat-button (click)="this.loginUser($event)">Connexion</button>
-              <button mat-button (click)="this.gotoRegister()">Inscription</button>
-            </div>
-            <a href="offers">Forgot password?</a>
-          </div>
-
-        </form>
-      </div>
-
-
-
+      <button mat-button color="primary" (click)="openDialog()">Login</button>
     </div>
-
 </div>

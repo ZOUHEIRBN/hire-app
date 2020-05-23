@@ -18,8 +18,5 @@ export class ResumeService {
   }
   putResume(user_id, resume){
     return this.httpClient.put<Resume>(SERVER_URL+"users/"+user_id+"/resume/", resume, httpOptions)
-    .subscribe(response => {
-      //console.log(response)
-    })
   }
 }

@@ -29,7 +29,11 @@ export class UserService {
     return fetchedDataJSON;
   }
   public getAllUsers(){
-    return this.httpClient.get(SERVER_URL+"users/?current_user="+this._user.getValue().email).pipe(map(response => {
+    let current_user = '0'
+    if(this._user.getValue()){
+      current_user = this._user.getValue().email
+    }
+    return this.httpClient.get(SERVER_URL+"users/?current_user="+current_user).pipe(map(response => {
       return response['body'];
     }));
   }

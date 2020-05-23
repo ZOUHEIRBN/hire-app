@@ -1,4 +1,29 @@
 <mat-card>
+  <div class="resume-toolbar">
+    <button mat-icon-button [matMenuTriggerFor]="resume_menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <button mat-raised-button color="primary" *ngIf="editMode" (click)="save()">
+      <mat-icon>save</mat-icon>
+      <span>Save</span>
+    </button>
+  </div>
+  <mat-menu #resume_menu yPosition="below" xPosition="after">
+    <button mat-menu-item *ngIf="!editMode" (click)="edit()">
+      <mat-icon>edit</mat-icon>
+      <span>Edit resume</span>
+    </button>
+
+    <button mat-menu-item disabled>
+      <mat-icon>close</mat-icon>
+      <span>Delete resume</span>
+    </button>
+    <button mat-menu-item (click)="getPDFResume()">
+      <mat-icon>notifications_off</mat-icon>
+      <span>Get PDF version</span>
+    </button>
+  </mat-menu>
+
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -95,7 +120,19 @@
               </mat-form-field>
 
             </div>
-
+            <button class="more_options" mat-icon-button [matMenuTriggerFor]="academic_cursus_menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #academic_cursus_menu yPosition="below" xPosition="after">
+              <button mat-menu-item (click)="addAcademicCursus()">
+                <mat-icon>add</mat-icon>
+                <span>New diploma</span>
+              </button>
+              <button mat-menu-item (click)="removeAcademicCursus(ac)">
+                <mat-icon>remove</mat-icon>
+                <span>Delete diploma</span>
+              </button>
+            </mat-menu>
 
             <br>
             <mat-divider [inset]="true"></mat-divider>
@@ -132,7 +169,6 @@
                     {{ pro.organization }}&nbsp;<br>
                   </span>
                 </mat-card-subtitle>
-
               </mat-card-header>
 
               <mat-form-field *ngIf="editMode">
@@ -183,10 +219,21 @@
                 <textarea matInput [disabled]="!editMode" class="example-full-width" [(ngModel)]="pro.added_values"></textarea>
               </mat-form-field>
             </div>
-
-
-
             <br>
+            <button class="more_options" mat-icon-button [matMenuTriggerFor]="pro_cursus_menu" aria-label="Example icon-button with a menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #pro_cursus_menu yPosition="below" xPosition="after">
+              <button mat-menu-item (click)="addProCursus()">
+                <mat-icon>add</mat-icon>
+                <span>New cursus</span>
+              </button>
+              <button mat-menu-item (click)="removeProCursus(pro)">
+                <mat-icon>remove</mat-icon>
+                <span>Delete cursus</span>
+              </button>
+            </mat-menu>
+
             <mat-divider [inset]="true"></mat-divider>
           </mat-list-item>
 
@@ -256,7 +303,19 @@
               <mat-datepicker #xppicker_end></mat-datepicker>
             </mat-form-field>
           </div>
-
+          <button class="more_options" mat-icon-button [matMenuTriggerFor]="academic_prj_menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #academic_prj_menu yPosition="below" xPosition="after">
+            <button mat-menu-item (click)="addAcademicProject()">
+              <mat-icon>add</mat-icon>
+              <span>New project</span>
+            </button>
+            <button mat-menu-item (click)="removeAcademicProject(prj)">
+              <mat-icon>remove</mat-icon>
+              <span>Delete project</span>
+            </button>
+          </mat-menu>
           <br>
           <mat-divider [inset]="true"></mat-divider>
         </mat-list-item>
@@ -308,7 +367,19 @@
 
             </div>
           </div>
-
+          <button class="more_options" mat-icon-button [matMenuTriggerFor]="lang_menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #lang_menu yPosition="below" xPosition="after">
+            <button mat-menu-item (click)="addLanguage()">
+              <mat-icon>add</mat-icon>
+              <span>Add language</span>
+            </button>
+            <button mat-menu-item (click)="removeLanguage(lang)">
+              <mat-icon>remove</mat-icon>
+              <span>Delete language</span>
+            </button>
+          </mat-menu>
           <br>
           <mat-divider [inset]="true"></mat-divider>
         </mat-list-item>
@@ -350,7 +421,19 @@
 
             </div>
           </div>
-
+          <button class="more_options" mat-icon-button [matMenuTriggerFor]="skill_menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #skill_menu yPosition="below" xPosition="after">
+            <button mat-menu-item (click)="addSkill()">
+              <mat-icon>add</mat-icon>
+              <span>Add skill</span>
+            </button>
+            <button mat-menu-item (click)="removeSkill(skill)">
+              <mat-icon>remove</mat-icon>
+              <span>Delete skill</span>
+            </button>
+          </mat-menu>
           <br>
           <mat-divider [inset]="true"></mat-divider>
         </mat-list-item>
