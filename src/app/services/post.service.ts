@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Post } from '../interfaces/post';
+import { Post, Comment } from '../interfaces/post';
 import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class PostService {
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
-  public async getPosts(){
+  public getPosts(){
 		return this.httpClient.get(SERVER_URL+"posts/").pipe(map(response => {
       console.log(response['body'])
       return response['body'];
@@ -50,8 +50,17 @@ export class PostService {
   deletePost(post:Post){
     return this.httpClient.delete<Post>(SERVER_URL+"posts/"+ post.id, httpOptions)
   }
+  editPost(post:Post){
+    return this.httpClient.put<Post>(SERVER_URL+"posts/", post, httpOptions)
+  }
+
+
+
   addComment(post_id, comment){
-    return this.httpClient.post<Post>(SERVER_URL+"posts/"+post_id+"/comment/", comment, httpOptions)
+    return this.httpClient.post<Comment>(SERVER_URL+"posts/"+post_id+"/comment/0", comment, httpOptions)
+  }
+  deleteComment(post_id, comment_id){
+    return this.httpClient.delete<Comment>(SERVER_URL+"posts/"+post_id+"/comment/" + comment_id)
   }
 }
 

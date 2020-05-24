@@ -37,6 +37,7 @@ export class Post{
   comments:Comment[]
 }
 export class Comment{
+  id?:string
   text:string = '';
   timestamp;
   commenting_user;
@@ -57,6 +58,15 @@ export class JobOffer extends Job {
   constructor(){
     super();
     this.requiredSkills = [];
+  }
+  static fromPost(post){
+    let offer = new JobOffer()
+    offer.id = post.id
+    offer.type = post.type
+    offer.subject = post.subject
+    offer.description = post.description
+    offer.title = post.title
+    return <JobOffer>offer;
   }
 }
 export class JobDemand extends Job {

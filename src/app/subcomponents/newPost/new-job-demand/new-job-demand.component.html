@@ -114,7 +114,7 @@
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
-        <button mat-button (click)="this.createPost()">Post</button>
+        <button mat-button (click)="doneEvent.emit(newPost)">Post</button>
       </div>
     </mat-step>
 

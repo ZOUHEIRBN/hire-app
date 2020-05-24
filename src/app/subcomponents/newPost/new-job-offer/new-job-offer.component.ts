@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { JobOffer } from 'src/app/interfaces/post';
+import { JobOffer, def_post } from 'src/app/interfaces/post';
 import { Skill } from 'src/app/interfaces/resume';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { UserService } from 'src/app/services/user.service';
 import { PostService } from 'src/app/services/post.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'new-job-offer',
@@ -13,7 +14,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class NewJobOfferComponent implements OnInit {
   @Input() newPost:JobOffer;
-  @Input() type:string;
+  @Input() subject:string;
   @Output() doneEvent = new EventEmitter()
 
   floatLabelControl = new FormControl('auto')
@@ -31,9 +32,15 @@ export class NewJobOfferComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.newPost = new JobOffer()
-    this.newPost.type = this.type
-    this.newPost.subject = 'Offer'
+    console.log(this.newPost)
+    if(!this.newPost || this.newPost === def_post){
+      this.newPost = new JobOffer()
+      this.newPost.type = 'Offer'
+      this.newPost.subject = this.subject
+    }
+    else{
+      this.newPost = JobOffer.fromPost(this.newPost)
+    }
   }
   add(event){
     const input = event.input;

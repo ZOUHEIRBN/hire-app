@@ -13,7 +13,8 @@ import { Skill } from 'src/app/interfaces/resume';
 })
 export class NewJobDemandComponent implements OnInit {
   @Input() newPost:JobDemand;
-  @Input() type:string;
+  @Input() subject:string;
+  @Output() loadEvent = new EventEmitter()
   @Output() doneEvent = new EventEmitter()
 
   floatLabelControl = new FormControl('auto')
@@ -31,9 +32,10 @@ export class NewJobDemandComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.loadEvent.emit()
     this.newPost = new JobDemand()
-    this.newPost.type = this.type
-    this.newPost.subject = 'Demand'
+    this.newPost.type = 'Demand'
+    this.newPost.subject = this.subject
   }
 
   createPost(){

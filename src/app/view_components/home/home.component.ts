@@ -12,7 +12,7 @@ import { User } from 'src/app/interfaces/user';
   animations:[developDown]
 })
 export class HomeComponent implements OnInit {
-  posts: any = [];
+  posts: any[] = [];
   loading_state = true
   currentUser:User
 
@@ -24,13 +24,23 @@ export class HomeComponent implements OnInit {
   }
   async loadPostData(){
     this.loading_state = true;
-    let promise = await this._postService.getPosts()
-    promise.subscribe((data) => {
+    this._postService.getPosts().subscribe((data) => {
       this.posts = data
       setTimeout(() => {this.loading_state = false}, 1000)
     })
   }
-
-
+  createPost(event){
+    event.ownerId = this._userService.getCurrentUser().id;
+    this._postService.createPost(event).subscribe(_ => {
+      //this.posts.unshift(this.newPost)
+      console.log(event)
+    })
+  }
+  deletePost(event){
+    let index = this.posts.indexOf(event)
+    if(index > -1){
+      this.posts.splice(index, 1)
+    }
+  }
 
 }

@@ -15,11 +15,30 @@
   </div>
   <div class="comment-list">
     <a *ngFor="let comment of this.comments" mat-list-item (click)="like($event)">
-      <span mat-line>
-        <b>
-          {{ comment.commenting_user['first_name'] + ' ' + comment.commenting_user['last_name'] }}
-        </b>
-        <abbr>{{ comment.timestamp }}</abbr>
+      <span mat-line style="display: flex;">
+        <span style="display: flex; flex-grow: 1;  flex-direction: column;">
+          <b>
+            {{ comment.commenting_user['first_name'] + ' ' + comment.commenting_user['last_name'] }}
+          </b>
+          <abbr>{{ comment.timestamp }}</abbr>
+        </span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="deleteComment(comment.id)">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>edit</span>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>report_problem</mat-icon>
+            <span>Signal</span>
+          </button>
+        </mat-menu>
       </span>
       <span mat-line>{{ comment.text }}</span>
     </a>

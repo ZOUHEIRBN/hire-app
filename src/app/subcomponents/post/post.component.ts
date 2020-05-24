@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { NewPostPanelComponent } from '../newPost/new-post-panel/new-post-panel.component';
 import { NewJobDemandComponent } from '../newPost/new-job-demand/new-job-demand.component';
 import { NewJobOfferComponent } from '../newPost/new-job-offer/new-job-offer.component';
+import { PostEditorDialogComponent } from 'src/app/subcomponents/newPost/post-editor-dialog/post-editor-dialog.component';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'post',
@@ -25,6 +27,7 @@ export class PostComponent implements OnInit {
 
   constructor(
     private router:Router,
+    private _userService:UserService,
     private _postService:PostService,
     private _bottomSheet: MatBottomSheet,
     private dialog:MatDialog
@@ -79,23 +82,24 @@ export class PostComponent implements OnInit {
   }
   deletePost(){
     this._postService.deletePost(this.post).subscribe(response => {
-      console.log(response)
-      this.postDelete.emit(response)
+      this.postDelete.emit(this.post)
     })
   }
   editPost(){
-    if(this.post.type.toLowerCase() == 'demand' && ['job', 'internship'].includes(this.post.subject.toLowerCase())){
-      const dialogRef = this.dialog.open(NewJobDemandComponent, {
-        width: '50vmin',
-      });
-      dialogRef.componentInstance.newPost = <JobDemand>this.post
-    }
-    else if(this.post.type.toLowerCase() == 'offer' && ['job', 'internship'].includes(this.post.subject.toLowerCase())){
-      const dialogRef = this.dialog.open(NewJobOfferComponent, {
-        width: '50vmin',
-      });
-      dialogRef.componentInstance.newPost = <JobOffer>this.post
-    }
+    const dialogRef = this.dialog.open(PostEditorDialogComponent, {
+      maxHeight: '90vmin',
+      data:{
+        post: this.post
+      }
+    });
+    dialogRef.componentInstance.doneEvent.subscribe(event => {
+      event['ownerId'] = this._userService.getCurrentUser().id
+      event['comments'] = this.post.comments
+      this._postService.editPost(event).subscribe(response => {
+        this.post = <Post>response
+        dialogRef.close()
+      })
+    })
     /* dialogRef.componentInstance.userLogin.subscribe(_ => {
       dialogRef.close()
     })

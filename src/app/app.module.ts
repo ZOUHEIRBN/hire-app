@@ -70,6 +70,7 @@ import { SidenavComponent } from './minicomponents/sidenav/sidenav.component';
 import { ConnectionPanelComponent } from './minicomponents/connection-panel/connection-panel.component';
 
 import { SERVER_URL } from './services/post.service';
+import { PostEditorDialogComponent } from './subcomponents/newPost/post-editor-dialog/post-editor-dialog.component';
 const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Control-Allow-Origin': '*'}  };
 
 @NgModule({
@@ -99,7 +100,8 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     NewJobDemandComponent,
     CommentSectionComponent,
     SidenavComponent,
-    ConnectionPanelComponent
+    ConnectionPanelComponent,
+    PostEditorDialogComponent
   ],
   imports: [
 

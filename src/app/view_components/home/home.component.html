@@ -1,14 +1,14 @@
 <div style="padding: 10px;
 width: calc(100% - 20px);">
 
-  <div class="publisher">
-    <new-post-panel></new-post-panel>
-  </div>
+  <mat-card class="publisher">
+    <new-post-panel style="display: flex;" (doneEvent)="createPost($event)"></new-post-panel>
+  </mat-card>
 
 
 
 
-  <post *ngFor="let post of posts" [post]="post"></post>
+  <post *ngFor="let post of posts" [post]="post" (postDelete)="deletePost($event)"></post>
 
   <div class="mat-spinner"  *ngIf="loading_state" [ngClass]="{'bottom': posts.length !== 0 }">
     <mat-spinner></mat-spinner>

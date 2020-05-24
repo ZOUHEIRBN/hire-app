@@ -1,0 +1,6 @@
+<new-job-offer (doneEvent)="doneEvent.emit($event)" [newPost]="post"
+*ngIf="post.subject.toLowerCase() == 'job' && post.type.toLowerCase() == 'offer'">
+</new-job-offer>
+<new-job-demand (doneEvent)="doneEvent.emit($event)" [newPost]="post"
+*ngIf="post.subject.toLowerCase() == 'job' && post.type.toLowerCase() == 'demand'">
+</new-job-demand>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Inject } from '@angular/core';
+import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
 import { Comment } from 'src/app/interfaces/post';
 import { UserService } from 'src/app/services/user.service';
 import { PostService } from 'src/app/services/post.service';
@@ -13,6 +13,7 @@ export class CommentSectionComponent implements OnInit {
   newComment = new Comment()
   post_id;
   comments:Comment[]
+  @Output() daoEvent = new EventEmitter()
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) private data: any,
     private _userService:UserService,
@@ -27,8 +28,18 @@ export class CommentSectionComponent implements OnInit {
   }
   addComment(){
     this.newComment.commenting_user = this._userService.getCurrentUser().id
-    this._postService.addComment(this.post_id, this.newComment).subscribe(() => {
-      console.log(this.newComment)
+    this._postService.addComment(this.post_id, this.newComment).subscribe((response) => {
+      this.comments.push(response)
+      this.daoEvent.emit()
+    })
+  }
+  deleteComment(comment_id){
+    this._postService.deleteComment(this.post_id, comment_id).subscribe((response) => {
+      let index = this.comments.indexOf(response)
+      if(index > -1){
+        this.comments = this.comments.splice(index, 1)
+      }
+      this.daoEvent.emit()
     })
   }
 
