@@ -19,10 +19,10 @@ export const notifications = [
   {"title": "New job 19", "type":"jobAlert", "date":[6, 4, 2020], "state":"read"},
   {"title": "New job 20", "type":"jobAlert", "date":[6, 4, 2020], "state":"read"},
 ]
-export interface Notification{
-  title: string,
-  type:string,
-  date:number[]|string,
-  state:string|boolean,
+export class Notification{
+  title: string;
+  type:string;
+  date:number[]|string;
+  state:string|boolean;
   imageUrl?:string
 }

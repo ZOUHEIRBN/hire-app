@@ -19,12 +19,11 @@ export class ConnectionPanelComponent implements OnInit {
 
   loginUser(event){
     event.preventDefault();
-    this._userService.loginUser({"email":this.userCredentials.email, "password":this.userCredentials.password})
-    .then(_ => {
-      if(this._userService._user$){
-        //this.dialogRef.close();
-        this.userLogin.emit(this._userService._user$)
-      }
+    this._userService.getUserByCredentials({"email":this.userCredentials.email, "password":this.userCredentials.password})
+    .subscribe(response => {
+      let user = <User>response;
+      this._userService.setCurrentUser(user)
+      this.userLogin.emit()
     })
 
   }

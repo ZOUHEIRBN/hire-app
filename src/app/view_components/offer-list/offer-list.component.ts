@@ -21,16 +21,9 @@ export class OfferListComponent implements OnInit {
   constructor(private _postService:PostService) {}
 
   ngOnInit(): void {
-    this.loadData()
-  }
-  async loadData(){
-    this.loading_state = true;
-    this._postService.getPostsByType('offer').subscribe((data) => {
-      this.offers = data
-      setTimeout(() => {this.loading_state = false}, 1000)
+    this._postService.getPostsByType('offer').subscribe(response => {
+      this.offers = response
     })
   }
-
-
 
 }

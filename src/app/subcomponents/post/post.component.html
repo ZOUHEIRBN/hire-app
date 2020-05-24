@@ -1,10 +1,10 @@
-<mat-card style="margin-top:10px;" @develop [ngClass]="{'noEmbed' : !embed}">
+<!-- <mat-card style="margin-top:10px;" @develop [ngClass]="{'noEmbed' : !embed}">
 
   <div class="userData" *ngIf="!embed">
     <div class="profileImage">
       <div class="img" [ngStyle]="{'background-image': 'url(' + post.owner['imageUrl'].toString() + ')'}"></div>
     </div>
-    <div>
+    <div style="flex-grow: 1;">
       <h1>
         {{ post.owner['email'] || post.owner['title'] }}
       </h1>
@@ -12,8 +12,13 @@
         {{ post.timestamp }}
       </h4>
     </div>
-  </div>
 
+    <button mat-icon-button>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+  </div>
+  <mat-divider [inset]="true"></mat-divider>
   <mat-card-content>
     <mat-card-info>
       <div class="Image" [attr.focus]="false" (click)="toggleFocus($event)" *ngIf="post.imageUrl && post.imageUrl.toString() !== ''">
@@ -30,8 +35,9 @@
           </mat-card-title>
 
           <mat-card-subtitle *ngIf="false">
-            <span>&nbsp;</span>
+            <span>Huhu&nbsp;</span>
           </mat-card-subtitle>
+
 
         </mat-card-header>
         <p (click)="readMore($event)" [attr.shrink_text]="true">
@@ -64,5 +70,70 @@
       </button>
     </mat-card-actions>
   </mat-card-content>
+
+</mat-card> -->
+
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image" [style]=" 'background-image: url(' + post.owner.imageUrl.toString() + ');' "></div>
+    <div class="title">
+      <mat-card-title>{{ post.owner.email || post.ownerId }}</mat-card-title>
+      <mat-card-subtitle>{{ post.timestamp }}</mat-card-subtitle>
+    </div>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+
+      <button mat-menu-item (click)="editPost()">
+        <mat-icon>edit</mat-icon>
+        <span>Edit post</span>
+      </button>
+
+      <button mat-menu-item disabled (click)="deletePost()">
+        <mat-icon>delete</mat-icon>
+        <span>Delete post</span>
+      </button>
+
+      <button mat-menu-item disabled>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+
+  </mat-card-header>
+  <div *ngIf="post.imageUrl" class="postImage" [style]=" 'background-image: url(' + post.imageUrl.toString() + ');' " alt="Photo of a Shiba Inu"></div>
+  <mat-card-content>
+    <h1>
+      {{ post.title }}
+    </h1>
+    <p>
+      {{ post.description }}
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button routerLink="{{ '/post/' + post.id }}"
+      mat-icon-button aria-label="Visit profile">
+      <mat-icon>zoom_out_map</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Like">
+      <mat-icon>star</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      aria-label="Comment"
+      (click)="openComments()">
+      <mat-icon
+        matBadge="{{ post.comments.length }}"
+        matBadgePosition="above after"
+        matBadgeColor="accent">comment</mat-icon>
+    </button>
+    <button mat-icon-button aria-label="Settings">
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
 
 </mat-card>

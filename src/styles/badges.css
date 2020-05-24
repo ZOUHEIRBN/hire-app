@@ -22,7 +22,6 @@ mat-chip-list {
     flex-direction: row-reverse;
   }
   div.mat-card-header-text{
-    flex-grow: 1;
     flex-shrink: 1;
     margin: 0 1vw;
   }

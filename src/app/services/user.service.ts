@@ -18,6 +18,10 @@ export class UserService {
   public getCurrentUser(){
     return this._user.value
   }
+  public setCurrentUser(user){
+    return this._user.next(user)
+  }
+
   public async getUser(id){
     var fetchedData = await fetch(SERVER_URL+"users/"+id);
     var fetchedDataJSON = await fetchedData.json();
@@ -38,26 +42,15 @@ export class UserService {
     }));
   }
 
-  public async getUserByCredentials(user){
-    var fetchedData = await fetch(SERVER_URL+"users/credentials/"+user.email+"/"+user.password);
-    var fetchedDataJSON = await fetchedData.json();
-    return fetchedDataJSON;
+  public getUserByCredentials(user){
+    return this.httpClient.get(SERVER_URL+"users/credentials/"+user.email+"/"+user.password);
   }
 
   // Special methods
   registerUser(user){
     return this.httpClient.post<User>(SERVER_URL+"users/", user, httpOptions)
   }
-  async loginUser(user){
-    this.getUserByCredentials(user)
-    .then((response) => {
-      if(JSON.stringify(response) !== '{}')
-      {
-        this._user.next(response);
-      }
-    })
-    return this._user.value
-  }
+
   disconnect(){
     this._user.next(null)
   }

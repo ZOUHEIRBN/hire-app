@@ -7,7 +7,7 @@ import { AgmCoreModule } from '@agm/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppComponent } from './app.component';
 import { OfferListComponent } from './view_components/offer-list/offer-list.component';
@@ -69,6 +69,9 @@ import { CommentSectionComponent } from './minicomponents/comment-section/commen
 import { SidenavComponent } from './minicomponents/sidenav/sidenav.component';
 import { ConnectionPanelComponent } from './minicomponents/connection-panel/connection-panel.component';
 
+import { SERVER_URL } from './services/post.service';
+const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Control-Allow-Origin': '*'}  };
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,6 +109,7 @@ import { ConnectionPanelComponent } from './minicomponents/connection-panel/conn
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    SocketIoModule.forRoot(socket_config),
     MatToolbarModule,
     MatIconModule,
     MatCardModule,

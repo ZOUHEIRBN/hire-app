@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" (userLogin)="setCurrentUser($event)">
+<mat-toolbar color="primary">
   <button mat-button action="MenuSwitch" (click)="menu_sidenav_drawer.toggle()">
     <i class="material-icons">menu</i>
   </button>
@@ -6,11 +6,11 @@
     {{ title }}
   </h1>
 
-  <div class="buttonBar horizontal search" [ngClass]="{'current': searchPanel}" [ngStyle]="{'z-index': user?'unset':'1'}">
-    <input matInput [(ngModel)]="searchbarValue">
+  <div class="buttonBar horizontal search">
+    <!-- <input matInput [(ngModel)]="searchbarValue"> -->
   </div>
   <div class="buttonBar horizontal">
-    <button mat-icon-button (click)="toggleSearchPanel()" >
+    <button mat-icon-button>
       <mat-icon>search</mat-icon>
     </button>
     <button mat-icon-button (click)="notification_sidenav_drawer.toggle()" >
@@ -23,7 +23,7 @@
 
 <mat-drawer-container class="example-container" [hasBackdrop]="true">
   <mat-drawer #menu_sidenav_drawer class="menu-sidenav" mode="push">
-    <hire-sidenav [user]="this.user" (itemClick)="menu_sidenav_drawer.toggle()" (userLogged)="menu_sidenav_drawer.toggle()"></hire-sidenav>
+    <hire-sidenav [user]="this.user" (itemClick)="menu_sidenav_drawer.toggle()" (userLogged)="connectUser()"></hire-sidenav>
   </mat-drawer>
 
   <div class="example-sidenav-content">

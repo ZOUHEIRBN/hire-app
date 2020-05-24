@@ -44,9 +44,11 @@ export class PostService {
       return response;
     }));
   }
-
   createPost(post){
     return this.httpClient.post<Post>(SERVER_URL+"posts/", post, httpOptions)
+  }
+  deletePost(post:Post){
+    return this.httpClient.delete<Post>(SERVER_URL+"posts/"+ post.id, httpOptions)
   }
   addComment(post_id, comment){
     return this.httpClient.post<Post>(SERVER_URL+"posts/"+post_id+"/comment/", comment, httpOptions)

@@ -4,6 +4,7 @@ import { UserService } from './services/user.service';
 import { Router } from '@angular/router';
 import { notifications } from './interfaces/notifications';
 import { SearchService } from './services/search.service';
+import { SocketService } from './services/socket.service';
 
 @Component({
   selector: 'app-root',
@@ -14,87 +15,30 @@ import { SearchService } from './services/search.service';
 
 export class AppComponent {
   title = 'Hire';
-  @Input() searchbarValue:string = "";
+  user;
   @ViewChild('sidenav_drawer') menu_sidenav_drawer;
   @ViewChild('notification_sidenav_drawer') notification_sidenav_drawer;
 
-  rightPanelContent = 'none';
-  searchPanel = false;
-  user:User = null;
   userNotifications: any[] = [];
-  constructor(private _userService:UserService, private router:Router, private _searchEngine:SearchService){
-    if(!this.user){
-      //router.navigate(['/login']);
-      // alert('You must connect to access this page')
-    }
-   }
-  toggleSearchPanel(){
-    if(!this.searchPanel){
-      this.searchPanel = !this.searchPanel;
-    }
-    else if(this.searchbarValue === ''){
-      this.searchPanel = !this.searchPanel;
-    }
-    else{
-      this.search();
-    }
-  }
-  toggleRightPanel(content){
-    //this.showMenu = false;
-    if(this.rightPanelContent+'' !== content+''){
-      this.rightPanelContent = 'none';
-      this.userNotifications = [];
-      setTimeout(() => {
-        this.rightPanelContent = content;
+  constructor(private router:Router,
+    private _userService:UserService,
+    private _sockets:SocketService,
+    ){  }
 
-        //if notifications
-        this.getUserNotifications()
-      }, 400);
-    }
-    else{
-      this.rightPanelContent = 'none'
-    }
-  }
-  getUserNotifications(){
-    let i = 0;
-      let interval = setInterval(() => {
-        this.userNotifications.push(notifications[i]);
-        i++;
-        if(i >= notifications.length){
-          clearInterval(interval);
-        }
-      }, 100);
-  }
 
-  setCurrentUser(userData){
-    this.user = userData;
-  }
-  search(){
-    //HTTP Get 'localhost:3000?q='+this.searchbarValue
-    this.router.navigate(['/search/'+this.searchbarValue])
-  }
   ngOnInit(){
-    this.getUserNotifications()
-    this._userService._user$
-      .subscribe(
-        response => {
-          if(response !== null && response["id"] !== null && response["password"] !== null){
-              this.user = response;
-              this.getUserNotifications()
-              this.router.navigate(['/home']);
-            }
-          }
-
-      )
+    this.user = this._userService.getCurrentUser()
   }
-  ngOnDestroy(){
-    if (this._userService != null) {
-      //
+  connectUser(){
+    this.user = this._userService.getCurrentUser()
+    this._sockets.socket.emit('new_connection', this.user)
+    this.router.navigate(['/home']);
+    if(this.menu_sidenav_drawer){
+      this.menu_sidenav_drawer.toggle()
     }
   }
   disconnect(){
-    //this.showMenu = false;
-    this.user = null;
+    this._sockets.socket.emit('disconnection', this.user)
     this._userService.disconnect()
     this.router.navigate(['/login']);
   }

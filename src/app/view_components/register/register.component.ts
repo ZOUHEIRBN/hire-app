@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
   }
   loginUser(event){
     event.preventDefault();
-    this._userService.loginUser(this.user);
+    //this._userService.loginUser(this.user);
   }
   ngOnInit(): void {
 

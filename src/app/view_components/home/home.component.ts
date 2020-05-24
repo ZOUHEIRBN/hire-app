@@ -4,6 +4,7 @@ import { Post, def_post, posttypes } from 'src/app/interfaces/post';
 import { FormControl } from '@angular/forms';
 import { developDown } from 'src/app/app-animations';
 import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/interfaces/user';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -13,10 +14,12 @@ import { UserService } from 'src/app/services/user.service';
 export class HomeComponent implements OnInit {
   posts: any = [];
   loading_state = true
+  currentUser:User
 
   constructor(private _postService:PostService, private _userService:UserService) {}
 
   ngOnInit(): void {
+    this.currentUser = this._userService.getCurrentUser()
     this.loadPostData()
   }
   async loadPostData(){
@@ -27,5 +30,7 @@ export class HomeComponent implements OnInit {
       setTimeout(() => {this.loading_state = false}, 1000)
     })
   }
+
+
 
 }
