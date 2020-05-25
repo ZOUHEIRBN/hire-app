@@ -41,7 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
-
+import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
 
 import { BadgeComponent } from './minicomponents/badge/badge.component';
 import { LoginComponent } from './view_components/login/login.component';
@@ -71,6 +71,8 @@ import { ConnectionPanelComponent } from './minicomponents/connection-panel/conn
 
 import { SERVER_URL } from './services/post.service';
 import { PostEditorDialogComponent } from './subcomponents/newPost/post-editor-dialog/post-editor-dialog.component';
+import { SocketService } from './services/socket.service';
+import { NotificationsListComponent } from './notifications-list/notifications-list.component';
 const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Control-Allow-Origin': '*'}  };
 
 @NgModule({
@@ -101,7 +103,8 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     CommentSectionComponent,
     SidenavComponent,
     ConnectionPanelComponent,
-    PostEditorDialogComponent
+    PostEditorDialogComponent,
+    NotificationsListComponent
   ],
   imports: [
 
@@ -135,6 +138,7 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     MatRippleModule,
     MatDialogModule,
     MatBottomSheetModule,
+    MatSnackBarModule,
     MatProgressSpinnerModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({
@@ -142,7 +146,9 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     })
 
   ],
-  providers: [ UserService, OfferListComponent, {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}],
+  providers: [ UserService, OfferListComponent, SocketService,
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}
+  ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA ]
 })

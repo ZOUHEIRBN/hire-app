@@ -1,6 +1,7 @@
 <mat-toolbar color="primary">
   <button mat-button action="MenuSwitch" (click)="menu_sidenav_drawer.toggle()">
-    <i class="material-icons">menu</i>
+    <i *ngIf="this.user" class="material-icons">menu</i>
+    <span *ngIf="!this.user">Connect</span>
   </button>
   <h1 class="title">
     {{ title }}
@@ -13,27 +14,29 @@
     <button mat-icon-button>
       <mat-icon>search</mat-icon>
     </button>
-    <button mat-icon-button (click)="notification_sidenav_drawer.toggle()" >
-      <mat-icon matBadge="{{ this.userNotifications.length }}"
+    <button mat-icon-button (click)="getNotifications()" >
+      <mat-icon matBadge="{{ this.notifications_count !== 0 ? this.notifications_count : '' }}"
       matBadgePosition="above after"
       matBadgeColor="white">notifications</mat-icon>
     </button>
   </div>
 </mat-toolbar>
 
-<mat-drawer-container class="example-container" [hasBackdrop]="true">
-  <mat-drawer #menu_sidenav_drawer class="menu-sidenav" mode="push">
+<mat-sidenav-container class="example-container" [hasBackdrop]="true">
+  <mat-sidenav #menu_sidenav_drawer class="menu-sidenav" mode="push">
     <hire-sidenav [user]="this.user" (itemClick)="menu_sidenav_drawer.toggle()" (userLogged)="connectUser()"></hire-sidenav>
-  </mat-drawer>
+  </mat-sidenav>
 
-  <div class="example-sidenav-content">
-    <router-outlet></router-outlet>
-  </div>
-  <mat-drawer #notification_sidenav_drawer class="notification-sidenav" mode="over" position="end">
-    <h1>Notifications</h1>
-    <notification  *ngFor="let notification of userNotifications" [notification]="notification"></notification>
-  </mat-drawer>
-</mat-drawer-container>
+  <mat-sidenav-content>
+    <div class="example-sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+  <mat-sidenav #notification_sidenav_drawer class="notification-sidenav" mode="over" position="end">
+    <notifications-list (countUpdate)="updateNotificationCount($event)"></notifications-list>
+  </mat-sidenav>
+</mat-sidenav-container>
 <!--
 <div #rightPanel [attr.content]="rightPanelContent" class="rightPanel">
   <div *ngIf="rightPanelContent === 'notifications'">

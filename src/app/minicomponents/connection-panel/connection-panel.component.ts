@@ -23,7 +23,8 @@ export class ConnectionPanelComponent implements OnInit {
     .subscribe(response => {
       let user = <User>response;
       this._userService.setCurrentUser(user)
-      this.userLogin.emit()
+      this.userLogin.emit(user)
+      this.router.navigate(['/home'])
     })
 
   }

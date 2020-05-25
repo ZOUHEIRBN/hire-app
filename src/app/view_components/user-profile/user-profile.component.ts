@@ -54,7 +54,7 @@ export class UserProfileComponent implements OnInit {
     });
   }
   async refreshData(){
-    this._postService.getUserPosts(this.user.email).subscribe((data) => {
+    this._postService.getUserPosts(this.user.id).subscribe((data) => {
       this.userposts = data
       setTimeout(() => {this.postfilter.refreshFilters(this.userposts)}, 1000)
     })

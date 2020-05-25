@@ -91,6 +91,10 @@ mat-card, mat-card *, mat-card *::before, mat-card *::after{
 mat-card-actions>button{
   float: right;
 }
+.mat-snack-bar-container {
+  color:#ddd;
+  background: var(--primary-color-light);
+}
 /* Scrollbar CSS */
 
 /* width */

@@ -6,9 +6,6 @@ import { PostService } from 'src/app/services/post.service';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { CommentSectionComponent } from 'src/app/minicomponents/comment-section/comment-section.component';
 import { MatDialog } from '@angular/material/dialog';
-import { NewPostPanelComponent } from '../newPost/new-post-panel/new-post-panel.component';
-import { NewJobDemandComponent } from '../newPost/new-job-demand/new-job-demand.component';
-import { NewJobOfferComponent } from '../newPost/new-job-offer/new-job-offer.component';
 import { PostEditorDialogComponent } from 'src/app/subcomponents/newPost/post-editor-dialog/post-editor-dialog.component';
 import { UserService } from 'src/app/services/user.service';
 
@@ -100,11 +97,5 @@ export class PostComponent implements OnInit {
         dialogRef.close()
       })
     })
-    /* dialogRef.componentInstance.userLogin.subscribe(_ => {
-      dialogRef.close()
-    })
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    }); */
   }
 }

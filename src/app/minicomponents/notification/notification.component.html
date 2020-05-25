@@ -1,17 +1,17 @@
-<mat-card matRipple matRippleColor="primary" class="notification">
-  <div class="container">
-    <div class="Image">
-      <img *ngIf="notification.imageUrl" src="{{ notification.imageUrl }}">
-      <img *ngIf="!notification.imageUrl" src="../../assets/svg/Gradient.png">
-    </div>
-    <div class="content">
-      <span>
-        <h4>{{ notification.title }}</h4>
-        <h6>{{ notification.date }}</h6>
-      </span>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad perferendis nulla beatae veniam. Omnis vel nam amet! Odit dicta blanditiis dolor illum nostrum a nemo laborum neque? Quasi, ullam eveniet!
-      </p>
-    </div>
+<div class="container" matRippleColor="primary">
+  <div class="Image">
+    <img *ngIf="notification.imageUrl" src="{{ notification.imageUrl }}">
+    <img *ngIf="!notification.imageUrl" src="../../assets/svg/Gradient.png">
   </div>
-</mat-card>
+  <div class="content">
+    <span>
+      <h4>{{ notification.title }}</h4>
+      <h6>{{ notification.timestamp }}</h6>
+    </span>
+    <p>
+    </p>
+  </div>
+  <button mat-icon-button (click)="closeEvent.emit()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
