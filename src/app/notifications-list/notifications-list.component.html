@@ -1,43 +1,24 @@
-<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
-
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [disabled]="!node.state" [ngClass]="{'enabled': node.state}">
-    <span class="n_content">
-      <h3>{{node.title}}</h3>
-      <h6>{{node.timestamp}}</h6>
-    </span>
-    <button mat-icon-button [disabled]="!node.state" [color]="'primary'" (click)="markAsRead(node)">
-      <mat-icon>done</mat-icon>
-    </button>
-  </mat-tree-node>
-
-  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
-    <div *ngIf="database.dataMap.get(node.title) && database.dataMap.get(node.title).length > 0">
-      <button mat-icon-button
-      *ngIf="database.dataMap.get(node.title).length > 0"
-              [attr.aria-label]="'toggle ' + node.filename" matTreeNodeToggle>
-        <mat-icon class="mat-icon-rtl-mirror">
-          {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-        </mat-icon>
+<mat-list>
+  <div *ngIf="notifications.users.length > 0">
+    <h1 matSubheader>
+      <span style="flex-grow: 1;">Users</span>
+      <button mat-icon-button (click)="markCatAsRead('users')">
+        <mat-icon>done_all</mat-icon>
       </button>
-      <span
-      matBadge="{{ database.dataMap.get(node.title).length }}"
-      matBadgePosition="after"
-      matBadgeOverlap="false"
-      class="n_category"
+    </h1>
+    <mat-list-item
+      [ngClass]="{'enabled': item.state}"
+      [disabled]="item.state"
+      *ngFor="let item of notifications.users"
+      matRipple
       >
-        <b>
-          {{node.title}}
-        </b>
-        <button mat-icon-button>
-          <mat-icon class="mat-icon-rtl-mirror">
-            done_all
-          </mat-icon>
-        </button>
+      <img matListAvatar [src]="item.imageUrl || ''">
+      <span matLine>
+        <span>
+          <h6>{{ item.timestamp }}</h6>
+          <h2>{{ item.title }} </h2>
+        </span>
       </span>
-    </div>
-
-    <mat-progress-bar *ngIf="node.isLoading"
-                      mode="indeterminate"
-                      class="example-tree-progress-bar"></mat-progress-bar>
-  </mat-tree-node>
-</mat-tree>
+    </mat-list-item>
+  </div>
+</mat-list>

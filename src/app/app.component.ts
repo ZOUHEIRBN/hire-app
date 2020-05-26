@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SocketService } from './services/socket.service';
 import { NotificationComponent } from './minicomponents/notification/notification.component';
 import { Notification, notifications } from './interfaces/notifications';
+import { NotificationsListComponent } from './notifications-list/notifications-list.component';
 
 
 @Component({
@@ -39,6 +40,7 @@ export class AppComponent implements OnInit {
     })
   }
   updateNotificationCount(event){
+    console.log(this.notification_list)
     this.notifications_count = event
   }
   notify(notification) {
@@ -47,7 +49,7 @@ export class AppComponent implements OnInit {
       data:{
         notification: notification
       },
-      duration: 240000,
+      duration: 2000,
       horizontalPosition: 'start',
       verticalPosition: 'bottom',
     });

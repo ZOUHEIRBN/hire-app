@@ -20,17 +20,24 @@ export const notifications = [
   {"title": "New job 20", "type":"jobAlert", "timestamp":[6, 4, 2020], "state":"read"},
 ]
 export class Notification{
+  id?:any;
   title: string;
   type:string;
   timestamp:Date|number[]|string;
-  state:string|boolean;
+  state: boolean;
   imageUrl?:string
 
-  constructor(notification?){
-    this.title = notification['title']
+  constructor(title, type){
+    this.title = title
+    this.type = type
+    this.timestamp = new Date().toISOString()
+    this.state = true
+  }
+  static copy(notification?){
+    /* this.title = notification['title']
     this.type = notification['type']
     this.timestamp = notification['timestamp']
     this.state = notification['state']
-    this.imageUrl = notification['imageUrl']
+    this.imageUrl = notification['imageUrl'] */
   }
 }

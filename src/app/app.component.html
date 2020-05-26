@@ -34,7 +34,7 @@
   </mat-sidenav-content>
 
   <mat-sidenav #notification_sidenav_drawer class="notification-sidenav" mode="over" position="end">
-    <notifications-list (countUpdate)="updateNotificationCount($event)"></notifications-list>
+    <notifications-list #notification_list (countUpdate)="updateNotificationCount($event)"></notifications-list>
   </mat-sidenav>
 </mat-sidenav-container>
 <!--

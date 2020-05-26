@@ -146,6 +146,11 @@ mat-card.notification {
     background-color: #fff;
 }
 
+notifications-list{
+  padding: 20px;
+  width: calc(100% - 40px);
+  display: block;
+}
 @media only screen and (orientation: portrait), only screen and (orientation: landscape) and (max-width: 1920px) {
   mat-toolbar h1{
     margin-right: 0%!important;
