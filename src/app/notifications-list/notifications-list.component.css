@@ -1,9 +1,18 @@
 mat-list-item{
   height: unset!important;
   max-height: calc(2 * var(--menu-height));
+  display: contents!important;
+  background: transparent;
+  margin-bottom: 5px;
 }
-.enabled{
-  background-color: #ddd4;
+mat-list-item mat-card{
+  width: 100%;
+  display: flex;
+  background-color: #ddde;
+  margin-bottom: 5px;
+}
+.enabled mat-card{
+  background-color: #fffe;
 }
 h2{
   font-size: 14pt;

@@ -47,105 +47,13 @@ mat-toolbar button[action=MenuSwitch]{
   display: none;
 }
 
-div.buttonBar{
-  float: right;
-  position: relative;
-  right: 0;
-  max-width: 100%;
-  display: flex;
-  flex: 1 1 10%;
-  justify-content: flex-end;
-  align-items: center;
-}
-.menuButton mat-menu {
-  position: absolute;
-  top: 48px;
-  min-width: 30%;
-  display: flex;
-  flex-direction: column;
-  max-height: 0vh;
-  overflow: hidden;
-  border-radius: .5vmin;
-}
-.search{
-  padding-left: 5vmin;
-  flex-flow: row-reverse;
-}
-.search input {
-  width: 100%;
-  height: 100%;
-  outline: none;
-  background-color: #111;
-  border: none;
-  padding: 2.5pt 0pt;
-  text-align: center;
-  font-size: 15pt;
-  border-bottom: 2px solid #fff;
-  color: #fff;
-  mix-blend-mode: screen;
-}
-.search.current input{
-  padding: 2.5pt 2.5pt;
-}
+mat-sidenav.notifications{
+  backdrop-filter: blur(2px);
+  background: linear-gradient(40deg, var(--primary-color),  var(--secondary-color));
+  width: 100vw;
 
-.menuButton button:hover+mat-menu, .menuButton button:focus+mat-menu {
-  max-height: 35vh;
 }
-.menuButton mat-menu::before {
-  content: "";
-  border: 10px solid transparent;
-  border-bottom-color:var(--primary-color-light);
-  width: 0;
-  position: relative;
-  left: 25%;
-  transform: translateX(calc(-100% - 10px));
-}
-.menuButton mat-menu button {
-  background-color: var(--primary-color-light);
-  color: #fff;
-  border-radius: 0vmin;
-}
-
-div.horizontal button {
-  border-radius: 100%;
-  padding: 0;
-  width: 64px;
-  height: 64px;
-  transform: scale(0.6);
-  flex-grow: 0;
-}
-div.horizontal button[value]:not([value='0']) {
-  color: var(--primary-color);
-  background-color: #fff;
-}
-div.horizontal button.current, div.horizontal button[value]:not([value='0']).current
-{
-  border: 1px solid #fff;
-  background-color: var(--primary-color-light);
-  color: #fff;
-}
-div.buttonBar button[current]{
-  border-bottom: 2px solid #fff;
-  border-radius: 0;
-}
-div.buttonBar b{
-  font-size: 20pt;
-  font-weight: bold;
-}
-
 /* Notification & Messages side panel */
-
-mat-card.notification {
-  width: calc(94% - 32px);
-    height: 100px;
-    display: flex;
-    position: relative;
-    margin: 3%;
-    margin-top: 0%;
-    color: #424242;
-    background-color: #fff;
-}
-
 notifications-list{
   padding: 20px;
   width: calc(100% - 40px);
@@ -188,7 +96,7 @@ notifications-list{
   div.buttonBar.horizontal{
     flex-direction: row;
     flex-wrap: nowrap;
-    flex: 0 0 10%;
+    flex: 5% 0 0;
   }
   div.buttonBar button[current]{
     color: #fff;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { Post, def_post, posttypes } from 'src/app/interfaces/post';
 import { FormControl } from '@angular/forms';
@@ -15,11 +15,12 @@ export class HomeComponent implements OnInit {
   posts: any[] = [];
   loading_state = true
   currentUser:User
-
+  @Output() onHome = new EventEmitter()
   constructor(private _postService:PostService, private _userService:UserService) {}
 
   ngOnInit(): void {
     this.currentUser = this._userService.getCurrentUser()
+    this.onHome.emit(this.currentUser)
     this.loadPostData()
   }
   async loadPostData(){

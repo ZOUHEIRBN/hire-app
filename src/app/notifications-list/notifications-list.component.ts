@@ -8,23 +8,27 @@ import { SocketService } from '../services/socket.service';
 })
 export class NotificationsListComponent implements AfterViewInit {
   @Output() countUpdate = new EventEmitter()
-  @Input() notifications = {
-    "match": [], "watchout":[], "users":[]
-  }
+  length = 0;
+  @Input() notifications = []
   constructor(private _socketService:SocketService){}
   ngAfterViewInit(){
     this._socketService.onNotification().subscribe(res => {
-      this.notifications[res.type.toLowerCase()].push(res)
+      this.notifications.push(res)
+      this.length++;
+      this.countUpdate.emit(this.length)
       if(res.type.toLowerCase() == 'users'){
         //
       }
     })
   }
-  markCatAsRead(type){
-    console.log(type)
-    for(let i=0; i<this.notifications[type].length; i++){
-      this.notifications[type][i].state = false
+  markAllAsRead(){
+    for(let i=0; i<this.notifications.length; i++){
+      if(this.notifications[i].state){
+        this.notifications[i].state = false
+        this.length--;
+      }
     }
+    this.countUpdate.emit(this.length)
   }
 
 }

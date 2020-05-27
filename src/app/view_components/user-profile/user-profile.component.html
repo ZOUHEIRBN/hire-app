@@ -39,6 +39,12 @@
           <company-details *ngIf="this.companyfilter.doSatisfy(company)" @develop [company]="company" [showMap]="false"></company-details>
         </div>
       </mat-tab>
+      <mat-tab label="Followers">
+        <post-filter #companyfilter></post-filter>
+        <div *ngFor="let company of usercompanies" style="display: contents;">
+          <company-details *ngIf="this.companyfilter.doSatisfy(company)" @develop [company]="company" [showMap]="false"></company-details>
+        </div>
+      </mat-tab>
       <!-- <mat-tab label="Third"> Content 3 </mat-tab> -->
     </mat-tab-group>
 

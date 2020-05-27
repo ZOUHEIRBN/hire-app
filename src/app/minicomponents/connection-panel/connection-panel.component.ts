@@ -3,6 +3,7 @@ import { UserLogin, User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'connection-panel',
@@ -12,7 +13,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ConnectionPanelComponent implements OnInit {
   userCredentials:UserLogin = new User()
   @Output() userLogin = new EventEmitter();
-  constructor(private _userService:UserService, private router:Router) { }
+  constructor(private _userService:UserService, private router:Router, private _socketService:SocketService) { }
 
   ngOnInit(): void {
   }
@@ -23,8 +24,8 @@ export class ConnectionPanelComponent implements OnInit {
     .subscribe(response => {
       let user = <User>response;
       this._userService.setCurrentUser(user)
+      this._socketService.socket.emit('new_connection', user)
       this.userLogin.emit(user)
-      this.router.navigate(['/home'])
     })
 
   }

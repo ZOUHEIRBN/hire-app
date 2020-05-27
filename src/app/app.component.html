@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <button mat-button action="MenuSwitch" (click)="menu_sidenav_drawer.toggle()">
+  <button mat-button action="MenuSwitch" (click)="showMenu()">
     <i *ngIf="this.user" class="material-icons">menu</i>
     <span *ngIf="!this.user">Connect</span>
   </button>
@@ -14,15 +14,15 @@
     <button mat-icon-button>
       <mat-icon>search</mat-icon>
     </button>
-    <button mat-icon-button (click)="getNotifications()" >
+    <button mat-icon-button [color]="'white'" (click)="showNotifications()" >
       <mat-icon matBadge="{{ this.notifications_count !== 0 ? this.notifications_count : '' }}"
       matBadgePosition="above after"
-      matBadgeColor="white">notifications</mat-icon>
+      matBadgeColor="accent">notifications</mat-icon>
     </button>
   </div>
 </mat-toolbar>
 
-<mat-sidenav-container class="example-container" [hasBackdrop]="true">
+<mat-sidenav-container class="example-container">
   <mat-sidenav #menu_sidenav_drawer class="menu-sidenav" mode="push">
     <hire-sidenav [user]="this.user" (itemClick)="menu_sidenav_drawer.toggle()" (userLogged)="connectUser()"></hire-sidenav>
   </mat-sidenav>
@@ -33,14 +33,8 @@
     </div>
   </mat-sidenav-content>
 
-  <mat-sidenav #notification_sidenav_drawer class="notification-sidenav" mode="over" position="end">
+  <mat-sidenav #notification_sidenav_drawer class="notifications" mode="over" position="end">
     <notifications-list #notification_list (countUpdate)="updateNotificationCount($event)"></notifications-list>
   </mat-sidenav>
 </mat-sidenav-container>
-<!--
-<div #rightPanel [attr.content]="rightPanelContent" class="rightPanel">
-  <div *ngIf="rightPanelContent === 'notifications'">
-    <notification  *ngFor="let notification of userNotifications" [notification]="notification"></notification>
-  </div>
-</div> -->
 

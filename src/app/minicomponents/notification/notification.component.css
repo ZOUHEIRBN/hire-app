@@ -1,5 +1,6 @@
 
 div.container{
+  align-items: center;
   min-height: 5vmin;
   display: flex;
   flex-grow: 1;

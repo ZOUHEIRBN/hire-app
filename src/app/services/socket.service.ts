@@ -33,5 +33,7 @@ export class SocketService {
   onNotification(){
     return this.socket.fromEvent<Notification>('notification')
   }
-
+  onUserConnection(){
+    return this.socket.fromEvent<Notification>('user_connection')
+  }
 }

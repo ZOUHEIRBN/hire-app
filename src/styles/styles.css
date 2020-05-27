@@ -92,8 +92,11 @@ mat-card-actions>button{
   float: right;
 }
 .mat-snack-bar-container {
-  color:#ddd;
-  background: var(--primary-color-light);
+  color: #424242;
+  background-color: #ddd8;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
 }
 /* Scrollbar CSS */
 

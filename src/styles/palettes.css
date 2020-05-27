@@ -1,11 +1,11 @@
 :root{
   --primary-color: #106CB3; /* #7b1fa2; */
-  --secondary-color: #38B307; /* #188076; */
+  --secondary-color: #0AC9AF; /* #188076; */
   --third-color: #B322A5; /* #B31410; */
   --fourth-color: #ffd740; /* #B37922; */
-  --fifth-color: #2274B3;
+  --fifth-color: #38B307;
   --primary-color-light: #00adf8;
-  --secondary-color-light: #0AC9AF;
+  --secondary-color-light: #2274B3;
 
 }
 badge {

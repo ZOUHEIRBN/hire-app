@@ -1,24 +1,27 @@
 <mat-list>
-  <div *ngIf="notifications.users.length > 0">
+  <div *ngIf="notifications.length > 0">
     <h1 matSubheader>
-      <span style="flex-grow: 1;">Users</span>
-      <button mat-icon-button (click)="markCatAsRead('users')">
+      <span style="flex-grow: 1; display: flex;">
+        <h1>Notifications</h1>
+      </span>
+      <button mat-icon-button (click)="markAllAsRead()">
         <mat-icon>done_all</mat-icon>
       </button>
     </h1>
     <mat-list-item
       [ngClass]="{'enabled': item.state}"
       [disabled]="item.state"
-      *ngFor="let item of notifications.users"
-      matRipple
+      *ngFor="let item of notifications"
       >
-      <img matListAvatar [src]="item.imageUrl || ''">
-      <span matLine>
-        <span>
-          <h6>{{ item.timestamp }}</h6>
-          <h2>{{ item.title }} </h2>
+      <mat-card matRipple>
+        <img matListAvatar [src]="item.imageUrl || ''">
+        <span matLine>
+          <span>
+            <h6>{{ item.timestamp }}</h6>
+            <h2>{{ item.title }} </h2>
+          </span>
         </span>
-      </span>
+      </mat-card>
     </mat-list-item>
   </div>
 </mat-list>

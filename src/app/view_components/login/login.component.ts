@@ -32,9 +32,6 @@ export class LoginComponent implements OnInit {
       width: '50vmin',
     });
     dialogRef.componentInstance.userLogin.subscribe(event => {
-      this._userService.setCurrentUser(<User>event)
-      //Tell the server that I'm connected
-      this._socketService.socket.emit('new_connection', this._userService.getCurrentUser())
       dialogRef.close()
     })
     dialogRef.afterClosed().subscribe(result => {

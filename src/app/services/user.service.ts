@@ -23,14 +23,12 @@ export class UserService {
   }
 
   public async getUser(id){
-    var fetchedData = await fetch(SERVER_URL+"users/"+id);
-    var fetchedDataJSON = await fetchedData.json();
-    return fetchedDataJSON;
+    return this.httpClient.get(SERVER_URL+"users/"+id).pipe(map(response => {
+      return response['body'];
+    }));
   }
-  public async getUserByEmail(email){
-    var fetchedData = await fetch(SERVER_URL+"users/email/"+email);
-    var fetchedDataJSON = await fetchedData.json();
-    return fetchedDataJSON;
+  public getUserByEmail(email){
+    return this.httpClient.get(SERVER_URL+"users/email/"+email)
   }
   public getAllUsers(){
     let current_user = '0'

@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   user:User;
   notifications_count = 0;
 
-  @ViewChild('sidenav_drawer') menu_sidenav_drawer;
+  @ViewChild('menu_sidenav_drawer') menu_sidenav_drawer;
   @ViewChild('notification_sidenav_drawer') notification_sidenav_drawer;
   @ViewChild('notification_list') notification_list;
 
@@ -35,6 +35,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(){
     this.user = this._userService.getCurrentUser()
+    this._sockets.onUserConnection().subscribe(res => {
+      this._userService.setCurrentUser(<User>res['from'])
+      this.user = this._userService.getCurrentUser()
+      this.notify(<Notification>res)
+    })
     this._sockets.onNotification().subscribe(res => {
       this.notify(<Notification>res)
     })
@@ -57,22 +62,26 @@ export class AppComponent implements OnInit {
       notif_comp.dismiss()
     })
   }
-  getNotifications(){
+  showNotifications(){
+    if(this.menu_sidenav_drawer.opened){
+      this.menu_sidenav_drawer.toggle()
+    }
     this.notification_sidenav_drawer.toggle()
   }
+  showMenu(){
+    if(this.notification_sidenav_drawer.opened){
+      this.notification_sidenav_drawer.toggle()
+    }
+    this.menu_sidenav_drawer.toggle()
+  }
   connectUser(){
-    this.user = this._userService.getCurrentUser()
-
-    //Tell the server that I'm connected
-    this._sockets.socket.emit('new_connection', this.user)
-
     if(this.menu_sidenav_drawer){
       this.menu_sidenav_drawer.toggle()
     }
     this.router.navigate(['/home']);
   }
   disconnect(){
-    this._sockets.socket.emit('disconnection', this.user)
+    this._sockets.socket.emit('user_disconnection', this.user)
     this._userService.disconnect()
     this.user = null
     this.router.navigate(['/login']);

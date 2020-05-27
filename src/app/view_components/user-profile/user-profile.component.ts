@@ -43,17 +43,16 @@ export class UserProfileComponent implements OnInit {
     }
     this.getProfileOwner();
   }
-  async getProfileOwner(){
+  getProfileOwner(){
     this.route.params.subscribe(params => {
-
-      let promise;
-      promise = this._userService.getUserByEmail(params.email)
-      promise.then(response => {this.user = response})
-      .then(() => {this.refreshData();})
+      this._userService.getUserByEmail(params.email).subscribe(response => {
+        this.user = <User>response
+        this.refreshData();
+      })
 
     });
   }
-  async refreshData(){
+  refreshData(){
     this._postService.getUserPosts(this.user.id).subscribe((data) => {
       this.userposts = data
       setTimeout(() => {this.postfilter.refreshFilters(this.userposts)}, 1000)
