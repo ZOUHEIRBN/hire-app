@@ -16,4 +16,5 @@ export class User implements UserLogin{
   email:string
   badges: Badge[]
   resume:Resume
+  following:User[] = []
 }

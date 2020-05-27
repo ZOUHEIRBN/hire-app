@@ -17,13 +17,11 @@ export class PostService {
   }
   public getPosts(){
 		return this.httpClient.get(SERVER_URL+"posts/").pipe(map(response => {
-      console.log(response['body'])
       return response['body'];
     }));
   }
   public getPostById(id){
 		return this.httpClient.get(SERVER_URL+"posts/"+id).pipe(map(response => {
-      console.log(response)
       return response['body'];
     }));
   }
@@ -39,8 +37,6 @@ export class PostService {
   }
   public async getCompanyPosts(id){
     return this.httpClient.get(SERVER_URL+"posts/ownerId/"+id).pipe(map(response => {
-      console.log(response);
-
       return response;
     }));
   }

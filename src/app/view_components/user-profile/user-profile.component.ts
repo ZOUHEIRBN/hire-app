@@ -47,6 +47,7 @@ export class UserProfileComponent implements OnInit {
     this.route.params.subscribe(params => {
       this._userService.getUserByEmail(params.email).subscribe(response => {
         this.user = <User>response
+        console.log(this.user)
         this.refreshData();
       })
 
