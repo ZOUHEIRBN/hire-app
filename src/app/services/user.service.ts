@@ -33,7 +33,7 @@ export class UserService {
   public getAllUsers(){
     let current_user = '0'
     if(this._user.getValue()){
-      current_user = this._user.getValue().email
+      current_user = this._user.getValue().id
     }
     return this.httpClient.get(SERVER_URL+"users/?current_user="+current_user).pipe(map(response => {
       return response['body'];
@@ -44,12 +44,15 @@ export class UserService {
     return this.httpClient.get(SERVER_URL+"users/credentials/"+user.email+"/"+user.password);
   }
 
-  // Special methods
   registerUser(user){
     return this.httpClient.post<User>(SERVER_URL+"users/", user, httpOptions)
   }
 
   disconnect(){
     this._user.next(null)
+  }
+
+  follow(user_id){
+    return this.httpClient.put<User>(SERVER_URL+"users/"+user_id+"/follow", this._user.value)
   }
 }

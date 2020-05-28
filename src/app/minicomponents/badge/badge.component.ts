@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Badge } from '../../interfaces/badge';
+import { developDown } from 'src/app/app-animations';
 
 @Component({
   selector: 'post-badge',
   templateUrl: './badge.component.html',
-  styleUrls: ['./badge.component.css']
+  styleUrls: ['./badge.component.css'],
+  animations: [developDown]
 })
 // const BADGE_DEFAULTS: any = {
 //   "jobtype":false,

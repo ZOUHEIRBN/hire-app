@@ -17,4 +17,5 @@ export class User implements UserLogin{
   badges: Badge[]
   resume:Resume
   following:User[] = []
+  followers:User[] = []
 }

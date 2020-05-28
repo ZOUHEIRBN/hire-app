@@ -12,6 +12,7 @@ export class SidenavComponent implements OnInit {
   @Input() user:UserLogin;
   @Output() itemClick = new EventEmitter()
   @Output() userLogged = new EventEmitter()
+  @Output() userDisconnected = new EventEmitter()
   selected = ''
   default_user = {'email':'', 'password':''}
   constructor(private _router:Router, private _userService:UserService) { }
@@ -32,5 +33,6 @@ export class SidenavComponent implements OnInit {
     this._router.navigate(['/login']);
     this._userService.disconnect()
     this.user = null;
+    this.userDisconnected.emit(this.user)
   }
 }

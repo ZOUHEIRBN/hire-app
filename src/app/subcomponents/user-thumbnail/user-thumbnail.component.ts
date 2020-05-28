@@ -20,9 +20,14 @@ export class UserThumbnailComponent implements OnInit {
   @Output() cogButtonClick = new EventEmitter()
 
   currentUserId: string;
-  constructor(private router:Router) { }
+  constructor(private router:Router, private _userService:UserService) { }
   gotoUserPage(){
     this.router.navigate(['/user/'+this.user.id])
+  }
+  follow(id){
+    this._userService.follow(id).subscribe(res => {
+      this.user = res
+    })
   }
   ngOnInit(): void {
   }

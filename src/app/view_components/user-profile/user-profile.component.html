@@ -40,6 +40,11 @@
         </div>
       </mat-tab>
       <mat-tab label="Followers">
+        <div *ngFor="let follower of user.followers" style="display: contents;">
+          <user-details [user]="follower"></user-details>
+        </div>
+      </mat-tab>
+      <mat-tab label="Following">
         <div *ngFor="let follower of user.following" style="display: contents;">
           <user-details [user]="follower"></user-details>
         </div>

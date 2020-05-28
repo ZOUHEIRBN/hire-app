@@ -17,9 +17,9 @@
           <mat-card-subtitle>
             <span>Some info here&nbsp;</span>
 
-            <mat-card-badges>
+            <mat-chip-list>
               <post-badge class="{{ badge.category }}" *ngFor="let badge of user.badges" [badge]="badge"></post-badge>
-            </mat-card-badges>
+            </mat-chip-list>
 
           </mat-card-subtitle>
 
@@ -38,7 +38,7 @@
        mat-icon-button aria-label="Visit profile">
         <mat-icon>person</mat-icon>
       </button>
-      <button mat-icon-button aria-label="Like" *ngIf="!this.iscurrentuser">
+      <button mat-icon-button aria-label="Like" *ngIf="!this.iscurrentuser" (click)="follow(user.id)">
         <mat-icon>star</mat-icon>
       </button>
       <button mat-icon-button aria-label="Settings" *ngIf="this.iscurrentuser" (click)="this.cogButtonClick.emit()">

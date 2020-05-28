@@ -73,7 +73,7 @@ import { ConnectionPanelComponent } from './minicomponents/connection-panel/conn
 import { SERVER_URL } from './services/post.service';
 import { PostEditorDialogComponent } from './subcomponents/newPost/post-editor-dialog/post-editor-dialog.component';
 import { SocketService } from './services/socket.service';
-import { NotificationsListComponent } from './notifications-list/notifications-list.component';
+import { NotificationsListComponent } from './minicomponents/notifications-list/notifications-list.component';
 const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Control-Allow-Origin': '*'}  };
 
 @NgModule({

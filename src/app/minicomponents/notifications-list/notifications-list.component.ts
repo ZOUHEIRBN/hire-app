@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, AfterViewInit, Input } from '@angular/core';
-import { SocketService } from '../services/socket.service';
+import { SocketService } from '../../services/socket.service';
 
 @Component({
   selector: 'notifications-list',
@@ -16,9 +16,16 @@ export class NotificationsListComponent implements AfterViewInit {
       this.notifications.push(res)
       this.length++;
       this.countUpdate.emit(this.length)
-      if(res.type.toLowerCase() == 'users'){
-        //
-      }
+    })
+    this._socketService.onUserConnection().subscribe(res => {
+      //this.notifications.push(res)
+      //this.length++;
+      this.countUpdate.emit(this.length)
+    })
+    this._socketService.onUserFollowing().subscribe(res => {
+      this.notifications.push(res)
+      this.length++;
+      this.countUpdate.emit(this.length)
     })
   }
   markAllAsRead(){

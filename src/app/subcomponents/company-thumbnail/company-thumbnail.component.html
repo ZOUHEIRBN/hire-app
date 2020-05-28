@@ -8,15 +8,15 @@
         </div>
         <mat-card-header>
           <mat-card-title *ngIf="company">
-            {{company.title}} <a class="address">@{{company.id}}</a>
+            {{company.title}} <a class="address">@{{company.email}}</a>
           </mat-card-title>
 
           <mat-card-subtitle>
             <span>Some info here&nbsp;</span>
 
-            <mat-card-badges>
+            <mat-chip-list>
               <post-badge class="{{ badge.category }}" *ngFor="let badge of company.badges" [badge]="badge"></post-badge>
-            </mat-card-badges>
+            </mat-chip-list>
 
           </mat-card-subtitle>
           <p [attr.shrink_text]="true">
@@ -34,7 +34,12 @@
 
     </mat-card-info>
     <mat-card-actions *ngIf="!embedded">
-      <button mat-button routerLink="{{ '/company/' + company.id }}">Consulter</button>
+      <button mat-icon-button routerLink="{{ '/company/' + company.id }}" matTootip="Go to company page">
+        <mat-icon>apartment</mat-icon>
+      </button>
+      <button mat-icon-button matTootip="Follow company" (click)="follow()">
+        <mat-icon>star</mat-icon>
+      </button>
       <!-- <button mat-button>Ajouter aux favoris</button> -->
     </mat-card-actions>
   </mat-card-content>

@@ -79,7 +79,12 @@
     <div *ngIf="post.owner.imageUrl" mat-card-avatar class="example-header-image" [style]=" 'background-image: url(' + post.owner.imageUrl.toString() + ');' "></div>
     <div class="title">
       <mat-card-title>{{ post.owner.email || post.owner.id }}</mat-card-title>
-      <mat-card-subtitle>{{ post.timestamp }}</mat-card-subtitle>
+      <mat-card-subtitle>
+        {{ post.timestamp }}
+        <mat-chip-list>
+          <post-badge class="{{ badge.category }}" *ngFor="let badge of post.badges" [badge]="badge"></post-badge>
+        </mat-chip-list>
+      </mat-card-subtitle>
     </div>
 
     <button mat-icon-button [matMenuTriggerFor]="menu">

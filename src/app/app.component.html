@@ -11,6 +11,7 @@
     <!-- <input matInput [(ngModel)]="searchbarValue"> -->
   </div>
   <div class="buttonBar horizontal">
+    <!-- document.documentElement.style.setProperty(`--secondary-color`, 'gold'); -->
     <button mat-icon-button>
       <mat-icon>search</mat-icon>
     </button>
@@ -24,7 +25,9 @@
 
 <mat-sidenav-container class="example-container">
   <mat-sidenav #menu_sidenav_drawer class="menu-sidenav" mode="push">
-    <hire-sidenav [user]="this.user" (itemClick)="menu_sidenav_drawer.toggle()" (userLogged)="connectUser()"></hire-sidenav>
+    <hire-sidenav [user]="this.user" (itemClick)="menu_sidenav_drawer.toggle()"
+    (userLogged)="connectUser()"
+    (userDisconnected)="disconnect()"></hire-sidenav>
   </mat-sidenav>
 
   <mat-sidenav-content>

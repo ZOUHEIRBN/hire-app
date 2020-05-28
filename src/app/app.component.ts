@@ -6,7 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SocketService } from './services/socket.service';
 import { NotificationComponent } from './minicomponents/notification/notification.component';
 import { Notification, notifications } from './interfaces/notifications';
-import { NotificationsListComponent } from './notifications-list/notifications-list.component';
+import { NotificationsListComponent } from './minicomponents/notifications-list/notifications-list.component';
 
 
 @Component({
@@ -38,6 +38,9 @@ export class AppComponent implements OnInit {
     this._sockets.onUserConnection().subscribe(res => {
       this._userService.setCurrentUser(<User>res['from'])
       this.user = this._userService.getCurrentUser()
+      this.notify(<Notification>res)
+    })
+    this._sockets.onUserFollowing().subscribe(res => {
       this.notify(<Notification>res)
     })
     this._sockets.onNotification().subscribe(res => {
@@ -75,15 +78,15 @@ export class AppComponent implements OnInit {
     this.menu_sidenav_drawer.toggle()
   }
   connectUser(){
-    if(this.menu_sidenav_drawer){
+    if(this.menu_sidenav_drawer && !this.menu_sidenav_drawer){
       this.menu_sidenav_drawer.toggle()
     }
     this.router.navigate(['/home']);
   }
   disconnect(){
-    this._sockets.socket.emit('user_disconnection', this.user)
-    this._userService.disconnect()
-    this.user = null
-    this.router.navigate(['/login']);
+    this._sockets.socket.emit('disconnection', this.user)
+    // this._userService.disconnect()
+    // this.user = null
+    // this.router.navigate(['/login']);
   }
 }
