@@ -6,7 +6,7 @@ import { PostService } from 'src/app/services/post.service';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material/bottom-sheet';
 import { CommentSectionComponent } from 'src/app/minicomponents/comment-section/comment-section.component';
 import { MatDialog } from '@angular/material/dialog';
-import { PostEditorDialogComponent } from 'src/app/subcomponents/newPost/post-editor-dialog/post-editor-dialog.component';
+import { PostEditorDialogComponent } from 'src/app/panels/post-editor-dialog/post-editor-dialog.component';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({

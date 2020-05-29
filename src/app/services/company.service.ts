@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { SERVER_URL } from './post.service';
+import { SERVER_URL, httpOptions } from './post.service';
 import { map } from 'rxjs/operators';
 import { Company } from '../interfaces/company';
 import { UserService } from './user.service';
@@ -30,6 +30,9 @@ export class CompanyService {
     return this.httpClient.get(SERVER_URL+"companies/ownerId/"+ownerId).pipe(map(response => {
       return response['body'];
     }));
+  }
+  createCompany(company){
+    return this.httpClient.post<Company>(SERVER_URL+"companies/", company, httpOptions)
   }
   follow(company_id, follower){
     return this.httpClient.put<Company>(SERVER_URL+"companies/"+company_id+"/follow", follower)

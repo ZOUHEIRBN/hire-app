@@ -12,6 +12,7 @@ import { SearchResultsComponent } from './view_components/search-results/search-
 import { HomeComponent } from './view_components/home/home.component';
 import { PostPageComponent } from './view_components/post-page/post-page.component';
 import { CompanyProfileComponent } from './view_components/company-profile/company-profile.component';
+import { CreateCompanyPanelComponent } from './panels/create-company-panel/create-company-panel.component';
 
 
 export var routes: Routes = [
@@ -26,7 +27,8 @@ export var routes: Routes = [
   { path: 'post/:post_id', component: PostPageComponent },
   { path: 'users', component: ProfilesComponent },
   { path: 'companies', component: CompanyListComponent },
-  { path: 'search/:q', component: SearchResultsComponent}
+  { path: 'search/:q', component: SearchResultsComponent},
+  { path: 'company-create', component: CreateCompanyPanelComponent}
 ];
 
 @NgModule({

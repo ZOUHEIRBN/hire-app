@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Post } from '../../../interfaces/post';
+import { Post } from '../../interfaces/post';
 
 @Component({
   selector: 'post-editor-dialog',

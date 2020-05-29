@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, Host } from 
 import { UserService } from '../../services/user.service'
 
 import { MatDialog } from '@angular/material/dialog';
-import { ConnectionPanelComponent } from 'src/app/minicomponents/connection-panel/connection-panel.component';
+import { ConnectionPanelComponent } from 'src/app/panels/connection-panel/connection-panel.component';
 import { Router } from '@angular/router';
 import { SocketService } from 'src/app/services/socket.service';
 import { User } from 'src/app/interfaces/user';

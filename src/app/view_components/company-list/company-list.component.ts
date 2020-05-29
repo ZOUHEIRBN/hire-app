@@ -4,6 +4,9 @@ import { PostFilterComponent } from '../../minicomponents/post-filter/post-filte
 import { UserService } from '../../services/user.service';
 import { develop } from 'src/app/app-animations';
 import { CompanyService } from 'src/app/services/company.service';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateCompanyPanelComponent } from 'src/app/panels/create-company-panel/create-company-panel.component';
 
 @Component({
   selector: 'app-company-list',
@@ -17,7 +20,7 @@ export class CompanyListComponent implements OnInit {
   loading_state = true
 
 
-  constructor(private _companyService:CompanyService, private _userService:UserService) {}
+  constructor(private _router:Router, private _companyService:CompanyService, private _userService:UserService, private _dialog:MatDialog) {}
 
   ngOnInit(): void {
     this.load()
@@ -31,6 +34,18 @@ export class CompanyListComponent implements OnInit {
         this.filter.refreshProfileFilters(this.companies)
         this.loading_state = false;
       }, 1000)
+    })
+  }
+
+  createCompany(){
+    let dialog = this._dialog.open(CreateCompanyPanelComponent, {
+      width: '90vw'
+    })
+    dialog.componentInstance.doneEvent.subscribe(event => {
+      this._companyService.createCompany(event).subscribe(res => {
+        console.log(res)
+        dialog.close()
+      })
     })
   }
 

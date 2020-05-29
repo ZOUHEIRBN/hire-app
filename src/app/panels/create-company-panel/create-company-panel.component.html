@@ -1,0 +1,89 @@
+<div class="container">
+  <mat-vertical-stepper [linear]="true" #stepper>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Company main information</ng-template>
+        <mat-form-field>
+          <mat-label>
+            Company title
+          </mat-label>
+          <input matInput type="text" name="title" [(ngModel)]="company.title" placeholder="Ex: ABC Infographics">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            City/Department
+          </mat-label>
+          <input matInput type="text" name="city" [(ngModel)]="company.city" placeholder="Ex: admin@abc_infographics.ma">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            Business email
+          </mat-label>
+          <input matInput type="email"  name="email" [(ngModel)]="company.email" placeholder="Ex: admin@abc_infographics.ma">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>
+            Business telephone number
+          </mat-label>
+          <input matInput type="tel" name="telephone" [(ngModel)]="company.tel_number" placeholder="Ex: 06 XX XX XX XX">
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>
+            Address
+          </mat-label>
+          <textarea matInput name="address" [(ngModel)]="company.address_string" placeholder="Where?"></textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>
+            Description
+          </mat-label>
+          <textarea matInput name="description" [(ngModel)]="company.description" placeholder="What does your company do?"></textarea>
+        </mat-form-field>
+
+      </form>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <form>
+        <ng-template matStepLabel>Company other information</ng-template>
+        <mat-form-field>
+          <mat-label>Workforce number</mat-label>
+          <input matInput type="number" name="workforce" [(ngModel)]="company.workforce" placeholder="Number of employees">
+        </mat-form-field>
+        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+          <mat-label>Activity sectors</mat-label>
+          <mat-select name="sector" [(ngModel)]="company.sector" multiple>
+            <mat-option *ngFor="let option of sectors" value="{{option}}">{{option}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+          <mat-label>Used technologies</mat-label>
+          <mat-select name="technologies" [(ngModel)]="company.technologies" multiple>
+            <mat-optgroup *ngFor="let group of tech_categories" [label]="group.name">
+              <mat-option *ngFor="let option of group.technologies" value="{{option}}">{{option}}</mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Company turnover</mat-label>
+          <input matInput name="turnover" type="number" [(ngModel)]="company.turnover" placeholder="How much did you earn?">
+        </mat-form-field>
+      </form>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <p>You are now done.</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="doneEvent.emit(company)">Post</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</div>

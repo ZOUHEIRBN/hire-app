@@ -63,17 +63,18 @@ import { PostPageComponent } from './view_components/post-page/post-page.compone
 import { ResumeComponent } from './subcomponents/resume/resume.component';
 import { CompanyProfileComponent } from './view_components/company-profile/company-profile.component';
 import { GoogleMapComponent } from './minicomponents/google-map/google-map.component';
-import { NewPostPanelComponent } from './subcomponents/newPost/new-post-panel/new-post-panel.component';
-import { NewJobOfferComponent } from './subcomponents/newPost/new-job-offer/new-job-offer.component';
-import { NewJobDemandComponent } from './subcomponents/newPost/new-job-demand/new-job-demand.component';
+import { NewPostPanelComponent } from './panels/new-post-panel/new-post-panel.component';
+import { NewJobOfferComponent } from './panels/new-job-offer/new-job-offer.component';
+import { NewJobDemandComponent } from './panels/new-job-demand/new-job-demand.component';
 import { CommentSectionComponent } from './minicomponents/comment-section/comment-section.component';
 import { SidenavComponent } from './minicomponents/sidenav/sidenav.component';
-import { ConnectionPanelComponent } from './minicomponents/connection-panel/connection-panel.component';
+import { ConnectionPanelComponent } from './panels/connection-panel/connection-panel.component';
 
 import { SERVER_URL } from './services/post.service';
-import { PostEditorDialogComponent } from './subcomponents/newPost/post-editor-dialog/post-editor-dialog.component';
+import { PostEditorDialogComponent } from './panels/post-editor-dialog/post-editor-dialog.component';
 import { SocketService } from './services/socket.service';
 import { NotificationsListComponent } from './minicomponents/notifications-list/notifications-list.component';
+import { CreateCompanyPanelComponent } from './panels/create-company-panel/create-company-panel.component';
 const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Control-Allow-Origin': '*'}  };
 
 @NgModule({
@@ -105,7 +106,8 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     SidenavComponent,
     ConnectionPanelComponent,
     PostEditorDialogComponent,
-    NotificationsListComponent
+    NotificationsListComponent,
+    CreateCompanyPanelComponent
   ],
   imports: [
 
