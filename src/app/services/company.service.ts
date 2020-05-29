@@ -10,6 +10,7 @@ import { UserService } from './user.service';
 })
 export class CompanyService {
 
+
   constructor(private httpClient:HttpClient, private _userService:UserService) { }
   public async getCompany(id){
     var fetchedData = await fetch(SERVER_URL+"companies/"+id);
@@ -33,6 +34,12 @@ export class CompanyService {
   }
   createCompany(company){
     return this.httpClient.post<Company>(SERVER_URL+"companies/", company, httpOptions)
+  }
+  editCompany(company: Company) {
+    return this.httpClient.put<Company>(SERVER_URL+"companies/", company, httpOptions)
+  }
+  deleteCompany(company: Company) {
+    return this.httpClient.delete<Company>(SERVER_URL+"companies/" + company.id, httpOptions)
   }
   follow(company_id, follower){
     return this.httpClient.put<Company>(SERVER_URL+"companies/"+company_id+"/follow", follower)

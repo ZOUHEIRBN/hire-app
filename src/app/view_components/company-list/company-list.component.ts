@@ -15,7 +15,7 @@ import { CreateCompanyPanelComponent } from 'src/app/panels/create-company-panel
   animations:[develop]
 })
 export class CompanyListComponent implements OnInit {
-  companies: any = [];
+  companies: any[] = [];
   @ViewChild('filter') filter:PostFilterComponent;
   loading_state = true
 
@@ -43,10 +43,16 @@ export class CompanyListComponent implements OnInit {
     })
     dialog.componentInstance.doneEvent.subscribe(event => {
       this._companyService.createCompany(event).subscribe(res => {
-        console.log(res)
+        this.companies.unshift(res)
         dialog.close()
       })
     })
+  }
+  deleteCompany(event){
+    let index = this.companies.indexOf(event)
+    if(index > -1){
+      this.companies.splice(index, 1)
+    }
   }
 
 }

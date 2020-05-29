@@ -4,7 +4,7 @@ width: calc(100% - 20px);">
   <post-filter #filter></post-filter>
   <div class="container">  <!-- [@staggeredDevelop]="profiles.length"> -->
     <div *ngFor="let company of companies" style="display: contents;">
-      <company-details *ngIf="this.filter.doSatisfy(company)" @develop [company]="company" [showMap]="false"></company-details>
+      <company-details (deleteEvent)="deleteCompany($event)" *ngIf="this.filter.doSatisfy(company)" @develop [company]="company" [showMap]="false"></company-details>
     </div>
   </div>
   <div class="mat-spinner"  *ngIf="loading_state" [ngClass]="{'bottom': companies.length !== 0 }">

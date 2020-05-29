@@ -6,7 +6,9 @@ mat-card{
     color: var(--secondary-color);
     width: 100%;
 }
-
+mat-card-title{
+  display: flex;
+}
 .mat-card-header {
     display: block;
     flex-direction: row;

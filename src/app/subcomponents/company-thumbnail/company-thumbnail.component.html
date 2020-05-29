@@ -1,3 +1,19 @@
+<!--
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="editCompany()">
+      <mat-icon>edit</mat-icon>
+      <span>Edit company</span>
+    </button>
+
+    <button mat-menu-item (click)="deleteCompany()">
+      <mat-icon>delete</mat-icon>
+      <span>Delete company</span>
+    </button>
+  </mat-menu>
+-->
 <mat-card style="margin-top:10px;" [ngClass]="{'embedded': embedded}">
   <mat-card-content  *ngIf="company">
     <mat-card-info>
@@ -8,7 +24,23 @@
         </div>
         <mat-card-header>
           <mat-card-title *ngIf="company">
-            {{company.title}} <a class="address">@{{company.email}}</a>
+            <span style="flex-grow: 1;">
+              {{company.title}} <a class="address">@{{company.email}}</a>
+            </span>
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="editCompany()">
+                <mat-icon>edit</mat-icon>
+                <span>Edit company</span>
+              </button>
+
+              <button mat-menu-item (click)="deleteCompany()">
+                <mat-icon>delete</mat-icon>
+                <span>Delete company</span>
+              </button>
+            </mat-menu>
           </mat-card-title>
 
           <mat-card-subtitle>

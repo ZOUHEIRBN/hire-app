@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { Company } from 'src/app/interfaces/company';
 import { CompanyService } from 'src/app/services/company.service';
 import { FormControl } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'create-company-panel',
@@ -102,11 +103,15 @@ export class CreateCompanyPanelComponent implements OnInit {
       ]
     }
   ]
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit(): void {
-    if(this.company === undefined || this.company === null){
+    console.log(this.data)
+    if(this.data === undefined || this.data === null){
       this.company = new Company()
+    }
+    else{
+      this.company = this.data.company
     }
   }
 }

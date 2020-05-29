@@ -17,7 +17,7 @@ button.bottom {
     flex-basis: 48.9%;
   }
   company-details:last-child {
-    flex-grow: 0;
+    flex-grow: 1;
   }
 }
 
