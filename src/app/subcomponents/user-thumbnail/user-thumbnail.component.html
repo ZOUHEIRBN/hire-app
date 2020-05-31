@@ -2,7 +2,7 @@
   <mat-card-content  *ngIf="user">
     <mat-card-info>
       <div class="Image" [attr.focus]="false">
-        <div class="img" [ngStyle]="{'background-image': 'url(' + user.imageUrl + ')'}"></div>
+        <img [src]="sanitize(user.imageUrl)">
       </div>
 
       <mat-card-contents>

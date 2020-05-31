@@ -76,7 +76,7 @@
 
 <mat-card class="example-card">
   <mat-card-header>
-    <div *ngIf="post.owner.imageUrl" mat-card-avatar class="example-header-image" [style]=" 'background-image: url(' + post.owner.imageUrl.toString() + ');' "></div>
+    <div *ngIf="sanitize(post.owner.imageUrl)" mat-card-avatar class="example-header-image" [style]=" 'background-image: url(' + post.owner.imageUrl.toString() + ');' "></div>
     <div class="title">
       <mat-card-title>{{ post.owner.email || post.owner.id }}</mat-card-title>
       <mat-card-subtitle>
@@ -109,7 +109,9 @@
     </mat-menu>
 
   </mat-card-header>
-  <div *ngIf="post.imageUrl" class="postImage" [style]=" 'background-image: url(' + post.imageUrl.toString() + ');' " alt="Photo of a Shiba Inu"></div>
+  <div *ngIf="post.imageUrl" class="postImage" alt="Photo of a Shiba Inu">
+    <img [src]="bg_image"/>
+  </div>
   <mat-card-content>
     <h1>
       {{ post.title }}

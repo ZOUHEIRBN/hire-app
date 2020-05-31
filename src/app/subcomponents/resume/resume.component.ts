@@ -26,6 +26,7 @@ export class ResumeComponent implements OnInit {
     this.editMode = true
   }
   save(){
+    console.log(this.resume)
     this._resumeService.putResume(this.user.id, this.resume).subscribe(_ => {
       this.editMode = false
     })

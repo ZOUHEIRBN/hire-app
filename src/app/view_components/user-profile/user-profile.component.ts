@@ -47,7 +47,6 @@ export class UserProfileComponent implements OnInit {
     this.route.params.subscribe(params => {
       this._userService.getUserByEmail(params.email).subscribe(response => {
         this.user = <User>response
-        console.log(this.user)
         this.refreshData();
       })
 
@@ -58,7 +57,7 @@ export class UserProfileComponent implements OnInit {
       this.userposts = data
       setTimeout(() => {this.postfilter.refreshFilters(this.userposts)}, 1000)
     })
-    this._companyService.getUserCompanies(this.user.email).subscribe((data) => {
+    this._companyService.getUserCompanies(this.user.id).subscribe((data) => {
       this.usercompanies = data
       setTimeout(() => {this.companyfilter.refreshFilters(this.usercompanies)}, 1000)
     })

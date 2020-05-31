@@ -8,6 +8,7 @@ import { CommentSectionComponent } from 'src/app/minicomponents/comment-section/
 import { MatDialog } from '@angular/material/dialog';
 import { PostEditorDialogComponent } from 'src/app/panels/post-editor-dialog/post-editor-dialog.component';
 import { UserService } from 'src/app/services/user.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'post',
@@ -23,6 +24,7 @@ export class PostComponent implements OnInit {
   @Output() postDelete = new EventEmitter()
 
   constructor(
+    private sanitizer: DomSanitizer,
     private router:Router,
     private _userService:UserService,
     private _postService:PostService,
@@ -35,7 +37,10 @@ export class PostComponent implements OnInit {
     if(typeof this.post.imageUrl === 'string'){
       //console.log(this.post.imageUrl)
     }
-    this.bg_image = this.post.imageUrl
+    this.bg_image = this.sanitize(this.post.imageUrl)
+  }
+  sanitize(image){
+    return this.sanitizer.bypassSecurityTrustUrl(image)
   }
   toggleFocus(event: any){
     var target = event.target;

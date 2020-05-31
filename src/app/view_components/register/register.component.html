@@ -1,49 +1,7 @@
 <div class="container">
   <div class="layout">
 
-    <form class="flex" action="/users" method="POST">
-      <div class="col2 header">
-        <h2 style="margin: 0;">Login</h2>
-        <input (change)="this.fileSelect($event)" mat-button hidden type="file" name="imageUrl" #imageFile>
-        <i (click)="imageFile.click()"
-          [style]="'background-image: url(' + this.user['imageUrl'] + ');'"
-         class="material-icons">image</i>
-      </div>
-      <div class="col2">
-        <mat-form-field>
-          <mat-label>First name</mat-label>
-          <input matInput required type="text" name="first_name" (change)="updateField($event)" placeholder="First Name"/>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Last name</mat-label>
-          <input matInput required type="text" name="last_name" (change)="updateField($event)" placeholder="Last Name"/>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput required type="email" name="email" (change)="updateField($event)" placeholder="Email"/>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Confirm Email</mat-label>
-          <input matInput required type="email" name="email" placeholder="Confirm Email"/>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input matInput required type="password" name="password" (change)="updateField($event)" placeholder="Password"/>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-label>Confirm password</mat-label>
-          <input matInput required type="password" name="password" placeholder="Confirm Password"/>
-        </mat-form-field>
-
-        <div style="display: flex; flex-grow: 1; align-items: center;">
-          <div class="mat-card-actions">
-            <button mat-button (click)="this.registerUser($event)">Inscription</button>
-          </div>
-          <a href="#">Terms of Service</a>
-        </div>
-
-      </div>
-    </form>
+    <user-registration-panel [user]="user"></user-registration-panel>
 
 
 

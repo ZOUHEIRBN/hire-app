@@ -3,6 +3,7 @@ import { Company } from 'src/app/interfaces/company';
 import { CompanyService } from 'src/app/services/company.service';
 import { FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'create-company-panel',
@@ -103,7 +104,7 @@ export class CreateCompanyPanelComponent implements OnInit {
       ]
     }
   ]
-  constructor(@Inject(MAT_DIALOG_DATA) public data) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data, private _userService:UserService) { }
 
   ngOnInit(): void {
     console.log(this.data)
@@ -113,5 +114,10 @@ export class CreateCompanyPanelComponent implements OnInit {
     else{
       this.company = this.data.company
     }
+  }
+  createCompany(){
+    this.company.ownerId = this._userService.getCurrentUser().id
+    console.log(this.company)
+    this.doneEvent.emit(this.company)
   }
 }

@@ -20,7 +20,7 @@
       <mat-card-contents>
         <div class="Image"
         [attr.focus]="false">
-          <img [src]="company.imageUrl"/>
+          <img [src]="sanitize(company.imageUrl)"/>
         </div>
         <mat-card-header>
           <mat-card-title *ngIf="company">

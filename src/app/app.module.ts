@@ -26,6 +26,7 @@ import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/mat
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from "@angular/material/input";
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -75,6 +76,9 @@ import { PostEditorDialogComponent } from './panels/post-editor-dialog/post-edit
 import { SocketService } from './services/socket.service';
 import { NotificationsListComponent } from './minicomponents/notifications-list/notifications-list.component';
 import { CreateCompanyPanelComponent } from './panels/create-company-panel/create-company-panel.component';
+import { UserRegistrationPanelComponent } from './panels/user-registration-panel/user-registration-panel.component';
+import { QuestionCardComponent } from './subcomponents/question-card/question-card.component';
+import { QuestionEditorComponent } from './panels/question-editor/question-editor.component';
 const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Control-Allow-Origin': '*'}  };
 
 @NgModule({
@@ -107,7 +111,10 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     ConnectionPanelComponent,
     PostEditorDialogComponent,
     NotificationsListComponent,
-    CreateCompanyPanelComponent
+    CreateCompanyPanelComponent,
+    UserRegistrationPanelComponent,
+    QuestionCardComponent,
+    QuestionEditorComponent
   ],
   imports: [
 
@@ -125,6 +132,7 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     MatFormFieldModule,
     MatAutocompleteModule,
     MatInputModule,
+    MatCheckboxModule,
     MatSelectModule,
     MatSliderModule,
     MatTabsModule,

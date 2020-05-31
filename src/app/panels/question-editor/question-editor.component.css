@@ -1,0 +1,22 @@
+mat-form-field{
+  flex: 49% 1 1;
+}
+mat-form-field.full-width{
+  flex: 100% 0 1;
+}
+mat-card-content{
+  display: flex;
+  flex-wrap: wrap;
+}
+.mat-chip-list-wrapper{
+  display: contents;
+}
+mat-chip-list{
+  flex-direction: row;
+  width: 100%;
+}
+@media(orientation:portrait) and (max-width: 768px){
+  mat-form-field{
+    flex: 100% 0 1;
+  }
+}

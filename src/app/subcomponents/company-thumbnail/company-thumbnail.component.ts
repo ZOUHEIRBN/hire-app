@@ -6,6 +6,7 @@ import { CompanyService } from 'src/app/services/company.service';
 import { UserService } from 'src/app/services/user.service';
 import { CreateCompanyPanelComponent } from 'src/app/panels/create-company-panel/create-company-panel.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'company-details',
@@ -22,7 +23,7 @@ export class CompanyThumbnailComponent implements OnInit, AfterViewInit {
   mapData;
   lat = 0;
   lng = 0;
-  constructor(private router:Router, private _companyService:CompanyService, private _userService:UserService, private _dialog:MatDialog) { }
+  constructor(private sanitizer: DomSanitizer, private router:Router, private _companyService:CompanyService, private _userService:UserService, private _dialog:MatDialog) { }
   gotoCompanyPage(){
     this.router.navigate(['/user/'+this.company.id])
   }
@@ -31,6 +32,9 @@ export class CompanyThumbnailComponent implements OnInit, AfterViewInit {
       this.lat = this.company.address.latitude;
       this.lng = this.company.address.longitude;
     }
+  }
+  sanitize(image){
+    return this.sanitizer.bypassSecurityTrustUrl(image)
   }
   follow(){
     this._companyService.follow(this.company.id, this._userService.getCurrentUser()).subscribe(res => {

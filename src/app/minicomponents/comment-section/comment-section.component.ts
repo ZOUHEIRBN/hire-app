@@ -13,7 +13,8 @@ export class CommentSectionComponent implements OnInit {
   newComment = new Comment()
   post_id;
   comments:Comment[]
-  @Output() daoEvent = new EventEmitter()
+  @Output() addEvent = new EventEmitter()
+  @Output() deleteEvent = new EventEmitter()
   constructor(
     @Inject(MAT_BOTTOM_SHEET_DATA) private data: any,
     private _userService:UserService,
@@ -30,7 +31,7 @@ export class CommentSectionComponent implements OnInit {
     this.newComment.commenting_user = this._userService.getCurrentUser().id
     this._postService.addComment(this.post_id, this.newComment).subscribe((response) => {
       this.comments.push(response)
-      this.daoEvent.emit()
+      this.addEvent.emit()
     })
   }
   deleteComment(comment_id){
@@ -39,7 +40,7 @@ export class CommentSectionComponent implements OnInit {
       if(index > -1){
         this.comments = this.comments.splice(index, 1)
       }
-      this.daoEvent.emit()
+      this.deleteEvent.emit()
     })
   }
 

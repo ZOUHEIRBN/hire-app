@@ -23,8 +23,14 @@ mat-card-content{
   height: 30vmin;
   background-size: cover;
   margin-right: 2vmin;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
-
+.postImage img{
+  max-height: 30vmin;
+    height: 100%;
+}
 @media(max-width: 768px){
   .postImage{
     width: 100vmin;
