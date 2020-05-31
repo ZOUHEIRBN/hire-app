@@ -1,0 +1,9 @@
+mat-card{
+  margin-bottom: 10px;
+}
+button.bottom {
+  position: fixed;
+  bottom: 6vmin;
+  right: 6vmin;
+  z-index: 4;
+}

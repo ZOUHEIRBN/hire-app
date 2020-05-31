@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Question } from '../../interfaces/resume';
+import { Component, OnInit, Input, Inject, Output, EventEmitter } from '@angular/core';
+import { Question, Answer } from '../../interfaces/questions';
 import { FormControl } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'question-editor',
@@ -10,15 +11,21 @@ import { MatChipInputEvent } from '@angular/material/chips';
 })
 export class QuestionEditorComponent implements OnInit {
   @Input() question:Question = new Question()
+  @Output() doneEvent = new EventEmitter()
+
   floatLabel = new FormControl('auto')
   readonly separatorKeysCodes: number[] = [13]
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit(): void {
-
+    if(this.data.question){
+      this.question = <Question>this.data.question
+    }
   }
+
   new_answer(){
-    this.question.add_answer('', false)
+    let ans = new Answer('', false)
+    this.question.answers.push(ans)
   }
   add_related_field(event: MatChipInputEvent): void {
     const input = event.input;
@@ -43,6 +50,6 @@ export class QuestionEditorComponent implements OnInit {
     }
   }
   submit_question(){
-    console.log(this.question)
+    this.doneEvent.emit(this.question)
   }
 }

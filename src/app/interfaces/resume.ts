@@ -1,3 +1,5 @@
+import { User } from './user'
+
 export const default_resume:Resume = {
   "academic_cursus": [
     {
@@ -81,43 +83,7 @@ export const default_resume:Resume = {
     },
   ],
 }
-class Answer{
-  text:string
-  correct:boolean
-  constructor(text, is_correct){
-    this.text = text
-    this.correct = is_correct
-  }
-}
-export class Question{
-  text:string
-  answers: Answer[]
-  level:number
-  related_fields:string[]
-  constructor(text="", level=1, related_field=""){
-    this.text = text
-    this.level = level
-    if(related_field === ""){
-      this.related_fields = []
-    }
-    else{
-      this.related_fields = [related_field]
-    }
-    this.answers = []
-  }
-  add_answer(text, is_correct){
-    let ans = new Answer(text, is_correct)
-    this.answers.push(ans)
-  }
-  evaluate(answer){
-    for(let a of this.answers){
-      if(a.text === answer && a.correct){
-        return this.level
-      }
-    }
-    return 0
-  }
-}
+
 export class Resume{
   academic_cursus:AcademicDiploma[]
   professionnal_cursus:ProfessionnalExperience[]

@@ -1,0 +1,7 @@
+<mat-card *ngFor="let question of questions">
+  <question-card [question]="question"></question-card>
+</mat-card>
+
+<button mat-fab class="bottom" color="'primary'" (click)="addQuestion()" matTooltip="Create company">
+  <mat-icon>add</mat-icon>
+</button>

@@ -1,16 +1,48 @@
-<mat-card-header>
+<div style="display: contents;" *ngIf="question">
+  <mat-card-header *ngIf="question.asker">
+    <div *ngIf="question.asker.imageUrl" mat-card-avatar class="example-header-image"
+    [style]=" 'background-image: url(' + question.asker.imageUrl.toString() + ');' "></div>
+    <div class="title">
+      <mat-card-title>{{ question.asker.email || question.asker.id }}</mat-card-title>
+      <mat-card-subtitle>
+        &nbsp;
+      </mat-card-subtitle>
+    </div>
 
-</mat-card-header>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
 
-<mat-card-content>
-  <mat-card-title>
-    {{ question.text }}
-  </mat-card-title>
-  <mat-card-subtitle>
-    <span style="display: contents;"
-    *ngFor="let related_field of question.related_fields">
-      {{ related_field }}
+      <button mat-menu-item (click)="editQuestion()">
+        <mat-icon>edit</mat-icon>
+        <span>Edit question</span>
+      </button>
+
+      <button mat-menu-item (click)="deleteQuestion()">
+        <mat-icon>delete</mat-icon>
+        <span>Delete question</span>
+      </button>
+
+      <button mat-menu-item disabled>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+
+  </mat-card-header>
+
+  <mat-card-content>
+    <h1>
+      {{ question.text }}
+    </h1>
+    <span>
+      <i style="display: contents;"
+        *ngFor="let related_field of question.related_fields">
+          {{ related_field }},&nbsp;
+      </i>
     </span>
-  </mat-card-subtitle>
-  <mat-checkbox *ngFor="let answer of question.answers" [(ngModel)]="answer.correct">{{ answer.text }}</mat-checkbox>
-</mat-card-content>
+    <mat-checkbox *ngFor="let answer of question.answers" [(ngModel)]="answer.correct">{{ answer.text }}</mat-checkbox>
+  </mat-card-content>
+
+</div>
