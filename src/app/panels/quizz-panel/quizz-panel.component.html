@@ -4,17 +4,19 @@
       <!-- <ng-template matStepLabel>Fill out your name</ng-template> -->
       <question-card [question]="question"></question-card>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button [color]="'primary'" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
 
-  <mat-step>
+  <mat-step *ngIf="doneStep">
     <ng-template matStepLabel>Done</ng-template>
     <p>You are now done.</p>
     <div>
       <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-button [color]="'warn'" (click)="stepper.reset()">Reset</button>
+      <button mat-flat-button [color]="'primary'" (click)="submit_test()">Submit</button>
     </div>
   </mat-step>
 </mat-vertical-stepper>

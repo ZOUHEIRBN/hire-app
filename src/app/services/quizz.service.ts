@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Question } from '../interfaces/questions';
 import { SERVER_URL } from './post.service';
 import { map } from 'rxjs/operators';
+import { Skill } from '../interfaces/resume';
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +18,6 @@ export class QuizzService {
     }));
   }
 
-  getTopicQuestions(topic){
-
-  }
-
   addQuestion(question){
     return this.httpClient.post<Question>(SERVER_URL + 'questions/', question)
   }
@@ -31,6 +28,23 @@ export class QuizzService {
 
   deleteQuestion(question){
     return this.httpClient.delete<Question>(SERVER_URL + 'questions/' + question.id)
+  }
+
+  //Quizz methods
+  getQuizz(skill: Skill){
+    return this.httpClient.get<Question[]>(SERVER_URL + 'questions/topic/'+skill.skill).pipe(map(response => {
+      response = response['body'];
+      response.map(element => {
+        element.answers = element.answers.map(ans => {
+          return {text: ans.text, correct: false}
+        })
+      })
+
+      return response
+    }));
+  }
+  submitQuizz(quizz){
+    return this.httpClient.post<Question[]>(SERVER_URL + 'questions/quizz/', quizz)
   }
 
 }

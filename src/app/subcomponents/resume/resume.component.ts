@@ -3,6 +3,8 @@ import { User } from 'src/app/interfaces/user';
 import { FormControl } from '@angular/forms';
 import { Resume, default_resume, ProfessionnalExperience, AcademicDiploma, AcademicProject, Skill, Language } from 'src/app/interfaces/resume';
 import { ResumeService } from 'src/app/services/resume.service';
+import { MatDialog } from '@angular/material/dialog';
+import { QuizzPanelComponent } from 'src/app/panels/quizz-panel/quizz-panel.component';
 
 @Component({
   selector: 'user-resume',
@@ -15,7 +17,7 @@ export class ResumeComponent implements OnInit {
   @Input() user:User;
   resume:Resume = default_resume;
 
-  constructor(private _resumeService:ResumeService) { }
+  constructor(private _dialog:MatDialog, private _resumeService:ResumeService) { }
 
   ngOnInit(): void {
     this._resumeService.getResume(this.user.id).subscribe(response => {
@@ -79,6 +81,18 @@ export class ResumeComponent implements OnInit {
     if (index > -1) {
       this.resume.skills.splice(index, 1);
     }
+  }
+  takeTest(skill:Skill){
+    let dialog = this._dialog.open(QuizzPanelComponent, {
+      data: {
+        skill: skill
+      }
+    })
+    dialog.componentInstance.doneEvent.subscribe(res => {
+      console.log(res)
+      skill.level = res
+      dialog.close()
+    })
   }
 
   //Languages

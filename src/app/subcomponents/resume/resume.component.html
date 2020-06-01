@@ -420,9 +420,13 @@
                   [(ngModel)]="skill.level"
                   [thumbLabel]="true">
                 </mat-slider>
-
+                <button mat-flat-button [color]="'primary'" (click)="takeTest(skill)">
+                  Take test
+                </button>
             </div>
+
           </div>
+
           <button class="more_options" mat-icon-button [matMenuTriggerFor]="skill_menu" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
           </button>
