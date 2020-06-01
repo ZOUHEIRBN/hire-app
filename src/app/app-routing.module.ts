@@ -12,8 +12,6 @@ import { SearchResultsComponent } from './view_components/search-results/search-
 import { HomeComponent } from './view_components/home/home.component';
 import { PostPageComponent } from './view_components/post-page/post-page.component';
 import { CompanyProfileComponent } from './view_components/company-profile/company-profile.component';
-import { CreateCompanyPanelComponent } from './panels/create-company-panel/create-company-panel.component';
-import { QuizzComponent } from './view_components/quizz/quizz.component';
 import { QuestionListComponent } from './view_components/question-list/question-list.component';
 
 

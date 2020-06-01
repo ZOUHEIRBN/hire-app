@@ -3,11 +3,11 @@ import { QuizzService } from 'src/app/services/quizz.service';
 import { Question } from 'src/app/interfaces/questions';
 
 @Component({
-  selector: 'app-quizz',
-  templateUrl: './quizz.component.html',
-  styleUrls: ['./quizz.component.css']
+  selector: 'quizz',
+  templateUrl: './quizz-panel.component.html',
+  styleUrls: ['./quizz-panel.component.css']
 })
-export class QuizzComponent implements OnInit {
+export class QuizzPanelComponent implements OnInit {
   quizz:Question[] = []
   constructor(private _quizzService:QuizzService) { }
 

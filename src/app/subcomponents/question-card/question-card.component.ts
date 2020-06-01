@@ -19,7 +19,7 @@ export class QuestionCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.question)
+
   }
   sanitize(image){
     return this.sanitizer.bypassSecurityTrustUrl(image)

@@ -79,7 +79,7 @@ import { CreateCompanyPanelComponent } from './panels/create-company-panel/creat
 import { UserRegistrationPanelComponent } from './panels/user-registration-panel/user-registration-panel.component';
 import { QuestionCardComponent } from './subcomponents/question-card/question-card.component';
 import { QuestionEditorComponent } from './panels/question-editor/question-editor.component';
-import { QuizzComponent } from './view_components/quizz/quizz.component';
+import { QuizzPanelComponent } from './view_components/quizz-panel/quizz-panel.component';
 import { QuestionListComponent } from './view_components/question-list/question-list.component';
 const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Control-Allow-Origin': '*'}  };
 
@@ -117,7 +117,7 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     UserRegistrationPanelComponent,
     QuestionCardComponent,
     QuestionEditorComponent,
-    QuizzComponent,
+    QuizzPanelComponent,
     QuestionListComponent
   ],
   imports: [

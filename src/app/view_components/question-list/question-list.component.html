@@ -1,5 +1,5 @@
 <mat-card *ngFor="let question of questions">
-  <question-card [question]="question"></question-card>
+  <question-card [question]="question" (deleteEvent)="deleteQuestion(question)"></question-card>
 </mat-card>
 
 <button mat-fab class="bottom" color="'primary'" (click)="addQuestion()" matTooltip="Create company">

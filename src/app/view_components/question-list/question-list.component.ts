@@ -16,7 +16,6 @@ export class QuestionListComponent implements OnInit {
 
   ngOnInit(): void {
     this._quizzService.getQuestions().subscribe(res => {
-      console.log(res)
       this.questions = res
     })
   }
@@ -33,6 +32,12 @@ export class QuestionListComponent implements OnInit {
       })
     })
 
+  }
+  deleteQuestion(question){
+    let index = this.questions.indexOf(question)
+    if(index > -1){
+      this.questions.splice(index, 1)
+    }
   }
 
 
