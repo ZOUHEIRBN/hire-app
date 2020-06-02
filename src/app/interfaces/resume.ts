@@ -126,6 +126,10 @@ export class Language implements Criterion{
   level:number = 0
 }
 export class Skill implements Criterion{
-  skill:string = "Python"
-  level:number = 0
+  skill:string
+  level:number
+  constructor(skill="", level=0){
+    this.skill = skill
+    this.level = level
+  }
 }

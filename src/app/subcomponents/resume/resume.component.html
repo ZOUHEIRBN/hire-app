@@ -409,18 +409,19 @@
             </mat-form-field>
 
             <div>
-              <mat-label>Level</mat-label>
+              <mat-label *ngIf="!editMode || skill.level > 0">Level</mat-label>
               <mat-slider
+                  *ngIf="!editMode || skill.level > 0"
                   class="example-margin"
                   [disabled]="!editMode"
                   [max]="10"
                   [min]="0"
                   [step]="1"
-                  [value]="skill.level? skill.level: 5"
+                  [value]="skill.level? skill.level: 0"
                   [(ngModel)]="skill.level"
                   [thumbLabel]="true">
                 </mat-slider>
-                <button mat-flat-button [color]="'primary'" (click)="takeTest(skill)">
+                <button *ngIf="editMode" mat-flat-button [color]="'primary'" (click)="takeTest(skill)">
                   Take test
                 </button>
             </div>

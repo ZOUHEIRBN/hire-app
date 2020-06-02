@@ -32,7 +32,7 @@ export class NewJobOfferComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    console.log(this.newPost)
+
     if(!this.newPost || this.newPost === def_post){
       this.newPost = new JobOffer()
       this.newPost.type = 'Offer'
@@ -42,46 +42,10 @@ export class NewJobOfferComponent implements OnInit {
       this.newPost = JobOffer.fromPost(this.newPost)
     }
   }
-  add(event){
-    const input = event.input;
-    const value = event.value;
-    if(!this.skills.includes(value)){
-      this.skills.push(value)
-    }
-    // Add our skill
-    if ((value || '').trim()) {
-      const index = this.skills.indexOf((value || '').trim());
-      if (index >= 0) {
-        this.skills.splice(index, 1);
-      }
-      let s = new Skill()
-      s.skill = value.trim()
-      this.newPost.requiredSkills.push(s);
-
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
-
-    this.skillCtrl.setValue(null);
-  }
-  remove(skill){
-    const index = this.newPost.requiredSkills.indexOf(skill);
-    this.skills.push(skill.skill)
-    if (index >= 0) {
-      this.newPost.requiredSkills.splice(index, 1);
-    }
-  }
-  selected(event) {
+  new_skill(){
     let s = new Skill()
-    s.skill = event.option.viewValue
-    this.newPost.requiredSkills.push(s);
-    this.skillInput.nativeElement.value = '';
-    this.skillCtrl.setValue(null);
-
-    console.log(this.newPost.requiredSkills)
+    this.newPost.requiredSkills.push(s)
+    console.log(this.newPost)
   }
   createPost(){
     this.newPost.ownerId = this._userService.getCurrentUser().email;

@@ -76,7 +76,7 @@
 
 <mat-card class="example-card">
   <mat-card-header>
-    <div *ngIf="sanitize(post.owner.imageUrl)" mat-card-avatar class="example-header-image" [style]=" 'background-image: url(' + post.owner.imageUrl.toString() + ');' "></div>
+    <div *ngIf="post.owner.imageUrl" mat-card-avatar class="example-header-image" [style]=" 'background-image: url(' + post.owner.imageUrl.toString() + ');' "></div>
     <div class="title">
       <mat-card-title>{{ post.owner.email || post.owner.id }}</mat-card-title>
       <mat-card-subtitle>

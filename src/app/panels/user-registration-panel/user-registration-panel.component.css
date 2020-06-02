@@ -3,10 +3,6 @@ form.flex{
   align-self: center;
   flex-flow: column;
   flex-direction: column;
-  position: relative;
-    top: 50%;
-    left: 0;
-    transform: translate(0%, -50%);
 
 }
 form.flex>.col2{

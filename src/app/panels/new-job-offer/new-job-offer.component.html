@@ -18,42 +18,37 @@
     </mat-step>
 
     <mat-step>
-      <form>
-        <ng-template matStepLabel>Required skills</ng-template>
-        <div  class="flexFormFields"> <!-- ngfor skill in newpost.required_skills -->
+      <ng-template matStepLabel>Required skills</ng-template>
+      <form *ngFor="let skill of newPost.requiredSkills">
+        <div class="flexFormFields"> <!-- ngfor skill in newpost.required_skills -->
           <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
-            <mat-chip-list #chipList aria-label="Fruit selection">
-              <mat-chip
-                *ngFor="let skill of newPost.requiredSkills"
-                [selectable]="true"
-                [removable]="true"
-                (removed)="remove(skill)">
-                {{skill.skill}}
-                <mat-icon matChipRemove *ngIf="true">cancel</mat-icon>
-              </mat-chip>
-              <input
-                matInput
+            <mat-label>Required skill</mat-label>
+            <input matInput
                 placeholder="Add another skill..."
-                #skillInput
-                name="required_skills"
-                [formControl]="skillCtrl"
-                [matAutocomplete]="auto"
-                [matChipInputFor]="chipList"
-                [matChipInputSeparatorKeyCodes]="separatorKeyCodes"
-                (matChipInputTokenEnd)="add($event)">
-            </mat-chip-list>
-            <mat-autocomplete #auto (optionSelected)="selected($event)">
-              <mat-option *ngFor="let option of skills" [value]="option">
-                {{option}}
-              </mat-option>
-            </mat-autocomplete>
+                [(ngModel)]="skill.skill" name="skill">
           </mat-form-field>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Minimal required level</mat-label>
+            <mat-select [(ngModel)]="skill.level" name="level">
+              <mat-option [value]="0">Interest</mat-option>
+              <mat-option [value]="1">Basic</mat-option>
+              <mat-option [value]="2">Little</mat-option>
+              <mat-option [value]="3">Reasonable</mat-option>
+              <mat-option [value]="4">Good</mat-option>
+              <mat-option [value]="5">Expert</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <button mat-button>
+            <mat-icon>delete</mat-icon>
+          </button> -->
         </div>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
+
       </form>
+      <div>
+        <button mat-button (click)="new_skill()">Add a skill</button>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
     </mat-step>
 
     <mat-step>

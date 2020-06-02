@@ -66,6 +66,8 @@ export class JobOffer extends Job {
     offer.subject = post.subject
     offer.description = post.description
     offer.title = post.title
+    offer.requiredSkills = post.requiredSkills.map(e => {return new Skill(e.skill, e.level)})
+    offer.requiredLanguages = post.requiredLanguages
     return <JobOffer>offer;
   }
 }
