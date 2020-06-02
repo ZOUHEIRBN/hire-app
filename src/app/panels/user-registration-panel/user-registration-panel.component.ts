@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 
@@ -8,8 +8,9 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./user-registration-panel.component.css']
 })
 export class UserRegistrationPanelComponent implements OnInit {
-  @Input() user:User;
-  constructor(private _userService:UserService) { }
+  @Input() user:User = new User();
+  @Output() doneEvent = new EventEmitter()
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -26,23 +27,6 @@ export class UserRegistrationPanelComponent implements OnInit {
     console.log(this.user['imageUrl'])
 
   }
-  private validate(){
-    console.log(this.user)
-    return true
-  }
-  registerUser(event){
-    event.preventDefault();
-    if(this.validate()){
-      this._userService.registerUser(this.user).subscribe((data) => {
-        console.log(data)
-      });
-      //this._userService.loginUser(this.user)
-    }
 
-  }
-  loginUser(event){
-    event.preventDefault();
-    //this._userService.loginUser(this.user);
-  }
 
 }

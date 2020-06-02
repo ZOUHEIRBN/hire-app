@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
     });
     dialogRef.componentInstance.userLogin.subscribe(event => {
       dialogRef.close()
-    })
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this._router.navigate(['/home']);
-    });
+    })
+    dialogRef.componentInstance.registerationEvent.subscribe(_ => {
+      dialogRef.close()
+    })
   }
 }

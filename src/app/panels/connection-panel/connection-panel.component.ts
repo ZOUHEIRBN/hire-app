@@ -2,8 +2,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserLogin, User } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { SocketService } from 'src/app/services/socket.service';
+import { UserRegistrationPanelComponent } from '../user-registration-panel/user-registration-panel.component';
 
 @Component({
   selector: 'connection-panel',
@@ -13,7 +14,8 @@ import { SocketService } from 'src/app/services/socket.service';
 export class ConnectionPanelComponent implements OnInit {
   userCredentials:UserLogin = new User()
   @Output() userLogin = new EventEmitter();
-  constructor(private _userService:UserService, private router:Router, private _socketService:SocketService) { }
+  @Output() registerationEvent = new EventEmitter();
+  constructor(private _dialog:MatDialog, private _userService:UserService, private router:Router, private _socketService:SocketService) { }
 
   ngOnInit(): void {
   }
@@ -30,14 +32,17 @@ export class ConnectionPanelComponent implements OnInit {
 
   }
   gotoRegister(){
-    var user = {"email":"", "password":""};
-    if(this.userCredentials.email && this.userCredentials.email !== ""){
-      user["email"] = this.userCredentials.email;
-    }
-    if(this.userCredentials.password && this.userCredentials.password !== ""){
-      user["password"] = this.userCredentials.password;
-    }
-    //this.dialogRef.close();
-    this.router.navigate(['/register'], {state: {userData: user}})
+    this.registerationEvent.emit()
+    let dialog = this._dialog.open(UserRegistrationPanelComponent, {
+      width: '90vw',
+      maxHeight: '90vh'
+    })
+    dialog.componentInstance.doneEvent.subscribe(event => {
+      this._userService.registerUser(event).subscribe((data) => {
+        this._userService.setCurrentUser(<User>data)
+        this.router.navigate(['/home'])
+        dialog.close()
+      });
+    })
   }
 }

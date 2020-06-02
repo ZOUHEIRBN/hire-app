@@ -1,81 +1,12 @@
-form.flex{
+form{
   display: flex;
-  align-self: center;
-  flex-flow: column;
-  flex-direction: column;
-
-}
-form.flex>.col2{
-  width: 100%;
-  padding: 3%;
-}
-.col2 {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
   flex-wrap: wrap;
 }
-div.col2.header{
-  height: 0px;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-div.col2.header>*{
-  flex: 1 1 0%;
-}
-div.col2.header>i{
-  flex-grow: 0;
-  display: block;
-  padding: 2vmin;
-  font-size: 30pt;
-  color: #fff8;
-  background-size: cover;
-  background-position: center;
-  background-color: var(--primary-color-light);
-  border-radius: 10vmin;
-}
-div.col2.header:hover>i{
-  color: #fff;
-}
 mat-form-field{
-    margin: 3%;
-    padding: .2vmin;
-    flex: 20% 1 1;
-
+  flex: 49% 1 1;
 }
-div.mat-card-actions{
-  display: flex;
-  flex-flow: row;
-  margin: 3%;
-}
-.mat-card-actions button {
-  width: 100%;
-}
-div.mat-card-actions, div.mat-card-actions~*{
-  flex-grow: 1;
-}
-div.mat-card-actions + a, div.mat-card-actions + a:visited {
-  color: var(--primary-color);
-  font-weight: lighter;
-  text-align: center;
-}
-
-@media(orientation: portrait){
-  form.flex{
-    width: 100%;
-    align-items: center;
-  }
-  form.flex>.col2{
-    width: 100%;
-  }
-  form.flex>*:not(.mat-card-actions){
-    flex-grow: 1;
-  }
-}
-@media only screen and (orientation: landscape) and (max-height: 720px){
+@media(max-width: 599px) and (orientation: portrait){
   mat-form-field{
-    margin: 1%;
-    width: 0%;
-    flex: 1 0 40%;
+    flex: 100% 1 1;
   }
 }
