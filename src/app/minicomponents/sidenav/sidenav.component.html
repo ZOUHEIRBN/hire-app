@@ -1,6 +1,6 @@
 <mat-nav-list *ngIf="user">
   <mat-list-item (click)="goto('/user/'+user.email)">
-    <img matListAvatar src="{{user.imageUrl}}" alt="...">
+    <img matListAvatar [src]="sanitize(user.imageUrl)" alt="...">
     <h1 matLine> {{user.email}} </h1>
     <button mat-icon-button>
         <mat-icon>account_box</mat-icon>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { SERVER_URL, httpOptions } from './post.service';
+import { SERVER_URL, httpOptions } from './_server_variables'
 import { map } from 'rxjs/operators';
 import { Company } from '../interfaces/company';
 import { UserService } from './user.service';

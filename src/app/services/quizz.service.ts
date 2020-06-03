@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Question } from '../interfaces/questions';
-import { SERVER_URL } from './post.service';
+import { SERVER_URL, httpOptions } from './_server_variables'
 import { map } from 'rxjs/operators';
 import { Skill } from '../interfaces/resume';
 

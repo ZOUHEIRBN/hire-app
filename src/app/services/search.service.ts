@@ -3,7 +3,7 @@ import { BehaviorSubject, from } from 'rxjs';
 import { User } from '../interfaces/user';
 import { UserService } from './user.service';
 import { CompanyService } from './company.service';
-import { PostService, SERVER_URL } from './post.service';
+import { SERVER_URL, httpOptions } from './_server_variables'
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Company } from '../interfaces/company';

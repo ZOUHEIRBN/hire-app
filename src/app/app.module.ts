@@ -71,7 +71,7 @@ import { CommentSectionComponent } from './minicomponents/comment-section/commen
 import { SidenavComponent } from './minicomponents/sidenav/sidenav.component';
 import { ConnectionPanelComponent } from './panels/connection-panel/connection-panel.component';
 
-import { SERVER_URL } from './services/post.service';
+import { SERVER_URL } from './services/_server_variables';
 import { PostEditorDialogComponent } from './panels/post-editor-dialog/post-editor-dialog.component';
 import { SocketService } from './services/socket.service';
 import { NotificationsListComponent } from './minicomponents/notifications-list/notifications-list.component';
@@ -81,6 +81,7 @@ import { QuestionCardComponent } from './subcomponents/question-card/question-ca
 import { QuestionEditorComponent } from './panels/question-editor/question-editor.component';
 import { QuizzPanelComponent } from './panels/quizz-panel/quizz-panel.component';
 import { QuestionListComponent } from './view_components/question-list/question-list.component';
+import { PromptComponent } from './prompt/prompt.component';
 const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Control-Allow-Origin': '*'}  };
 
 @NgModule({
@@ -118,7 +119,8 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     QuestionCardComponent,
     QuestionEditorComponent,
     QuizzPanelComponent,
-    QuestionListComponent
+    QuestionListComponent,
+    PromptComponent
   ],
   imports: [
 

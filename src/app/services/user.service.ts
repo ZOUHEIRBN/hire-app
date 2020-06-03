@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { User } from '../interfaces/user';
-import { SERVER_URL, httpOptions } from './post.service'
+import { SERVER_URL, httpOptions } from './_server_variables'
 import { Subject, BehaviorSubject } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 

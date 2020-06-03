@@ -34,6 +34,7 @@ export class UserThumbnailComponent implements OnInit {
     })
   }
   ngOnInit(): void {
+
   }
 
 }

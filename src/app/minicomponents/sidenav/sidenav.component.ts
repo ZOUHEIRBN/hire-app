@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { User, UserLogin } from 'src/app/interfaces/user';
 import { UserService } from 'src/app/services/user.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'hire-sidenav',
@@ -15,10 +16,13 @@ export class SidenavComponent implements OnInit {
   @Output() userDisconnected = new EventEmitter()
   selected = ''
   default_user = {'email':'', 'password':''}
-  constructor(private _router:Router, private _userService:UserService) { }
+  constructor(private sanitizer:DomSanitizer, private _router:Router, private _userService:UserService) { }
 
   ngOnInit(): void {
 
+  }
+  sanitize(image){
+    return this.sanitizer.bypassSecurityTrustUrl(image)
   }
 
   goto(selected){

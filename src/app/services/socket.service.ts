@@ -1,7 +1,7 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Socket, SocketIoConfig } from 'ngx-socket-io'
 import { Notification, notifications } from '../interfaces/notifications'
-import { SERVER_URL } from './post.service';
+import { SERVER_URL, httpOptions } from './_server_variables'
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 

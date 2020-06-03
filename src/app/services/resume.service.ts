@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Resume, default_resume } from '../interfaces/resume';
 import { UserService } from './user.service';
 import { HttpClient } from '@angular/common/http';
-import { SERVER_URL, httpOptions } from './post.service';
+import { SERVER_URL, httpOptions } from './_server_variables'
 import { map } from 'rxjs/operators';
 
 @Injectable({

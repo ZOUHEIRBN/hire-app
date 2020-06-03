@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { CompanyService } from 'src/app/services/company.service';
-import { PostService, SERVER_URL } from 'src/app/services/post.service';
+import { PostService } from 'src/app/services/post.service';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { Post } from 'src/app/interfaces/post';

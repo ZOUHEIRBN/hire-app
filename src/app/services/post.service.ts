@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SERVER_URL, httpOptions } from './_server_variables'
 import { Post, Comment } from '../interfaces/post';
 import { map } from 'rxjs/operators';
+import { UserService } from './user.service';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -9,14 +12,18 @@ export class PostService {
   // private _postlist = new Subject<Post[]>();
   // _postlist$ = this._postlist.asObservable();
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient:HttpClient, private _userService:UserService) { }
   public async getPost(id){
     var fetchedData = await fetch(SERVER_URL+"posts/"+id);
     var fetchedDataJSON = await fetchedData.json();
     return fetchedDataJSON;
   }
   public getPosts(){
-		return this.httpClient.get(SERVER_URL+"posts/").pipe(map(response => {
+    let current_id = '0'
+    if(this._userService.getCurrentUser()){
+      current_id = this._userService.getCurrentUser().id
+    }
+		return this.httpClient.get(SERVER_URL+"posts/current_id="+current_id).pipe(map(response => {
       return response['body'];
     }));
   }
@@ -41,13 +48,15 @@ export class PostService {
     }));
   }
   createPost(post){
-    return this.httpClient.post<Post>(SERVER_URL+"posts/", post, httpOptions)
+    let current_id = this._userService.getCurrentUser().id || 0
+    return this.httpClient.post<Post>(SERVER_URL+"posts/current_id="+current_id, post, httpOptions)
   }
   deletePost(post:Post){
     return this.httpClient.delete<Post>(SERVER_URL+"posts/"+ post.id, httpOptions)
   }
   editPost(post:Post){
-    return this.httpClient.put<Post>(SERVER_URL+"posts/", post, httpOptions)
+    let current_id = this._userService.getCurrentUser().id || 0
+    return this.httpClient.put<Post>(SERVER_URL+"posts/current_id="+current_id, post, httpOptions)
   }
 
 
@@ -61,11 +70,3 @@ export class PostService {
 }
 
 
-export const SERVER_URL = "http://localhost:3000/";
-export const httpOptions = {
-  headers: new HttpHeaders({
-    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE',
-    'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
