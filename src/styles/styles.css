@@ -44,15 +44,7 @@ input:-webkit-autofill {
 mat-card-toolbar{
   width: 100vw;
 }
-post-page{
-  display: block;
-    position: fixed;
-    overflow-y: auto;
-    overflow-x: hidden;
-    width: 100%;
-    height: 100vh;
-    left: .5%;
-}
+
 div.mat-tab-body-wrapper{
   margin-bottom: calc(.4*var(--menu-height));
 }

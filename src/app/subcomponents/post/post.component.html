@@ -122,7 +122,7 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button mat-button routerLink="{{ '/post/' + post.id }}"
+    <button mat-button (click)="openPost()"
       mat-icon-button aria-label="Visit profile">
       <mat-icon>zoom_out_map</mat-icon>
     </button>
@@ -138,9 +138,7 @@
         matBadgePosition="above after"
         matBadgeColor="accent">comment</mat-icon>
     </button>
-    <button mat-icon-button aria-label="Settings">
-      <mat-icon>edit</mat-icon>
-    </button>
+
   </mat-card-actions>
 
 </mat-card>

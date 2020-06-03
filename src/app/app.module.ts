@@ -81,7 +81,7 @@ import { QuestionCardComponent } from './subcomponents/question-card/question-ca
 import { QuestionEditorComponent } from './panels/question-editor/question-editor.component';
 import { QuizzPanelComponent } from './panels/quizz-panel/quizz-panel.component';
 import { QuestionListComponent } from './view_components/question-list/question-list.component';
-import { PromptComponent } from './prompt/prompt.component';
+import { PromptComponent } from './minicomponents/prompt/prompt.component';
 const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Control-Allow-Origin': '*'}  };
 
 @NgModule({

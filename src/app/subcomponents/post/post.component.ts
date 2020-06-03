@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PostEditorDialogComponent } from 'src/app/panels/post-editor-dialog/post-editor-dialog.component';
 import { UserService } from 'src/app/services/user.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { PostPageComponent } from 'src/app/view_components/post-page/post-page.component';
 
 @Component({
   selector: 'post',
@@ -81,6 +82,15 @@ export class PostComponent implements OnInit {
     this._bottomSheet.open(CommentSectionComponent, {
       data: { comments: this.post.comments, post_id: this.post.id },
     });
+  }
+  openPost(){
+    let dialog = this.dialog.open(PostPageComponent, {
+      maxHeight: '90vh',
+      width: '90vw',
+      data: {
+        post: this.post
+      }
+    })
   }
   deletePost(){
     this._postService.deletePost(this.post).subscribe(response => {

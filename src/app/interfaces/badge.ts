@@ -1,5 +1,6 @@
-export interface Badge{
-  category: string,
-  name: string,
-  value?:number,
+export class Badge{
+  category: string
+  name: string
+  value?:number
+  text:string = ''
 }

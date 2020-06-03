@@ -1,8 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { PostService } from 'src/app/services/post.service';
 import { ActivatedRoute } from '@angular/router';
-import { Post } from 'src/app/interfaces/post';
+import { Post, JobOffer, JobDemand } from 'src/app/interfaces/post';
 import { developDown } from 'src/app/app-animations';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'post-page',
@@ -12,28 +15,30 @@ import { developDown } from 'src/app/app-animations';
 })
 export class PostPageComponent implements OnInit {
   @Input() post;
-  @Input() embed = false;
-  post_id;
-  constructor(private route:ActivatedRoute, private _postService:PostService) { }
+  days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+  floatLabelControl = new FormControl('auto')
+
+
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data,
+   private sanitizer:DomSanitizer,
+   private _postService:PostService) { }
 
   ngOnInit(): void {
-    this.loadPost()
-  }
-  async loadPost(){
-    this.route.params.subscribe(params => {
-      if(params.post_id)
-      {
-        this.post_id = params.post_id;
-
-        let promise = this._postService.getPost(this.post_id)
-        promise.then(response => {
-          this.post = response
-        })
+    if(this.data.post){
+      this.post = <Post>this.data.post
+      if(this.post.subject.toLowerCase() == 'job' && this.post.type.toLowerCase() == 'offer'){
+        this.post = <JobOffer>this.data.post
       }
-      //else Goto Homepage
-    });
+      else if(this.post.subject.toLowerCase() == 'job' && this.post.type.toLowerCase() == 'demand'){
+        this.post = <JobDemand>this.data.post
+      }
+      console.log(this.post)
+    }
   }
-
+  sanitize(image){
+    return this.sanitizer.bypassSecurityTrustUrl(image)
+  }
 
   toggleFocus(event: any){
     var target = event.target;
