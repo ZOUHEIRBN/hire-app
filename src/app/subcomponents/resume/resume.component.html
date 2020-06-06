@@ -192,9 +192,8 @@
 
               <mat-form-field>
                 <mat-label>Sector</mat-label>
-                <mat-select [disabled]="!editMode" [(ngModel)]="pro.sector">
-                  <mat-option value="IT">IT</mat-option>
-                  <mat-option value="Agriculture">Agriculture</mat-option>
+                <mat-select [disabled]="!editMode" [(ngModel)]="pro.sector" [value]="pro.sector">
+                  <mat-option *ngFor="let option of sectors" [value]="option">{{option}}</mat-option>
                 </mat-select>
               </mat-form-field>
 

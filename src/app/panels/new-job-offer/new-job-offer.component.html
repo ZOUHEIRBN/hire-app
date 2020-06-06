@@ -3,18 +3,129 @@
     <mat-step>
       <form>
         <ng-template matStepLabel>Post main information</ng-template>
-        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+        <mat-form-field class="fullWidth" appearance="standard" [floatLabel]="floatLabelControl.value">
           <mat-label>Title</mat-label>
           <input [(ngModel)]="newPost.title" name="title" matInput placeholder="Post title">
         </mat-form-field>
-        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+
+        <mat-form-field class="fullWidth" appearance="standard" [floatLabel]="floatLabelControl.value">
           <mat-label>Body</mat-label>
           <textarea [(ngModel)]="newPost.description" name="description" matInput placeholder="Write something here."></textarea>
         </mat-form-field>
-        <div>
+
+        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+          <mat-label>Cities</mat-label>
+          <mat-select [(ngModel)]="newPost.cities" [value]="newPost.cities" name="city" multiple>
+            <mat-option *ngFor="let option of cities" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+          <mat-label>Region</mat-label>
+          <input [(ngModel)]="newPost.region" [value]="newPost.region" name="region" matInput placeholder="Ex: Anfa, Al-Irfane, Guéliz...">
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+          <mat-label>Function</mat-label>
+          <mat-select [(ngModel)]="newPost.function" [value]="newPost.function" name="function">
+            <mat-option *ngFor="let option of functions" [value]="option">{{ option }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+          <mat-label>Hierarchy level</mat-label>
+          <mat-select [(ngModel)]="newPost.hierarchy_level" [value]="newPost.hierarchy_level" name="hierarchy_level">
+            <mat-option *ngFor="let hlv of hierarchy_levels" [value]="hlv">{{ hlv }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="fullWidth">
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Academic requirements</ng-template>
+      <form *ngFor="let degree of newPost.requiredDegrees">
+        <div class="flexFormFields"> <!-- ngfor skill in newpost.required_skills -->
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Required degree option</mat-label>
+            <input matInput
+                placeholder="Ex: Computer Studies and Softwiare Development "
+                [(ngModel)]="degree.option" [value]="degree.option" name="skill">
+          </mat-form-field>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Minimal required level</mat-label>
+            <mat-select [(ngModel)]="degree.level" [value]="degree.level" name="level">
+              <mat-option [value]="0">High School</mat-option>
+              <mat-option [value]="1">Bac +1</mat-option>
+              <mat-option [value]="2">Bac +2</mat-option>
+              <mat-option [value]="3">Bac +3</mat-option>
+              <mat-option [value]="4">Bac +4</mat-option>
+              <mat-option [value]="5">Bac +5</mat-option>
+              <mat-option [value]="6">Bac +6</mat-option>
+              <mat-option [value]="7">Bac +7 and beyond</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Accepted diploma types</mat-label>
+            <mat-select [(ngModel)]="degree.diploma_types" name="diploma_type" multiple>
+              <mat-option [value]="'Technicien'">Technicien</mat-option>
+              <mat-option [value]="'Technicien Spécialisé'">Technicien Spécialisé</mat-option>
+              <mat-option [value]="'Bachelor'">Bachelor</mat-option>
+              <mat-option [value]="'Master'">Master</mat-option>
+              <mat-option [value]="'MBA'">MBA</mat-option>
+              <mat-option [value]="'Engineer'">Engineer</mat-option>
+              <mat-option [value]="'PHD'">PHD</mat-option>
+              <mat-option [value]="'Other'">Other</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <button mat-button>
+            <mat-icon>delete</mat-icon>
+          </button> -->
+        </div>
+
+      </form>
+      <div>
+        <button mat-button (click)="new_degree()">Add a degree</button>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Required experience</ng-template>
+      <form *ngFor="let exp of newPost.requiredExp">
+        <div class="flexFormFields"> <!-- ngfor skill in newpost.required_skills -->
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Title</mat-label>
+            <input matInput
+                placeholder="Ex: HR Management..."
+                [(ngModel)]="exp.title" [value]="exp.title" name="skill">
+          </mat-form-field>
+          <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+            <mat-label>Minimal required level</mat-label>
+            <mat-select [(ngModel)]="exp.level" [value]="exp.level" name="level">
+              <mat-option [value]="0">Fresh student</mat-option>
+              <mat-option [value]="1">Less than 2 years</mat-option>
+              <mat-option [value]="2">2 to 5 years</mat-option>
+              <mat-option [value]="3">5 to 8 years</mat-option>
+              <mat-option [value]="4">8 to 10 years</mat-option>
+              <mat-option [value]="5">More than 10 years</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- <button mat-button>
+            <mat-icon>delete</mat-icon>
+          </button> -->
+        </div>
+
+      </form>
+      <div>
+        <button mat-button (click)="new_exp()">Add an experience</button>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
     </mat-step>
 
     <mat-step>
@@ -97,17 +208,32 @@
             </mat-select>
           </mat-form-field>
           <div class="mat-form-slider">
-            <mat-label>Working hours</mat-label>
+            <mat-label>Daily regular working hours</mat-label>
             <mat-slider
                 class="example-margin"
-                name="workhours"
+                name="regular_workhours"
                 [disabled]="false"
                 [invert]="false"
                 [max]="12"
                 [min]="0"
                 [thumbLabel]="true"
                 [tickInterval]="12"
-                [(ngModel)]="newPost.workhours"
+                [(ngModel)]="newPost.regular_workhours"
+                [vertical]="false">
+            </mat-slider>
+          </div>
+          <div class="mat-form-slider">
+            <mat-label>Weekly additional working hours</mat-label>
+            <mat-slider
+                class="example-margin"
+                name="additional_workhours"
+                [disabled]="false"
+                [invert]="false"
+                [max]="12"
+                [min]="0"
+                [thumbLabel]="true"
+                [tickInterval]="12"
+                [(ngModel)]="newPost.additional_workhours"
                 [vertical]="false">
             </mat-slider>
           </div>

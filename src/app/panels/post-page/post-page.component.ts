@@ -24,16 +24,22 @@ export class PostPageComponent implements OnInit {
    private sanitizer:DomSanitizer,
    private _postService:PostService) { }
 
+
+
   ngOnInit(): void {
     if(this.data.post){
       this.post = <Post>this.data.post
-      if(this.post.subject.toLowerCase() == 'job' && this.post.type.toLowerCase() == 'offer'){
-        this.post = <JobOffer>this.data.post
-      }
-      else if(this.post.subject.toLowerCase() == 'job' && this.post.type.toLowerCase() == 'demand'){
-        this.post = <JobDemand>this.data.post
+      if(this.post.subject.toLowerCase() == 'job'){
+
+        if(this.post.type.toLowerCase() == 'offer'){
+          this.post = <JobOffer>this.data.post
+        }
+        else if(this.post.type.toLowerCase() == 'demand'){
+          this.post = <JobDemand>this.data.post
+        }
       }
       console.log(this.post)
+
     }
   }
   sanitize(image){
@@ -56,5 +62,7 @@ export class PostPageComponent implements OnInit {
       target.setAttribute("focus", "true");
     }
   }
-
+  onSelect(event){
+    console.log(event)
+  }
 }

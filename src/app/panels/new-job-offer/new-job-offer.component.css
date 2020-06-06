@@ -8,10 +8,13 @@ mat-vertical-stepper{
 form {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
+  flex-direction: row;
 }
 mat-form-field, div.mat-form-slider{
-  flex: 50% 1 0;
+  flex: 49% 0 1;
+}
+mat-form-field.fullWidth, div.fullWidth{
+  flex: 60% 1 0;
 }
 div.mat-form-slider{
   display: flex;
@@ -23,7 +26,7 @@ div.mat-form-slider{
   flex-wrap: wrap;
 }
 .flexFormFields mat-form-field, .flexFormFields div.mat-form-slider{
-  flex: 49% 0 0;
+  flex: 32% 1 1;
 }
 mat-vertical-stepper button:last-child{
   background-color: var(--primary-color);

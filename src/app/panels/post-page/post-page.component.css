@@ -1,0 +1,98 @@
+.example-header-image {
+  background-size: cover;
+}
+.mat-card-image{
+  width: calc(100% + 16px);
+}
+.mat-tab-body-content{
+  display: flex!important;
+}
+.skills{
+  display: flex;
+  align-items: center;
+  color: var(--primary-color);
+  background-color: transparent;
+  transition: all .05s ease-in;
+}
+.skills:hover{
+  color: var(--secondary-color);
+}
+.skills h2{
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+.flex{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.flex, mat-list{
+  overflow: auto;
+  max-height: 63vh;
+}
+.pies{
+  flex-direction: row!important;
+}
+@media(max-width: 599px){
+  .flex, .pies{
+    flex-direction: column!important;
+  }
+}
+
+.flex>div{
+  display: flex;
+  flex-direction: column;
+  flex: 49% 1 1;
+  padding: 4px;
+}
+.fullWidth {
+  flex: 100% 1 1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex
+}
+.fullWidth>* {
+  flex: 25% 0 0;
+}
+.fullWidth>h2 {
+  flex-basis: 100%;
+  text-align: center;
+}
+.center{
+  align-items: center;
+  justify-content: center;
+  flex: 49% 1 1;
+  flex-direction: row;
+  display: flex;
+}
+.center>*{
+  flex: 49% 1 1;
+}
+.flex h2>span{
+  color: var(--secondary-color)
+}
+
+svg{
+  margin: calc(var(--menu-height)*.05);
+}
+svg g circle{
+  fill: transparent;
+  stroke: #ddd8;
+  stroke-dashoffset: 0%;
+  stroke-dasharray: 180%;
+  stroke-width: 10%;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+svg g circle+circle{
+  stroke: var(--secondary-color);
+}
+svg g circle+circle+circle{
+  stroke: var(--secondary-color-light);
+  stroke-width: 5%;
+}
+svg g text {
+  fill: var(--secondary-color);
+  font-size: xx-large;
+  font-weight: bold;
+}

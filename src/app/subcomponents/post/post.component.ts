@@ -9,7 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PostEditorDialogComponent } from 'src/app/panels/post-editor-dialog/post-editor-dialog.component';
 import { UserService } from 'src/app/services/user.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { PostPageComponent } from 'src/app/view_components/post-page/post-page.component';
+import { PostPageComponent } from 'src/app/panels/post-page/post-page.component';
 
 @Component({
   selector: 'post',
@@ -35,10 +35,10 @@ export class PostComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(typeof this.post.imageUrl === 'string'){
-      //console.log(this.post.imageUrl)
-    }
     this.bg_image = this.sanitize(this.post.imageUrl)
+    if(this.post.subject.toLowerCase() == 'job' && this.post.type.toLowerCase() == 'offer'){
+      this.post = <JobOffer>this.post
+    }
   }
   sanitize(image){
     return this.sanitizer.bypassSecurityTrustUrl(image)
@@ -111,6 +111,12 @@ export class PostComponent implements OnInit {
         this.post = <Post>response
         dialogRef.close()
       })
+    })
+  }
+  follow(){
+    this._postService.follow(this.post, this._userService.getCurrentUser().id).subscribe(res => {
+      console.log(res)
+      this.post = <Post>res
     })
   }
 }

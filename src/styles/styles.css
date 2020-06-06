@@ -46,7 +46,7 @@ mat-card-toolbar{
 }
 
 div.mat-tab-body-wrapper{
-  margin-bottom: calc(.4*var(--menu-height));
+  margin-bottom: calc(.04*var(--menu-height));
 }
 /* Buttons */
 

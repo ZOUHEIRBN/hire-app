@@ -6,6 +6,7 @@ mat-card.mother-card{
   margin-top: 10px;
   height: calc(100vh - 108px);
   overflow: hidden;
+  padding-bottom: 0px;
 }
 mat-card-content{
   display: flex;
@@ -46,7 +47,9 @@ mat-tab-group{
   /* top: calc(var(--menu-height) + 10px + 16px); */
   top: 0;
 }
-
+div.mat-tab-body-wrapper{
+  margin-bottom: 0px;
+}
 .panel-1 + div.mat-card-info{
   padding: 1%;
   width: 70%;

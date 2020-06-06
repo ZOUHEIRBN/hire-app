@@ -123,12 +123,13 @@
 
   <mat-card-actions>
     <button mat-button (click)="openPost()"
-      mat-icon-button aria-label="Visit profile">
-      <mat-icon>zoom_out_map</mat-icon>
+      mat-icon-button aria-label="Expand">
+      <mat-icon>unfold_more</mat-icon>
     </button>
-    <button mat-icon-button aria-label="Like">
-      <mat-icon>star</mat-icon>
+    <button mat-icon-button aria-label="Submit" (click)="follow()" *ngIf="post.subject.toLowerCase() == 'job' && post.type.toLowerCase() == 'offer'">
+      <mat-icon>{{ post.following ? 'star': 'star_outline'}}</mat-icon>
     </button>
+
     <button
       mat-icon-button
       aria-label="Comment"

@@ -10,7 +10,7 @@ import { RegisterComponent } from './view_components/register/register.component
 import { CompanyListComponent } from './view_components/company-list/company-list.component';
 import { SearchResultsComponent } from './view_components/search-results/search-results.component';
 import { HomeComponent } from './view_components/home/home.component';
-import { PostPageComponent } from './view_components/post-page/post-page.component';
+import { PostPageComponent } from './panels/post-page/post-page.component';
 import { CompanyProfileComponent } from './view_components/company-profile/company-profile.component';
 import { QuestionListComponent } from './view_components/question-list/question-list.component';
 

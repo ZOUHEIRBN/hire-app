@@ -1,0 +1,146 @@
+<mat-card-header>
+  <div mat-card-avatar class="example-header-image" [ngStyle]="{'background-image': 'url('+post.owner.imageUrl+')'}"></div>
+  <mat-card-title>{{ post.owner.email }}</mat-card-title>
+  <mat-card-subtitle>Posted on {{ post.timestamp }}</mat-card-subtitle>
+</mat-card-header>
+
+<mat-card-content>
+  <mat-tab-group>
+    <mat-tab label="Basic informations">
+      <div class="flex">
+        <div>
+          <h2>
+            {{ post.hierarchy_level }} - {{ post.function }}<br>
+            <span>{{ post.cities.join(' - ') }}</span>
+          </h2>
+        </div>
+        <img mat-card-image *ngIf="post.imageUrl" [src]="sanitize(post.imageUrl)" alt="@{{ post.owner.email }}">
+        <h2>{{ post.title }}</h2>
+        <p>
+          {{ post.description }}
+        </p>
+      </div>
+    </mat-tab>
+    <mat-tab label="Job requirements" *ngIf="post.subject.toLowerCase() == 'job' && post.type.toLowerCase() == 'offer'">
+      <mat-list>
+        <div mat-subheader>Required degrees</div>
+        <mat-list-item *ngFor="let degree of post.requiredDegrees">
+          <mat-icon mat-list-icon>school</mat-icon>
+          <div mat-line>{{ degree.option }}</div>
+          <div mat-line>
+            {{ degree.level == 0 ? 'Bac': 'Bac +' + degree.level }}
+            <span *ngFor="let d of degree.diploma_types">
+              {{ d == degree.diploma_types[0] ? '(': ', ' }}
+              {{ d }}
+            </span>)
+          </div>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <div mat-subheader>Experience</div>
+        <mat-list-item *ngFor="let exp of post.requiredExp">
+          <mat-icon mat-list-icon>work</mat-icon>
+          <div mat-line>{{ exp.title }}</div>
+          <div mat-line>
+            <mat-icon *ngFor="let i of [0, 1, 2, 3, 4]">
+              {{ i < exp.level ? 'star':'star_outline'}}
+            </mat-icon>
+          </div>
+        </mat-list-item>
+
+        <mat-divider></mat-divider>
+
+        <div mat-subheader>Skills</div>
+        <mat-list-item *ngFor="let skill of post.requiredSkills">
+          <mat-icon mat-list-icon>emoji_objects</mat-icon>
+          <div mat-line>{{ skill.skill }}</div>
+          <div mat-line>
+            <mat-icon *ngFor="let i of [0, 1, 2, 3, 4]">
+              {{ i < skill.level ? 'star':'star_outline'}}
+            </mat-icon>
+          </div>
+        </mat-list-item>
+      </mat-list>
+
+    </mat-tab>
+    <mat-tab label="Job constraints" *ngIf="post.subject.toLowerCase() == 'job' && post.type.toLowerCase() == 'offer'">
+      <div class="flex">
+        <div>
+          <h2>
+            Salary<br>
+            <span>{{ post.salary }}</span>
+          </h2>
+        </div>
+
+        <div>
+          <h2>
+            Contract type<br>
+            <span>{{ post.contractType }}</span>
+          </h2>
+        </div>
+
+
+
+        <div style="flex-direction: column;">
+          <div class="center">
+            <h2>Regular Workhours</h2>
+            <svg preserveAspectRatio="xMidYMid meet" focusable="false" ng-reflect-ng-switch="false" viewBox="0 0 100 70">
+              <g>
+                <circle cx="50%" cy="50%" r="25" class="ng-star-inserted"></circle>
+                <circle cx="50%" cy="50%" r="25" class="ng-star-inserted"
+                [ngStyle]="{'stroke-dashoffset': 15*(12-post.regular_workhours) + '%'}"></circle>
+
+                <text x="50%" y="50%" text-anchor="middle" dy=".3em">
+                  {{ post.regular_workhours }}
+                </text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="center">
+            <h2>Additionnal Workhours</h2>
+            <svg preserveAspectRatio="xMidYMid meet" focusable="false" ng-reflect-ng-switch="false" viewBox="0 0 100 70">
+              <g>
+                <circle cx="50%" cy="50%" r="25" class="ng-star-inserted"></circle>
+                <circle cx="50%" cy="50%" r="25" class="ng-star-inserted"
+                [ngStyle]="{'stroke-dashoffset': 15*(12-post.additional_workhours) + '%'}"></circle>
+
+                <text x="50%" y="50%" text-anchor="middle" dy=".3em">
+                  {{ post.additional_workhours }}
+                </text>
+              </g>
+            </svg>
+          </div>
+
+        </div>
+
+        <div>
+          <div class="fullWidth">
+            <h2>Workdays</h2>
+            <mat-checkbox *ngFor="let day of days" [disabled]="true" [checked]="post.workdays.includes(day)">
+              {{ day }}
+            </mat-checkbox>
+          </div>
+
+          <div>
+            <h2>
+              National business travels :
+              <span>{{ post.businessTravels_national }}</span>
+            </h2>
+          </div>
+
+          <div>
+            <h2>
+              International business travels :
+              <span>{{ post.businessTravels_international }}</span>
+            </h2>
+          </div>
+
+        </div>
+      </div>
+
+    </mat-tab>
+  </mat-tab-group>
+</mat-card-content>
+

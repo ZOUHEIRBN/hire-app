@@ -122,8 +122,12 @@ export class AcademicProject implements Criterion{
   actions:string =  "Lorem ipsum dolor sit amet"
 }
 export class Language implements Criterion{
-  lang:string = "Arabic"
-  level:number = 0
+  lang:string
+  level:number
+  constructor(lang="", level=0){
+    this.lang = lang
+    this.level = level
+  }
 }
 export class Skill implements Criterion{
   skill:string
@@ -131,5 +135,15 @@ export class Skill implements Criterion{
   constructor(skill="", level=0){
     this.skill = skill
     this.level = level
+  }
+}
+export class Degree implements Criterion{
+  option:string
+  level:number
+  diploma_types: string[]
+  constructor(option="", level=0, dip_types=[]){
+    this.option = option
+    this.level = level
+    this.diploma_types = dip_types
   }
 }

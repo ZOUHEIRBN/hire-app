@@ -44,6 +44,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { BadgeComponent } from './minicomponents/badge/badge.component';
 import { LoginComponent } from './view_components/login/login.component';
@@ -60,7 +61,7 @@ import { NotificationComponent } from './minicomponents/notification/notificatio
 import { CompanyListComponent } from './view_components/company-list/company-list.component';
 import { SearchResultsComponent } from './view_components/search-results/search-results.component';
 import { HomeComponent } from './view_components/home/home.component';
-import { PostPageComponent } from './view_components/post-page/post-page.component';
+import { PostPageComponent } from './panels/post-page/post-page.component';
 import { ResumeComponent } from './subcomponents/resume/resume.component';
 import { CompanyProfileComponent } from './view_components/company-profile/company-profile.component';
 import { GoogleMapComponent } from './minicomponents/google-map/google-map.component';
@@ -158,6 +159,7 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     MatSnackBarModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
+    NgxChartsModule,
     GoogleMapsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyC2pCpXrCKOgMJNl_qyHapgyfVRN2Rc6_Y'

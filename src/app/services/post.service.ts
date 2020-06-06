@@ -58,7 +58,9 @@ export class PostService {
     let current_id = this._userService.getCurrentUser().id || 0
     return this.httpClient.put<Post>(SERVER_URL+"posts/current_id="+current_id, post, httpOptions)
   }
-
+  follow(post:Post, user_id){
+    return this.httpClient.put<Post>(SERVER_URL+"posts/follow/"+user_id, post, httpOptions)
+  }
 
 
   addComment(post_id, comment){
