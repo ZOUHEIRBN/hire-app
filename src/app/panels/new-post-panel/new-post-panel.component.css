@@ -39,7 +39,6 @@ form.createPost{
 form.createPost section.header {
   display: flex;
   padding: 0% 2%;
-  flex-wrap: wrap;
 }
 
 form.createPost section.newPost{

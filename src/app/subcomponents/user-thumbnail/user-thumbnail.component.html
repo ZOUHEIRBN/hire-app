@@ -41,7 +41,7 @@
       <button mat-icon-button aria-label="Like" *ngIf="!this.iscurrentuser" (click)="follow(user.id)">
         <mat-icon>star</mat-icon>
       </button>
-      <button mat-icon-button aria-label="Settings" *ngIf="this.iscurrentuser" (click)="this.cogButtonClick.emit()">
+      <button mat-icon-button aria-label="Settings" *ngIf="this.iscurrentuser" (click)="editUser()">
         <mat-icon>settings</mat-icon>
       </button>
     </mat-card-actions>

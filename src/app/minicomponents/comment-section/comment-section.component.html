@@ -30,9 +30,9 @@
             <mat-icon>delete</mat-icon>
             <span>Delete</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="edited_comment_id = comment.id">
             <mat-icon>edit</mat-icon>
-            <span>edit</span>
+            <span>Edit</span>
           </button>
           <button mat-menu-item disabled>
             <mat-icon>report_problem</mat-icon>
@@ -40,7 +40,13 @@
           </button>
         </mat-menu>
       </span>
-      <span mat-line>{{ comment.text }}</span>
+      <span mat-line *ngIf="edited_comment_id != comment.id">{{ comment.text }}</span>
+      <mat-form-field mat-line *ngIf="edited_comment_id == comment.id">
+        <input matInput [(ngModel)]="comment.text" [value]="comment.text">
+        <button matSuffix mat-icon-button color="primary" (click)="editComment(comment)">
+          <mat-icon>add_comment</mat-icon>
+        </button>
+      </mat-form-field>
     </a>
   </div>
 </mat-nav-list>

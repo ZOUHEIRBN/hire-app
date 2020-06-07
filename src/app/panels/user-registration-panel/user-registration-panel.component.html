@@ -1,30 +1,63 @@
 <mat-horizontal-stepper>
   <mat-step>
     <ng-template matStepLabel>Fill out your name</ng-template>
-    <form>
-      <mat-form-field appearance="standard">
+    <form [formGroup]="user_editor">
+      <mat-form-field appearance="standard" [floatLabel]="floatlabelControl.value">
         <mat-label>First name</mat-label>
-        <input matInput required type="text" name="first_name" [(ngModel)]="user.first_name" placeholder="First Name"/>
+        <input matInput required type="text" name="first_name" [(ngModel)]="user.first_name" [ngModelOptions]="{standalone: true}" placeholder="First Name" formControlName="first_name"/>
+        <mat-error *ngIf="user_editor.hasError('required', 'first_name')">
+          Please enter your new first name
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="standard">
+      <mat-form-field appearance="standard" [floatLabel]="floatlabelControl.value">
         <mat-label>Last name</mat-label>
-        <input matInput required type="text" name="last_name" [(ngModel)]="user.last_name" placeholder="Last Name"/>
+        <input matInput required type="text" name="last_name" [(ngModel)]="user.last_name" [ngModelOptions]="{standalone: true}" placeholder="Last Name" formControlName="last_name"/>
+        <mat-error *ngIf="user_editor.hasError('required', 'last_name')">
+          Please enter your new last name
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="standard">
+      <mat-form-field appearance="standard" [floatLabel]="floatlabelControl.value">
         <mat-label>Email</mat-label>
-        <input matInput required type="email" name="email" [(ngModel)]="user.email" placeholder="Email"/>
+        <input matInput required type="email" name="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone: true}" placeholder="Email" formControlName="email"/>
+        <mat-error *ngIf="user_editor.hasError('required', 'email')">
+          Please enter your new email
+        </mat-error>
+        <mat-error *ngIf="user_editor.hasError('email', 'email')">
+          Please enter a valid email
+        </mat-error>
       </mat-form-field>
-      <mat-form-field appearance="standard">
-        <mat-label>Confirm Email</mat-label>
-        <input matInput required type="email" name="email" placeholder="Confirm Email"/>
+
+      <mat-form-field appearance="standard" [floatLabel]="floatlabelControl.value">
+        <mat-label>Date of birth</mat-label>
+        <input [(ngModel)]="user.dateOfBirth" formControlName="dateOfBirth" name="dateOfBirth" matInput [matDatepicker]="picker"/>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-      <mat-form-field appearance="standard">
+
+      <mat-form-field appearance="standard" [floatLabel]="floatlabelControl.value">
         <mat-label>Password</mat-label>
-        <input matInput required type="password" name="password" [(ngModel)]="user.password" placeholder="Password"/>
+        <input matInput required [type]="passVisibility ? 'text':'password'" name="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}" placeholder="Password" formControlName="password"/>
+        <button mat-icon-button matSuffix (click)="passVisibility = !passVisibility">
+          <mat-icon>
+            {{ passVisibility ? 'visibility':'visibility_off' }}
+          </mat-icon>
+        </button>
+        <mat-error *ngIf="user_editor.hasError('required', 'password')">
+          Please enter your new password
+        </mat-error>
+        <mat-error *ngIf="user_editor.hasError('minlength', 'password')">
+          Please use a password longer than 8 characters
+        </mat-error>
+
       </mat-form-field>
-      <mat-form-field appearance="standard">
+
+
+      <mat-form-field appearance="standard" [floatLabel]="floatlabelControl.value">
         <mat-label>Confirm password</mat-label>
-        <input matInput required type="password" name="password" placeholder="Confirm Password"/>
+        <input matInput #confirmPassword required type="password" name="confirmPassword" placeholder="Confirm Password" formControlName="confirmPassword" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="confirmPassword.value !== user.password">
+          Passwords do not match
+        </mat-error>
       </mat-form-field>
       <div>
         <button mat-button matStepperNext>Next</button>
@@ -36,7 +69,7 @@
     <ng-template matStepLabel>Final step</ng-template>
     <div>
       <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="doneEvent.emit(user)">Subscribe</button>
+      <button mat-button (click)="doneEvent.emit(user)">Done</button>
     </div>
   </mat-step>
 </mat-horizontal-stepper>

@@ -13,6 +13,7 @@ export class CommentSectionComponent implements OnInit {
   newComment = new Comment()
   post_id;
   comments:Comment[]
+  edited_comment_id = ''
   @Output() addEvent = new EventEmitter()
   @Output() deleteEvent = new EventEmitter()
   constructor(
@@ -41,6 +42,11 @@ export class CommentSectionComponent implements OnInit {
         this.comments = this.comments.splice(index, 1)
       }
       this.deleteEvent.emit()
+    })
+  }
+  editComment(comment){
+    this._postService.editComment(this.post_id, comment).subscribe((response)=>{
+      comment = <Comment>response
     })
   }
 

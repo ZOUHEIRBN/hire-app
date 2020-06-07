@@ -37,17 +37,7 @@ export class CompanyListComponent implements OnInit {
     })
   }
 
-  createCompany(){
-    let dialog = this._dialog.open(CreateCompanyPanelComponent, {
-      width: '90vw'
-    })
-    dialog.componentInstance.doneEvent.subscribe(event => {
-      this._companyService.createCompany(event).subscribe(res => {
-        this.companies.unshift(res)
-        dialog.close()
-      })
-    })
-  }
+
   deleteCompany(event){
     let index = this.companies.indexOf(event)
     if(index > -1){

@@ -13,6 +13,7 @@ export class User implements UserLogin{
   imageUrl?: string;
   first_name: string
   last_name: string
+  dateOfBirth:Date
   email:string
   badges: Badge[]
   resume:Resume

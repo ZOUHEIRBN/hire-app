@@ -17,6 +17,7 @@ import { QuestionListComponent } from './view_components/question-list/question-
 
 export var routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: 'connected', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'offers', component: OfferListComponent },
   { path: 'about', component: AboutComponent },
@@ -31,8 +32,9 @@ export var routes: Routes = [
   { path: 'questions', component: QuestionListComponent}
 ];
 
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

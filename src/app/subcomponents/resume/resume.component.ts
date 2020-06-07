@@ -37,6 +37,12 @@ export class ResumeComponent implements OnInit {
       this.editMode = false
     })
   }
+  reset(){
+    this._resumeService.resetResume(this.user.id).subscribe(res => {
+      this.editMode = false
+      console.log(res)
+    })
+  }
   getPDFResume(){
     console.log(this.resume)
   }

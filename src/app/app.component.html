@@ -1,24 +1,33 @@
 <mat-toolbar color="primary">
-  <button mat-button action="MenuSwitch" (click)="showMenu()">
+  <button *ngIf="this.user" mat-button action="MenuSwitch" (click)="showMenu()">
     <i *ngIf="this.user" class="material-icons">menu</i>
     <span *ngIf="!this.user">Connect</span>
   </button>
   <h1 class="title">
-    {{ title }}
+    {{ user ? title : title + ' - You must connect to use this platform' }}
   </h1>
 
-  <div class="buttonBar horizontal search">
-    <!-- <input matInput [(ngModel)]="searchbarValue"> -->
-  </div>
-  <div class="buttonBar horizontal">
+  <div *ngIf="this.user" class="buttonBar horizontal">
     <!-- document.documentElement.style.setProperty(`--secondary-color`, 'gold'); -->
-    <button mat-icon-button>
+    <button color="primary" mat-flat-button>
       <mat-icon>search</mat-icon>
+      <span class="toolbarBtnText">Search</span>
     </button>
-    <button mat-icon-button [color]="'white'" (click)="showNotifications()" >
+
+    <button color="primary" mat-flat-button [matMenuTriggerFor]="createMenu">
+      <mat-icon>add</mat-icon>
+      <span class="toolbarBtnText">Create</span>
+    </button>
+    <mat-menu #createMenu>
+      <button mat-menu-item (click)="createPost()">Post</button>
+      <button mat-menu-item (click)="createCompany()">Company</button>
+    </mat-menu>
+
+    <button color="primary" mat-flat-button (click)="showNotifications()" >
       <mat-icon matBadge="{{ this.notifications_count !== 0 ? this.notifications_count : '' }}"
       matBadgePosition="above after"
       matBadgeColor="accent">notifications</mat-icon>
+      <span class="toolbarBtnText">Notifications</span>
     </button>
   </div>
 </mat-toolbar>

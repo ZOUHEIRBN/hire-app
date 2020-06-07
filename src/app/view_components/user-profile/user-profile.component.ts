@@ -7,6 +7,7 @@ import { PostFilterComponent } from '../../minicomponents/post-filter/post-filte
 import { CompanyService } from 'src/app/services/company.service';
 import { ResumeService } from 'src/app/services/resume.service';
 import { User } from 'src/app/interfaces/user';
+import { Resume } from 'src/app/interfaces/resume';
 
 
 
@@ -65,11 +66,14 @@ export class UserProfileComponent implements OnInit {
   editAndSave(target){
     if(target.editMode){
       console.log(target.resume)
-      this._resumeService.putResume(this.user.id, target.resume)
+      this._resumeService.putResume(this.user.id, target.resume).subscribe(res => {
+        console.log(res)
+        //this.user.resume = <Resume>res
+      })
     }
     target.editMode = !target.editMode
-
   }
+
 
   /* @HostListener("window:scroll", [])
   onScroll(): void {

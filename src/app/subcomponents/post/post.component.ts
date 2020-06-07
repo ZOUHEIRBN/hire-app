@@ -10,6 +10,7 @@ import { PostEditorDialogComponent } from 'src/app/panels/post-editor-dialog/pos
 import { UserService } from 'src/app/services/user.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PostPageComponent } from 'src/app/panels/post-page/post-page.component';
+import { PromptComponent } from 'src/app/minicomponents/prompt/prompt.component';
 
 @Component({
   selector: 'post',
@@ -30,11 +31,12 @@ export class PostComponent implements OnInit {
     private _userService:UserService,
     private _postService:PostService,
     private _bottomSheet: MatBottomSheet,
-    private dialog:MatDialog
+    private _dialog:MatDialog
   ) {
   }
 
   ngOnInit(): void {
+    console.log(this.post)
     this.bg_image = this.sanitize(this.post.imageUrl)
     if(this.post.subject.toLowerCase() == 'job' && this.post.type.toLowerCase() == 'offer'){
       this.post = <JobOffer>this.post
@@ -84,7 +86,7 @@ export class PostComponent implements OnInit {
     });
   }
   openPost(){
-    let dialog = this.dialog.open(PostPageComponent, {
+    let dialog = this._dialog.open(PostPageComponent, {
       maxHeight: '90vh',
       width: '90vw',
       data: {
@@ -98,14 +100,13 @@ export class PostComponent implements OnInit {
     })
   }
   editPost(){
-    const dialogRef = this.dialog.open(PostEditorDialogComponent, {
+    const dialogRef = this._dialog.open(PostEditorDialogComponent, {
       maxHeight: '90vmin',
       data:{
         post: this.post
       }
     });
     dialogRef.componentInstance.doneEvent.subscribe(event => {
-      event['ownerId'] = this._userService.getCurrentUser().id
       event['comments'] = this.post.comments
       this._postService.editPost(event).subscribe(response => {
         this.post = <Post>response
@@ -115,8 +116,32 @@ export class PostComponent implements OnInit {
   }
   follow(){
     this._postService.follow(this.post, this._userService.getCurrentUser().id).subscribe(res => {
-      console.log(res)
       this.post = <Post>res
+      if(this.post.subject.toLowerCase() == 'job' && this.post.type.toLowerCase() == 'offer'){
+
+        let dialog = this._dialog.open(PromptComponent, {
+          maxHeight: '90vh',
+          maxWidth: '90vw',
+          data: {
+            message: {
+              title: 'Submission Agent',
+              subtitle: 'Success',
+              body: res.following ? 'You have successfully submitted for the offer ['+res.id+']' : 'You have successfully cancelled your submission for the offer ['+res.id+']'
+            },
+            actionButtons: ['Dismiss']
+          }
+        })
+        dialog.componentInstance.btnClickEvent.subscribe(event => {
+          if(event == 'Dismiss'){
+            dialog.close()
+          }
+        })
+
+      }
+
+
+
+
     })
   }
 }

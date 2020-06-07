@@ -14,6 +14,13 @@
         </mat-form-field>
 
         <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
+          <mat-label>Post owner</mat-label>
+          <mat-select [(ngModel)]="newPost.ownerId" [value]="newPost.ownerId" name="ownerId">
+            <mat-option *ngFor="let option of companies" [value]="option.id">{{ option.title }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
           <mat-label>Cities</mat-label>
           <mat-select [(ngModel)]="newPost.cities" [value]="newPost.cities" name="city" multiple>
             <mat-option *ngFor="let option of cities" [value]="option">{{ option }}</mat-option>

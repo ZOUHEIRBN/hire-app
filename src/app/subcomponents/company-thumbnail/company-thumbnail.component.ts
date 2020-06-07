@@ -28,6 +28,7 @@ export class CompanyThumbnailComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/user/'+this.company.id])
   }
   ngOnInit(): void {
+    this.company.imageUrl = this.sanitize(this.company.imageUrl) + ''
     if(this.company && this.company.address){
       this.lat = this.company.address.latitude;
       this.lng = this.company.address.longitude;

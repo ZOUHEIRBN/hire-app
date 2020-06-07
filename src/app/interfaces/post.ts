@@ -83,6 +83,27 @@ export const HIERARCHY_LVS = ["Technicien",
 "Chef de service", "Chef de département",
 "Directeur adjoint", "Directeur"]
 
+export const TECH_CATEGORIES = [
+  {
+    name: 'Application Design',
+    technologies: [
+      'UML', 'Merise', 'Modèle MVC', 'Modèle MVT', 'Modèle Composite', 'Modèle Observer', 'Modèle Singleton'
+    ]
+  },
+  {
+    name: 'Database Administration',
+    technologies: [
+      'Oracle SQL', 'MySQL', 'SQL Server', 'Cassandra', 'MongoDB'
+    ]
+  },
+  {
+    name: 'Application development',
+    technologies: [
+      'C', 'C++', 'C#', 'GoLang', 'Java', 'JavaScript', 'PHP', 'Python', 'R', 'Ruby', 'Scala'
+    ]
+  }
+]
+
 export class Post{
   id:number;
   timestamp:any;

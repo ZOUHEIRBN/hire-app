@@ -40,7 +40,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatRippleModule } from '@angular/material/core';
+import { MatRippleModule, MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS } from '@angular/material/snack-bar';
@@ -147,6 +147,8 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     MatDividerModule,
     MatListModule,
     MatMenuModule,
+    MatDatepickerModule,
+    MatNativeDateModule ,
     MatSidenavModule,
     MatTreeModule,
     MatStepperModule,

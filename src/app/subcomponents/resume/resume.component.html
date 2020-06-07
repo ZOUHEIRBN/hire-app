@@ -3,7 +3,7 @@
     <button mat-icon-button [matMenuTriggerFor]="resume_menu" aria-label="Example icon-button with a menu">
       <mat-icon>more_vert</mat-icon>
     </button>
-    <button mat-raised-button color="primary" *ngIf="editMode" (click)="save()">
+    <button mat-raised-button  [disabled]="!editMode" [color]="editMode ? 'primary':'lightgrey'" color="primary" *ngIf="editMode" (click)="save()">
       <mat-icon>save</mat-icon>
       <span>Save</span>
     </button>
@@ -14,7 +14,7 @@
       <span>Edit resume</span>
     </button>
 
-    <button mat-menu-item disabled>
+    <button mat-menu-item (click)="reset()">
       <mat-icon>close</mat-icon>
       <span>Delete resume</span>
     </button>
@@ -103,7 +103,7 @@
 
               <mat-form-field>
                 <mat-label>From</mat-label>
-                <input matInput [matDatepicker]="picker1" [(ngModel)]="ac.begin_date" [readonly]="!editMode">
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="ac.begin_date" [disabled]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="picker1">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
@@ -112,27 +112,17 @@
 
               <mat-form-field>
                 <mat-label>To</mat-label>
-                <input matInput [matDatepicker]="picker1" [(ngModel)]="ac.end_date" [readonly]="!editMode">
-                <mat-datepicker-toggle matSuffix [for]="picker1">
+                <input matInput [matDatepicker]="picker2" [(ngModel)]="ac.end_date" [disabled]="!editMode">
+                <mat-datepicker-toggle matSuffix [for]="picker2">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
+                <mat-datepicker #picker2></mat-datepicker>
               </mat-form-field>
 
             </div>
-            <button class="more_options" mat-icon-button [matMenuTriggerFor]="academic_cursus_menu" aria-label="Example icon-button with a menu">
-              <mat-icon>more_vert</mat-icon>
+            <button [disabled]="!editMode" mat-icon-button (click)="removeAcademicCursus(ac)">
+              <mat-icon>remove</mat-icon>
             </button>
-            <mat-menu #academic_cursus_menu yPosition="below" xPosition="after">
-              <button mat-menu-item (click)="addAcademicCursus()">
-                <mat-icon>add</mat-icon>
-                <span>New diploma</span>
-              </button>
-              <button mat-menu-item (click)="removeAcademicCursus(ac)">
-                <mat-icon>remove</mat-icon>
-                <span>Delete diploma</span>
-              </button>
-            </mat-menu>
 
             <br>
             <mat-divider [inset]="true"></mat-divider>
@@ -140,7 +130,10 @@
 
       </mat-list>
 
-
+      <button mat-raised-button  [disabled]="!editMode" [color]="editMode ? 'primary':'lightgrey'" (click)="addAcademicCursus()">
+        <mat-icon>add</mat-icon>
+        <span>New diploma</span>
+      </button>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -199,46 +192,40 @@
 
               <mat-form-field>
                 <mat-label>From</mat-label>
-                <input matInput [matDatepicker]="xppicker_begin" [(ngModel)]="pro.begin_date" [readonly]="!editMode">
+                <input matInput [matDatepicker]="xppicker_begin" [(ngModel)]="pro.begin_date" [disabled]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
                 <mat-datepicker #xppicker_begin></mat-datepicker>
               </mat-form-field>
+
               <mat-form-field>
                 <mat-label>To</mat-label>
-                <input matInput [matDatepicker]="xppicker_end" [(ngModel)]="pro.end_date" [readonly]="!editMode">
+                <input matInput [matDatepicker]="xppicker_end" [(ngModel)]="pro.end_date" [disabled]="!editMode">
                 <mat-datepicker-toggle matSuffix [for]="xppicker_end">
                   <mat-icon matDatepickerToggleIcon>event</mat-icon>
                 </mat-datepicker-toggle>
                 <mat-datepicker #xppicker_end></mat-datepicker>
               </mat-form-field>
+
               <mat-form-field class="ultra-wide">
                 <mat-label>Added values</mat-label>
                 <textarea matInput [disabled]="!editMode" class="example-full-width" [(ngModel)]="pro.added_values"></textarea>
               </mat-form-field>
             </div>
             <br>
-            <button class="more_options" mat-icon-button [matMenuTriggerFor]="pro_cursus_menu" aria-label="Example icon-button with a menu">
-              <mat-icon>more_vert</mat-icon>
+            <button [disabled]="!editMode" mat-icon-button (click)="removeProCursus(pro)">
+              <mat-icon>remove</mat-icon>
             </button>
-            <mat-menu #pro_cursus_menu yPosition="below" xPosition="after">
-              <button mat-menu-item (click)="addProCursus()">
-                <mat-icon>add</mat-icon>
-                <span>New cursus</span>
-              </button>
-              <button mat-menu-item (click)="removeProCursus(pro)">
-                <mat-icon>remove</mat-icon>
-                <span>Delete cursus</span>
-              </button>
-            </mat-menu>
-
             <mat-divider [inset]="true"></mat-divider>
           </mat-list-item>
 
       </mat-list>
 
-
+      <button mat-raised-button  [disabled]="!editMode" [color]="editMode ? 'primary':'lightgrey'" (click)="addProCursus()">
+        <mat-icon>add</mat-icon>
+        <span>New cursus</span>
+      </button>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -286,7 +273,7 @@
 
             <mat-form-field>
               <mat-label>From</mat-label>
-              <input matInput [matDatepicker]="xppicker_begin" [(ngModel)]="prj.begin_date" [readonly]="!editMode">
+              <input matInput [matDatepicker]="xppicker_begin" [(ngModel)]="prj.begin_date" [disabled]="!editMode">
               <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
                 <mat-icon matDatepickerToggleIcon>event</mat-icon>
               </mat-datepicker-toggle>
@@ -295,30 +282,25 @@
 
             <mat-form-field>
               <mat-label>To</mat-label>
-              <input matInput [matDatepicker]="xppicker_end" [(ngModel)]="prj.end_date" [readonly]="!editMode">
+              <input matInput [matDatepicker]="xppicker_end" [(ngModel)]="prj.end_date" [disabled]="!editMode">
               <mat-datepicker-toggle matSuffix [for]="xppicker_end">
                 <mat-icon matDatepickerToggleIcon>event</mat-icon>
               </mat-datepicker-toggle>
               <mat-datepicker #xppicker_end></mat-datepicker>
             </mat-form-field>
           </div>
-          <button class="more_options" mat-icon-button [matMenuTriggerFor]="academic_prj_menu" aria-label="Example icon-button with a menu">
-            <mat-icon>more_vert</mat-icon>
+          <button [disabled]="!editMode" mat-icon-button (click)="removeAcademicProject(prj)">
+            <mat-icon>remove</mat-icon>
           </button>
-          <mat-menu #academic_prj_menu yPosition="below" xPosition="after">
-            <button mat-menu-item (click)="addAcademicProject()">
-              <mat-icon>add</mat-icon>
-              <span>New project</span>
-            </button>
-            <button mat-menu-item (click)="removeAcademicProject(prj)">
-              <mat-icon>remove</mat-icon>
-              <span>Delete project</span>
-            </button>
-          </mat-menu>
+
           <br>
           <mat-divider [inset]="true"></mat-divider>
         </mat-list-item>
       </mat-list>
+      <button mat-raised-button  [disabled]="!editMode" [color]="editMode ? 'primary':'lightgrey'" (click)="addAcademicProject()">
+        <mat-icon>add</mat-icon>
+        <span>New project</span>
+      </button>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -367,23 +349,19 @@
 
             </div>
           </div>
-          <button class="more_options" mat-icon-button [matMenuTriggerFor]="lang_menu" aria-label="Example icon-button with a menu">
-            <mat-icon>more_vert</mat-icon>
+          <button [disabled]="!editMode" mat-icon-button (click)="removeLanguage(lang)">
+            <mat-icon>remove</mat-icon>
           </button>
-          <mat-menu #lang_menu yPosition="below" xPosition="after">
-            <button mat-menu-item (click)="addLanguage()">
-              <mat-icon>add</mat-icon>
-              <span>Add language</span>
-            </button>
-            <button mat-menu-item (click)="removeLanguage(lang)">
-              <mat-icon>remove</mat-icon>
-              <span>Delete language</span>
-            </button>
-          </mat-menu>
+
           <br>
           <mat-divider [inset]="true"></mat-divider>
         </mat-list-item>
       </mat-list>
+
+      <button mat-raised-button  [disabled]="!editMode" [color]="editMode ? 'primary':'lightgrey'" (click)="addLanguage()">
+        <mat-icon>add</mat-icon>
+        <span>Add language</span>
+      </button>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -427,23 +405,19 @@
 
           </div>
 
-          <button class="more_options" mat-icon-button [matMenuTriggerFor]="skill_menu" aria-label="Example icon-button with a menu">
-            <mat-icon>more_vert</mat-icon>
+          <button [disabled]="!editMode" mat-icon-button  (click)="removeSkill(skill)">
+            <mat-icon>remove</mat-icon>
           </button>
-          <mat-menu #skill_menu yPosition="below" xPosition="after">
-            <button mat-menu-item (click)="addSkill()">
-              <mat-icon>add</mat-icon>
-              <span>Add skill</span>
-            </button>
-            <button mat-menu-item (click)="removeSkill(skill)">
-              <mat-icon>remove</mat-icon>
-              <span>Delete skill</span>
-            </button>
-          </mat-menu>
+
           <br>
           <mat-divider [inset]="true"></mat-divider>
         </mat-list-item>
       </mat-list>
+
+      <button mat-raised-button [disabled]="!editMode" [color]="editMode ? 'primary':'lightgrey'" (click)="addSkill()">
+        <mat-icon>add</mat-icon>
+        <span>Add skill</span>
+      </button>
     </mat-expansion-panel>
 
     <mat-expansion-panel>
@@ -475,7 +449,7 @@
 
                 <mat-form-field>
                   <mat-label>From</mat-label>
-                  <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [readonly]="!editMode">
+                  <input matInput [matDatepicker]="xppicker_begin" [formControl]="date" [disabled]="!editMode">
                   <mat-datepicker-toggle matSuffix [for]="xppicker_begin">
                     <mat-icon matDatepickerToggleIcon>event</mat-icon>
                   </mat-datepicker-toggle>
@@ -484,7 +458,7 @@
 
                 <mat-form-field>
                   <mat-label>To</mat-label>
-                  <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [readonly]="!editMode">
+                  <input matInput [matDatepicker]="xppicker_end" [formControl]="date" [disabled]="!editMode">
                   <mat-datepicker-toggle matSuffix [for]="xppicker_end">
                     <mat-icon matDatepickerToggleIcon>event</mat-icon>
                   </mat-datepicker-toggle>

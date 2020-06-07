@@ -6,6 +6,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { UserService } from 'src/app/services/user.service';
 import { PostService } from 'src/app/services/post.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CompanyService } from 'src/app/services/company.service';
 
 @Component({
   selector: 'new-job-offer',
@@ -27,16 +28,30 @@ export class NewJobOfferComponent implements OnInit {
   cities = CITIES
   functions = FUNCTIONS
   hierarchy_levels = HIERARCHY_LVS
-
+  companies = []
 
 
   constructor(
     private _userService: UserService,
-    private _postService: PostService
+    private _postService: PostService,
+    private _companyService:CompanyService
     ) { }
 
   ngOnInit(): void {
-
+    let current_user = this._userService.getCurrentUser()
+    if(current_user){
+      this._companyService.getUserCompanies(current_user.id).subscribe(res => {
+        this.companies = res.map(e => {return {
+            title: e['title'],
+            id: e['id']
+          }
+        })
+        this.companies.unshift({
+          title: current_user['email'],
+          id: current_user['id']
+        })
+      })
+    }
     if(!this.newPost || this.newPost === def_post){
       this.newPost = new JobOffer()
       this.newPost.type = 'Offer'
@@ -60,13 +75,6 @@ export class NewJobOfferComponent implements OnInit {
     let e =  {title: '', level: 0}
     this.newPost.requiredExp.push(e)
     console.log(this.newPost)
-  }
-  createPost(){
-    this.newPost.ownerId = this._userService.getCurrentUser().email;
-
-    this._postService.createPost(this.newPost).subscribe(_ => {
-      //this.posts.unshift(this.newPost)
-    })
   }
 
 }

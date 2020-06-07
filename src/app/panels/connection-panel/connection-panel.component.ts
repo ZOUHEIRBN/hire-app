@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { SocketService } from 'src/app/services/socket.service';
 import { UserRegistrationPanelComponent } from '../user-registration-panel/user-registration-panel.component';
+import { default_resume } from 'src/app/interfaces/resume';
 
 @Component({
   selector: 'connection-panel',
@@ -38,6 +39,9 @@ export class ConnectionPanelComponent implements OnInit {
       maxHeight: '90vh'
     })
     dialog.componentInstance.doneEvent.subscribe(event => {
+      let resume = default_resume
+      event.resume = resume
+      console.log(event)
       this._userService.registerUser(event).subscribe((data) => {
         this._userService.setCurrentUser(<User>data)
         this.router.navigate(['/home'])

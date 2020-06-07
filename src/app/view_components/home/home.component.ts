@@ -5,6 +5,8 @@ import { FormControl } from '@angular/forms';
 import { developDown } from 'src/app/app-animations';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/interfaces/user';
+import { RouterEvent, Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -16,12 +18,19 @@ export class HomeComponent implements OnInit {
   loading_state = true
   currentUser:User
   @Output() onHome = new EventEmitter()
-  constructor(private _postService:PostService, private _userService:UserService) {}
+  constructor(private router: Router, private _postService:PostService, private _userService:UserService) {}
 
   ngOnInit(): void {
     this.currentUser = this._userService.getCurrentUser()
     this.onHome.emit(this.currentUser)
     this.loadPostData()
+
+    this.router.events.pipe(
+      filter((event: RouterEvent) => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.loadPostData()
+    });
+
   }
   async loadPostData(){
     this.loading_state = true;
@@ -31,7 +40,6 @@ export class HomeComponent implements OnInit {
     })
   }
   createPost(event){
-    event.ownerId = this._userService.getCurrentUser().id;
     this._postService.createPost(event).subscribe(_ => {
       //this.posts.unshift(this.newPost)
       console.log(event)

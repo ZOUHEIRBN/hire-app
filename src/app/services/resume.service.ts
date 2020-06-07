@@ -19,7 +19,7 @@ export class ResumeService {
   putResume(user_id, resume){
     return this.httpClient.put<Resume>(SERVER_URL+"users/"+user_id+"/resume/", resume, httpOptions)
   }
-  deleteResume(user_id){
+  resetResume(user_id){
     return this.httpClient.delete(SERVER_URL+"users/"+user_id+"/resume/")
   }
 }

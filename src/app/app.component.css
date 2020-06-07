@@ -46,7 +46,9 @@ mat-toolbar button[action=MenuSwitch]{
   margin-right: 1vw;
   display: none;
 }
-
+.toolbarBtnText{
+  display: none;
+}
 mat-sidenav.notifications{
   backdrop-filter: blur(2px);
   background: linear-gradient(40deg, var(--primary-color),  var(--secondary-color));
@@ -71,65 +73,12 @@ notifications-list{
     flex-shrink: 1;
     min-width: 32px;
   }
-  div.buttonBar{
-    display: flex;
-    flex-wrap: wrap;
-    flex: 0 0 10%;
-    max-width: 100%;
-    width: 100%;
-  }
-  div.buttonBar:first-child{
-    flex-direction: row;
-  }
-  div.buttonBar:first-child span{
-    flex-grow: 1;
-  }
-  div.profileImage {
-    left: 0%;
-    top: 0%;
-    transform: translate(0%, 0%) scale(0.85);
-  }
-  div.buttonBar:not(.horizontal) button{
-    width: 100%;
-    display: flex;
-  }
-  div.buttonBar.horizontal{
-    flex-direction: row;
-    flex-wrap: nowrap;
-    flex: 5% 0 0;
-  }
-  div.buttonBar button[current]{
-    color: #fff;
-    background-color: var(--primary-color);
-    border-bottom: 1pt solid #fff;
-  }
 
-
-
-
-
-  /* Searchbar */
-  .search{
-    flex: 0 1 0%!important;
-    width: 0%!important;
-    padding-left: 0vmin;
-  }
-  .search.current{
-    flex: 1 0 50%!important;
-    width: 100%;
-    padding-left: 5vmin;
-  }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 1280px) {
-  /* Notification & Messages side panel */
-  div.rightPanel {
-    width: 50vw;
-  }
-  .search{
-    flex: 1 0 50%;
-    width: 0%;
-    padding-left: 5vmin;
+  .toolbarBtnText{
+    display: contents;
   }
 }
 
@@ -137,29 +86,6 @@ notifications-list{
   mat-toolbar h1{
     flex-grow: 0;
   }
-  /* Notification & Messages side panel */
-  div.rightPanel {
-    width: 100vw;
-    right: 0vw;
-    overflow-x: hidden;
-  }
-  div.rightPanel[content=none] {
-    right: -150vw;
-  }
-  div.rightPanel>div {
-    width: 98%;
-  }
-
-
-
-
-  .search {
-    padding-left: 0vmin;
-  }
-  .search.current {
-    padding-left: 5vmin;
-  }
-
 }
 
 

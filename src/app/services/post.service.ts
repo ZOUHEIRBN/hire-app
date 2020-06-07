@@ -69,6 +69,9 @@ export class PostService {
   deleteComment(post_id, comment_id){
     return this.httpClient.delete<Comment>(SERVER_URL+"posts/"+post_id+"/comment/" + comment_id)
   }
+  editComment(post_id, comment){
+    return this.httpClient.put<Comment>(SERVER_URL+"posts/"+post_id+"/comment/"+comment.id, comment, httpOptions)
+  }
 }
 
 

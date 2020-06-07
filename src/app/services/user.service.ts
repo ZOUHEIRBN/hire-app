@@ -47,7 +47,9 @@ export class UserService {
   registerUser(user){
     return this.httpClient.post<User>(SERVER_URL+"users/", user, httpOptions)
   }
-
+  editUser(user){
+    return this.httpClient.put<User>(SERVER_URL+"users/", user, httpOptions)
+  }
   disconnect(){
     this._user.next(null)
   }
