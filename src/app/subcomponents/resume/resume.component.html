@@ -75,7 +75,7 @@
               <mat-card-header *ngIf="!editMode" style="transform: translateX(-16px); width: 100%;">
                 <mat-card-title>
                   <span>
-                    {{ ac.title }}
+                    {{ ac.degree + ' in ' + ac.title }}
                   </span>
                 </mat-card-title>
 
@@ -88,14 +88,20 @@
                 <mat-label>Title</mat-label>
                 <input matInput [disabled]="!editMode" [(ngModel)]="ac.title">
               </mat-form-field>
+
+              <mat-form-field *ngIf="editMode">
+                <mat-label>Degree</mat-label>
+                <!-- <input matInput [disabled]="!editMode" [(ngModel)]="ac.degree"> -->
+                <mat-select [disabled]="!editMode" [(ngModel)]="ac.degree">
+                  <mat-option *ngFor="let option of diploma_types" [value]="option">{{ option }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+
               <mat-form-field *ngIf="editMode">
                 <mat-label>School</mat-label>
                 <input matInput [disabled]="!editMode" [(ngModel)]="ac.school">
               </mat-form-field>
-              <mat-form-field>
-                <mat-label>Degree</mat-label>
-                <input matInput [disabled]="!editMode" [(ngModel)]="ac.degree">
-              </mat-form-field>
+
               <mat-form-field>
                 <mat-label>Mention</mat-label>
                 <input matInput [disabled]="!editMode" [(ngModel)]="ac.grade">

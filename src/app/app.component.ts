@@ -107,9 +107,10 @@ export class AppComponent implements OnInit {
       maxHeight: '90vh'
     })
     dialog.componentInstance.doneEvent.subscribe(event => {
+      console.log(event)
       this._postService.createPost(event).subscribe(_ => {
         //this.posts.unshift(this.newPost)
-        console.log(event)
+
         dialog.close()
       })
     })

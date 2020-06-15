@@ -5,7 +5,7 @@ import { Resume, default_resume, ProfessionnalExperience, AcademicDiploma, Acade
 import { ResumeService } from 'src/app/services/resume.service';
 import { MatDialog } from '@angular/material/dialog';
 import { QuizzPanelComponent } from 'src/app/panels/quizz-panel/quizz-panel.component';
-import { SECTORS, FUNCTIONS } from 'src/app/interfaces/post';
+import { SECTORS, FUNCTIONS, DIPLOMA_TYPES } from 'src/app/interfaces/post';
 
 @Component({
   selector: 'user-resume',
@@ -20,6 +20,7 @@ export class ResumeComponent implements OnInit {
 
   sectors = SECTORS;
   functions = FUNCTIONS
+  diploma_types = DIPLOMA_TYPES
 
   constructor(private _dialog:MatDialog, private _resumeService:ResumeService) { }
 

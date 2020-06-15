@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef, Inject } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { JobOffer, def_post, CITIES, FUNCTIONS, HIERARCHY_LVS } from 'src/app/interfaces/post';
+import { JobOffer, def_post, CITIES, FUNCTIONS, HIERARCHY_LVS, DIPLOMA_TYPES } from 'src/app/interfaces/post';
 import { Skill, Degree } from 'src/app/interfaces/resume';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { UserService } from 'src/app/services/user.service';
@@ -28,6 +28,7 @@ export class NewJobOfferComponent implements OnInit {
   cities = CITIES
   functions = FUNCTIONS
   hierarchy_levels = HIERARCHY_LVS
+  dip_types = DIPLOMA_TYPES
   companies = []
 
 

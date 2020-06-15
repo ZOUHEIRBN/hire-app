@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { JobDemand, JobOffer } from 'src/app/interfaces/post';
+import { JobDemand, JobOffer, def_post } from 'src/app/interfaces/post';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { UserService } from 'src/app/services/user.service';
 import { PostService } from 'src/app/services/post.service';
@@ -33,17 +33,17 @@ export class NewJobDemandComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadEvent.emit()
-    this.newPost = new JobDemand()
-    this.newPost.type = 'Demand'
-    this.newPost.subject = this.subject
+
+
+    if(!this.newPost || this.newPost === def_post){
+      this.newPost = new JobDemand()
+      this.newPost.type = 'Demand'
+      this.newPost.subject = this.subject
+    }
+    else{
+      this.newPost = JobDemand.fromPost(this.newPost)
+    }
   }
 
-  createPost(){
-    this.newPost.ownerId = this._userService.getCurrentUser().email;
-
-    this._postService.createPost(this.newPost).subscribe(_ => {
-      //this.posts.unshift(this.newPost)
-    })
-  }
 
 }

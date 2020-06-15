@@ -107,6 +107,7 @@ export class PostComponent implements OnInit {
       }
     });
     dialogRef.componentInstance.doneEvent.subscribe(event => {
+      console.log(event)
       event['comments'] = this.post.comments
       this._postService.editPost(event).subscribe(response => {
         this.post = <Post>response

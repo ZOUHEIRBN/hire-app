@@ -33,7 +33,8 @@ export class PostService {
     }));
   }
   public getPostsByType(type){
-		return this.httpClient.get(SERVER_URL+"posts/type/"+type).pipe(map(response => {
+    let current_id = this._userService.getCurrentUser().id || 0
+		return this.httpClient.get(SERVER_URL+"posts/type/"+type+"/current_id="+current_id).pipe(map(response => {
       return response['body'];
     }));
   }

@@ -78,14 +78,7 @@
           <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
             <mat-label>Accepted diploma types</mat-label>
             <mat-select [(ngModel)]="degree.diploma_types" name="diploma_type" multiple>
-              <mat-option [value]="'Technicien'">Technicien</mat-option>
-              <mat-option [value]="'Technicien Spécialisé'">Technicien Spécialisé</mat-option>
-              <mat-option [value]="'Bachelor'">Bachelor</mat-option>
-              <mat-option [value]="'Master'">Master</mat-option>
-              <mat-option [value]="'MBA'">MBA</mat-option>
-              <mat-option [value]="'Engineer'">Engineer</mat-option>
-              <mat-option [value]="'PHD'">PHD</mat-option>
-              <mat-option [value]="'Other'">Other</mat-option>
+              <mat-option *ngFor="let dip of dip_types" [value]="dip">{{ dip }}</mat-option>
             </mat-select>
           </mat-form-field>
           <!-- <button mat-button>

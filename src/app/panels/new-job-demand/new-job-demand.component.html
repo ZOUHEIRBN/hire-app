@@ -24,11 +24,11 @@
           <mat-form-field appearance="standard" [floatLabel]="floatLabelControl.value">
             <mat-label>Salary range</mat-label>
             <mat-select [(value)]="newPost.salary_range">
-              <mat-option value="{{ {'min':0, 'max':3000} }}">Less than 3000</mat-option>
-              <mat-option value="{{ {'min':3000, 'max':5000} }}">Between 3000 and 5000</mat-option>
-              <mat-option value="{{ {'min':5000, 'max':7000} }}">Between 5000 and 7000</mat-option>
-              <mat-option value="{{ {'min':7000, 'max':9000} }}">Between 7000 and 9000</mat-option>
-              <mat-option value="{{ {'min':9000} }}">Over 9000</mat-option>
+              <mat-option [value]="0">Less than 3000</mat-option>
+              <mat-option [value]="1">Between 3000 and 5000</mat-option>
+              <mat-option [value]="2">Between 5000 and 7000</mat-option>
+              <mat-option [value]="3">Between 7000 and 9000</mat-option>
+              <mat-option [value]="4">Over 9000</mat-option>
             </mat-select>
           </mat-form-field>
 
@@ -70,17 +70,32 @@
             </mat-select>
           </mat-form-field>
           <div class="mat-form-slider">
-            <mat-label>Working hours</mat-label>
+            <mat-label>Minimum working hours</mat-label>
+            <mat-slider
+                class="example-margin"
+                name="regular_workhours"
+                [disabled]="false"
+                [invert]="false"
+                [max]="newPost.max_workhours"
+                [min]="0"
+                [thumbLabel]="true"
+                [tickInterval]="12"
+                [(ngModel)]="newPost.min_workhours"
+                [vertical]="false">
+            </mat-slider>
+          </div>
+          <div class="mat-form-slider">
+            <mat-label>Maximum working hours</mat-label>
             <mat-slider
                 class="example-margin"
                 name="regular_workhours"
                 [disabled]="false"
                 [invert]="false"
                 [max]="12"
-                [min]="0"
+                [min]="newPost.min_workhours"
                 [thumbLabel]="true"
                 [tickInterval]="12"
-                [(ngModel)]="newPost.regular_workhours"
+                [(ngModel)]="newPost.max_workhours"
                 [vertical]="false">
             </mat-slider>
           </div>

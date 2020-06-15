@@ -22,6 +22,9 @@ export const posttypes = {
     "Event": ["Formation", "Webinar"]
   }
 }
+
+export const DIPLOMA_TYPES = ["Technicien", "Technicien Spécialisé", "Bachelor", "Master", "Engineer", "MBA", "PHD", "Other"]
+
 export const SECTORS = ["Activités associatives",
 "Administration publique",
 "Aéronautique, navale",
@@ -75,7 +78,7 @@ export const SECTORS = ["Activités associatives",
 
 export const FUNCTIONS = ["Achats", "Commercial, vente", "Gestion, comptabilité, finance", "Informatique, nouvelles technologies", "Juridique", "Management, direction générale", "Marketing, communication", "Métiers de la santé et du social", "Métiers des services", "Métiers du BTP", "Production, maintenance, qualité", "R&D, gestion de projets", "RH, formation", "Secretariat, assistanat", "Tourisme, hôtellerie, restauration", "Transport, logistique"]
 
-export const CITIES = ['Casablanca', 'Rabat', 'Agadir', 'Tangiers', 'Marrakesh', 'Fez']
+export const CITIES = ['Casablanca', 'Rabat', 'Agadir', 'Tangiers', 'Marrakesh', 'Fez', 'Oujda', 'Meknes', 'Laayoune', 'Errachidia', 'Tetouan', 'Kenitra']
 
 export const HIERARCHY_LVS = ["Technicien",
 "Technicien spécialisé",
@@ -180,13 +183,32 @@ export class JobOffer extends Job {
 export class JobDemand extends Job {
   businessTravels_national;
   businessTravels_international;
-  salary_range;
+  salary_range = 0;
   min_workhours;
   max_workhours
   constructor(){
     super();
     this.min_workhours = 0
     this.max_workhours = 12
-
+  }
+  static fromPost(post){
+    let demand = new JobDemand()
+    demand.id = post.id
+    demand.type = post.type
+    demand.subject = post.subject
+    demand.description = post.description
+    demand.title = post.title
+    demand.cities = post.cities
+    demand.region = post.region
+    demand.function = post.function
+    demand.hierarchy_level = post.hierarchy_level
+    demand.contractType = post.contractType
+    demand.businessTravels_national = post.businessTravels_national
+    demand.businessTravels_international = post.businessTravels_international
+    demand.workdays = post.workdays
+    demand.salary_range = post.salary_range
+    demand.min_workhours = post.min_workhours
+    demand.max_workhours = post.max_workhours
+    return <JobDemand>demand;
   }
 }

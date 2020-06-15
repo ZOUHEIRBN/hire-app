@@ -11,7 +11,7 @@
         <div>
           <h2 style="width: 100%;">
             {{ post.hierarchy_level }} - {{ post.function }}<br>
-            <span>{{ post.cities.join(' - ') }}</span>
+            <span *ngIf="post.cities">{{ post.cities.join(' - ') }}</span>
           </h2>
         </div>
         <img mat-card-image *ngIf="post.imageUrl" [src]="sanitize(post.imageUrl)" alt="@{{ post.owner.email }}">

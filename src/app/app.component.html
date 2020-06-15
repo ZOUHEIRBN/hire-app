@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar *ngIf="this.user" color="primary">
   <button *ngIf="this.user" mat-button action="MenuSwitch" (click)="showMenu()">
     <i *ngIf="this.user" class="material-icons">menu</i>
     <span *ngIf="!this.user">Connect</span>

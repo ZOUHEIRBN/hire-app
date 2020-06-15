@@ -47,6 +47,7 @@ export class CommentSectionComponent implements OnInit {
   editComment(comment){
     this._postService.editComment(this.post_id, comment).subscribe((response)=>{
       comment = <Comment>response
+      this.edited_comment_id = ''
     })
   }
 

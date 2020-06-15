@@ -27,15 +27,30 @@ export class BadgeComponent implements OnInit {
     this.color = this.getColor()
   }
   initialize_text(){
-    if(this.badge.category === 'match'){
+    if(this.badge.category === 'offer_match'){
       if(this.badge.name === 'Wanted'){
         return "This offer matches "+this.badge.value+"% of your constraints"
       }
       else if(this.badge.name === 'Watchout'){
         return "You have about "+this.badge.value+"% chances that you get selected for this offer"
       }
-      else if(this.badge.name === 'Golden match'){
-        return "You have about "+this.badge.value+"% chances that you get selected for this offer"
+    }
+
+    else if(this.badge.category === 'demand_match'){
+      if(this.badge.name === 'Wanted'){
+        return "This demand matches "+this.badge.value+"% of one of your companies' constraints"
+      }
+      else if(this.badge.name === 'Watchout'){
+        return "You have about "+this.badge.value+"% chances that you select the user posting this offer"
+      }
+    }
+
+    else if(this.badge.category === 'posttype'){
+      if(this.badge.name === 'Offer'){
+        return 'This is a job offer'
+      }
+      else if(this.badge.name === 'Demand'){
+        return 'This is a job demand'
       }
     }
   }
@@ -43,14 +58,25 @@ export class BadgeComponent implements OnInit {
     if(this.badge.category === 'jobtype'){
       return 'work'
     }
-    else if(this.badge.category === 'match'){
-      return 'whatshot'
+    else if(this.badge.category.endsWith('match')){
+      if(this.badge.name === 'Wanted'){
+        return 'whatshot'
+      }
+      else if(this.badge.name === 'Watchout'){
+        return 'visibility'
+      }
     }
+
     else if(this.badge.category === 'fav'){
       return 'star'
     }
     else if(this.badge.category === 'posttype'){
-      return 'assistant_photo'
+      if(this.badge.name === 'Offer'){
+        return 'assistant_photo'
+      }
+      else if(this.badge.name === 'Demand'){
+        return 'announcement'
+      }
     }
     return 'person'
   }
@@ -58,8 +84,13 @@ export class BadgeComponent implements OnInit {
     if(this.badge.category === 'jobtype'){
       return 'primary'
     }
-    else if(this.badge.category === 'match'){
-      return 'warn'
+    else if(this.badge.category.endsWith('match')){
+      if(this.badge.name === 'Wanted'){
+        return 'secondary'
+      }
+      else if(this.badge.name === 'Watchout'){
+        return 'warn'
+      }
     }
     else if(this.badge.category === 'fav'){
       return 'undefined'

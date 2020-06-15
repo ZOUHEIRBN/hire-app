@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 import { AppComponent } from './app.component';
-import { OfferListComponent } from './view_components/offer-list/offer-list.component';
+import { PostListComponent } from './view_components/post-list/post-list.component';
 import { AboutComponent } from './view_components/about/about.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -88,7 +88,7 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
 @NgModule({
   declarations: [
     AppComponent,
-    OfferListComponent,
+    PostListComponent,
     AboutComponent,
     BadgeComponent,
     LoginComponent,
@@ -168,7 +168,7 @@ const socket_config: SocketIoConfig = { url: SERVER_URL, options: {'Access-Contr
     })
 
   ],
-  providers: [ UserService, OfferListComponent, SocketService,
+  providers: [ UserService, PostListComponent, SocketService,
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {floatLabel: 'always'}}
   ],
   bootstrap: [AppComponent],
